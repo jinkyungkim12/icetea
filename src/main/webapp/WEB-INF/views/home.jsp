@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>
-	노랑팀의 희망: 김재이  
+	Hello world 
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
