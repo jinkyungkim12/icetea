@@ -70,6 +70,9 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
+		table, td, th{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>

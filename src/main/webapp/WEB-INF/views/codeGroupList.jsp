@@ -55,6 +55,9 @@
 		.container-fluid{
 			font-family: 'Happiness-Sans-Regular';	
 		}
+		table, td, th{
+			text-align: center;
+		}
 		@font-face {
 		    font-family: 'Happiness-Sans-Regular';
 		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Regular.woff2') format('woff2');
