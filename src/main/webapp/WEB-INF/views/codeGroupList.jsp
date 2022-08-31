@@ -129,7 +129,7 @@
 	
 	<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 		<div class="container-fluid" style="margin-top: 3rem;">
-			<div class="text-center ccc"><h1><b>코드그룹 관리</b></h1></div>
+			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
 					<select class="form-select col-2" aria-label="Default select example">
@@ -187,8 +187,7 @@
 		
 		
 		<!-- List -->
-		
-		<div class="container-fluid text-center">
+		<div class="container-fluid">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">
@@ -381,7 +380,6 @@
 		  </div>
 		</div>
 	</div>
-		
 
 	
 	</div>

@@ -129,7 +129,7 @@
 
 	<!-- 세 번째 -->
 		<div class="container-fluid" style="margin-top: 3rem;">
-			<div class="text-center ccc"><h1><b>코드 관리</b></h1></div>
+			<div class="text-center"><h1><b>코드 관리</b></h1></div>
 			<div class="row justify-content-end" style="margin-top: 3rem;">
 				<div class="col-2">
 					<select class="form-select col-2" aria-label="Default select example">
