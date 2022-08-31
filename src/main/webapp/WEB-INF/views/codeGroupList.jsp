@@ -103,10 +103,10 @@
 	            <a class="nav-link bbb" href="./order/dmin_order.html">주문관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeGroup.html">코드그룹관리</a>
+	            <a class="nav-link bbb" href="codeGroupList">코드그룹관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="code.html">코드관리</a>
+	            <a class="nav-link bbb" href="codeList">코드관리</a>
 	          </li>
 	        </ul>
 	        <div class="text-center">
