@@ -5,9 +5,9 @@ public class CodeGroup {
 	
 	// 코드그룹 데이터베이스 컬럼명
 	 private Integer seq;
-	 private String Name;
-	 private Integer UseNY;
-	 private Integer DelNY;
+	 private String name;
+	 private Integer useNY;
+	 private Integer delNY;
 	 
 	 
 	// getter, setter 마우스 우클릭 소스 - generate ~~~
@@ -18,22 +18,22 @@ public class CodeGroup {
 		this.seq = seq;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 	public Integer getUseNY() {
-		return UseNY;
+		return useNY;
 	}
 	public void setUseNY(Integer useNY) {
-		UseNY = useNY;
+		useNY = useNY;
 	}
 	public Integer getDelNY() {
-		return DelNY;
+		return delNY;
 	}
 	public void setDelNY(Integer delNY) {
-		DelNY = delNY;
+		delNY = delNY;
 	}
 	
 	 
