@@ -168,8 +168,8 @@
 					<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
-				 	<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-rotate-left"></i></button>
+				 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
 			</div>
 			<div class="row justify-content-between" style="margin-top: 3rem;">
@@ -332,12 +332,12 @@
 		<div class="container-fluid">
 			<div class="row justify-content-between">	
 		   		<div class="col-10">
-		     		<a type="button" class="btn btn-dark" onclick='deleteRow(-1)'><i class="fa-solid fa-circle-minus"></i></a>
+		     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
 		     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 		    	</div>
 		    	<div class="col-2 text-end">
 		     		<a type="button" class="btn btn-dark" href="codeGroupForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-					<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-plus"></i></button>
+					<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 		    	</div>
 		    </div>	
 	   </div>
