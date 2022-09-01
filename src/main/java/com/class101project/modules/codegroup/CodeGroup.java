@@ -21,19 +21,19 @@ public class CodeGroup {
 		return name;
 	}
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 	public Integer getUseNY() {
 		return useNY;
 	}
 	public void setUseNY(Integer useNY) {
-		useNY = useNY;
+		this.useNY = useNY;
 	}
 	public Integer getDelNY() {
 		return delNY;
 	}
 	public void setDelNY(Integer delNY) {
-		delNY = delNY;
+		this.delNY = delNY;
 	}
 	
 	 
