@@ -12,7 +12,13 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
+			 a.seq
+            ,a.codeGroupCode
+            ,a.nameKr
+            ,a.name
+            ,(select count(b.codeGroup_seq) from code b where b.delNY=0 and b.codeGroup_seq=a.seq)as codeNum
+            ,a.delNY
+            ,a.useNY
 		FROM codeGroup a
 		WHERE 1=1
 			AND delNY = 0
