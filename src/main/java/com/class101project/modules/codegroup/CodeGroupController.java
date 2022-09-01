@@ -1,5 +1,5 @@
 package com.class101project.modules.codegroup;
-// 6.Controller
+//6. controller
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/codeGroup/") // /codeGroup/codeGroupList 웹 브라우저 
+@RequestMapping(value = "/codeGroup/")
 public class CodeGroupController {
 
 	@Autowired
@@ -23,5 +23,4 @@ public class CodeGroupController {
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
-	
 }

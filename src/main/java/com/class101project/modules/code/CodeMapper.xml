@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--2. mapper .xml -->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.class101project.modules.code.CodeMapper">
+<!-- code -> codegroup -->
+    <resultMap id="resultMapObj" type="com.class101project.modules.code.Code"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+		 b.seq
+		,b.codeGroup_seq
+		,a.nameKr
+	    ,b.code
+	    ,b.codeAnother
+	    ,b.codeNameKr
+	    ,b.codeName
+	    ,b.useNY
+	    ,b.delNY
+	    ,b.order
+	FROM codeGroup a
+	 left join code b on b.codeGroup_seq = a.seq
+	 WHERE 1=1
+		AND b.delNY = 0
+	</select>
+
+</mapper>

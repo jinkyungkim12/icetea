@@ -1,5 +1,5 @@
 package com.class101project.modules.codegroup;
-//5.ServiceImpl
+//5. Service Impl
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService{
-
+	
 	@Autowired
 	CodeGroupDao dao;
 	
@@ -16,4 +16,5 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		return dao.selectList();
 	}
 	
+
 }

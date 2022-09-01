@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Code Group List</title>
+	<title>Code List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -79,6 +79,7 @@
 	</style>
 </head>
 <body>
+
 <!-- start -->
 	
 	<!-- nav bar -->
@@ -109,10 +110,10 @@
 	            <a class="nav-link bbb" href="./order/dmin_order.html">주문관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeGroupList">코드그룹관리</a>
+	            <a class="nav-link bbb" href="codeGroup.html">코드그룹관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeList">코드관리</a>
+	            <a class="nav-link bbb" href="code.html">코드관리</a>
 	          </li>
 	        </ul>
 	        <div class="text-center">
@@ -131,12 +132,11 @@
 		
 	<div><img src="../../resources/images/back2.jpg"></div>
 	<div class="container-fluid p-4" style="width: 80%">
-	
-	
-	<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+	<!-- 세 번째 -->
 		<div class="container-fluid" style="margin-top: 3rem;">
-			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
-			<div class="row justify-content-end"  style="margin-top: 3rem;">
+			<div class="text-center ccc"><h1><b>코드 관리</b></h1></div>
+			<div class="row justify-content-end" style="margin-top: 3rem;">
 				<div class="col-2">
 					<select class="form-select col-2" aria-label="Default select example">
 					  <option selected>삭제여부</option>
@@ -191,15 +191,7 @@
 			</div>
 		</div>
 		
-		
-		<!-- List -->
-		
-		<div class="container-fluid">
-		<div class="row"></div>
-		<div class="row"></div>
-		</div>
-		
-		<div class="container-fluid">
+		<div class="container-fluid text-center">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">
@@ -209,10 +201,13 @@
 						<th scope="col" >NO</th>
 						<th scope="col">코드그룹 코드</th>
 						<th scope="col">코드그룹 이름(한글)</th>
+						<th scope="col">코드</th>
+						<th scope="col">대체 코드</th>
+						<th scope="col">코드그룹 이름(한글)</th>
 						<th scope="col">코드그룹 이름(영문)</th>
-						<th scope="col">코드갯수</th>
-						<th scope="col">삭제여부</th>
 						<th scope="col">사용여부</th>
+						<th scope="col">삭제여부</th>
+						<th scope="col">순서</th>
 						<th scope="col">등록일</th>
 						<th scope="col">수정일</th>
 					</tr>
@@ -224,76 +219,79 @@
 							<input class="check" type="checkbox" name="check">
 						</td>
 						<th scope="row"><c:out value="${list.seq }"/></th>
-						<td><c:out value="${list.codeGroupCode }"/></td>
+						<td><c:out value="${list.codeGroup_seq }"/></td>
 						<td><c:out value="${list.nameKr }"/></td>
-						<td><c:out value="${list.name }"/></td>
-						<td><c:out value="${list.codeNum }"/></td>
-						<td><c:out value="${list.delNY }"/></td>
+						<td><c:out value="${list.code }"/></td>
+						<td><c:out value="${list.codeAnother }"/></td>
+						<td><c:out value="${list.codeNameKr }"/></td>
+						<td><c:out value="${list.codeName }"/></td>
 						<td><c:out value="${list.useNY }"/></td>
+						<td><c:out value="${list.delNY }"/></td>
+						<td><c:out value="${list.order }"/></td>
 						<td></td>
 						<td></td>
 					</tr>
-					</c:forEach>
+			   		</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		
-		<div class="container-fluid">
-			<div class="row justify-content-between">	
-		   		<div class="col-10">
-		     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
-		     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
-		    	</div>
-		    	<div class="col-2 text-end">
-		     		<a type="button" class="btn btn-dark" href="codeGroupForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-					<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
-		    	</div>
-		    </div>	
-	   </div>
+			<div class="container-fluid">
+				<div class="row justify-content-between">	
+			   		<div class="col-10">
+			     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
+			     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
+			    	</div>
+			    	<div class="col-2 text-end">
+			     		<a type="button" class="btn btn-dark" href="codeForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
+						<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
+			    	</div>
+			    </div>	
+		   </div>
 	
-		<div class="container p-10">
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-center">
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		</div>
+			<div class="container p-10">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
 		
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Class101</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		        정말로 삭제하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark">삭제 </button>
-		      </div>
-		    </div>
-		  </div>
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Class101</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        정말로 삭제하시겠습니까?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-dark">삭제 </button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 	</div>
-
-	
 	</div>
-	</div>
+		
+<!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
