@@ -211,16 +211,49 @@
 					<th scope="row"><c:out value="${list.seq }"/></th>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.id }"/></td>
-					<td></td>
-					<td></td>
+					<td>
+						<c:choose>
+							<c:when test="${list.position eq 22}">학생</c:when>
+							<c:when test="${list.position eq 23}">크리에이터</c:when>
+							<c:otherwise>manager</c:otherwise>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${list.gender eq 5}">여성</c:when>
+							<c:otherwise>남성</c:otherwise>
+						</c:choose>
+					</td>
 					<td><c:out value="${list.dob }"/></td>
 					<td><c:out value="${list.phone }"/></td>
 					<td><c:out value="${list.email }"/></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>
+						<c:choose>
+							<c:when test="${list.mobileNY eq 0}">N</c:when>
+							<c:otherwise>Y</c:otherwise>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${list.emailNY eq 0}">N</c:when>
+							<c:otherwise>Y</c:otherwise>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${list.personalInfo eq 18}">1년</c:when>
+							<c:when test="${list.personalInfo eq 19}">3년</c:when>
+							<c:when test="${list.personalInfo eq 20}">10년</c:when>
+							<c:otherwise>평생회원</c:otherwise>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${list.delNY eq 0}">N</c:when>
+							<c:otherwise>Y</c:otherwise>
+						</c:choose>
+					</td>
+					<td><c:out value="${list.regDatetime }"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>

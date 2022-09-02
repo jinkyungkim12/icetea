@@ -159,26 +159,34 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="container-fluid p-4">
+			<form method="post" action="/codeGroup/codeGroupList">
 			<div class="row justify-content-end">
-				<form method="post" action="/codeGroup/codeGroupList">
-					<div class="col-2">
-						<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
-						  <option value="" <c:if test="${empty vo.shOption}"> selected </c:if>>검색구분</option>
-						  <option value="1" <c:if test="${empty vo.shOption}"></c:if>>코드그룹 코드</option>
-						  <option value="2" <c:if test="${empty vo.shOption}"></c:if>>코드그룹 이름(한글)</option>
-						  <option value="3" <c:if test="${empty vo.shOption}"></c:if>>코드그룹 이름(영문)</option>
-						</select>
-					</div>
-					<div class="col-4">
-						<input type="text" id="shValue" name="shValue" value="<c:out value="${empty vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
-					</div>
-				</form>
+				<div class="col-2">
+					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>코드그룹 코드</option>
+					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영문)</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+				</div>
 				<div class="col-2">
 				 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
 					<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
+			</div>		
+			</form>
 			</div>
+		</div>
+		
+		
+		<!-- List -->
+		
+		<div class="container-fluid">
 			<div class="row justify-content-between" style="margin-top: 3rem;">
 				<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
 				<div class="col-1 text-end">
@@ -192,15 +200,7 @@
 			</div>
 		</div>
 		
-		
-		<!-- List -->
-		
-		<div class="container-fluid">
-		<div class="row"></div>
-		<div class="row"></div>
-		</div>
-		
-		<div class="container-fluid">
+		<div class="container-fluid" style="margin-top: 2rem;">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">
