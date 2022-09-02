@@ -10,16 +10,17 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.codegroup.CodeGroup"></resultMap>
 	
-	<!-- <sql id="selectCommon">
+	<sql id="selectCommon">
 		FROM codeGroup a
 		WHERE 1=1
 			<if test="shDelNy ! =null and ! shDelNy.equals('')">AND delNY = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND seq =#{shValue}</when>
-				<when test=
+				<when test="shOption == 2">AND nameKr LIKE CONTACT('%', #{shValue},'%')</when>
+				<when test="shOption == 3">AND name LIKE CONTACT('%', #{shValue},'%')</when>
 			</choose>
 	</sql>
-	 -->
+	 
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 		 a.seq
@@ -32,7 +33,7 @@
 	FROM codeGroup a
 	WHERE 1=1
 		AND delNY = 0
-		AND name LIKE CONCAT('%', #{shValue}, '%')	
+		AND nameKr LIKE CONCAT('%', #{shValue}, '%')	
 			<!-- SELECT 
 				a.*
 			FROM chooseTest a

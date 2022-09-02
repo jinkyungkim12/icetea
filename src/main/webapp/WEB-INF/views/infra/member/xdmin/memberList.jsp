@@ -203,6 +203,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td>
 						<input class="check" type="checkbox" name="check">
@@ -221,6 +222,7 @@
 					<td></td>
 					<td></td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
