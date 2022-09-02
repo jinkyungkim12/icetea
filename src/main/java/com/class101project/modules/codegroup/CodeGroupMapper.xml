@@ -11,7 +11,7 @@
     <resultMap id="resultMapObj" type="com.class101project.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
+		<!-- SELECT
 			 a.seq
             ,a.codeGroupCode
             ,a.nameKr
@@ -21,7 +21,14 @@
             ,a.useNY
 		FROM codeGroup a
 		WHERE 1=1
-			AND delNY = 0
+			AND delNY = 0 -->
+			
+			SELECT 
+				a.*
+			FROM chooseTest a
+			WHERE 1=1
+				AND delNY = 0
+	
 	</select>
 
 </mapper>	
