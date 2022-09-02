@@ -10,24 +10,34 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.codegroup.CodeGroup"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		<!-- SELECT
-			 a.seq
-            ,a.codeGroupCode
-            ,a.nameKr
-            ,a.name
-            ,(select count(b.codeGroup_seq) from code b where b.delNY=0 and b.codeGroup_seq=a.seq)as codeNum
-            ,a.delNY
-            ,a.useNY
+	<!-- <sql id="selectCommon">
 		FROM codeGroup a
 		WHERE 1=1
-			AND delNY = 0 -->
-			
-			SELECT 
+			<if test="shDelNy ! =null and ! shDelNy.equals('')">AND delNY = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND seq =#{shValue}</when>
+				<when test=
+			</choose>
+	</sql>
+	 -->
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+		 a.seq
+           ,a.codeGroupCode
+           ,a.nameKr
+           ,a.name
+           ,(select count(b.codeGroup_seq) from code b where b.delNY=0 and b.codeGroup_seq=a.seq)as codeNum
+           ,a.delNY
+           ,a.useNY
+	FROM codeGroup a
+	WHERE 1=1
+		AND delNY = 0
+		AND name LIKE CONCAT('%', #{shValue}, '%')	
+			<!-- SELECT 
 				a.*
 			FROM chooseTest a
 			WHERE 1=1
-				AND delNY = 0
+				AND delNY = 0 -->
 	
 	</select>
 
