@@ -1,6 +1,6 @@
 package com.class101project.modules.code;
 
-//1. DTO
+//1. DTO 
 public class Code {
 
 	private Integer seq;
