@@ -18,7 +18,9 @@
 				<when test="shOption == 1">AND seq = #{shValue}</when> <!-- seq: = #{shValue} -->
 				<when test="shOption == 2">AND nameKr LIKE CONTACT('%', #{shValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 				<when test="shOption == 3">AND name LIKE CONTACT('%', #{shValue},'%')</when>
+				<otherwise></otherwise>
 			</choose>
+			
 	</sql>
 	 
 	<select id="selectList" resultMap="resultMapObj">
