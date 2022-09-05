@@ -8,6 +8,19 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.member.Member"></resultMap>
 	
+	<sql id="selectCommon">
+		FROM member a
+		WHERE 1=1
+			<if test="delNY !=null and !delNY.equals('')">AND delNY = #{delNY}</if>
+			<choose>
+				<when test="shOption == 1">AND name = #{shValue}</when>
+				<when test="shOption == 2">AND id LIKE CONTACT('%', #{shValue},'%')</when>
+				<when test="shOption == 3">AND gender LIKE CONTACT('%', #{shValue},'%')</when>
+				<when test="shOption == 4">AND email LIKE CONTACT('%', #{shValue},'%')</when>
+				<when test="shOption == 5">AND position LIKE CONTACT('%', #{shValue},'%')</when>
+			</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
 		select a.seq
 			  ,a.name
@@ -25,7 +38,7 @@
 		FROM member a
 		WHERE 1=1
 			AND delNY = 0
-			
+			AND id LIKE CONCAT('%', #{shValue}, '%')
 		<!-- select a.*
 		FROM member a
 		WHERE 1=1

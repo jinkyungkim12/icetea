@@ -157,27 +157,27 @@
 		</div>
 	</div>
 	<div class="container-fluid p-4" style="width: 90%">
-		<div class="row justify-content-end">
-			<div class="col-2">
-				<select class="form-select" aria-label="Default select example">
-				  <option selected>검색구분</option>
-				  <option value="1">이름</option>
-				  <option value="2">아이디</option>
-				  <option value="3">성별</option>
-				  <option value="4">메일주소</option>
-				  <option value="5">연락처</option>
-				  <option value="5">크리에이터</option>
-				  <option value="5">수강생</option>
-				</select>
+		<form method="post" action="/member/memberList">
+			<div class="row justify-content-end">
+				<div class="col-2">
+					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>이름</option>
+					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
+					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>성별</option>
+					  <option value="2" <c:if test="${vo.shOption eq 4}">selected</c:if>>메일주소</option>
+					  <option value="3" <c:if test="${vo.shOption eq 5}">selected</c:if>>직책</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+				</div>
+				<div class="col-2">
+				 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+				</div>
 			</div>
-			<div class="col-4">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
-			</div>
-			<div class="col-2">
-			 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-				<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
-			</div>
-		</div>
+		</form>
 	</div>
 		
 		
@@ -206,59 +206,68 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list}" var="list" varStatus="status">
-				<tr>
-					<td>
-						<input class="check" type="checkbox" name="check">
-					</td>
-					<th scope="row"><c:out value="${list.seq }"/></th>
-					<td><c:out value="${list.name }"/></td>
-					<td><c:out value="${list.id }"/></td>
-					<td>
-						<c:choose>
-							<c:when test="${list.position eq 22}">학생</c:when>
-							<c:when test="${list.position eq 23}">크리에이터</c:when>
-							<c:otherwise>manager</c:otherwise>
-						</c:choose>
-					</td>
-					<td>
-						<c:choose>
-							<c:when test="${list.gender eq 5}">여성</c:when>
-							<c:otherwise>남성</c:otherwise>
-						</c:choose>
-					</td>
-					<td><c:out value="${list.dob }"/></td>
-					<td><c:out value="${list.phone }"/></td>
-					<td><c:out value="${list.email }"/></td>
-					<td>
-						<c:choose>
-							<c:when test="${list.mobileNY eq 0}">N</c:when>
-							<c:otherwise>Y</c:otherwise>
-						</c:choose>
-					</td>
-					<td>
-						<c:choose>
-							<c:when test="${list.emailNY eq 0}">N</c:when>
-							<c:otherwise>Y</c:otherwise>
-						</c:choose>
-					</td>
-					<td>
-						<c:choose>
-							<c:when test="${list.personalInfo eq 18}">1년</c:when>
-							<c:when test="${list.personalInfo eq 19}">3년</c:when>
-							<c:when test="${list.personalInfo eq 20}">10년</c:when>
-							<c:otherwise>평생회원</c:otherwise>
-						</c:choose>
-					</td>
-					<td>
-						<c:choose>
-							<c:when test="${list.delNY eq 0}">N</c:when>
-							<c:otherwise>Y</c:otherwise>
-						</c:choose>
-					</td>
-					<td><c:out value="${list.regDatetime }"/></td>
-				</tr>
-				</c:forEach>
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+						<td class="text-center" colspan="14">There is no data!</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="list" varStatus="status">
+					<tr>
+						<td>
+							<input class="check" type="checkbox" name="check">
+						</td>
+						<th scope="row"><c:out value="${list.seq }"/></th>
+						<td><c:out value="${list.name }"/></td>
+						<td><c:out value="${list.id }"/></td>
+						<td>
+							<c:choose>
+								<c:when test="${list.position eq 22}">학생</c:when>
+								<c:when test="${list.position eq 23}">크리에이터</c:when>
+								<c:otherwise>manager</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.gender eq 5}">여성</c:when>
+								<c:otherwise>남성</c:otherwise>
+							</c:choose>
+						</td>
+						<td><c:out value="${list.dob }"/></td>
+						<td><c:out value="${list.phone }"/></td>
+						<td><c:out value="${list.email }"/></td>
+						<td>
+							<c:choose>
+								<c:when test="${list.mobileNY eq 0}">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.emailNY eq 0}">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.personalInfo eq 18}">1년</c:when>
+								<c:when test="${list.personalInfo eq 19}">3년</c:when>
+								<c:when test="${list.personalInfo eq 20}">10년</c:when>
+								<c:otherwise>평생회원</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.delNY eq 0}">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+						<td><c:out value="${list.regDatetime }"/></td>
+					</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 			</tbody>
 		</table>
 	</div>

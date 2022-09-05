@@ -160,24 +160,26 @@
 			</div>
 		</div>
 		<div class="container-fluid p-4">
+			<form method="post" action="/code/codeList">
 			<div class="row justify-content-end">
 				<div class="col-2">
-					<select class="form-select" aria-label="Default select example">
-					  <option selected>검색구분</option>
-					  <option value="1">코드그룹 코드</option>
-					  <option value="2">코드그룹 이름(한글)</option>
-					  <option value="3">코드그룹 이름(영문)</option>
-					  <option value="4">코드갯수</option>
+					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>코드그룹 코드</option>
+					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드 이름(한글)</option>
+					  <option value="3" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드 이름(영문)</option>
 					</select>
 				</div>
 				<div class="col-4">
-					<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
 				 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
 					<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
 			</div>
+			</form>	
 			<div class="row justify-content-between" style="margin-top: 3rem;">
 				<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
 				<div class="col-1 text-end">
@@ -213,35 +215,44 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="list" varStatus="status">
-					<tr>
-						<td>
-							<input class="check" type="checkbox" name="check">
-						</td>
-						<th scope="row"><c:out value="${list.seq }"/></th>
-						<td><c:out value="${list.codeGroup_seq }"/></td>
-						<td><c:out value="${list.nameKr }"/></td>
-						<td><c:out value="${list.code }"/></td>
-						<td><c:out value="${list.codeAnother }"/></td>
-						<td><c:out value="${list.codeNameKr }"/></td>
-						<td><c:out value="${list.codeName }"/></td>
-						<td>
-							<c:choose>
-								<c:when test="${list.delNY eq 0}">N</c:when>
-								<c:otherwise>Y</c:otherwise>
-							</c:choose>
-						</td>	
-						<td>
-							<c:choose>
-								<c:when test="${list.useNY eq 0}">N</c:when>
-								<c:otherwise>Y</c:otherwise>
-							</c:choose>
-						</td>
-						<td><c:out value="${list.order }"/></td>
-						<td></td>
-						<td></td>
-					</tr>
-			   		</c:forEach>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td class="text-center" colspan="13">There is no data!</td>
+						</tr>
+					</c:when>
+				    <c:otherwise>
+						<c:forEach items="${list}" var="list" varStatus="status">
+						<tr>
+							<td>
+								<input class="check" type="checkbox" name="check">
+							</td>
+							<th scope="row"><c:out value="${list.seq }"/></th>
+							<td><c:out value="${list.codeGroup_seq }"/></td>
+							<td><c:out value="${list.nameKr }"/></td>
+							<td><c:out value="${list.code }"/></td>
+							<td><c:out value="${list.codeAnother }"/></td>
+							<td><c:out value="${list.codeNameKr }"/></td>
+							<td><c:out value="${list.codeName }"/></td>
+							<td>
+								<c:choose>
+									<c:when test="${list.delNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>	
+							<td>
+								<c:choose>
+									<c:when test="${list.useNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>
+							<td><c:out value="${list.order }"/></td>
+							<td></td>
+							<td></td>
+						</tr>
+				   		</c:forEach>
+				   	</c:otherwise>
+				</c:choose>
 				</tbody>
 			</table>
 		</div>
@@ -256,7 +267,7 @@
 			     		<a type="button" class="btn btn-dark" href="codeForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
 						<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 			    	</div>
-			    </div>	
+			    </div>
 		   </div>
 	
 			<div class="container p-10">
