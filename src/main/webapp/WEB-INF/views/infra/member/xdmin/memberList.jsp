@@ -42,6 +42,9 @@
 		.bbb{
 		  color: white;
 		}
+		table, td, th{
+			text-align: center;
+		}
 		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 		  color: #ffffff;
 		  background-color: #f87320;
@@ -125,10 +128,10 @@
 	  </div>
 	</nav>	
 	
-	<div><img src="../image/back2.jpg"></div>
+	<div><img src="../../resources/images/back2.jpg"></div>
 	
 	<!-- 검색조건 -->
-	<div class="container-fluid" style="width: 80%; margin-top: 2rem;">
+	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
 			<div class="col-2">
@@ -153,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid p-4" style="width: 80%">
+	<div class="container-fluid p-4" style="width: 90%">
 		<div class="row justify-content-end">
 			<div class="col-2">
 				<select class="form-select" aria-label="Default select example">
@@ -171,8 +174,8 @@
 				<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 			</div>
 			<div class="col-2">
-			 	<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-				<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-rotate-left"></i></button>
+			 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+				<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 			</div>
 		</div>
 	</div>
@@ -180,7 +183,7 @@
 		
 	<!-- member List -->
 	
-	<div class="container-fluid text-center" style="width: 80%">
+	<div class="container-fluid text-center" style="width: 90%">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
@@ -260,15 +263,15 @@
 		</table>
 	</div>
 	
-	<div class="container-fluid" style="width:80%">
+	<div class="container-fluid" style="width:90%">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
-	     		<a type="button" class="btn btn-dark" onclick='deleteRow(-1)'><i class="fa-solid fa-circle-minus"></i></a>
+	     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
 	     		<a type="button" class="btn btn-dark" href="dmin_RegForm_student.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-				<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-plus"></i></button>
+				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 	    	</div>
 	    </div>	
    </div>
