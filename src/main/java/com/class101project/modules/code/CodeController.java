@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller // 서비스의 함수 호출
+@Controller
 @RequestMapping(value = "/code/")
 public class CodeController {
 	

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodeServiceImpl implements CodeService{
 
-	@Autowired // 어노테이션, new 연산자같은 역할을 한다!
+	@Autowired
 	CodeDao dao;
 	
 	@Override

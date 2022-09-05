@@ -13,7 +13,7 @@
 		WHERE 1=1
 			<if test="delNY !=null and !delNY.equals('')">AND delNY = #{delNY}</if>
 			<choose>
-				<when test="shOption == 1">AND name = #{shValue}</when>
+				<when test="shOption == 1">AND name LIKE CONTACT('%', #{shValue},'%')</when>
 				<when test="shOption == 2">AND id LIKE CONTACT('%', #{shValue},'%')</when>
 				<when test="shOption == 3">AND gender LIKE CONTACT('%', #{shValue},'%')</when>
 				<when test="shOption == 4">AND email LIKE CONTACT('%', #{shValue},'%')</when>

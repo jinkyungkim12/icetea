@@ -15,8 +15,8 @@
 		WHERE 1=1
 			<if test="delNY !=null and !delNY.equals('')">AND delNY = #{delNY}</if>
 			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND nameKr LIKE CONTACT('%', #{shValue},'%')</when>
+				<when test="shOption == 1">AND seq = #{shValue}</when> <!-- seq: = #{shValue} -->
+				<when test="shOption == 2">AND nameKr LIKE CONTACT('%', #{shValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 				<when test="shOption == 3">AND name LIKE CONTACT('%', #{shValue},'%')</when>
 			</choose>
 	</sql>
