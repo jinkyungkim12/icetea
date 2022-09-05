@@ -139,7 +139,7 @@
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
 					<select id="shDelNY" name="shDelNY" class="form-select" aria-label="Default select example">
-					  <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>삭제여부</option>
+					  <option value="" <c:if test="${empty vo.shCgOption}">selected</c:if>>삭제여부</option>
 					  <option value="0" <c:if test="${vo.shDelNY eq 0 }">selected</c:if>>N</option>
 					  <option value="1" <c:if test="${vo.shDelNY eq 1 }">selected</c:if>>Y</option>
 					</select>
@@ -163,15 +163,15 @@
 		<div class="container-fluid p-4">
 			<div class="row justify-content-end">
 				<div class="col-2">
-					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
-					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
-					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>코드그룹 코드</option>
-					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
-					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영문)</option>
+					<select id="shCgOption" name="shCgOption" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shCgOption}">selected </c:if>>검색구분</option>
+					  <option value="1" <c:if test="${vo.shCgOption eq 1}">selected </c:if>>코드그룹 코드</option>
+					  <option value="2" <c:if test="${vo.shCgOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+					  <option value="3" <c:if test="${vo.shCgOption eq 3}">selected</c:if>>코드그룹 이름(영문)</option>
 					</select>
 				</div>
 				<div class="col-4">
-					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+					<input type="text" id="shCgValue" name="shCgValue" value="<c:out value="${vo.shCgValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
 				 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -237,13 +237,13 @@
 								<td><c:out value="${list.codeNum }"/></td>
 								<td>
 									<c:choose>
-										<c:when test="${list.delNY eq 0}">N</c:when>
+										<c:when test="${list.cgDelNY eq 0}">N</c:when>
 										<c:otherwise>Y</c:otherwise>
 									</c:choose>
 								</td>	
 								<td>
 									<c:choose>
-										<c:when test="${list.useNY eq 0}">N</c:when>
+										<c:when test="${list.cgUseNY eq 0}">N</c:when>
 										<c:otherwise>Y</c:otherwise>
 									</c:choose>
 								</td>

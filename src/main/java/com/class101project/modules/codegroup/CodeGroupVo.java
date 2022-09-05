@@ -3,21 +3,22 @@ package com.class101project.modules.codegroup;
 public class CodeGroupVo {
 
 	
-	 private Integer shOption;
-	 private String shValue;
+	 private Integer shCgOption;
+	 private String shCgValue;
 	 private Integer shDelNY;
 	 
-	public Integer getShOption() {
-		return shOption;
+	 
+	public Integer getShCgOption() {
+		return shCgOption;
 	}
-	public void setShOption(Integer shOption) {
-		this.shOption = shOption;
+	public void setShCgOption(Integer shCgOption) {
+		this.shCgOption = shCgOption;
 	}
-	public String getShValue() {
-		return shValue;
+	public String getShCgValue() {
+		return shCgValue;
 	}
-	public void setShValue(String shValue) {
-		this.shValue = shValue;
+	public void setShCgValue(String shCgValue) {
+		this.shCgValue = shCgValue;
 	}
 	public Integer getShDelNY() {
 		return shDelNY;
@@ -26,7 +27,5 @@ public class CodeGroupVo {
 		this.shDelNY = shDelNY;
 	}
 	 
-
-
 	 
 }

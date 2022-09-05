@@ -9,8 +9,8 @@ public class CodeGroup {
 		private String nameKr;
 		private String name;
 		private Integer codeNum;
-		private Integer delNY;
-		private Integer useNY;
+		private Integer cgDelNY;
+		private Integer cgUseNY;
 		private String regDate;
 		private String modDate;
 		
@@ -45,17 +45,17 @@ public class CodeGroup {
 		public void setCodeNum(Integer codeNum) {
 			this.codeNum = codeNum;
 		}
-		public Integer getDelNY() {
-			return delNY;
+		public Integer getCgDelNY() {
+			return cgDelNY;
 		}
-		public void setDelNY(Integer delNY) {
-			this.delNY = delNY;
+		public void setCgDelNY(Integer cgDelNY) {
+			this.cgDelNY = cgDelNY;
 		}
-		public Integer getUseNY() {
-			return useNY;
+		public Integer getCgUseNY() {
+			return cgUseNY;
 		}
-		public void setUseNY(Integer useNY) {
-			this.useNY = useNY;
+		public void setCgUseNY(Integer cgUseNY) {
+			this.cgUseNY = cgUseNY;
 		}
 		public String getRegDate() {
 			return regDate;

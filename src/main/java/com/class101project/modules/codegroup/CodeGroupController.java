@@ -18,8 +18,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
 
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+		System.out.println("vo.getShCgValue(): " + vo.getShCgValue());
+		System.out.println("vo.getShCgOption(): " + vo.getShCgOption());
 		System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
 		
 		List<CodeGroup> list = service.selectList(vo);
