@@ -16,7 +16,7 @@ public class Member {
 		private Integer emailNY;
 		private Integer personalInfo;
 		private Integer delNY;
-		private Date regDatetime;
+		private String regDatetime;
 		
 		
 		public String getSeq() {
@@ -91,10 +91,10 @@ public class Member {
 		public void setDelNY(Integer delNY) {
 			this.delNY = delNY;
 		}
-		public Date getRegDatetime() {
+		public String getRegDatetime() {
 			return regDatetime;
 		}
-		public void setRegDatetime(Date regDatetime) {
+		public void setRegDatetime(String regDatetime) {
 			this.regDatetime = regDatetime;
 		}
 		

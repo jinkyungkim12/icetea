@@ -8,19 +8,6 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.member.Member"></resultMap>
 	
-	<sql id="selectCommon">
-		FROM member a
-		WHERE 1=1
-			<if test="delNY !=null and !delNY.equals('')">AND delNY = #{delNY}</if>
-			<choose>
-				<when test="shOption == 1">AND name LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 2">AND id LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 3">AND gender LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 4">AND email LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 5">AND position LIKE CONTACT('%', #{shValue},'%')</when>
-			</choose>
-	</sql>
-	
 	<select id="selectList" resultMap="resultMapObj">
 		select a.seq
 			  ,a.name
@@ -34,15 +21,27 @@
 		      ,a.emailNY
 		      ,a.personalInfo
 		      ,a.delNY
-		      ,a.regDatetime
+		      ,DATE_FORMAT(a.regDatetime, '%Y-%m-%d-%T') as regDatetime
 		FROM member a
 		WHERE 1=1
-			AND delNY = 0
-			AND id LIKE CONCAT('%', #{shValue}, '%')
+			<!-- AND delNY = 0
+			AND id LIKE CONCAT('%', #{shValue}, '%') -->
 		<!-- select a.*
 		FROM member a
 		WHERE 1=1
 			AND delNY = 0 -->
+			
+		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
+		<if test="shValue != null"></if>
+		
+		<choose>
+			<when test="shOption == 1">AND a.name LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 2">AND a.id LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 3">AND a.gender LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 4">AND a.email LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 5">AND a.position LIKE CONCAT('%', #{shValue},'%')</when>
+		</choose>
+		
 	</select>
 
 </mapper>

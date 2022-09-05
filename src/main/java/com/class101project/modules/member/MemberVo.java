@@ -4,6 +4,8 @@ public class MemberVo {
 
 	 private Integer shOption;
 	 private String shValue;
+	 private Integer shdelNY;
+	 
 	 
 	public Integer getShOption() {
 		return shOption;
@@ -17,4 +19,11 @@ public class MemberVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	public Integer getShdelNY() {
+		return shdelNY;
+	}
+	public void setShdelNY(Integer shdelNY) {
+		this.shdelNY = shdelNY;
+	}
+	
 }

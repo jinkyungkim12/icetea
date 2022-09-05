@@ -131,14 +131,15 @@
 	<div><img src="../../resources/images/back2.jpg"></div>
 	
 	<!-- 검색조건 -->
+	<form method="post" action="/member/memberList">
 	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
 			<div class="col-2">
-				<select class="form-select col-2" aria-label="Default select example">
-				  <option selected>삭제여부</option>
-				  <option value="1">Y</option>
-				  <option value="2">N</option>
+				<select id="shdelNY" name="shdelNY" class="form-select" aria-label="Default select example">
+				  <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>삭제여부</option>
+				  <option value="0" <c:if test="${vo.shdelNY eq 0 }">selected</c:if>>N</option>
+				  <option value="1" <c:if test="${vo.shdelNY eq 1 }">selected</c:if>>Y</option>
 				</select>
 			</div>
 			<div class="col-2">
@@ -157,29 +158,28 @@
 		</div>
 	</div>
 	<div class="container-fluid p-4" style="width: 90%">
-		<form method="post" action="/member/memberList">
-			<div class="row justify-content-end">
-				<div class="col-2">
-					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
-					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
-					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>이름</option>
-					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
-					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>성별</option>
-					  <option value="2" <c:if test="${vo.shOption eq 4}">selected</c:if>>메일주소</option>
-					  <option value="3" <c:if test="${vo.shOption eq 5}">selected</c:if>>직책</option>
-					</select>
-				</div>
-				<div class="col-4">
-					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
-				</div>
-				<div class="col-2">
-				 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
-				</div>
-			</div>
-		</form>
-	</div>
 		
+		<div class="row justify-content-end">
+			<div class="col-2">
+				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+				  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+				  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>이름</option>
+				  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
+				  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>성별</option>
+				  <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>메일주소</option>
+				  <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>직책</option>
+				</select>
+			</div>
+			<div class="col-4">
+				<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+			</div>
+			<div class="col-2">
+			 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+				<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+			</div>
+		</div>
+	</div>
+	</form>	
 		
 	<!-- member List -->
 	
