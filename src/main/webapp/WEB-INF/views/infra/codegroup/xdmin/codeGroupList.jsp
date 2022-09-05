@@ -132,16 +132,16 @@
 	<div><img src="../../resources/images/back2.jpg"></div>
 	<div class="container-fluid p-4" style="width: 80%">
 	
-	
+	<form method="post" action="/codeGroup/codeGroupList">
 	<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 		<div class="container-fluid" style="margin-top: 3rem;">
 			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
-					<select class="form-select col-2" aria-label="Default select example">
-					  <option selected>삭제여부</option>
-					  <option value="1">Y</option>
-					  <option value="2">N</option>
+					<select id="shDelNY" name="shDelNY" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>삭제여부</option>
+					  <option value="0" <c:if test="${vo.shDelNY eq 0 }">selected</c:if>>N</option>
+					  <option value="1" <c:if test="${vo.shDelNY eq 1 }">selected</c:if>>Y</option>
 					</select>
 				</div>
 				<div class="col-2">
@@ -161,27 +161,26 @@
 		</div>
 		
 		<div class="container-fluid p-4">
-			<form method="post" action="/codeGroup/codeGroupList">
-				<div class="row justify-content-end">
-					<div class="col-2">
-						<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
-						  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
-						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>코드그룹 코드</option>
-						  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
-						  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영문)</option>
-						</select>
-					</div>
-					<div class="col-4">
-						<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
-					</div>
-					<div class="col-2">
-					 	<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-						<button class="btn btn-outline-dark" type="button" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
-					</div>
-				</div>		
-			</form>
-			</div>
+			<div class="row justify-content-end">
+				<div class="col-2">
+					<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+					  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+					  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>코드그룹 코드</option>
+					  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+					  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영문)</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+				</div>
+				<div class="col-2">
+				 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+				</div>
+			</div>		
 		</div>
+	</div>
+	</form>
 		
 		
 		<!-- List -->
@@ -248,8 +247,8 @@
 										<c:otherwise>Y</c:otherwise>
 									</c:choose>
 								</td>
-								<td></td>
-								<td></td>
+								<td><c:out value="${list.regDate }"/></td>
+								<td><c:out value="${list.modDate }"/></td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

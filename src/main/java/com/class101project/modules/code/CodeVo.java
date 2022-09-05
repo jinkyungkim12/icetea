@@ -3,8 +3,9 @@ package com.class101project.modules.code;
 public class CodeVo {
 
 	private Integer shOption;
-	 private String shValue;
-	 
+	private String shValue;
+	private Integer shCodeDelNY;
+	
 	public Integer getShOption() {
 		return shOption;
 	}
@@ -17,4 +18,13 @@ public class CodeVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	public Integer getShCodeDelNY() {
+		return shCodeDelNY;
+	}
+	public void setShCodeDelNY(Integer shCodeDelNY) {
+		this.shCodeDelNY = shCodeDelNY;
+	} 
+	 
+	
+	
 }

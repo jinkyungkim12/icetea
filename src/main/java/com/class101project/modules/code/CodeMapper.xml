@@ -10,18 +10,6 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.code.Code"></resultMap>
 	
-	<sql id="selectCommon">
-		FROM code a
-		WHERE 1=1
-			<if test="delNY !=null and !delNY.equals('')">AND delNY = #{delNY}</if>
-			<choose>
-				<when test="shOption == 1">AND codeGroup_seq = #{shValue}</when>
-				<when test="shOption == 2">AND nameKr LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 3">AND codeNameKr LIKE CONTACT('%', #{shValue},'%')</when>
-				<when test="shOption == 4">AND codeName LIKE CONTACT('%', #{shValue},'%')</when>
-			</choose>
-	</sql>
-	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 		 b.seq
@@ -31,14 +19,29 @@
 	    ,b.codeAnother
 	    ,b.codeNameKr
 	    ,b.codeName
-	    ,b.useNY
-	    ,b.delNY
+	    ,b.codeUseNY
+	    ,b.codeDelNY
 	    ,b.order
+	    ,DATE_FORMAT(b.codeRegDate, '%Y-%m-%d-%T') as codeRegDate
+	    ,DATE_FORMAT(b.codeModDate, '%Y-%m-%d-%T') as codeModDate
 	FROM codeGroup a
 	 left join code b on b.codeGroup_seq = a.seq
 	 WHERE 1=1
-		AND b.delNY = 0
-		AND nameKr LIKE CONCAT('%', #{shValue}, '%')
+		<!-- AND b.delNY = 0
+		AND nameKr LIKE CONCAT('%', #{shValue}, '%') -->
+		
+		<if test="shCodeDelNY !=null and !shCodeDelNY.equals('')">AND b.codeDelNY = #{shCodeDelNY}</if>
+		<if test="shValue != null"></if>
+		
+		
+		<choose>
+			<when test="shOption == 1">AND b.codeGroup_seq = #{shValue}</when>
+			<when test="shOption == 2">AND a.nameKr LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 3">AND b.codeNameKr LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 4">AND b.codeName LIKE CONCAT('%', #{shValue},'%')</when>
+		</choose>
+		
+		
 	</select>
 
 </mapper>

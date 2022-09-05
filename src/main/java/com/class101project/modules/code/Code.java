@@ -10,9 +10,11 @@ public class Code {
 	private String codeAnother;
 	private String codeNameKr;
 	private String codeName;
-	private Integer useNY;
-	private Integer delNY;
+	private Integer codeUseNY;
+	private Integer codeDelNY;
 	private Integer order;
+	private String codeRegDate;
+	private String codeModDate;
 	
 	
 	public Integer getSeq() {
@@ -57,17 +59,17 @@ public class Code {
 	public void setCodeName(String codeName) {
 		this.codeName = codeName;
 	}
-	public Integer getUseNY() {
-		return useNY;
+	public Integer getCodeUseNY() {
+		return codeUseNY;
 	}
-	public void setUseNY(Integer useNY) {
-		this.useNY = useNY;
+	public void setCodeUseNY(Integer codeUseNY) {
+		this.codeUseNY = codeUseNY;
 	}
-	public Integer getDelNY() {
-		return delNY;
+	public Integer getCodeDelNY() {
+		return codeDelNY;
 	}
-	public void setDelNY(Integer delNY) {
-		this.delNY = delNY;
+	public void setCodeDelNY(Integer codeDelNY) {
+		this.codeDelNY = codeDelNY;
 	}
 	public Integer getOrder() {
 		return order;
@@ -75,7 +77,18 @@ public class Code {
 	public void setOrder(Integer order) {
 		this.order = order;
 	}
-	
+	public String getCodeRegDate() {
+		return codeRegDate;
+	}
+	public void setCodeRegDate(String codeRegDate) {
+		this.codeRegDate = codeRegDate;
+	}
+	public String getCodeModDate() {
+		return codeModDate;
+	}
+	public void setCodeModDate(String codeModDate) {
+		this.codeModDate = codeModDate;
+	}
 	
 	
 }
