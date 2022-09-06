@@ -4,7 +4,7 @@ package com.class101project.modules.codegroup;
 //1. DTO
 public class CodeGroup {
 
-		private Integer seq;
+		private String seq;
 		private Integer codeGroupCode;
 		private String nameKr;
 		private String name;
@@ -15,10 +15,10 @@ public class CodeGroup {
 		private String modDate;
 		
 		
-		public Integer getSeq() {
+		public String getSeq() {
 			return seq;
 		}
-		public void setSeq(Integer seq) {
+		public void setSeq(String seq) {
 			this.seq = seq;
 		}
 		public Integer getCodeGroupCode() {

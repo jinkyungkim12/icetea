@@ -26,6 +26,10 @@ public class CodeGroupDao {
 //			return list;
 //		}
 		
-
+		public int insert(CodeGroup dto) {
+			int result = sqlSession.insert(namespace + ".insert", dto);
+			System.out.println("dao insert: " + result);
+			return result;
+		}
 
 }

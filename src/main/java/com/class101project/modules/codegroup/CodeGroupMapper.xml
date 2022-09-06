@@ -19,8 +19,8 @@
            ,(select count(b.codeGroup_seq) from code b where b.codeDelNY=0 and b.codeGroup_seq=a.seq)as codeNum
            ,a.cgDelNY
            ,a.cguseNY
-           ,DATE_FORMAT(a.regDate, '%Y-%m-%d-%T') as regDate
-           ,DATE_FORMAT(a.modDate, '%Y-%m-%d-%T') as modDate
+           ,a.regDate
+           ,a.modDate
 	FROM codeGroup a
 	WHERE 1=1
 		<!-- AND delNY = 0 -->
@@ -37,11 +37,38 @@
 		
 		<choose>
 			<when test="shCgOption == 1">AND a.seq = #{shCgValue}</when> <!-- seq: = #{shValue} -->
-			<when test="shCgOption == 2">AND a.nameKr LIKE CONCAT('%', #{sCghValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+			<when test="shCgOption == 2">AND a.nameKr LIKE CONCAT('%', #{shCgValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 			<when test="shCgOption == 3">AND a.name LIKE CONCAT('%', #{shCgValue},'%')</when>
-			<otherwise></otherwise>
 		</choose>
-	
+		
+		<choose>
+			<when test="shOptionDate == 4">AND a.regDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 5">AND a.modDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+				
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO codeGroup(
+			codeGroupCode
+			,nameKr
+			,name
+			,cgDelNY
+			,cguseNY
+			,regDate
+		)
+		VALUES (
+			#{codeGroupCode}
+			,#{nameKr}
+			,#{name}
+			,0
+			,1
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 
 </mapper>	

@@ -6,6 +6,9 @@ public class CodeGroupVo {
 	 private Integer shCgOption;
 	 private String shCgValue;
 	 private Integer shDelNY;
+	 private String shDateStart;
+	 private String shDateEnd;
+	 private Integer shOptionDate;
 	 
 	 
 	public Integer getShCgOption() {
@@ -25,6 +28,24 @@ public class CodeGroupVo {
 	}
 	public void setShDelNY(Integer shDelNY) {
 		this.shDelNY = shDelNY;
+	}
+	public String getShDateStart() {
+		return shDateStart;
+	}
+	public void setShDateStart(String shDateStart) {
+		this.shDateStart = shDateStart;
+	}
+	public String getShDateEnd() {
+		return shDateEnd;
+	}
+	public void setShDateEnd(String shDateEnd) {
+		this.shDateEnd = shDateEnd;
+	}
+	public Integer getShOptionDate() {
+		return shOptionDate;
+	}
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
 	}
 	 
 	 

@@ -22,9 +22,29 @@ public class CodeController {
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		System.out.println("vo.getShCodeDelNY(): " + vo.getShCodeDelNY());
 		
+		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());  	
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
+		
 		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/code/xdmin/codeList";
+		
+	}
+	
+	@RequestMapping(value = "codeForm")
+	public String codeForm() throws Exception {
+		
+		return "infra/code/xdmin/codeForm";
+	}
+	
+	@RequestMapping(value = "codeInst")
+	public String codeInst(Code dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/code/codeList";
 	}
 }

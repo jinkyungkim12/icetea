@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
-<html>
+<html> 
 <head>
 	<title>Code Group List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
@@ -14,11 +14,18 @@
     <!-- Bootstrap extra CSS -->    
     <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
+    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
     <!-- user css -->
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
     <style type="text/css">
 		.aaa:link {
 		  color : black;
@@ -139,23 +146,23 @@
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
 					<select id="shDelNY" name="shDelNY" class="form-select" aria-label="Default select example">
-					  <option value="" <c:if test="${empty vo.shCgOption}">selected</c:if>>삭제여부</option>
-					  <option value="0" <c:if test="${vo.shDelNY eq 0 }">selected</c:if>>N</option>
-					  <option value="1" <c:if test="${vo.shDelNY eq 1 }">selected</c:if>>Y</option>
+					  <option value="">삭제여부</option>
+					  <option value="0">N</option>
+					  <option value="1">Y</option>
 					</select>
 				</div>
 				<div class="col-2">
-					<select class="form-select col-2" aria-label="Default select example">
-					  <option selected>수정일</option>
-					  <option value="1">수정일</option>
-					  <option value="2">등록일</option>
+					<select class="form-select col-2" name="shOptionDate">
+					  <option value="">날짜</option>
+					  <option value="4">등록일</option>
+					  <option value="5">수정일</option>
 					</select>
 				</div>
 				<div class="col-2">
-					<input type="text" class="form-control" placeholder="시작일">
+					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
 				</div>
 				<div class="col-2">
-					<input type="text" class="form-control" placeholder="종료일">
+					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 				</div>
 			</div>
 		</div>
@@ -264,7 +271,7 @@
 		     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 		    	</div>
 		    	<div class="col-2 text-end">
-		     		<a type="button" class="btn btn-dark" href="codeGroupForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
+		     		<a type="button" class="btn btn-dark" href="/codeGroup/codeGroupForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
 					<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 		    	</div>
 		    </div>	
@@ -333,6 +340,25 @@
 		  // 행(Row) 삭제
 		  const newRow = table.deleteRow(rownum);
 		}
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			 $("input.shDate").datepicker();
+		}); 
+	
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
 	</script>
 </body>
 </html>

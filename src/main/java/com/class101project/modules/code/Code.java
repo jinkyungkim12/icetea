@@ -3,7 +3,7 @@ package com.class101project.modules.code;
 //1. DTO 
 public class Code {
 
-	private Integer seq;
+	private String seq;
 	private Integer codeGroup_seq;
 	private String nameKr;
 	private Integer code;
@@ -17,10 +17,10 @@ public class Code {
 	private String codeModDate;
 	
 	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public Integer getCodeGroup_seq() {

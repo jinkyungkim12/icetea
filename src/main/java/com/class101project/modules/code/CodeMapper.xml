@@ -12,36 +12,60 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-		 b.seq
-		,b.codeGroup_seq
-		,a.nameKr
-	    ,b.code
-	    ,b.codeAnother
-	    ,b.codeNameKr
-	    ,b.codeName
-	    ,b.codeUseNY
-	    ,b.codeDelNY
-	    ,b.order
-	    ,DATE_FORMAT(b.codeRegDate, '%Y-%m-%d-%T') as codeRegDate
-	    ,DATE_FORMAT(b.codeModDate, '%Y-%m-%d-%T') as codeModDate
-	FROM codeGroup a
-	 left join code b on b.codeGroup_seq = a.seq
-	 WHERE 1=1
-		<!-- AND b.delNY = 0
-		AND nameKr LIKE CONCAT('%', #{shValue}, '%') -->
+			a.seq
+			,a.codeGroup_seq
+			,b.nameKr
+			,a.code
+			,a.codeAnother
+			,a.codeNameKr
+			,a.codeName
+			,a.codeUseNY
+			,a.codeDelNY
+			,a.order
+			,a.codeRegDate
+			,a.codeModDate
+		from code a 
+		left join codeGroup b on b.seq = a.codeGroup_seq
+		 WHERE 1=1
 		
-		<if test="shCodeDelNY !=null and !shCodeDelNY.equals('')">AND b.codeDelNY = #{shCodeDelNY}</if>
+		<if test="shCodeDelNY !=null and !shCodeDelNY.equals('')">AND a.codeDelNY = #{shCodeDelNY}</if>
 		<if test="shValue != null"></if>
 		
 		
 		<choose>
-			<when test="shOption == 1">AND b.codeGroup_seq = #{shValue}</when>
-			<when test="shOption == 2">AND a.nameKr LIKE CONCAT('%', #{shValue},'%')</when>
-			<when test="shOption == 3">AND b.codeNameKr LIKE CONCAT('%', #{shValue},'%')</when>
-			<when test="shOption == 4">AND b.codeName LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 1">AND a.codeGroup_seq = #{shValue}</when>
+			<when test="shOption == 2">AND b.nameKr LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 3">AND a.codeNameKr LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 4">AND a.codeName LIKE CONCAT('%', #{shValue},'%')</when>
 		</choose>
 		
+		<choose>
+			<when test="shOptionDate == 5">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 6">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
 		
 	</select>
 
+	<insert id="insert">
+		INSERT INTO code(
+			codeGroup_seq
+			,codeNameKr
+			,codeName
+			,codeUseNY
+			,codeDelNY
+			,codeRegDate
+		)
+		VALUES (
+			 #{codeGroup_seq}
+			,#{codeNameKr}
+			,#{codeName}
+			,1
+			,0
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 </mapper>
