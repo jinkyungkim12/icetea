@@ -9,7 +9,7 @@ public class Member {
 		private String id;
 		private Integer position;
 		private Integer gender;
-		private Date dob;
+		private String dob;
 		private String phone;
 		private String email;
 		private Integer mobileNY;
@@ -49,10 +49,10 @@ public class Member {
 		public void setGender(Integer gender) {
 			this.gender = gender;
 		}
-		public Date getDob() {
+		public String getDob() {
 			return dob;
 		}
-		public void setDob(Date dob) {
+		public void setDob(String dob) {
 			this.dob = dob;
 		}
 		public String getPhone() {
@@ -97,7 +97,6 @@ public class Member {
 		public void setRegDatetime(String regDatetime) {
 			this.regDatetime = regDatetime;
 		}
-		
 		
 		
 }

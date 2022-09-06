@@ -21,7 +21,7 @@
 		      ,a.emailNY
 		      ,a.personalInfo
 		      ,a.delNY
-		      ,DATE_FORMAT(a.regDatetime, '%Y-%m-%d-%T') as regDatetime
+		      ,a.regDatetime
 		FROM member a
 		WHERE 1=1
 			<!-- AND delNY = 0
@@ -40,6 +40,10 @@
 			<when test="shOption == 3">AND a.gender LIKE CONCAT('%', #{shValue},'%')</when>
 			<when test="shOption == 4">AND a.email LIKE CONCAT('%', #{shValue},'%')</when>
 			<when test="shOption == 5">AND a.position LIKE CONCAT('%', #{shValue},'%')</when>
+		</choose>
+		
+		<choose>
+			<when test="shOptionDate == 6">AND a.regDatetime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 	</select>

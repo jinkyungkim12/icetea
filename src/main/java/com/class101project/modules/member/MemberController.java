@@ -27,4 +27,5 @@ public class MemberController {
 		
 		return "infra/member/xdmin/memberList";
 	}
+	
 }
