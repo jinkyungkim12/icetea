@@ -40,8 +40,8 @@
 		</choose>
 		
 		<choose>
-			<when test="shOptionDate == 5">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-			<when test="shOptionDate == 6">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 	</select>

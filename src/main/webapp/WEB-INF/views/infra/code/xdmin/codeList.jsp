@@ -155,8 +155,8 @@
 				<div class="col-2">
 					<select class="form-select col-2" name="shOptionDate">
 					  <option value="">날짜</option>
-					  <option value="5">등록일</option>
-					  <option value="6">수정일</option>
+					  <option value="1">등록일</option>
+					  <option value="2">수정일</option>
 					</select>
 				</div>
 				<div class="col-2">
