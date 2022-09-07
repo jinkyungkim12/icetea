@@ -16,7 +16,7 @@
 		      ,a.gender
 		      ,a.dob
 		      ,a.phone
-		      ,a.email
+		      <!-- ,a.emailInsert -->
 		      ,a.mobileNY
 		      ,a.emailNY
 		      ,a.personalInfo
@@ -48,5 +48,42 @@
 		</choose>
 		
 	</select>
+	
+	<!-- <insert id="insert">
+		INSERT INTO member(
+			name
+			,id
+			,position
+			,gender
+			,dob
+			,phone
+			,phone2
+			,emailInsert
+			,mobileNY
+			,emailNY
+			,personalInfo
+			,delNY
+			,regDatetime
+		)
+		VALUES (
+			#{name}
+			,#{nameKr}
+			,#{id}
+			,#{position}
+			,#{gender}
+			,#{dob}
+			,#{phone}
+			,#{phone2}
+			,#{emailInsert}
+			,#{mobileNY}
+			,#{emailNY}
+			,#{personalInfo}
+			,0
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert> -->
 
 </mapper>

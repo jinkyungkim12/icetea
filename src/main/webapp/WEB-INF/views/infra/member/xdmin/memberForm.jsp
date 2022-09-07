@@ -40,7 +40,7 @@
 		#firstrow{
 			margin-top: 2rem;
 		}
-		#Modification{
+		.Modification{
 			width: 300px;
 			height: 40px;
 			font-style: normal;
@@ -49,7 +49,7 @@
 			background-color: #FF5600;
 			color: white;
 		}
-		#back{
+		.back{
 			width: 300px;
 			height: 40px;
 			font-style: normal;
@@ -121,63 +121,72 @@
 	  </div>
 	</nav>	
 		
-	<div><img src="../image/back2.jpg"></div>
-	
-	<!-- 옵션 -->
-	
-	<div class="container" style="margin-top: 5rem;">
-		<div class="row">
-			<div>
-				<a type="button" class="btn btn-dark" href="dmin_RegForm_student.html" style="color: #FF5600;"><b>수강생</b></a>
-				<a type="button" class="btn btn-dark" href="dmin_RegForm_creator.html" style="color: white;"><b>크리에이터</b></a>
-			</div>
-		</div>
-	</div>
+	<div><img src="../../resources/images/back2.jpg"></div>
 	
 	<!-- 수강생 -->
 	
 	<div class="container">
 		<div class="row">
-			<p id="head" class="text-center"><b>수강생 등록</b></p>			
+			<p id="head" class="text-center"><b>회원 등록</b></p>			
 		</div>
 	</div>
 	
 	<!-- 회원등록 -->
+	<form method="post" action="/codeGroup/codeGroupInst">
 	<div class="container">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-6">
+				<label class="form-label">구분</label>
+	   			<select class="form-select" aria-label="Default select example">
+				  <option selected>구분</option>
+				  <option value="1">수강생</option>
+				  <option value="2">크리에이터</option>
+			  	</select>
+			</div>
+			<div class="col-6"></div>
+			<div class="col-6">
 				<label class="form-label">이름</label>
-	   			<input type="text" class="form-control" value="" placeholder="이름">
+	   			<input type="text" class="form-control" value="" placeholder="이름" name ="">
 			</div>
 			<div class="col-6">
 				<label class="form-label">아이디</label>
-	   			<input type="text" class="form-control" value="" placeholder="아이디">
+	   			<input type="text" class="form-control" value="" placeholder="아이디" name ="">
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호</label>
-	   			<input type="password" class="form-control" value="" placeholder="비밀번호">
+	   			<input type="password" class="form-control" value="" placeholder="비밀번호" name ="">
 	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합, 8자~32자</small>
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호 확인</label>
-	   			<input type="password" class="form-control" value="" placeholder="비밀번호 확인">
+	   			<input type="password" class="form-control" value="" placeholder="비밀번호 확인" name ="">
+			</div>
+			<div class="col-6">
+				<label class="form-label">소속회사</label>
+	   			<input type="text" class="form-control" value="" placeholder="소속회사">
+	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 크리에이터만 작성해주시길 바랍니다.</small>
+			</div>
+			<div class="col-6">
+				<label class="form-label">크리에이터 활동명</label>
+	   			<input type="text" class="form-control" value="" placeholder="크리에이터 활동명">
+	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 크리에이터만 작성해주시길 바랍니다.</small>
 			</div>
 			<div class="col-6">
 				<label class="form-label">생년월일</label>
-	   			<input type="date" class="form-control" value="">
+	   			<input type="date" class="form-control" value="" name ="">
 			</div>
 			<div class="col-6">
 				<label class="form-label">성별</label>
 				<div class="row" style="margin-left: 10px;">
 					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" checked>
-					  <label class="form-check-label" for="flexRadioDefault1">
+					  <input class="form-check-input" type="radio" name="rd1" id="rd1v1">
+					  <label class="form-check-label" for="rd1v1">
 					    남성
 					  </label>
 					</div>
 					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
-					  <label class="form-check-label" for="flexRadioDefault2">
+					  <input class="form-check-input" type="radio" name="rd1" id="rd1v2">
+					  <label class="form-check-label" for="rd1v2">
 					    여성
 					  </label>
 					</div>
@@ -185,35 +194,27 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label">연락처(필수)</label>
-					<div class="input-group">
-					  <select class="form-select col-2" aria-label="Default select example">
-						  <option selected>통신사</option>
-						  <option value="1">SKT</option>
-						  <option value="2">LGT</option>
-						  <option value="3">KT</option>
-					  </select>
-					  <input type="mobile" class="form-control">
-					  <span class="input-group-text">-</span>
-					  <input type="mobile" class="form-control">
-					  <span class="input-group-text">-</span>
-					  <input type="mobile" class="form-control">
-					</div>
+				<div class="input-group">
+				  <select class="form-select col-2" aria-label="Default select example">
+					  <option selected>통신사</option>
+					  <option value="1">SKT</option>
+					  <option value="2">LGT</option>
+					  <option value="3">KT</option>
+				  </select>
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				</div>
 			</div>
 			<div class="col-6">
 				<label class="form-label">연락처(선택)</label>
-					<div class="input-group">
-					  <select class="form-select col-2" aria-label="Default select example">
-						  <option selected>통신사</option>
-						  <option value="1">SKT</option>
-						  <option value="2">LGT</option>
-						  <option value="3">KT</option>
-					  </select>
-					  <input type="mobile" class="form-control">
-					  <span class="input-group-text">-</span>
-					  <input type="mobile" class="form-control">
-					  <span class="input-group-text">-</span>
-					  <input type="mobile" class="form-control">
-					</div>
+				<div class="input-group">
+				  <select class="form-select col-2" aria-label="Default select example">
+					  <option selected>통신사</option>
+					  <option value="1">SKT</option>
+					  <option value="2">LGT</option>
+					  <option value="3">KT</option>
+				  </select>
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				</div>
 			</div>
 			<div class="col-6">
 				<label for="email" class="form-label">이메일</label>
@@ -314,12 +315,13 @@
 	
 	<div class="container">
 		<div class="row justify-content-center" style="margin-top: 3rem;">
-			<div class="col-3 text-center"><a type="button" class="btn" href="dmin_ViewForm_student.html" id="Modification">등록하기</a></div>
-			<div class="col-3 text-center"><a type="button" class="btn" href="dmin_List.html" id="back">뒤로가기</a></div>
+			<div class="col-3 text-center"><button type="submit" class="btn Modification">등록하기</a></button>
+			<div class="col-3 text-center"><button type="button" class="btn back" href="/member/memberList">뒤로가기</a></button>
 		</div>
 	</div>
 	<br>
 	<br>
+	</form>
 	
 		
 <!-- end	 -->
