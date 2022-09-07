@@ -125,7 +125,7 @@
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 코드</b></label>
-		   			<input type="text" class="form-control" value="" placeholder="영문(대소문자), 숫자" name ="codeGroupCode">
+		   			<input type="text" class="form-control" value="" placeholder="영문(대소문자), 숫자" id="codeGroupCode" name ="codeGroupCode">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 코드(Another)</b></label>
@@ -133,11 +133,11 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 이름(한글)</b></label>
-		   			<input type="text" name ="nameKr" class="form-control" value="" placeholder="힌글, 숫자" >
+		   			<input type="text" name ="nameKr" id="nameKr" class="form-control" value="" placeholder="한글, 숫자" >
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 이름(영문)</b></label>
-		   			<input type="text" name ="name" class="form-control" value="" placeholder="영문(대소문자), 숫자">
+		   			<input type="text" name ="name" id="name" class="form-control" value="" placeholder="영문(대소문자), 숫자">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>사용여부</b></label>
@@ -188,7 +188,53 @@
 					<label class="form-label"><b>예비 3 (int type)</b></label>
 		   			<input type="text" class="form-control" value="" placeholder="숫자">
 				</div>
-				<div class="col-6"></div>
+				<div class="col-6">
+				<label class="form-label">이메일 수신동의</label>
+				<div class="row" style="margin-left: 10px;">
+					<div class="col-6 form-check">
+					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault1" value="flexRadioDefault1">
+					  <label class="form-check-label" for="flexRadioDefault1">
+					    동의
+					  </label>
+					</div>
+					<div class="col-6 form-check">
+					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault2" value="flexRadioDefault2">
+					  <label class="form-check-label" for="flexRadioDefault2">
+					    비동의
+					  </label>
+					</div>
+					<div class="col-12">
+						<label class="form-label">개인정보 유효기간</label>
+						<div class="row" style="margin-left: 10px;">
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd1" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault1">
+							    1년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd2" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault2">
+							    3년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd3" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault3">
+							    10년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd4" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault4">
+							    평생회원
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-6"></div>
+				</div>
+			</div>
 			</div>
 		</div>
 		<div class="container" style="margin-top: 5rem;">
@@ -199,7 +245,7 @@
 		    	<div class="col-3 text-end">
 		     		<button type="button" class="btn btn-danger" href="/codeGroup/codeGroupList" style="color: white;"><i class="fa-solid fa-x"></i></button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
-					<button type="submit" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
+					<button type="button" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
 		    
@@ -241,6 +287,40 @@
 	<script type="text/javascript">
 		function test() {
 			alert("코드그룹 등록이 완료되었습니다.");
+			
+			alert(document.getElementById('nameKr').value);
+			
+			alert(document.getElementById('name').value);
+			
+			alert(document.getElementById('codeGroupCode').value);
+			
+			/* alert(document.querySelector("input[name='radiobtn']:checked").value); */
+			
+			alert(document.querySelector("input[name='rdrd']:checked").value);
+			alert(document.querySelector("input[name='rdrd2']:checked").value);
+			
+			if(document.getElementById('nameKr').value == '' || document.getElementById('nameKr').value == null){
+				alert("코드그룹 이름(한글)을 입력해주시기 바랍니다.");
+				document.getElementById('nameKr').value = "";
+				document.getElementById('nameKr').focus();
+				
+			}
+			
+			if(document.getElementById('name').value == '' || document.getElementById('name').value == null){
+				alert("코드그룹 이름(영문)을 입력해주시기 바랍니다.");
+				document.getElementById('name').value = "";
+				document.getElementById('name').focus();
+				
+			}
+			
+			if(document.getElementById('codeGroupCode').value == '' || document.getElementById('codeGroupCode').value == null){
+				alert("코드그룹 코드를 입력해주시기 바랍니다.");
+				document.getElementById('codeGroupCode').value = "";
+				document.getElementById('codeGroupCode').focus();
+				
+			}
+			
+			return false;
 		}
 	</script>
 </body>

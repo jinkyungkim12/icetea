@@ -34,7 +34,6 @@
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.cgDelNY = #{shDelNY}</if>
 		<if test="shCgValue != null"></if>
 		
-		
 		<choose>
 			<when test="shCgOption == 1">AND a.seq = #{shCgValue}</when> <!-- seq: = #{shValue} -->
 			<when test="shCgOption == 2">AND a.nameKr LIKE CONCAT('%', #{shCgValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->

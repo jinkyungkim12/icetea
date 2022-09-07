@@ -141,15 +141,15 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드그룹 번호</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeGroup_seq">
+	   			<input type="text" class="form-control" value="" placeholder="" name="codeGroup_seq" id="codeGroup_seq">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드 이름(한글)</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeNameKr">
+	   			<input type="text" class="form-control" value="" placeholder="" name="codeNameKr" id="codeNameKr">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드 이름(영문)</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeName">
+	   			<input type="text" class="form-control" value="" placeholder="" name="codeName" id="codeName">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>사용여부</b></label>
@@ -212,7 +212,7 @@
 	    	<div class="col-3 text-end">
 	     		<button type="button" class="btn btn-danger" href="/code/codeList" style="color: white;"><i class="fa-solid fa-x"></i></button>
 				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
-				<button type="submit" class="btn btn-success"><i class="fa-solid fa-bookmark"></i></button>
+				<button type="button" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
 	    	</div>
 	    </div>
 	    
@@ -244,5 +244,40 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function test() {
+			alert("코드 등록이 완료되었습니다.");
+			
+			alert(document.getElementById('codeGroup_seq').value);
+			
+			alert(document.getElementById('codeNameKr').value);
+			
+			alert(document.getElementById('codeName').value);
+			
+			
+			if(document.getElementById('codeGroup_seq').value == '' || document.getElementById('codeGroup_seq').value == null){
+				alert("코드그룹 번호를 입력해주시기 바랍니다.");
+				document.getElementById('codeGroup_seq').value = "";
+				document.getElementById('codeGroup_seq').focus();
+				
+			}
+			
+			if(document.getElementById('codeNameKr').value == '' || document.getElementById('codeNameKr').value == null){
+				alert("코드 이름(한글)을 입력해주시기 바랍니다.");
+				document.getElementById('codeNameKr').value = "";
+				document.getElementById('codeNameKr').focus();
+				
+			}
+			
+			if(document.getElementById('codeName').value == '' || document.getElementById('codeName').value == null){
+				alert("코드 이름(영문)를 입력해주시기 바랍니다.");
+				document.getElementById('codeName').value = "";
+				document.getElementById('codeName').focus();
+				
+			}
+			
+			return false;
+		}
+	</script>
 </body>
 </html>
