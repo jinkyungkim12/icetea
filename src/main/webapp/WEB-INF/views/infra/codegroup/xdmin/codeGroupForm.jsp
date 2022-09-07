@@ -199,7 +199,7 @@
 		    	<div class="col-3 text-end">
 		     		<button type="button" class="btn btn-danger" href="/codeGroup/codeGroupList" style="color: white;"><i class="fa-solid fa-x"></i></button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
-					<button type="submit" class="btn btn-success"><i class="fa-solid fa-bookmark"></i></button>
+					<button type="submit" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
 		    
@@ -238,5 +238,10 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function test() {
+			alert("코드그룹 등록이 완료되었습니다.");
+		}
+	</script>
 </body>
 </html>

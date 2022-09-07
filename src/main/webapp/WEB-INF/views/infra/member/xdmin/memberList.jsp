@@ -203,7 +203,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 90%">
+	<div class="container-fluid text-center" style="width: 90%; margin-top: 1rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
