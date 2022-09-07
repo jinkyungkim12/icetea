@@ -2,10 +2,10 @@ package com.class101project.modules.codegroup;
 
 public class CodeGroupVo {
 
-	
 	 private Integer shCgOption;
 	 private String shCgValue;
 	 private Integer shDelNY;
+	 
 	 private String shDateStart;
 	 private String shDateEnd;
 	 private Integer shOptionDate;

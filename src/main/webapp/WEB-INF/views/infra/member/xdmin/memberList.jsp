@@ -151,7 +151,7 @@
 			</div>
 			<div class="col-2">
 				<select class="form-select col-2" name="shOptionDate">
-				  <option selected>선택</option>
+				  <option value="">선택</option>
 				  <option value="6">생년월일</option>
 				  <option value="7">회원등록일</option>
 				</select>
@@ -189,6 +189,19 @@
 	</form>	
 		
 	<!-- member List -->
+	<div class="container-fluid" style="width: 90%">
+		<div class="row justify-content-between">
+			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
+			<div class="col-1 text-end">
+				<select class="form-select" aria-label="Default select example">
+				  <option selected>10</option>
+				  <option value="1">10</option>
+				  <option value="2">20</option>
+				  <option value="3">30</option>
+				</select>
+			</div>
+		</div>
+	</div>
 	
 	<div class="container-fluid text-center" style="width: 90%">
 		<table class="table table-hover" id="minus">

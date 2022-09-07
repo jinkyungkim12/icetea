@@ -10,7 +10,6 @@ public class MemberVo {
 	 private String shDateEnd;
 	 private Integer shOptionDate;
 	 
-	 
 	public Integer getShOption() {
 		return shOption;
 	}

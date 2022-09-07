@@ -96,5 +96,4 @@ public class Member {
 			this.regDatetime = regDatetime;
 		}
 		
-		
 }
