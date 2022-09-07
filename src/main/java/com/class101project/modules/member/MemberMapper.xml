@@ -16,7 +16,7 @@
 		      ,a.gender
 		      ,a.dob
 		      ,a.phone
-		      <!-- ,a.emailInsert -->
+		      ,a.email
 		      ,a.mobileNY
 		      ,a.emailNY
 		      ,a.personalInfo

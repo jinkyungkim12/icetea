@@ -8,18 +8,13 @@ public class Member {
 		private Integer position;
 		private Integer gender;
 		private String dob;
+		private String phone;
 		private String email;
 		private Integer mobileNY;
 		private Integer emailNY;
 		private Integer personalInfo;
 		private Integer delNY;
 		private String regDatetime;
-		
-//		private String password;
-//		private String phone;
-//		private String phone2;
-//		private Integer telCompany;
-		
 		
 		public String getSeq() {
 			return seq;
@@ -56,6 +51,12 @@ public class Member {
 		}
 		public void setDob(String dob) {
 			this.dob = dob;
+		}
+		public String getPhone() {
+			return phone;
+		}
+		public void setPhone(String phone) {
+			this.phone = phone;
 		}
 		public String getEmail() {
 			return email;
@@ -94,5 +95,8 @@ public class Member {
 			this.regDatetime = regDatetime;
 		}
 		
+//		private String password;
+//		private String phone2;
+//		private Integer telCompany;
 		
 }
