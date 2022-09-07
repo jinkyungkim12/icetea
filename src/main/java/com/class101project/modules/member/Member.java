@@ -1,7 +1,5 @@
 package com.class101project.modules.member;
 
-import java.util.Date;
-
 public class Member {
 
 		private String seq;

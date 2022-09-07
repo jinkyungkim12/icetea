@@ -21,8 +21,8 @@
            ,a.cguseNY
            ,a.regDate
            ,a.modDate
-	FROM codeGroup a
-	WHERE 1=1
+		FROM codeGroup a
+		WHERE 1=1
 		<!-- AND delNY = 0 -->
 		<!-- AND nameKr LIKE CONCAT('%', #{shValue}, '%') -->	
 			<!-- SELECT 

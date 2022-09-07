@@ -341,7 +341,6 @@
 		  const newRow = table.deleteRow(rownum);
 		}
 	</script>
-	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			 $("input.shDate").datepicker();
