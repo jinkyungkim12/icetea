@@ -152,8 +152,8 @@
 			<div class="col-2">
 				<select class="form-select col-2" name="shOptionDate">
 				  <option value="">선택</option>
-				  <option value="6">생년월일</option>
-				  <option value="7">회원등록일</option>
+				  <option value="1">생년월일</option>
+				  <option value="2">회원등록일</option>
 				</select>
 			</div>
 			<div class="col-2">

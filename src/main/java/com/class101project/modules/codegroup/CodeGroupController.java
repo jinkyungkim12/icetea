@@ -22,11 +22,6 @@ public class CodeGroupController {
 		System.out.println("vo.getShCgOption(): " + vo.getShCgOption());
 		System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
 		
-		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());  	
-		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
-		
-		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		

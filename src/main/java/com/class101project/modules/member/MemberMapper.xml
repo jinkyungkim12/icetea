@@ -43,8 +43,8 @@
 		</choose>
 		
 		<choose>
-			<when test="shOptionDate == 6">AND a.dob BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-			<when test="shOptionDate == 7">AND a.regDatetime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND a.dob BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.regDatetime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 	</select>
