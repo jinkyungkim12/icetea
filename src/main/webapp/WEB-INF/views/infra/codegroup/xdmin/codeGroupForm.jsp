@@ -141,10 +141,10 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>사용여부</b></label>
-				  	<select class="form-select" aria-label="Default select example">
-					  <option selected>Y</option>
-					  <option value="1">Y</option>
-					  <option value="2">N</option>
+				  	<select class="form-select" aria-label="Default select example" name="useNY" id="useNY">
+					  <option value="">Y</option>
+					  <option value="yes">Y</option>
+					  <option value="no">N</option>
 				  	</select>
 				</div>
 				<div class="col-6">
@@ -158,7 +158,7 @@
 				<div class="col-6">
 					<label class="form-label"><b>삭제여부</b></label>
 				  	<select class="form-select" aria-label="Default select example">
-					  <option selected>N</option>
+					  <option value="">N</option>
 					  <option value="1">Y</option>
 					  <option value="2">N</option>
 				  	</select>
@@ -293,6 +293,8 @@
 			alert(document.getElementById('name').value);
 			
 			alert(document.getElementById('codeGroupCode').value);
+			
+			alert(document.getElementById('useNY').options[document.getElementById('useNY').selectedIndex].value);
 			
 			/* alert(document.querySelector("input[name='radiobtn']:checked").value); */
 			
