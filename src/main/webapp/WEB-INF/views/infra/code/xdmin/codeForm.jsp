@@ -141,15 +141,15 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드그룹 번호</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeGroup_seq" id="codeGroup_seq">
+	   			<input type="text" class="form-control" value="<c:out value="${item.codeGroup_seq}"/>" placeholder="" name="codeGroup_seq" id="codeGroup_seq">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드 이름(한글)</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeNameKr" id="codeNameKr">
+	   			<input type="text" class="form-control" value="<c:out value="${item.codeNameKr}"/>" placeholder="" name="codeNameKr" id="codeNameKr">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드 이름(영문)</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="" name="codeName" id="codeName">
+	   			<input type="text" class="form-control" value="<c:out value="${item.codeName}"/>" placeholder="" name="codeName" id="codeName">
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>사용여부</b></label>

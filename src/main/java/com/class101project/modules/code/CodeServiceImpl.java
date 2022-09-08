@@ -22,4 +22,11 @@ public class CodeServiceImpl implements CodeService{
 		System.out.println("service result: " + result);
 		return result;
 	}
+	
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception{
+		Code result = dao.selectOne(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
 }

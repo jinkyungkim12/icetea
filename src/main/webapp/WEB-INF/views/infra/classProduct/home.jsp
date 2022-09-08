@@ -361,7 +361,7 @@
 		<div class="row">
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p2_1.png" class="card-img-top" alt="...">
+				  <img src="../../resources/images/P2_1.png" class="card-img-top" alt="...">
 				  <div class="card-body">
 				    <p class="card-text"><b>근영쌤</b><br>[👍신규BEST] 영어 회화 1위 근영쌤의 '유창한 회화로 바로 뱉는 100% 진짜 단어 공부법'</p>
 				    <hr>

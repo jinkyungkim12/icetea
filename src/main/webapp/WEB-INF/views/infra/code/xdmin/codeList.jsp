@@ -83,6 +83,12 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
+		a {
+	   	color: #000000;
+	    }
+	    a:focus, a:hover{
+	    	color: #F7670E;
+	    }
 	</style>
 </head>
 <body>
@@ -239,7 +245,7 @@
 							<td><c:out value="${list.nameKr }"/></td>
 							<td><c:out value="${list.code }"/></td>
 							<td><c:out value="${list.codeAnother }"/></td>
-							<td><c:out value="${list.codeNameKr }"/></td>
+							<td><a href="/code/codeView?codeNameKr=<c:out value="${list.codeNameKr}"/>"><c:out value="${list.codeNameKr}"/></a></td>
 							<td><c:out value="${list.codeName }"/></td>
 							<td>
 								<c:choose>
