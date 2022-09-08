@@ -83,6 +83,12 @@
 		    font-weight: 400;
 		    font-style: normal;
 		}
+		a {
+	   	color: #000000;
+	    }
+	    a:focus, a:hover{
+	    	color: #F7670E;
+	    }
 	</style>
 </head>
 <body>
@@ -249,7 +255,7 @@
 							<input class="check" type="checkbox" name="check">
 						</td>
 						<th scope="row"><c:out value="${list.seq }"/></th>
-						<td><c:out value="${list.name }"/></td>
+						<td><a href="/member/memberView?name=<c:out value="${list.name}"/>"><c:out value="${list.name}"/></a></td>
 						<td><c:out value="${list.id }"/></td>
 						<td>
 							<c:choose>

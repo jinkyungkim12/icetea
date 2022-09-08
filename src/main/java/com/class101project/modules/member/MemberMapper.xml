@@ -91,4 +91,19 @@
 		</selectKey>
 	</insert>
 
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.seq
+            ,a.name
+            ,a.id
+            ,a.password
+            ,a.dob
+            ,a.emailInsert
+            ,a.phone
+            ,a.phone2
+			FROM member a
+			WHERE 1=1
+			AND name = #{name}
+	</select>
+	
 </mapper>
