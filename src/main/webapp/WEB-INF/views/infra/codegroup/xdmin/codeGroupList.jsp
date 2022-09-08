@@ -83,6 +83,12 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
+		a {
+	   	color: #000000;
+	    }
+	    a:focus, a:hover{
+	    	color: #F7670E;
+	    }
 	</style>
 </head>
 <body>
@@ -188,8 +194,7 @@
 		</div>
 	</div>
 	</form>
-		
-		
+
 		<!-- List -->
 		
 		<div class="container-fluid">
@@ -239,7 +244,7 @@
 								</td>
 								<th scope="row"><c:out value="${list.seq }"/></th>
 								<td><c:out value="${list.codeGroupCode }"/></td>
-								<td><c:out value="${list.nameKr }"/></td>
+								<td><a href="/codeGroup/codeGroupView?nameKr=<c:out value="${list.nameKr}"/>"><c:out value="${list.nameKr}"/></a></td>
 								<td><c:out value="${list.name }"/></td>
 								<td><c:out value="${list.codeNum }"/></td>
 								<td>

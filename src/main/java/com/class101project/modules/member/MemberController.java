@@ -29,19 +29,19 @@ public class MemberController {
 		return "infra/member/xdmin/memberList";
 	}
 	
-//	@RequestMapping(value = "memberForm")
-//	public String memberForm() throws Exception {
-//		
-//		return "infra/member/xdmin/memberForm";
-//	}
-//	
-//	@RequestMapping(value = "memberInst")
-//	public String codeGroupInst(Member dto) throws Exception {
-//		
-//		int result = service.insert(dto);
-//		System.out.println("controller result: " + result);
-//		
-//		return "redirect:/member/memberList";
-//	}
+	@RequestMapping(value = "memberForm")
+	public String memberForm() throws Exception {
+		
+		return "infra/member/xdmin/memberForm";
+	}
+	
+	@RequestMapping(value = "memberInst")
+	public String memberInst(Member dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/member/memberList";
+	}
 	
 }

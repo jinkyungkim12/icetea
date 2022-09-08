@@ -49,16 +49,19 @@
 						
 	</select>
 	
-	<!-- <insert id="insert">
+	<insert id="insert">
 		INSERT INTO member(
 			name
 			,id
+			,password
 			,position
 			,gender
 			,dob
+			,telCompany
 			,phone
 			,phone2
 			,emailInsert
+			,emailDomain
 			,mobileNY
 			,emailNY
 			,personalInfo
@@ -67,14 +70,16 @@
 		)
 		VALUES (
 			#{name}
-			,#{nameKr}
 			,#{id}
+			,#{password}
 			,#{position}
 			,#{gender}
 			,#{dob}
+			,#{telCompany}
 			,#{phone}
 			,#{phone2}
 			,#{emailInsert}
+			,#{emailDomain}
 			,#{mobileNY}
 			,#{emailNY}
 			,#{personalInfo}
@@ -84,6 +89,6 @@
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert> -->
+	</insert>
 
 </mapper>

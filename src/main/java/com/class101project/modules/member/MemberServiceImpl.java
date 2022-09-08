@@ -16,10 +16,10 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectList(vo);
 	}
 	
-//	@Override
-//	public int insert(Member dto) throws Exception{
-//		int result = dao.insert(dto);
-//		System.out.println("service result: " + result);
-//		return result;
-//	}
+	@Override
+	public int insert(Member dto) throws Exception{
+		int result = dao.insert(dto);
+		System.out.println("service result: " + result);
+		return result;
+	}
 }

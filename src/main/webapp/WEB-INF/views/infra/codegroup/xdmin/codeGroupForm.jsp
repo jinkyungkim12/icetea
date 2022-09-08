@@ -125,7 +125,7 @@
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 코드</b></label>
-		   			<input type="text" class="form-control" value="" placeholder="영문(대소문자), 숫자" id="codeGroupCode" name ="codeGroupCode">
+		   			<input type="text" class="form-control" value="<c:out value="${item.codeGroupCode}"/>" placeholder="영문(대소문자), 숫자" id="codeGroupCode" name ="codeGroupCode">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 코드(Another)</b></label>
@@ -133,11 +133,11 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 이름(한글)</b></label>
-		   			<input type="text" name ="nameKr" id="nameKr" class="form-control" value="" placeholder="한글, 숫자" >
+		   			<input type="text" name ="nameKr" id="nameKr" class="form-control" value="<c:out value="${item.nameKr}"/>" placeholder="한글, 숫자" >
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 이름(영문)</b></label>
-		   			<input type="text" name ="name" id="name" class="form-control" value="" placeholder="영문(대소문자), 숫자">
+		   			<input type="text" name ="name" id="name" class="form-control" value="<c:out value="${item.name}"/>" placeholder="영문(대소문자), 숫자">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>사용여부</b></label>

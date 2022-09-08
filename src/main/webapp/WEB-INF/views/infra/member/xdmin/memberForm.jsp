@@ -132,12 +132,12 @@
 	</div>
 	
 	<!-- 회원등록 -->
-	<form method="post" action="/codeGroup/codeGroupInst">
+	<form method="post" action="/member/memberInst">
 	<div class="container">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-6">
 				<label class="form-label">구분</label>
-	   			<select class="form-select" aria-label="Default select example">
+	   			<select class="form-select" aria-label="Default select example" name="">
 				  <option selected>구분</option>
 				  <option value="1">수강생</option>
 				  <option value="2">크리에이터</option>
@@ -146,20 +146,20 @@
 			<div class="col-6"></div>
 			<div class="col-6">
 				<label class="form-label">이름</label>
-	   			<input type="text" class="form-control" value="" placeholder="이름" name ="">
+	   			<input type="text" class="form-control" value="" placeholder="이름" name ="name">
 			</div>
 			<div class="col-6">
 				<label class="form-label">아이디</label>
-	   			<input type="text" class="form-control" value="" placeholder="아이디" name ="">
+	   			<input type="text" class="form-control" value="" placeholder="아이디" name ="id">
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호</label>
-	   			<input type="password" class="form-control" value="" placeholder="비밀번호" name ="">
+	   			<input type="password" class="form-control" value="" placeholder="비밀번호" name ="password">
 	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합, 8자~32자</small>
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호 확인</label>
-	   			<input type="password" class="form-control" value="" placeholder="비밀번호 확인" name ="">
+	   			<input type="password" class="form-control" value="" placeholder="비밀번호 확인" name ="password">
 			</div>
 			<div class="col-6">
 				<label class="form-label">소속회사</label>
@@ -201,19 +201,19 @@
 					  <option value="2">LGT</option>
 					  <option value="3">KT</option>
 				  </select>
-				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000" name="phone">
 				</div>
 			</div>
 			<div class="col-6">
 				<label class="form-label">연락처(선택)</label>
 				<div class="input-group">
-				  <select class="form-select col-2" aria-label="Default select example">
+				  <select class="form-select col-2" aria-label="Default select example" name="">
 					  <option selected>통신사</option>
 					  <option value="1">SKT</option>
 					  <option value="2">LGT</option>
 					  <option value="3">KT</option>
 				  </select>
-				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000" name="phone2">
 				</div>
 			</div>
 			<div class="col-6">
@@ -315,8 +315,8 @@
 	
 	<div class="container">
 		<div class="row justify-content-center" style="margin-top: 3rem;">
-			<div class="col-3 text-center"><button type="submit" class="btn Modification">등록하기</a></button>
-			<div class="col-3 text-center"><button type="button" class="btn back" href="/member/memberList">뒤로가기</a></button>
+			<button type="submit" class="btn Modification">등록하기</a></button>&emsp;
+			<button type="button" class="btn back" href="/member/memberList">뒤로가기</a></button>
 		</div>
 	</div>
 	<br>

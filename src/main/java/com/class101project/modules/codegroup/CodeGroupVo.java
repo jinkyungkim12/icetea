@@ -10,6 +10,10 @@ public class CodeGroupVo {
 	 private String shDateEnd;
 	 private Integer shOptionDate;
 	 
+	 private String nameKr;
+	 private String name;
+	 private Integer codeGroupCode;
+	 
 	 
 	public Integer getShCgOption() {
 		return shCgOption;
@@ -47,6 +51,25 @@ public class CodeGroupVo {
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
 	}
+	public String getNameKr() {
+		return nameKr;
+	}
+	public void setNameKr(String nameKr) {
+		this.nameKr = nameKr;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getCodeGroupCode() {
+		return codeGroupCode;
+	}
+	public void setCodeGroupCode(Integer codeGroupCode) {
+		this.codeGroupCode = codeGroupCode;
+	}
+	 
 	 
 	 
 }

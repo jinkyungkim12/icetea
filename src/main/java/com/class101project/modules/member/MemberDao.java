@@ -20,10 +20,10 @@ public class MemberDao {
 	public List<Member> selectList(MemberVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
 	
 	
-//	public int insert(Member dto) {
-//		int result = sqlSession.insert(namespace + ".insert", dto);
-//		System.out.println("dao insert: " + result);
-//		return result;
-//	}
+	public int insert(Member dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao insert: " + result);
+		return result;
+	}
 	
 }

@@ -5,16 +5,22 @@ public class Member {
 		private String seq;
 		private String name;
 		private String id;
+		private String password;
 		private Integer position;
 		private Integer gender;
 		private String dob;
+		private Integer telCompany;
 		private String phone;
+		private String phone2;
 		private String email;
+		private String emailInsert;
+		private String emailDomain;
 		private Integer mobileNY;
 		private Integer emailNY;
 		private Integer personalInfo;
 		private Integer delNY;
 		private String regDatetime;
+		
 		
 		public String getSeq() {
 			return seq;
@@ -34,6 +40,12 @@ public class Member {
 		public void setId(String id) {
 			this.id = id;
 		}
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
 		public Integer getPosition() {
 			return position;
 		}
@@ -52,17 +64,41 @@ public class Member {
 		public void setDob(String dob) {
 			this.dob = dob;
 		}
+		public Integer getTelCompany() {
+			return telCompany;
+		}
+		public void setTelCompany(Integer telCompany) {
+			this.telCompany = telCompany;
+		}
 		public String getPhone() {
 			return phone;
 		}
 		public void setPhone(String phone) {
 			this.phone = phone;
 		}
+		public String getPhone2() {
+			return phone2;
+		}
+		public void setPhone2(String phone2) {
+			this.phone2 = phone2;
+		}
 		public String getEmail() {
 			return email;
 		}
 		public void setEmail(String email) {
 			this.email = email;
+		}
+		public String getEmailInsert() {
+			return emailInsert;
+		}
+		public void setEmailInsert(String emailInsert) {
+			this.emailInsert = emailInsert;
+		}
+		public String getEmailDomain() {
+			return emailDomain;
+		}
+		public void setEmailDomain(String emailDomain) {
+			this.emailDomain = emailDomain;
 		}
 		public Integer getMobileNY() {
 			return mobileNY;
@@ -94,9 +130,5 @@ public class Member {
 		public void setRegDatetime(String regDatetime) {
 			this.regDatetime = regDatetime;
 		}
-		
-//		private String password;
-//		private String phone2;
-//		private Integer telCompany;
 		
 }
