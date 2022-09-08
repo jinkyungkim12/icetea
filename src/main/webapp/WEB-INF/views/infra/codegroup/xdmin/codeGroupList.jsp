@@ -206,7 +206,7 @@
 			</div>
 		</div>
 		
-		<div class="container-fluid" style="margin-top: 2rem;">
+		<div class="container-fluid" style="margin-top: 0.5rem;">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">

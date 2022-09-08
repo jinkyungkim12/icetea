@@ -187,7 +187,7 @@
 				</div>
 			</div>
 		</form>	
-			<div class="row justify-content-between" style="margin-top: 3rem;">
+			<div class="row justify-content-between" style="margin-top: 1rem;">
 				<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
 				<div class="col-1 text-end">
 					<select class="form-select" aria-label="Default select example">
@@ -200,7 +200,7 @@
 			</div>
 		</div>
 		
-		<div class="container-fluid text-center">
+		<div class="container-fluid text-center" style="margin-top: 0.5rem;">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">

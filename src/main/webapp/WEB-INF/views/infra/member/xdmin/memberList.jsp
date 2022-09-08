@@ -143,6 +143,13 @@
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
 			<div class="col-2">
+				<select id="shGender" name="shGender" class="form-select" aria-label="Default select example">
+				   <option value="" <c:if test="${empty vo.shGender}">selected </c:if>>성별</option>
+				   <option value="4" <c:if test="${vo.shGender eq 4}">selected </c:if>>남성</option>
+				   <option value="5" <c:if test="${vo.shGender eq 5}">selected </c:if>>여성</option>
+				</select>
+			</div>
+			<div class="col-2">
 				<select id="shdelNY" name="shdelNY" class="form-select" aria-label="Default select example">
 				   <option value="">삭제여부</option>
 				   <option value="0">N</option>
@@ -163,18 +170,21 @@
 				<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid p-4" style="width: 90%">
-		
-		<div class="row justify-content-end">
+		<div class="row justify-content-end" style="margin-top: 1rem;">
+			<div class="col-2">
+				<select id="shPosition" name="shPosition" class="form-select" aria-label="Default select example">
+				   <option value="" <c:if test="${empty vo.shPosition}">selected </c:if>>직책</option>
+				   <option value="22" <c:if test="${vo.shGender eq 22}">selected </c:if>>학생</option>
+				   <option value="23" <c:if test="${vo.shGender eq 23}">selected </c:if>>크리에이터</option>
+				   <option value="24" <c:if test="${vo.shGender eq 24}">selected </c:if>>관리자</option>
+				</select>
+			</div>
 			<div class="col-2">
 				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
 				  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
 				  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>이름</option>
 				  <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
-				  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>성별</option>
-				  <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>메일주소</option>
-				  <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>직책</option>
+				  <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>메일주소</option>
 				</select>
 			</div>
 			<div class="col-4">
@@ -203,7 +213,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 90%; margin-top: 1rem;">
+	<div class="container-fluid text-center" style="width: 90%; margin-top: 0.5rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">

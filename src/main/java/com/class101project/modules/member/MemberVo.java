@@ -5,10 +5,13 @@ public class MemberVo {
 	 private Integer shOption;
 	 private String shValue;
 	 private Integer shdelNY;
+	 private Integer shGender;
+	 private Integer shPosition;
 	 
 	 private String shDateStart;
 	 private String shDateEnd;
 	 private Integer shOptionDate;
+	 
 	 
 	public Integer getShOption() {
 		return shOption;
@@ -28,6 +31,18 @@ public class MemberVo {
 	public void setShdelNY(Integer shdelNY) {
 		this.shdelNY = shdelNY;
 	}
+	public Integer getShGender() {
+		return shGender;
+	}
+	public void setShGender(Integer shGender) {
+		this.shGender = shGender;
+	}
+	public Integer getShPosition() {
+		return shPosition;
+	}
+	public void setShPosition(Integer shPosition) {
+		this.shPosition = shPosition;
+	}
 	public String getShDateStart() {
 		return shDateStart;
 	}
@@ -46,6 +61,5 @@ public class MemberVo {
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
 	}
-	 
 	
 }
