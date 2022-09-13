@@ -240,7 +240,7 @@
 					  <option value="2">LGT</option>
 					  <option value="3">KT</option>
 				  </select>
-				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000">
 				</div>
 			</div>
 			<div class="col-6">
@@ -252,7 +252,7 @@
 					  <option value="2">LGT</option>
 					  <option value="3">KT</option>
 				  </select>
-				  <input type="mobile" class="form-control" style="width: 50%" placeholder="010-0000-0000">
+				  <input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000">
 				</div>
 			</div>
 			<div class="col-6">

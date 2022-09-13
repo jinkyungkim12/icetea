@@ -20,6 +20,8 @@ public class Member {
 		private Integer personalInfo;
 		private Integer delNY;
 		private String regDatetime;
+		private String company;
+		private String creatorNickname;
 		
 		
 		public String getSeq() {
@@ -129,6 +131,18 @@ public class Member {
 		}
 		public void setRegDatetime(String regDatetime) {
 			this.regDatetime = regDatetime;
+		}
+		public String getCompany() {
+			return company;
+		}
+		public void setCompany(String company) {
+			this.company = company;
+		}
+		public String getCreatorNickname() {
+			return creatorNickname;
+		}
+		public void setCreatorNickname(String creatorNickname) {
+			this.creatorNickname = creatorNickname;
 		}
 		
 }

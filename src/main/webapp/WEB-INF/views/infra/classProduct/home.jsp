@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Main</title>
+	<title>Class101</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -296,7 +296,7 @@
 		<br>
 		<div class="row">
 			<div class="col-3">
-				<a class="nav-link" href="productView.html"> 
+				<a class="nav-link" href=/product/productView_first> 
 					<div class="card" style="width: 18rem;">
 					  <img src="../../resources/images/p1.png" class="card-img-top" alt="...">
 					  <div class="card-body">
@@ -310,7 +310,7 @@
 				</a>
 			</div>	
 			<div class="col-3">
-				<a class="nav-link" href="productView2.html"> 
+				<a class="nav-link" href="/product/productView_second"> 
 					<div class="card" style="width: 18rem;">
 					  <img src="../../resources/images/p2.png" class="card-img-top" alt="...">
 					  <div class="card-body">
@@ -324,7 +324,7 @@
 				</a>
 			</div>	
 			<div class="col-3">
-				<a class="nav-link" href="productView3.html"> 
+				<a class="nav-link" href="/product/productView_third"> 
 					<div class="card" style="width: 18rem;">
 					  <img src="../../resources/images/p3.png" class="card-img-top" alt="...">
 					  <div class="card-body">
@@ -338,7 +338,7 @@
 				</a>
 			</div>	
 			<div class="col-3">
-				<a class="nav-link" href="productView4.html"> 
+				<a class="nav-link" href="/product/productView_forth"> 
 					<div class="card" style="width: 18rem;">
 					  <img src="../../resources/images/p4.png" class="card-img-top" alt="...">
 					  <div class="card-body">

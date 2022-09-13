@@ -141,6 +141,7 @@
 				  <option selected>구분</option>
 				  <option value="1">수강생</option>
 				  <option value="2">크리에이터</option>
+				  <option value="3">매니저</option>
 			  	</select>
 			</div>
 			<div class="col-6"></div>
@@ -163,12 +164,12 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label">소속회사</label>
-	   			<input type="text" class="form-control" value="" placeholder="소속회사">
+	   			<input type="text" class="form-control" value="<c:out value="${item.company}"/>" placeholder="소속회사">
 	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 크리에이터만 작성해주시길 바랍니다.</small>
 			</div>
 			<div class="col-6">
 				<label class="form-label">크리에이터 활동명</label>
-	   			<input type="text" class="form-control" value="" placeholder="크리에이터 활동명">
+	   			<input type="text" class="form-control" value="<c:out value="${item.creatorNickname}"/>" placeholder="크리에이터 활동명">
 	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 크리에이터만 작성해주시길 바랍니다.</small>
 			</div>
 			<div class="col-6">

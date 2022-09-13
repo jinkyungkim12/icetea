@@ -67,6 +67,8 @@
 			,personalInfo
 			,delNY
 			,regDatetime
+			,company
+			,creatorNickname
 		)
 		VALUES (
 			#{name}
@@ -85,6 +87,8 @@
 			,#{personalInfo}
 			,0
 			,now()
+			,#{company}
+			,#{creatorNickname}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -101,6 +105,8 @@
             ,a.emailInsert
             ,a.phone
             ,a.phone2
+            ,a.company
+            ,a.creatorNickname
 			FROM member a
 			WHERE 1=1
 			AND name = #{name}

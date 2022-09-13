@@ -68,4 +68,5 @@ public class HomeController {
 		public String codeList(Locale locale, Model model) {
 			return "codeList";
 		}
+		
 }
