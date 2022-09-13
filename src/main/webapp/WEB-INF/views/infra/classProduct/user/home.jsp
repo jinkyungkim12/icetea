@@ -163,7 +163,7 @@
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
 				  <div class="container-fluid">
-				    <a class="navbar-brand" href="../product/productList.html">
+				    <a class="navbar-brand" href="/home">
       					<img src="../../resources/images/logo.png" alt="">
 				    </a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,7 +202,7 @@
 										<h5><b>김진경</b></h5>
 									</div>
 								</div>
-								<a href="../mypage/mypage.html" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
 								<div class="row justify-content-center"><a type="button" href="member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
@@ -233,7 +233,7 @@
 	          </ul>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="productBestList.html">BEST</a>
+	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
@@ -416,7 +416,7 @@
 		<div class="row" style="margin-top: 2rem;">
 			<div class="col-4">
 				<img src="../../resources/images/p3_1.png" class="card-img-top" alt="..."><br><br>
-				<a class="ccc" href="product_event.html"><span class="eventTitle">여름내내 시원하게! 3O만원 쿠폰팩 드립니다</span><br></a>
+				<a class="ccc" href="/product/productEvent"><span class="eventTitle">여름내내 시원하게! 3O만원 쿠폰팩 드립니다</span><br></a>
 				<span class="eventDday">D-13</span>
 				<span class="eventDate">7.18 (월) ~ 07.31 (일)</span>
 			</div>

@@ -113,7 +113,7 @@
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
 				  <div class="container-fluid">
-				    <a class="navbar-brand" href="../product/productList.html">
+				    <a class="navbar-brand" href="/home">
       					<img src="../../resources/images/logo.png" alt="">
 				    </a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,10 +168,10 @@
 		<div class="container" style="width: 65%">
 			<div class="row">
 				<div class="col-7">
-					<div style="margin-top:5rem;"><img src="../../resources/images/event1.png"></div>
+					<div style="margin-top:5rem;"><img src="../image/event1.png"></div>
 					<div class="text-center"  style="margin-top: 5rem;"><h1><b>여름 휴가비 쏩니다!<br>30만원 쿠폰팩</h1></b></div>
 					<div class="text-center"  style="margin-top: 2rem;"><h3>무더운 여름,<br>시원하게 통 크게 드려요</h3></div>
-					<div class="text-center" style="margin-top: 3rem;"><img src="../../resources/images/event1_2.png"></div>
+					<div class="text-center" style="margin-top: 3rem;"><img src="../image/event1_2.png"></div>
 					
 					<!-- Modal btn -->
 					<div class="row justify-content-center" style="margin-top: 3rem; height: 4rem;">

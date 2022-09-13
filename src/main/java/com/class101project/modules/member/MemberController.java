@@ -74,5 +74,23 @@ public class MemberController {
 	public String IdPassword() throws Exception {
 		
 		return "infra/member/user/IdPassword";
+	}
+	
+	@RequestMapping(value = "mypageModForm")
+	public String mypageModForm() throws Exception {
+		
+		return "infra/member/user/mypageModForm";
+	}	
+	
+	@RequestMapping(value = "mypage")
+	public String mypage() throws Exception {
+		
+		return "infra/member/user/mypage";
+	}	
+	
+	@RequestMapping(value = "mypageGrade")
+	public String mypageGrade() throws Exception {
+		
+		return "infra/member/user/mypageGrade";
 	}	
 }
