@@ -120,16 +120,19 @@
 		<div class="container">
 			<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드그룹 관리</b></h1></div>
 		</div>
-		<form method="post" action="/codeGroup/codeGroupInst">
+		<form name="form" method="post" action="/codeGroup/codeGroupInst">
+		<!-- <form name="form" method="post" > -->
+		<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 		<div class="container" style="margin-top: 3rem; width: 80%;">
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6">
-					<label class="form-label"><b>코드그룹 코드</b></label>
-		   			<input type="text" class="form-control" value="<c:out value="${item.codeGroupCode}"/>" placeholder="영문(대소문자), 숫자" id="codeGroupCode" name ="codeGroupCode">
+					<label class="form-label"><b>코드그룹 코드(자동생성)</b></label>
+		   			<%-- <input type="text" class="form-control" value="<c:out value="${item.seq}"/>" placeholder="영문(대소문자), 숫자" id="seq" name ="seq"> --%>
+		   			<input type="text" class="form-control" value="<c:out value="${item.seq}"/>" placeholder="영문(대소문자), 숫자" id="seq">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 코드(Another)</b></label>
-		   			<input type="text" class="form-control" value="" placeholder="영문(대소문자), 숫자">
+		   			<input type="text" class="form-control" value="<c:out value="${item.codeGroupCode}"/>"name ="codeGroupCode" id="codeGroupCode" placeholder="영문(대소문자), 숫자">
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>코드그룹 이름(한글)</b></label>
@@ -141,10 +144,9 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>사용여부</b></label>
-				  	<select class="form-select" aria-label="Default select example" name="useNY" id="useNY">
-					  <option value="">Y</option>
-					  <option value="yes">Y</option>
-					  <option value="no">N</option>
+				  	<select class="form-select" aria-label="Default select example" name="cgUseNY" id="useNY">
+					  <option value="1" <c:if test="${item.cgUseNY eq 1 }"> selected</c:if>>Y</option>
+					  <option value="0" <c:if test="${item.cgUseNY eq 0 }"> selected</c:if>>N</option>
 				  	</select>
 				</div>
 				<div class="col-6">
@@ -157,10 +159,9 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label"><b>삭제여부</b></label>
-				  	<select class="form-select" aria-label="Default select example">
-					  <option value="">N</option>
-					  <option value="1">Y</option>
-					  <option value="2">N</option>
+				  	<select class="form-select" name="cgDelNY" aria-label="Default select example">
+					  <option value="1" <c:if test="${item.cgDelNY eq 1 }"> selected</c:if>>Y</option>
+					  <option value="0" <c:if test="${item.cgDelNY eq 0 }"> selected</c:if>>N</option>
 				  	</select>
 				</div>
 				<div class="col-6">
@@ -188,53 +189,6 @@
 					<label class="form-label"><b>예비 3 (int type)</b></label>
 		   			<input type="text" class="form-control" value="" placeholder="숫자">
 				</div>
-				<div class="col-6">
-				<label class="form-label">이메일 수신동의</label>
-				<div class="row" style="margin-left: 10px;">
-					<div class="col-6 form-check">
-					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault1" value="flexRadioDefault1">
-					  <label class="form-check-label" for="flexRadioDefault1">
-					    동의
-					  </label>
-					</div>
-					<div class="col-6 form-check">
-					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault2" value="flexRadioDefault2">
-					  <label class="form-check-label" for="flexRadioDefault2">
-					    비동의
-					  </label>
-					</div>
-					<div class="col-12">
-						<label class="form-label">개인정보 유효기간</label>
-						<div class="row" style="margin-left: 10px;">
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="radio" name="rdrd2" id="rd1" value="rd1">
-							  <label class="form-check-label" for="flexRadioDefault1">
-							    1년
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="radio" name="rdrd2" id="rd2" value="rd1">
-							  <label class="form-check-label" for="flexRadioDefault2">
-							    3년
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="radio" name="rdrd2" id="rd3" value="rd1">
-							  <label class="form-check-label" for="flexRadioDefault3">
-							    10년
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="radio" name="rdrd2" id="rd4" value="rd1">
-							  <label class="form-check-label" for="flexRadioDefault4">
-							    평생회원
-							  </label>
-							</div>
-						</div>
-					</div>
-					<div class="col-6"></div>
-				</div>
-			</div>
 			</div>
 		</div>
 		<div class="container" style="margin-top: 5rem;">
@@ -243,18 +197,18 @@
 		     		<a type="button" class="btn btn-dark" href="/codeGroup/codeGroupList"><i class="fa-solid fa-list"></i></a>
 		    	</div>
 		    	<div class="col-3 text-end">
-		     		<button type="button" class="btn btn-danger" href="/codeGroup/codeGroupList" style="color: white;"><i class="fa-solid fa-x"></i></button>
+		     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
-					<button type="button" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
+					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
 		    
-		    <!-- Modal -->
+		    <!-- 휴지통 Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Class101</h5>
+				        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
 				      <div class="modal-body">
@@ -267,6 +221,26 @@
 				    </div>
 				  </div>
 				</div>
+				
+			 <!-- x버튼 Modal -->
+				<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel2"><b>Class101</b></h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        정말로 삭제하시겠습니까?
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				        <button type="button" class="btn btn-dark">삭제 </button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
 			</div>
 	   </div>
 	   <br>
@@ -284,8 +258,9 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function test() {
+			/* function test() {
 			alert("코드그룹 등록이 완료되었습니다.");
 			
 			alert(document.getElementById('nameKr').value);
@@ -294,14 +269,11 @@
 			
 			alert(document.getElementById('codeGroupCode').value);
 			
-			alert(document.getElementById('useNY').options[document.getElementById('useNY').selectedIndex].value);
+			alert(document.getElementById('useNY').options[document.getElementById('useNY').selectedIndex].value); */
 			
 			/* alert(document.querySelector("input[name='radiobtn']:checked").value); */
 			
-			alert(document.querySelector("input[name='rdrd']:checked").value);
-			alert(document.querySelector("input[name='rdrd2']:checked").value);
-			
-			if(document.getElementById('nameKr').value == '' || document.getElementById('nameKr').value == null){
+			/* if(document.getElementById('nameKr').value == '' || document.getElementById('nameKr').value == null){
 				alert("코드그룹 이름(한글)을 입력해주시기 바랍니다.");
 				document.getElementById('nameKr').value = "";
 				document.getElementById('nameKr').focus();
@@ -323,7 +295,35 @@
 			}
 			
 			return false;
-		}
+		} */
+		
+		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+		var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+		
+		var seq = $("input:hidden[name=seq]");				/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
+
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		// if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		
 	</script>
 </body>
 </html>

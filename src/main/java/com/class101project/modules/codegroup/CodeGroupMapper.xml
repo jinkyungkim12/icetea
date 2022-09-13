@@ -18,7 +18,7 @@
            ,a.name
            ,(select count(b.codeGroup_seq) from code b where b.codeDelNY=0 and b.codeGroup_seq=a.seq)as codeNum
            ,a.cgDelNY
-           ,a.cguseNY
+           ,a.cgUseNY
            ,a.regDate
            ,a.modDate
 		FROM codeGroup a
@@ -52,14 +52,16 @@
 			codeGroupCode
 			,nameKr
 			,name
+			,codeNum
 			,cgDelNY
-			,cguseNY
+			,cgUseNY
 			,regDate
 		)
 		VALUES (
 			#{codeGroupCode}
 			,#{nameKr}
 			,#{name}
+			,#{codeNum}
 			,0
 			,1
 			,now()
@@ -69,12 +71,39 @@
 		</selectKey>
 	</insert>
 	
+	<update id="update">
+		UPDATE codeGroup
+		SET
+			seq = #{seq}
+			,codeGroupCode = #{codeGroupCode}
+			,nameKr = #{nameKr}
+			,name = #{name}
+			,codeNum = #{codeNum}
+			,cgDelNY = #{cgDelNY}
+			,cgUseNY = #{cgUseNY}
+			,modDate = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE codeGroup
+		SET
+			cgDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM codeGroup WHERE seq = #{seq}
+	</delete>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.*
 			FROM codeGroup a
 			WHERE 1=1
-			AND nameKr = #{nameKr}
+			AND seq = #{seq}
 	</select>
 	
 

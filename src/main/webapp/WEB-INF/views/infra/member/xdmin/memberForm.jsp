@@ -198,9 +198,9 @@
 				<div class="input-group">
 				  <select class="form-select col-2" aria-label="Default select example">
 					  <option selected>통신사</option>
-					  <option value="1">SKT</option>
-					  <option value="2">LGT</option>
-					  <option value="3">KT</option>
+					  <option value="1" <c:if test="${item.telCompany eq 1 }"> selected</c:if>>SKT</option>
+					  <option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
+					  <option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 				  </select>
 				  <input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone" value="<c:out value="${item.phone}"/>">
 				</div>
@@ -210,9 +210,9 @@
 				<div class="input-group">
 				  <select class="form-select col-2" aria-label="Default select example" name="">
 					  <option selected>통신사</option>
-					  <option value="1">SKT</option>
-					  <option value="2">LGT</option>
-					  <option value="3">KT</option>
+					  <option value="1" <c:if test="${item.telCompany eq 1 }"> selected</c:if>>SKT</option>
+					  <option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
+					  <option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 				  </select>
 				  <input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone2" value="<c:out value="${item.phone2}"/>">
 				</div>
@@ -224,9 +224,9 @@
 			      	<span class="input-group-text">@</span>
 			      	<select class="form-select" aria-label=".form-select example">
 						<option selected>선택</option>
-						<option value="1">naver.com</option>
-						<option value="2">gmail.com</option>
-						<option value="3">daum.net</option>
+						<option value="28" <c:if test="${item.emailDomain eq 28 }"> selected</c:if>>naver.com</option>
+						<option value="29" <c:if test="${item.emailDomain eq 29 }"> selected</c:if>>gmail.com</option>
+						<option value="30" <c:if test="${item.emailDomain eq 30 }"> selected</c:if>>daum.net</option>
 					</select> 
 		   		</div>
 			</div>
@@ -310,7 +310,53 @@
 			</div>
 		</div>
 	</div>
-	
+	<div class="col-6">
+				<label class="form-label">이메일 수신동의</label>
+				<div class="row" style="margin-left: 10px;">
+					<div class="col-6 form-check">
+					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault1" value="flexRadioDefault1">
+					  <label class="form-check-label" for="flexRadioDefault1">
+					    동의
+					  </label>
+					</div>
+					<div class="col-6 form-check">
+					  <input class="form-check-input" type="radio" name="rdrd" id="flexRadioDefault2" value="flexRadioDefault2">
+					  <label class="form-check-label" for="flexRadioDefault2">
+					    비동의
+					  </label>
+					</div>
+					<div class="col-12">
+						<label class="form-label">개인정보 유효기간</label>
+						<div class="row" style="margin-left: 10px;">
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd1" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault1">
+							    1년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd2" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault2">
+							    3년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd3" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault3">
+							    10년
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="radio" name="rdrd2" id="rd4" value="rd1">
+							  <label class="form-check-label" for="flexRadioDefault4">
+							    평생회원
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class="col-6"></div>
+				</div>
+			</div>
 	
 	<!-- 버튼 -->
 	
@@ -328,5 +374,11 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	function test() {
+		alert(document.querySelector("input[name='rdrd']:checked").value);
+		alert(document.querySelector("input[name='rdrd2']:checked").value);
+	}
+	</script>
 </body>
 </html>

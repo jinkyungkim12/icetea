@@ -13,6 +13,9 @@ public class CodeGroupVo {
 	 private String nameKr;
 	 private String name;
 	 private Integer codeGroupCode;
+
+	 private String seq;
+	 
 	 
 	 
 	public Integer getShCgOption() {
@@ -69,7 +72,11 @@ public class CodeGroupVo {
 	public void setCodeGroupCode(Integer codeGroupCode) {
 		this.codeGroupCode = codeGroupCode;
 	}
-	 
-	 
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	 
 }
