@@ -13,7 +13,8 @@ public class MemberVo {
 	 private Integer shOptionDate;
 	 
 	 private String name;
-
+	 private String seq;
+	 
 	public Integer getShOption() {
 		return shOption;
 	}
@@ -84,6 +85,14 @@ public class MemberVo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
 	
 	 
