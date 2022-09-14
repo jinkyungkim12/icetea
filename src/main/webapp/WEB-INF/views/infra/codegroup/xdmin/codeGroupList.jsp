@@ -146,8 +146,7 @@
 	<div class="container-fluid p-4" style="width: 80%">
 	
 	<!-- <form method="post" action="/codeGroup/codeGroupList"> -->
-	<form method="post">
-	<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+	<form method="post" >
 		<div class="container-fluid" style="margin-top: 3rem;">
 			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
 			<div class="row justify-content-end"  style="margin-top: 3rem;">

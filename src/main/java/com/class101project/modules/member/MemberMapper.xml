@@ -24,12 +24,6 @@
 		      ,a.regDatetime
 		FROM member a
 		WHERE 1=1
-			<!-- AND delNY = 0
-			AND id LIKE CONCAT('%', #{shValue}, '%') -->
-		<!-- select a.*
-		FROM member a
-		WHERE 1=1
-			AND delNY = 0 -->
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
 		<if test="shGender !=null and !shGender.equals('')">AND a.gender = #{shGender}</if>
@@ -94,22 +88,50 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="update">
+		UPDATE member
+		SET
+			,position = #{position}
+			,seq = #{seq}
+			,name = #{name}
+			,id = #{id}
+			,password = #{password}
+			,company = #{company}
+			,creatorNickname = #{creatorNickname}
+			,dob = #{dob}
+			,gender = #{gender}
+			,telCompany = #{telCompany}
+			,phone = #{phone}
+			,phone2 = #{phone2}
+			,emailInsert = #{emailInsert}
+			,emailDomain = #{emailDomain}
+			,mobileNY = #{mobileNY}
+			,emailNY = #{emailNY}
+			,personalInfo = #{personalInfo}
+			,modDate = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE member
+		SET
+			delNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM member WHERE seq = #{seq}
+	</delete>
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
-            ,a.name
-            ,a.id
-            ,a.password
-            ,a.dob
-            ,a.emailInsert
-            ,a.phone
-            ,a.phone2
-            ,a.company
-            ,a.creatorNickname
+			a.*
 			FROM member a
 			WHERE 1=1
-			AND name = #{name}
+			AND seq = #{seq}
 	</select>
 	
 </mapper>

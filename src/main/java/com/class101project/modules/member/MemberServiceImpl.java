@@ -24,6 +24,22 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
+	public int update(Member dto) throws Exception{
+		return dao.update(dto);
+	}
+	
+	@Override
+	public int uelete(Member dto) throws Exception{
+		return dao.uelete(dto);
+	}
+	
+	
+	@Override
+	public int delete(MemberVo vo) throws Exception{
+		return dao.delete(vo);
+	}
+	
+	@Override
 	public Member selectOne(MemberVo vo) throws Exception{
 		Member result = dao.selectOne(vo);
 		System.out.println("service result: " + result);

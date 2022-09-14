@@ -32,4 +32,16 @@ public class MemberDao {
 		return result;
 	}
 	
+	public int update(Member dto) {
+		return sqlSession.update(namespace + ".update", dto);
+	}
+	
+	public int uelete(Member dto) {
+		return sqlSession.update(namespace + ".uelete", dto);
+	}
+	
+	public int delete(MemberVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
+	
 }
