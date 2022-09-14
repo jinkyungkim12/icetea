@@ -94,4 +94,9 @@ public class MemberController {
 		return "infra/member/user/mypageGrade";
 	}	
 	
+	@RequestMapping(value = "dmin_login")
+	public String dmin_login() throws Exception {
+		
+		return "infra/member/xdmin/dmin_login";
+	}	
 }
