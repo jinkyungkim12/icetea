@@ -32,7 +32,11 @@ public class HomeController {
 			
 			return "/infra/classProduct/user/home";
 		}
-	
+		
+		@RequestMapping(value = "/dmin_Home", method = RequestMethod.GET)
+		public String dmin_Home(Locale locale, Model model) {
+			return "/infra/member/xdmin/dmin_Home";
+		}
 		
 		@RequestMapping(value = "/a", method = RequestMethod.GET)
 		public String a(Locale locale, Model model) {

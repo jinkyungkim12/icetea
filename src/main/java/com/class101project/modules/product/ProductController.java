@@ -40,6 +40,16 @@ public class ProductController {
 		public String productEvent(Locale locale, Model model) {
 			return "/infra/classProduct/user/productEvent";
 		}
+		
+		@RequestMapping(value = "productList", method = RequestMethod.GET)
+		public String productList(Locale locale, Model model) {
+			return "/infra/classProduct/xdmin/productList";
+		}
+		
+		@RequestMapping(value = "productRegForm", method = RequestMethod.GET)
+		public String productRegForm(Locale locale, Model model) {
+			return "/infra/classProduct/xdmin/productRegForm";
+		}
 					
 				
 }
