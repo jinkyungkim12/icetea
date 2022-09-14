@@ -11,6 +11,7 @@ public class CodeVo {
 	private Integer shOptionDate;
 	
 	private String codeNameKr;
+	private String seq;
 
 	public Integer getShOption() {
 		return shOption;
@@ -67,5 +68,14 @@ public class CodeVo {
 	public void setCodeNameKr(String codeNameKr) {
 		this.codeNameKr = codeNameKr;
 	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	
 	
 }

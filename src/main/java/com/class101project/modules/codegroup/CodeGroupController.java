@@ -16,9 +16,8 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
-
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShCgValue(): " + vo.getShCgValue());
 		System.out.println("vo.getShCgOption(): " + vo.getShCgOption());

@@ -48,7 +48,8 @@
 
 	<insert id="insert">
 		INSERT INTO code(
-			codeGroup_seq
+			seq
+			,codeGroup_seq
 			,codeNameKr
 			,codeName
 			,codeUseNY
@@ -56,7 +57,8 @@
 			,codeRegDate
 		)
 		VALUES (
-			 #{codeGroup_seq}
+			#{seq}		
+			,#{codeGroup_seq}
 			,#{codeNameKr}
 			,#{codeName}
 			,1
@@ -68,12 +70,38 @@
 		</selectKey>
 	</insert>
 	
+	<update id="update">
+		UPDATE code
+		SET
+			seq = #{seq}
+			,codeGroup_seq = #{codeGroup_seq}
+			,codeNameKr = #{codeNameKr}
+			,codeName = #{codeName}
+			,codeUseNY = #{codeUseNY}
+			,codeDelNY = #{codeDelNY}
+			,codeModDate = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE code
+		SET
+			codeDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM code WHERE seq = #{seq}
+	</delete>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.*
 			FROM code a
 			WHERE 1=1
-			AND codeNameKr = #{codeNameKr}
+			AND seq = #{seq}
 	</select>
 		
 </mapper>

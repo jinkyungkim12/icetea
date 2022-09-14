@@ -145,7 +145,8 @@
 	<div><img src="../../resources/images/back2.jpg"></div>
 	<div class="container-fluid p-4" style="width: 80%">
 	
-	<form method="post" action="/codeGroup/codeGroupList">
+	<!-- <form method="post" action="/codeGroup/codeGroupList"> -->
+	<form method="post">
 	<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 		<div class="container-fluid" style="margin-top: 3rem;">
 			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
@@ -187,8 +188,8 @@
 					<input type="text" id="shCgValue" name="shCgValue" value="<c:out value="${vo.shCgValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
-				 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+				 	<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
 			</div>		
 		</div>
@@ -327,6 +328,7 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -363,6 +365,25 @@
 		    showMonthAfterYear: true,
 		    yearSuffix: '년'
 		});
+	</script>
+	<script type="text/javascript">
+	
+		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+		var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+	
+  		$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
+		});
+		
 	</script>
 </body>
 </html>

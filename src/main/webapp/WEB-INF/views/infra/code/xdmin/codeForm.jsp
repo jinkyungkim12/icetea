@@ -120,24 +120,18 @@
 	<div class="container">
 		<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드 관리</b></h1></div>
 	</div>
-	<form method="post" action="/code/codeInst">
+	<form method="post" name="form" action="/code/codeInst">
+	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 	<div class="container" style="margin-top: 3rem; width: 80%;">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-6">
-				<label class="form-label"><b>사용여부</b></label>
-			  	<select class="form-select" aria-label="Default select example">
-				  <option selected>선택하세요</option>
-				  <option value="1">Y</option>
-				  <option value="2">N</option>
-			  	</select>
+				<label class="form-label"><b>코드 번호</b></label>
+	   			<input type="text" class="form-control" value="<c:out value="${item.seq}"/>" id="seq" placeholder="">
 			</div>
-			<div class="col-6">
-				<label class="form-label"><b>코드</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="">
-			</div>
+			<div class="col-6"></div>
 			<div class="col-6">
 				<label class="form-label"><b>코드그룹</b></label>
-	   			<input type="text" class="form-control" value="" placeholder="자동생성" disabled>
+	   			<input type="text" class="form-control" value="<c:out value="${item.codeGroup_seq}"/>" name="codeGroup_seq" id="codeGroup_seq" placeholder="자동생성" disabled>
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>코드그룹 번호</b></label>
@@ -153,11 +147,10 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>사용여부</b></label>
-			  	<select class="form-select" aria-label="Default select example">
-				  <option selected>Y</option>
-				  <option value="1">Y</option>
-				  <option value="2">N</option>
-			  	</select>
+			  	<select class="form-select" aria-label="Default select example" name="codeUseNY" id="codeuseNY">
+					  <option value="1" <c:if test="${item.codeUseNY eq 1 }"> selected</c:if>>Y</option>
+					  <option value="0" <c:if test="${item.codeUseNY eq 0 }"> selected</c:if>>N</option>
+				</select>
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>순서</b></label>
@@ -169,10 +162,9 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label"><b>삭제여부</b></label>
-			  	<select class="form-select" aria-label="Default select example">
-				  <option selected>N</option>
-				  <option value="1">Y</option>
-				  <option value="2">N</option>
+			  	<select class="form-select" aria-label="Default select example" name="codeDelNY">
+				  <option value="1" <c:if test="${item.codeDelNY eq 1 }"> selected</c:if>>Y</option>
+				  <option value="0" <c:if test="${item.codeDelNY eq 0 }"> selected</c:if>>N</option>
 			  	</select>
 			</div>
 			<div class="col-6">
@@ -210,18 +202,37 @@
 	     		
 	    	</div>
 	    	<div class="col-3 text-end">
-	     		<button type="button" class="btn btn-danger" href="/code/codeList" style="color: white;"><i class="fa-solid fa-x"></i></button>
-				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
-				<button type="button" class="btn btn-success" onClick="test();"><i class="fa-solid fa-bookmark"></i></button>
-	    	</div>
-	    </div>
-	    
-	    
-	    <!-- Modal -->
+		     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
+					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
+		    	</div>
+		    </div>
+		    
+	    <!-- 휴지통 Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        정말로 삭제하시겠습니까?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-dark">삭제 </button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+		 <!-- x버튼 Modal -->
+			<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel2"><b>Class101</b></h5>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
@@ -239,13 +250,21 @@
    <br>
    <br>
    </form>
-	
+   
+   <c:forEach items="${list}" var="list" varStatus="status">
+		<c:out value="${list.seq }"/>/
+		<c:out value="${list.codeGroup_seq }"/>/
+		<c:out value="${list.nameKr }"/>/
+		<c:out value="${list.codeNameKr }"/>/
+	</c:forEach>
+
 		
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function test() {
+		/* function test() {
 			alert("코드 등록이 완료되었습니다.");
 			
 			alert(document.getElementById('codeGroup_seq').value);
@@ -274,10 +293,34 @@
 				document.getElementById('codeName').value = "";
 				document.getElementById('codeName').focus();
 				
-			}
+			} */
 			
-			return false;
-		}
+			var goUrlList = "/code/codeList"; 			/* #-> */
+			var goUrlInst = "/code/codeInst"; 			/* #-> */
+			var goUrlUpdt = "/code/codeUpdt";			/* #-> */
+			var goUrlUele = "/code/codeUele";			/* #-> */
+			var goUrlDele = "/code/codeDele";			/* #-> */
+			
+			var seq = $("input:hidden[name=seq]");				/* #-> */
+			
+			var form = $("form[name=form]");
+			var formVo = $("form[name=formVo]");
+			
+			
+			$("#btnSave").on("click", function(){
+				if (seq.val() == "0" || seq.val() == ""){
+			   		// insert
+			   		// if (validationInst() == false) return false;
+			   		form.attr("action", goUrlInst).submit();
+			   	} else {
+			   		// update
+			   		/* keyName.val(atob(keyName.val())); */
+			   		// if (validationUpdt() == false) return false;
+			   		form.attr("action", goUrlUpdt).submit();
+			   	}
+			}); 
+			
+			
 	</script>
 </body>
 </html>

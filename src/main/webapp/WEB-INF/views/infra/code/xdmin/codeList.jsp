@@ -188,8 +188,11 @@
 					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
-				 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+				 	<!-- <button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button> -->
+				
+					<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
 			</div>
 		</form>	
@@ -245,7 +248,7 @@
 							<td><c:out value="${list.nameKr }"/></td>
 							<td><c:out value="${list.code }"/></td>
 							<td><c:out value="${list.codeAnother }"/></td>
-							<td><a href="/code/codeView?codeNameKr=<c:out value="${list.codeNameKr}"/>"><c:out value="${list.codeNameKr}"/></a></td>
+							<td><a href="/code/codeForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.codeNameKr}"/></a></td>
 							<td><c:out value="${list.codeName }"/></td>
 							<td>
 								<c:choose>
@@ -328,6 +331,7 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -364,6 +368,23 @@
 		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 		    showMonthAfterYear: true,
 		    yearSuffix: '년'
+		});
+	</script>
+	<script type="text/javascript">
+		var goUrlList = "/code/codeList"; 			/* #-> */
+		var goUrlInst = "/code/codeInst"; 			/* #-> */
+		var goUrlUpdt = "/code/codeUpdt";				/* #-> */
+		var goUrlUele = "/code/codeUele";				/* #-> */
+		var goUrlDele = "/code/codeDele";				/* #-> */
+	
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+	
+			$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
 		});
 	</script>
 	
