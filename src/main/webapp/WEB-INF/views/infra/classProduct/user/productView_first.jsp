@@ -383,7 +383,7 @@
 					<div id="reviewHead"><h3>실제 수강생들의<br>생생한 스토리</h3></div>
 					<div style="margin-top: 3rem"><img src="../../resources/images/review.png"></div>
 					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
-					<div class="text-end"><a type="button" href="../review/reviewRegForm.html" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
+					<div class="text-end"><a type="button" href="/review/reviewForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
 					<div class="row">
 						<div class="col-3" id="star1">												
 							<i class="fa-solid fa-star"></i>
@@ -768,7 +768,7 @@
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-gift"></i> 선물하기</a>
 						</div>
 						<div class="row justify-content-center">
-							<a type="button" href="../order/orderRegForm_option.html" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
+							<a type="button" href="/order/orderRegFormOption" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
 						</div>	
 					</div>
 				</div>	

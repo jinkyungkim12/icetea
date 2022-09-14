@@ -1,6 +1,5 @@
 package com.class101project.modules.product;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
