@@ -110,28 +110,28 @@
 	      <div class="offcanvas-body">
 	        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./member/dmin_List.html">회원관리</a>
+	            <a class="nav-link bbb" href="/member/memberList">회원관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./product/dmin_product.html">클래스관리</a>
+	            <a class="nav-link bbb" href="/product/productList">클래스관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./review/dmin_review.html">리뷰관리</a>
+	            <a class="nav-link bbb" href="/review/reviewList">리뷰관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./order/dmin_order.html">주문관리</a>
+	            <a class="nav-link bbb" href="/order/orderList">주문관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeGroupList">코드그룹관리</a>
+	            <a class="nav-link bbb" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeList">코드관리</a>
+	            <a class="nav-link bbb" href="/code/codeList">코드관리</a>
 	          </li>
 	        </ul>
 	        <div class="text-center">
 		         <ul class="navbar-nav" style="margin-top: 3rem;">
 			      <li class="nav-item justify-content-end">
-			        <a type="button" class="nav-link btn btn-warining" href="../../dmin/loginForm.html" style="background-color: #F87320; color: white;">logout</a>
+			        <a type="button" class="nav-link btn btn-warining" href="/member/memberLogin" style="background-color: #F87320; color: white;">logout</a>
 			      </li>
 			     </ul>
 		     </div>
@@ -192,7 +192,6 @@
 				</div>
 			</div>		
 		</div>
-	</div>
 	</form>
 
 		<!-- List -->
@@ -327,7 +326,7 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -348,24 +347,6 @@
 		}
 	</script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			 $("input.shDate").datepicker();
-		}); 
-	
-		$.datepicker.setDefaults({
-		    dateFormat: 'yy-mm-dd',
-		    prevText: '이전 달',
-		    nextText: '다음 달',
-		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		    showMonthAfterYear: true,
-		    yearSuffix: '년'
-		});
-	</script>
-	<script type="text/javascript">
 	
 		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 		var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
@@ -383,6 +364,24 @@
 			$(location).attr("href", goUrlList);
 		});
 		
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			 $("input.shDate").datepicker();
+		}); 
+	
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
 	</script>
 </body>
 </html>

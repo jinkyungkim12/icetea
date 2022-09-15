@@ -70,7 +70,7 @@ public class CodeController {
 		
 		service.delete(vo);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/code/codeist";
+		return "redirect:/code/codeList";
 	}
 	
 	

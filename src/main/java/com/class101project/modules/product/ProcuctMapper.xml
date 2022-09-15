@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--2. mapper .xml -->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.class101project.modules.product.ProductMapper">
+<!-- code -> codegroup -->
+    <resultMap id="resultMapObj" type="com.class101project.modules.product.Product"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.*
+		from classProduct a
+		 WHERE 1=1
+		
+		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.classDelNY = #{shDelNY}</if>
+		<if test="shValue != null"></if>
+		
+		
+		<choose>
+			<when test="shOption == 1">AND a.category LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 2">AND a.title LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 3">AND a.classDiv LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 4">AND a.price = #{shValue}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.classReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.classMod BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+		
+	</select>
+
+	<insert id="insert">
+		INSERT INTO classProduct(
+			classDelNY
+			,category
+			,classDiv
+			,title
+			,price
+			,discountRate
+			,payMonth
+			,classAmount
+			,dateNY
+			,subtitleNY
+			,kitNY
+			,classInfo
+			,curriculum
+			,classReg
+		)
+		VALUES (
+			0		
+			,#{category}
+			,#{classDiv}
+			,#{title}
+			,#{price}
+			,#{discountRate}
+			,#{payMonth}
+			,#{classAmount}
+			,#{dateNY}
+			,#{subtitleNY}
+			,#{kitNY}
+			,#{classInfo}
+			,#{curriculum}
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE classProduct
+		SET
+			seq = #{seq}
+			,classDelNY = #{classDelNY}
+			,category = #{category}
+			,classDiv = #{classDiv}
+			,title = #{title}
+			,price = #{price}
+			,discountRate = #{discountRate}
+			,payMonth = #{payMonth}
+			,classAmount = #{classAmount}
+			,dateNY = #{dateNY}
+			,subtitleNY = #{subtitleNY}
+			,kitNY = #{kitNY}
+			,classInfo = #{classInfo}
+			,curriculum = #{curriculum}
+			,classMod = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE classProduct
+		SET
+			classDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM classProduct WHERE seq = #{seq}
+	</delete>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.*
+			FROM classProduct a
+			WHERE 1=1
+			AND seq = #{seq}
+	</select>
+		
+</mapper>

@@ -5,20 +5,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
-<html>
+<html> 
 <head>
-	<title>ProductList</title>
+	<title>Product List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap extra CSS -->    
     <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
+    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
     <!-- user css -->
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 	<style type="text/css">
 		.aaa:link {
@@ -81,6 +87,12 @@
 		.nav-link:focus, .nav-link:hover {
 		  color: #F7670E;
 		}
+		a {
+	   	color: #000000;
+	    }
+	    a:focus, a:hover{
+	    	color: #F7670E;
+	    }
 	</style>
 </head>
 <body>
@@ -101,22 +113,22 @@
 	      <div class="offcanvas-body">
 	        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="../member/dmin_List.html">회원관리</a>
+	            <a class="nav-link bbb" href="/member/memberList">회원관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="dmin_product.html">클래스관리</a>
+	            <a class="nav-link bbb" href="/product/productList">클래스관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="../review/dmin_review.html">리뷰관리</a>
+	            <a class="nav-link bbb" href="/review/reviewList">리뷰관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="../order/dmin_order.html">주문관리</a>
+	            <a class="nav-link bbb" href="/order/orderList">주문관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="../../dmin/codeGroup.html">코드그룹관리</a>
+	            <a class="nav-link bbb" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="../../dmin/code.html">코드관리</a>
+	            <a class="nav-link bbb" href="/code/codeList">코드관리</a>
 	          </li>
 	        </ul>
 	        <div class="text-center">
@@ -134,60 +146,76 @@
 	
 	
 	<div><img src="../../resources/images/back2.jpg"></div>
-	
+	<div class="container-fluid p-4" style="width: 90%">
 	
 	<!-- 검색조건 -->
-	
-	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
+	<!-- <form method="post" action="/product/productList"> -->
+	<form method="post">
+	<div class="container-fluid" style="margin-top: 3rem;">
 		<div class="text-center"><h1><b>클래스관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 3rem;">
 			<div class="col-2">
-				<select class="form-select col-2" aria-label="Default select example">
-				  <option selected>삭제여부</option>
+				<select id="shDelNY" name="shDelNY" class="form-select col-2">
+				  <option value="">삭제여부</option>
+				  <option value="0">N</option>
 				  <option value="1">Y</option>
-				  <option value="2">N</option>
 				</select>
 			</div>
 			<div class="col-2">
-				<select class="form-select col-2" aria-label="Default select example">
-				  <option selected>선택</option>
+				<select class="form-select col-2" name="shOptionDate">
+				  <option value="">선택</option>
 				  <option value="1">등록일</option>
 				  <option value="2">수정일</option>
 				</select>
 			</div>
 			<div class="col-2">
-				<input type="date" class="form-control" value="2020-01-01" aria-label="Recipient's username with two button addons">
+				<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
 			</div>
 			<div class="col-2">
-				<input type="date" class="form-control" value="2022-07-01" aria-label="Recipient's username with two button addons">
+				<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid p-4" style="width: 90%">
+	<div class="container-fluid p-4">
 		<div class="row justify-content-end">
 			<div class="col-2">
-				<select class="form-select" aria-label="Default select example">
-				  <option selected>검색구분</option>
-				  <option value="1">카테고리</option>
-				  <option value="2">강의제목</option>
-				  <option value="3">구분</option>
-				  <option value="4">정가</option>
+				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
+				  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+				  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
+				  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
+				  <option value="3" <c:if test="${vo.shOption eq 3}">selected </c:if>>구분</option>
+				  <option value="4" <c:if test="${vo.shOption eq 4}">selected </c:if>>정가</option>
 				</select>
 			</div>
 			<div class="col-4">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+				<input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 			</div>
 			<div class="col-2">
-			 	<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-				<button class="btn btn-outline-dark" type="button"><i class="fa-solid fa-rotate-left"></i></button>
+			 	<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+				<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
 			</div>
 		</div>
 	</div>
+	</form>
 		
 		
 	<!--class List -->
 	
-	<div class="container-fluid text-center" style="width: 90%">
+	<div class="container-fluid">
+		<div class="row justify-content-between">
+			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
+			<div class="col-1 text-end">
+				<select class="form-select" aria-label="Default select example">
+				  <option selected>10</option>
+				  <option value="1">10</option>
+				  <option value="2">20</option>
+				  <option value="3">30</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid text-center" style="margin-top: 0.5rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
@@ -211,38 +239,69 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						<input class="check" type="checkbox" name="check">
-					</td>
-					<th scope="row">1</th>
-					<td><a class="aaa" href="dmin_product_View.html">유랑</a></td>
-					<td>오늘의 특가! TIME DEAL</td>
-					<td>무명 이모티콘 작가..</td>
-					<td>40%</td>
-					<td>300,000원</td>
-					<td>5개월</td>
-					<td>12개 챕터, 45개 세부강의</td>
-					<td>Y</td>
-					<td>Y</td>
-					<td>Y</td>
-					<td>N</td>
-					<td>2021.01.01 14:00:05</td>
-					<td>2021.01.31 14:00:00</td>
-				</tr>
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+						<td class="text-center" colspan="15">There is no data!</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="list" varStatus="status">
+						<tr>
+							<td>
+								<input class="check" type="checkbox" name="check">
+							</td>
+							<th scope="row"><c:out value="${list.seq }"/></th>
+							<td><a href="/product/productForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.category}"/></a></td>
+							<td><c:out value="${list.classDiv }"/></td>
+							<td><c:out value="${list.title }"/></td>
+							<td><c:out value="${list.discountRate }"/></td>
+							<td><c:out value="${list.price }"/></td>
+							<td><c:out value="${list.payMonth }"/></td>
+							<td><c:out value="${list.classAmount }"/></td>
+							<td>
+								<c:choose>
+									<c:when test="${list.dateNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${list.subtitleNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${list.kitNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${list.classDelNY eq 0}">N</c:when>
+									<c:otherwise>Y</c:otherwise>
+								</c:choose>
+							</td>
+							<td><c:out value="${list.classReg }"/></td>
+							<td><c:out value="${list.classMod }"/></td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 			</tbody>
 		</table>
 	</div>
 		
-	<div class="container-fluid" style="width:90%">
+	<div class="container-fluid">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
-	     		<a type="button" class="btn btn-dark" onclick='deleteRow(-1)'><i class="fa-solid fa-circle-minus"></i></a>
+	     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
-	     		<a type="button" class="btn btn-dark" href="dmin_product_RegForm.html" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-				<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-plus"></i></button>
+	     		<a type="button" class="btn btn-dark" href="product/productForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
+				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 	    	</div>
 	    </div>	
    </div>
@@ -285,11 +344,12 @@
 	    </div>
 	  </div>
 	</div>
-	
+	</div>
 		
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -308,6 +368,43 @@
 		  // 행(Row) 삭제
 		  const newRow = table.deleteRow(rownum);
 		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			 $("input.shDate").datepicker();
+		}); 
+	
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
+	</script>
+	<script type="text/javascript">
+	
+		var goUrlList = "/product/productList"; 			/* #-> */
+		var goUrlInst = "/product/productInst"; 			/* #-> */
+		var goUrlUpdt = "/product/productUpdt";				/* #-> */
+		var goUrlUele = "/product/productUele";				/* #-> */
+		var goUrlDele = "/product/productDele";				/* #-> */
+
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+	
+  		$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
+		});
+		
 	</script>
 </body>
 </html>
