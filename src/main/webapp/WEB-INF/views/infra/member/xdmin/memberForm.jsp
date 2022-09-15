@@ -183,7 +183,7 @@
 			<div class="col-6">
 				<label class="form-label">성별</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-3 form-check">
+					<div class="col-3 form-check" name="gender">
 					  <input class="form-check-input" type="radio" value="4" <c:if test="${item.gender eq 4 }"> selected</c:if>" name="gender" id="rd1v1">
 					  <label class="form-check-label" for="rd1v1">
 					    남성
@@ -252,7 +252,7 @@
 			<div class="col-3">
 				<label class="form-label">모바일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-6 form-check">
+					<div class="col-6 form-check" name="mobileNY">
 					  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> selected</c:if>" id="flexRadioDefault1">
 					  <label class="form-check-label" for="flexRadioDefault1">
 					    동의
@@ -269,7 +269,7 @@
 			<div class="col-3">
 				<label class="form-label">이메일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-6 form-check">
+					<div class="col-6 form-check" name="emailNY">
 					  <input class="form-check-input" type="radio" name="emailNY" value="1" <c:if test="${item.emailNY eq 1 }"> selected</c:if>" id="flexRadioDefault1" >
 					  <label class="form-check-label" for="flexRadioDefault1">
 					    동의
@@ -286,7 +286,7 @@
 			<div class="col-6">
 				<label class="form-label">개인정보 유효기간</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-3 form-check">
+					<div class="col-3 form-check" name="personalInfo">
 					  <input class="form-check-input" type="radio" name="personalInfo" value="18" <c:if test="${item.personalInfo eq 18 }"> selected</c:if>" id="flexRadioDefault1">
 					  <label class="form-check-label" for="flexRadioDefault1">
 					    1년

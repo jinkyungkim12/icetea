@@ -92,7 +92,7 @@
 	<update id="update">
 		UPDATE member
 		SET
-			,position = #{position}
+			position = #{position}
 			,seq = #{seq}
 			,name = #{name}
 			,id = #{id}
@@ -109,7 +109,6 @@
 			,mobileNY = #{mobileNY}
 			,emailNY = #{emailNY}
 			,personalInfo = #{personalInfo}
-			,modDate = now()
 		WHERE
 			seq = #{seq}
 	</update>
