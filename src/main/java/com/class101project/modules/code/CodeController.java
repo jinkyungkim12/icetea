@@ -17,15 +17,22 @@ public class CodeController {
 	CodeServiceImpl service;
 	
 	
+	public void setSearchAndPaging(CodeVo vo) throws Exception{
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "codeList")
 	public String codeGroupList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		System.out.println("vo.getShCodeDelNY(): " + vo.getShCodeDelNY());
+		setSearchAndPaging(vo);
 		
-		List<Code> list = service.selectList(vo);
-		model.addAttribute("list", list);
+		if (vo.getTotalRows() > 0) {
+			List<Code> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
 		
 		return "infra/code/xdmin/codeList";
 	}

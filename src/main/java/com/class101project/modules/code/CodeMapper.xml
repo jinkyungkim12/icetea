@@ -10,20 +10,8 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.code.Code"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.seq
-			,a.codeGroup_seq
-			,b.nameKr
-			,a.code
-			,a.codeAnother
-			,a.codeNameKr
-			,a.codeName
-			,a.codeUseNY
-			,a.codeDelNY
-			,a.order
-			,a.codeRegDate
-			,a.codeModDate
+	<!-- paging -->
+	<sql id ="selectCommon">
 		from code a 
 		left join codeGroup b on b.seq = a.codeGroup_seq
 		 WHERE 1=1
@@ -43,7 +31,31 @@
 			<when test="shOptionDate == 1">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			<when test="shOptionDate == 2">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
-		
+	</sql>
+	
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq
+			,a.codeGroup_seq
+			,b.nameKr
+			,a.code
+			,a.codeAnother
+			,a.codeNameKr
+			,a.codeName
+			,a.codeUseNY
+			,a.codeDelNY
+			,a.order
+			,a.codeRegDate
+			,a.codeModDate
+			<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 
 	<insert id="insert">
@@ -103,5 +115,7 @@
 			WHERE 1=1
 			AND seq = #{seq}
 	</select>
+		
+	
 		
 </mapper>

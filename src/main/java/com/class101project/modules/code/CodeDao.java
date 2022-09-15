@@ -44,4 +44,5 @@ public class CodeDao {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
 	
+	public int selectOneCount(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 }

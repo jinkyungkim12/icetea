@@ -147,7 +147,9 @@
 	<div class="container-fluid p-4" style="width: 90%">
 
 	<!-- 세 번째 -->
-	<form method="post" action="/code/codeList">
+	<form method="post" action="/code/codeList" name="formList">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 		<div class="container-fluid" style="margin-top: 3rem;">
 			<div class="text-center ccc"><h1><b>코드 관리</b></h1></div>
 			<div class="row justify-content-end" style="margin-top: 3rem;">
@@ -286,7 +288,7 @@
 			    </div>
 		   </div>
 	
-			<div class="container p-10">
+			<!-- <div class="container p-10">
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
 				    <li class="page-item">
@@ -304,7 +306,11 @@
 				    </li>
 				  </ul>
 				</nav>
-			</div>
+			</div> -->
+			
+			<!-- pagination s -->
+			<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+			<!-- pagination e -->
 		
 		<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -377,6 +383,7 @@
 		var goUrlUele = "/code/codeUele";				/* #-> */
 		var goUrlDele = "/code/codeDele";				/* #-> */
 	
+		var form = $("form[name=formList]");  
 		
 		$("#btnSearch").on("click", function(){
 			if(validationList() == false) return false;
@@ -386,6 +393,12 @@
 			$("#btnReset").on("click", function(){
 			$(location).attr("href", goUrlList);
 		});
+			
+		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
 	</script>
 	
 </body>
