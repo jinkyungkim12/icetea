@@ -93,6 +93,9 @@
 	    a:focus, a:hover{
 	    	color: #F7670E;
 	    }
+	    table, td, th{
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
@@ -146,11 +149,11 @@
 	
 	
 	<div><img src="../../resources/images/back2.jpg"></div>
-	<div class="container-fluid p-4" style="width: 90%">
+	<div class="container-fluid p-4" style="width: 99%">
 	
 	<!-- 검색조건 -->
 	<!-- <form method="post" action="/product/productList"> -->
-	<form method="post">
+	<form method="post" action="/product/productList" name="formList">
 	<div class="container-fluid" style="margin-top: 3rem;">
 		<div class="text-center"><h1><b>클래스관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 3rem;">
@@ -300,7 +303,7 @@
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
-	     		<a type="button" class="btn btn-dark" href="product/productForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
+	     		<a type="button" class="btn btn-dark" href="/product/productForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
 				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 	    	</div>
 	    </div>	

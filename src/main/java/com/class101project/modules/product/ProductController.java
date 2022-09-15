@@ -79,42 +79,42 @@ public class ProductController {
 	
 		@RequestMapping(value = "productView_first", method = RequestMethod.GET)
 		public String productView_first(Locale locale, Model model) {
-			return "/infra/classProduct/user/productView_first";
+			return "/infra/product/user/productView_first";
 		}
 		
 		@RequestMapping(value = "productView_second", method = RequestMethod.GET)
 		public String productView_second(Locale locale, Model model) {
-			return "/infra/classProduct/user/productView_second";
+			return "/infra/product/user/productView_second";
 		}
 		
 		@RequestMapping(value = "productView_third", method = RequestMethod.GET)
 		public String productView_third(Locale locale, Model model) {
-			return "/infra/classProduct/user/productView_third";
+			return "/infra/product/user/productView_third";
 		}
 		
 		@RequestMapping(value = "productView_forth", method = RequestMethod.GET)
 		public String productView_forth(Locale locale, Model model) {
-			return "/infra/classProduct/user/productView_forth";
+			return "/infra/product/user/productView_forth";
 		}
 		
 		@RequestMapping(value = "productBestList", method = RequestMethod.GET)
 		public String productBestList(Locale locale, Model model) {
-			return "/infra/classProduct/user/productBestList";
+			return "/infra/product/user/productBestList";
 		}
 		
 		@RequestMapping(value = "productEvent", method = RequestMethod.GET)
 		public String productEvent(Locale locale, Model model) {
-			return "/infra/classProduct/user/productEvent";
+			return "/infra/product/user/productEvent";
 		}
 		
 		@RequestMapping(value = "productList", method = RequestMethod.GET)
 		public String productList(Locale locale, Model model) {
-			return "/infra/classProduct/xdmin/productList";
+			return "/infra/product/xdmin/productList";
 		}
 		
 		@RequestMapping(value = "productForm", method = RequestMethod.GET)
 		public String productRegForm(Locale locale, Model model) {
-			return "/infra/classProduct/xdmin/productForm";
+			return "/infra/product/xdmin/productForm";
 		}
 					
 				
