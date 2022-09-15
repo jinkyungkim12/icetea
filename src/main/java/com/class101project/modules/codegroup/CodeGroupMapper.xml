@@ -7,7 +7,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.class101project.modules.codegroup.CodeGroupMapper">
-<!-- code -> codegroup -->
+
     <resultMap id="resultMapObj" type="com.class101project.modules.codegroup.CodeGroup"></resultMap>
 	 
 	<select id="selectList" resultMap="resultMapObj">
@@ -23,20 +23,13 @@
            ,a.modDate
 		FROM codeGroup a
 		WHERE 1=1
-		<!-- AND delNY = 0 -->
-		<!-- AND nameKr LIKE CONCAT('%', #{shValue}, '%') -->	
-			<!-- SELECT 
-				a.*
-			FROM chooseTest a
-			WHERE 1=1
-				AND delNY = 0 -->
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.cgDelNY = #{shDelNY}</if>
 		<if test="shCgValue != null"></if>
 		
 		<choose>
-			<when test="shCgOption == 1">AND a.seq = #{shCgValue}</when> <!-- seq: = #{shValue} -->
-			<when test="shCgOption == 2">AND a.nameKr LIKE CONCAT('%', #{shCgValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+			<when test="shCgOption == 1">AND a.seq = #{shCgValue}</when>
+			<when test="shCgOption == 2">AND a.nameKr LIKE CONCAT('%', #{shCgValue},'%')</when>
 			<when test="shCgOption == 3">AND a.name LIKE CONCAT('%', #{shCgValue},'%')</when>
 		</choose>
 		
@@ -49,7 +42,8 @@
 	
 	<insert id="insert">
 		INSERT INTO codeGroup(
-			codeGroupCode
+			seq
+			,codeGroupCode
 			,nameKr
 			,name
 			,codeNum
@@ -58,7 +52,8 @@
 			,regDate
 		)
 		VALUES (
-			#{codeGroupCode}
+			#{seq}
+			,#{codeGroupCode}
 			,#{nameKr}
 			,#{name}
 			,#{codeNum}
@@ -87,15 +82,15 @@
 	</update>
 	
 	<update id="uelete">
-		UPDATE codeGroup a
+		UPDATE codeGroup
 		SET
-			a.cgDelNY = 1
-		WHERE
-			a.seq = #{seq}
+			cgDelNY = 1
+		WHERE 1=1 
+			AND seq = #{seq}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM codeGroup a WHERE a.seq = #{seq}
+		DELETE FROM codeGroup WHERE 1=1 AND seq = #{seq}
 	</delete>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -103,7 +98,7 @@
 			a.*
 			FROM codeGroup a
 			WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 
