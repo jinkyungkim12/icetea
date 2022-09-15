@@ -203,6 +203,25 @@
 		    	</div>
 		    </div>
 		    
+		     <!-- x버튼 Modal -->
+				<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel2"><b>Class101</b></h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        정말로 삭제하시겠습니까?
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				        <button type="button" class="btn btn-dark" id="btnUelete">삭제 </button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		    
 		    <!-- 휴지통 Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
@@ -216,30 +235,12 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-				        <button type="button" class="btn btn-dark">삭제 </button>
+				        <button type="button" class="btn btn-dark" id="btnDelete">삭제 </button>
 				      </div>
 				    </div>
 				  </div>
 				</div>
-				
-			 <!-- x버튼 Modal -->
-				<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel2"><b>Class101</b></h5>
-				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				      </div>
-				      <div class="modal-body">
-				        정말로 삭제하시겠습니까?
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-				        <button type="button" class="btn btn-dark">삭제 </button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
+			
 			</div>
 	   </div>
 	   <br>
@@ -257,7 +258,7 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 	<script type="text/javascript">
 			/* function test() {
 			alert("코드그룹 등록이 완료되었습니다.");
@@ -322,6 +323,13 @@
 		   	}
 		}); 
 		
+		$("#btnUelete").on("click", function(){
+			form.attr("action", goUrlUele).submit();
+		}
+		
+		$("#btnDelete").on("click", function(){
+			form.attr("action", goUrlDele).submit();
+		}
 		
 	</script>
 </body>

@@ -87,15 +87,15 @@
 	</update>
 	
 	<update id="uelete">
-		UPDATE codeGroup
+		UPDATE codeGroup a
 		SET
-			cgDelNY = 1
+			a.cgDelNY = 1
 		WHERE
-			seq = #{seq}
+			a.seq = #{seq}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM codeGroup WHERE seq = #{seq}
+		DELETE FROM codeGroup a WHERE a.seq = #{seq}
 	</delete>
 	
 	<select id="selectOne" resultMap="resultMapObj">

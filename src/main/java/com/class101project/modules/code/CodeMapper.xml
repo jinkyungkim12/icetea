@@ -60,8 +60,7 @@
 
 	<insert id="insert">
 		INSERT INTO code(
-			seq
-			,codeGroup_seq
+			codeGroup_seq
 			,codeNameKr
 			,codeName
 			,codeUseNY
@@ -69,8 +68,7 @@
 			,codeRegDate
 		)
 		VALUES (
-			#{seq}		
-			,#{codeGroup_seq}
+			#{codeGroup_seq}
 			,#{codeNameKr}
 			,#{codeName}
 			,1
