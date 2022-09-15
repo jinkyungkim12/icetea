@@ -18,7 +18,11 @@ public class ProductDao {
 	
 	private static String namespace = "com.class101project.modules.product.ProductMapper";
 	
-	public List<Product> selectList(ProductVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	// xpublic List<Product> selectList(ProductVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	
+	public List<Product> selectList(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectList", vo);
+	}
 	
 	public int insert(Product dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);

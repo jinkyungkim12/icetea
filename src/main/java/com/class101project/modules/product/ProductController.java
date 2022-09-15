@@ -20,19 +20,28 @@ public class ProductController {
 		ProductServiceImpl service;
 		
 		
+//		@RequestMapping(value = "productList")
+//		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
+//	
+//			System.out.println("vo.getShValue(): " + vo.getShValue());
+//			System.out.println("vo.getShOption(): " + vo.getShOption());
+//			System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
+//			
+//			List<Product> list = service.selectList(vo);
+//			model.addAttribute("list", list);
+//			
+//			return "infra/product/xdmin/productList";
+//		}
+		
 		@RequestMapping(value = "productList")
 		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
-	
-			System.out.println("vo.getShValue(): " + vo.getShValue());
-			System.out.println("vo.getShOption(): " + vo.getShOption());
-			System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
-			
 			List<Product> list = service.selectList(vo);
 			model.addAttribute("list", list);
 			
 			return "infra/product/xdmin/productList";
 		}
 		
+//		
 			
 		@RequestMapping(value = "productForm")
 		public String productForm(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {

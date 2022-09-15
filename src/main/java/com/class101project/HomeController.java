@@ -30,7 +30,7 @@ public class HomeController {
 			
 			model.addAttribute("serverTime", formattedDate );
 			
-			return "/infra/classProduct/user/home";
+			return "/infra/product/user/home";
 		}
 		
 		@RequestMapping(value = "/dmin_Home", method = RequestMethod.GET)

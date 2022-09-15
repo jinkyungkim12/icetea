@@ -120,8 +120,8 @@
 		<div class="container">
 			<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드그룹 관리</b></h1></div>
 		</div>
-		<form name="form" method="post" action="/codeGroup/codeGroupInst">
-		<!-- <form name="form" method="post" > -->
+		<!-- <form name="form" method="post" action="/codeGroup/codeGroupInst"> -->
+		<form name="form" method="post" >
 		<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 		<div class="container" style="margin-top: 3rem; width: 80%;">
 			<div class="row gy-3" id="firstrow">
@@ -197,8 +197,8 @@
 		     		<a type="button" class="btn btn-dark" href="/codeGroup/codeGroupList"><i class="fa-solid fa-list"></i></a>
 		    	</div>
 		    	<div class="col-3 text-end">
-		     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
-					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
+		     		<button type="button" class="btn btn-danger" id="uelBtn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
+					<button type="button" class="btn btn-danger" id="delBtn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
 					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
@@ -252,77 +252,38 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-			/* function test() {
-			alert("코드그룹 등록이 완료되었습니다.");
-			
-			alert(document.getElementById('nameKr').value);
-			
-			alert(document.getElementById('name').value);
-			
-			alert(document.getElementById('codeGroupCode').value);
-			
-			alert(document.getElementById('useNY').options[document.getElementById('useNY').selectedIndex].value); */
-			
-			/* alert(document.querySelector("input[name='radiobtn']:checked").value); */
-			
-			/* if(document.getElementById('nameKr').value == '' || document.getElementById('nameKr').value == null){
-				alert("코드그룹 이름(한글)을 입력해주시기 바랍니다.");
-				document.getElementById('nameKr').value = "";
-				document.getElementById('nameKr').focus();
-				
-			}
-			
-			if(document.getElementById('name').value == '' || document.getElementById('name').value == null){
-				alert("코드그룹 이름(영문)을 입력해주시기 바랍니다.");
-				document.getElementById('name').value = "";
-				document.getElementById('name').focus();
-				
-			}
-			
-			if(document.getElementById('codeGroupCode').value == '' || document.getElementById('codeGroupCode').value == null){
-				alert("코드그룹 코드를 입력해주시기 바랍니다.");
-				document.getElementById('codeGroupCode').value = "";
-				document.getElementById('codeGroupCode').focus();
-				
-			}
-			
-			return false;
-		} */
 		
-		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-		var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+		var goUrlList = "/codeGroup/codeGroupList"; 			
+		var goUrlInst = "/codeGroup/codeGroupInst"; 			
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				
+		var goUrlUele = "/codeGroup/codeGroupUele";				
+		var goUrlDele = "/codeGroup/codeGroupDele";				
 		
-		var seq = $("input:hidden[name=seq]");				/* #-> */
+		var seq = $("input:hidden[name=seq]");				
 		
 		var form = $("form[name=form]");
-		var formVo = $("form[name=formVo]");
 		
 		
 		$("#btnSave").on("click", function(){
 
 			if (seq.val() == "0" || seq.val() == ""){
-		   		// insert
-		   		// if (validationInst() == false) return false;
 		   		form.attr("action", goUrlInst).submit();
 		   	} else {
-		   		// update
-		   		/* keyName.val(atob(keyName.val())); */
-		   		// if (validationUpdt() == false) return false;
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
 		}); 
+	 	
+	</script>
+	<script>
+		$("#btnUelete").on("click", function() {
+			form.attr("action", goUrlUele).submit();
+		});
 		
-		/* $("#btnUelete").on("click", function(){
-		form.attr("action", goUrlUele).submit();
-		}
-		
-		$("#btnDelete").on("click", function(){
-		form.attr("action", goUrlDele).submit();
-		} */
+		$("#btnDelete").on("click", function() {
+			form.attr("action", goUrlDele).submit();
+		});
 	</script>
 </body>
 </html>

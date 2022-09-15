@@ -14,10 +14,10 @@
 		SELECT
 			a.*
 		from classProduct a
-		 WHERE 1=1
+		WHERE 1=1
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.classDelNY = #{shDelNY}</if>
-		<if test="shValue != null"></if>
+		<!-- <if test="shValue != null"></if> -->
 		
 		
 		<choose>

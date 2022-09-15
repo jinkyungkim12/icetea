@@ -11,6 +11,11 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductDao dao;
 	
+//	@Override
+//	public List<Product> selectList(ProductVo vo) throws Exception {
+//		return dao.selectList(vo);
+//	}
+	
 	@Override
 	public List<Product> selectList(ProductVo vo) throws Exception {
 		return dao.selectList(vo);
@@ -23,6 +28,7 @@ public class ProductServiceImpl implements ProductService{
 		return result;
 	}
 	
+
 	@Override
 	public int update(Product dto) throws Exception{
 		return dao.update(dto);

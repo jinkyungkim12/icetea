@@ -42,8 +42,7 @@
 	
 	<insert id="insert">
 		INSERT INTO codeGroup(
-			seq
-			,codeGroupCode
+			codeGroupCode
 			,nameKr
 			,name
 			,codeNum
@@ -52,8 +51,7 @@
 			,regDate
 		)
 		VALUES (
-			#{seq}
-			,#{codeGroupCode}
+			#{codeGroupCode}
 			,#{nameKr}
 			,#{name}
 			,#{codeNum}
@@ -69,8 +67,7 @@
 	<update id="update">
 		UPDATE codeGroup
 		SET
-			seq = #{seq}
-			,codeGroupCode = #{codeGroupCode}
+			codeGroupCode = #{codeGroupCode}
 			,nameKr = #{nameKr}
 			,name = #{name}
 			,codeNum = #{codeNum}

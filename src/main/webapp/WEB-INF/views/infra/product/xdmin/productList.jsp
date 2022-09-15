@@ -153,7 +153,7 @@
 	
 	<!-- 검색조건 -->
 	<!-- <form method="post" action="/product/productList"> -->
-	<form method="post" action="/product/productList" name="formList">
+	<form method="post" name="formList">
 	<div class="container-fluid" style="margin-top: 3rem;">
 		<div class="text-center"><h1><b>클래스관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 3rem;">
@@ -194,8 +194,9 @@
 				<input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 			</div>
 			<div class="col-2">
-			 	<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+			 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
 				<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
+
 			</div>
 		</div>
 	</div>
@@ -352,7 +353,8 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -390,23 +392,21 @@
 		    yearSuffix: '년'
 		});
 	</script>
-	<script type="text/javascript">
+	<script>
 	
 		var goUrlList = "/product/productList"; 			/* #-> */
 		var goUrlInst = "/product/productInst"; 			/* #-> */
 		var goUrlUpdt = "/product/productUpdt";				/* #-> */
 		var goUrlUele = "/product/productUele";				/* #-> */
 		var goUrlDele = "/product/productDele";				/* #-> */
-
 		
-		$("#btnSearch").on("click", function(){
-			if(validationList() == false) return false;
-			form.attr("action", goUrlList).submit();
-		});
-	
-  		$("#btnReset").on("click", function(){
+		var form = $("form[name=formList]");
+
+		$("#btnReset").on("click", function() {
+			alert("test");
 			$(location).attr("href", goUrlList);
 		});
+		
 		
 	</script>
 </body>

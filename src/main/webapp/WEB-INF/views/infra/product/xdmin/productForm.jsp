@@ -157,7 +157,7 @@
 			<div class="col-6">
 				<label class="form-label bb">구분</label>
 	   			<select class="form-select col-2" aria-label="Default select example" name="classDiv">
-				  <option selected>구분</option>
+				  <option value="" selected>구분</option>
 				  <option value="25" <c:if test="${item.classDiv eq 25 }"> selected</c:if>>오늘의 특가! TIME DEAL</option>
 				  <option value="26" <c:if test="${item.classDiv eq 26 }"> selected</c:if>>MD 추천 클래스</option>
 				  <option value="27" <c:if test="${item.classDiv eq 27 }"> selected</c:if>>오픈 예정 클래스</option>
@@ -329,6 +329,8 @@
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
 		}); 
+		
+		
 	</script>
 </body>
 </html>
