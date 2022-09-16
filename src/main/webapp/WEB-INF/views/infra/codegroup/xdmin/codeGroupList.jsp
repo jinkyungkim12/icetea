@@ -159,9 +159,9 @@
 				</div>
 				<div class="col-2">
 					<select class="form-select col-2" name="shOptionDate">
-					  <option value="">날짜</option>
-					  <option value="1">등록일</option>
-					  <option value="2">수정일</option>
+					  <option value="" <c:if test="${empty vo.shOptionDate}">selected </c:if>>날짜</option>
+					  <option value="1" <c:if test="${vo.shOptionDate eq 1}">selected </c:if>>등록일</option>
+					  <option value="2" <c:if test="${vo.shOptionDate eq 2}">selected </c:if>>수정일</option>
 					</select>
 				</div>
 				<div class="col-2">

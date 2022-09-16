@@ -155,16 +155,16 @@
 			<div class="row justify-content-end" style="margin-top: 3rem;">
 				<div class="col-2">
 					<select id="shCodeDelNY" name="shCodeDelNY" class="form-select" aria-label="Default select example">
-					  <option value="">삭제여부</option>
-					  <option value="0">N</option>
-					  <option value="1">Y</option>
+					  <option value="" <c:if test="${empty vo.shCodeDelNY}">selected </c:if>>삭제여부</option>
+					  <option value="0" <c:if test="${vo.shCodeDelNY eq 0}">selected </c:if>>N</option>
+					  <option value="1" <c:if test="${vo.shCodeDelNY eq 1}">selected </c:if>>Y</option>
 					</select>
 				</div>
 				<div class="col-2">
 					<select class="form-select col-2" name="shOptionDate">
-					  <option value="">날짜</option>
-					  <option value="1">등록일</option>
-					  <option value="2">수정일</option>
+					  <option value="" <c:if test="${empty vo.shOptionDate}">selected </c:if>>날짜</option>
+					  <option value="1" <c:if test="${vo.shOptionDate eq 1}">selected </c:if>>등록일</option>
+					  <option value="2" <c:if test="${vo.shOptionDate eq 2}">selected </c:if>>수정일</option>
 					</select>
 				</div>
 				<div class="col-2">

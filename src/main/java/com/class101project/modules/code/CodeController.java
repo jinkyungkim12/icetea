@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+// import com.class101project.common.constants.Constants;
+
 @Controller
 @RequestMapping(value = "/code/")
 public class CodeController {
@@ -18,11 +20,14 @@ public class CodeController {
 	
 	
 	public void setSearchAndPaging(CodeVo vo) throws Exception{
+		
 		vo.setParamsPaging(service.selectOneCount(vo));
+//		vo.setShCodeDelNY(vo.getShCodeDelNY() == null ? 0 : vo.getShCodeDelNY());
+		
 	}
 	
 	@RequestMapping(value = "codeList")
-	public String codeGroupList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+	public String codeList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
@@ -42,18 +47,30 @@ public class CodeController {
 	public String codeForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
-		Code result = service.selectOne(vo);
-		model.addAttribute("item", result);
+		Code item = service.selectOne(vo);
+//		model.addAttribute("item", result);
+		model.addAttribute("item", item);
 		return "infra/code/xdmin/codeForm";
 	}
 	
+//	@SuppressWarnings(value={"all"})
 	@RequestMapping(value = "codeInst")
-	public String codeInst(Code dto) throws Exception {
+	public String codeInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/code/codeList";
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/code/codeForm";
+		
+//		if(Constants.INSERT_AFTER_TYPE == 1) {
+//			return "redirect:/code/codeForm";
+//		} else {
+//			return "redirect:/code/codeList";
+//		}
+		
+		
 	}
 	
 	@RequestMapping(value = "codeUpdt")
@@ -61,7 +78,8 @@ public class CodeController {
 		
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/code/codeList";
+		
+		return "redirect:/code/codeForm";
 	}
 	
 	@RequestMapping(value = "codeUele")
