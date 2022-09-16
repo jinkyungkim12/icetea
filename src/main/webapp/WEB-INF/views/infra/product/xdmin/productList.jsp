@@ -194,8 +194,8 @@
 				<input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 			</div>
 			<div class="col-2">
-			 	<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
-				<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
+			 	<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+				<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset"><i class="fa-solid fa-rotate-left"></i></button>
 
 			</div>
 		</div>
@@ -230,8 +230,8 @@
 					<th scope="col">카테고리</th>
 					<th scope="col">구분</th>
 					<th scope="col">강의제목</th>
-					<th scope="col">할인률</th>
 					<th scope="col">정가</th>
+					<th scope="col">할인율</th>
 					<th scope="col">할부</th>
 					<th scope="col">클래스 분량</th>
 					<th scope="col">수강가능</th>
@@ -259,8 +259,8 @@
 							<td><a href="/product/productForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.category}"/></a></td>
 							<td><c:out value="${list.classDiv }"/></td>
 							<td><c:out value="${list.title }"/></td>
-							<td><c:out value="${list.discountRate }"/></td>
 							<td><c:out value="${list.price }"/></td>
+							<td><c:out value="${list.discountRate }"/></td>
 							<td><c:out value="${list.payMonth }"/></td>
 							<td><c:out value="${list.classAmount }"/></td>
 							<td>
@@ -375,6 +375,25 @@
 		}
 	</script>
 	<script type="text/javascript">
+	
+		var goUrlList = "/product/productList"; 			/* #-> */
+		var goUrlInst = "/product/productInst"; 			/* #-> */
+		var goUrlUpdt = "/product/productUpdt";				/* #-> */
+		var goUrlUele = "/product/productUele";				/* #-> */
+		var goUrlDele = "/product/productDele";				/* #-> */
+
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+	
+  		$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
+		});
+		
+	</script>
+	<script type="text/javascript">
 		$(document).ready(function(){
 			 $("input.shDate").datepicker();
 		}); 
@@ -391,23 +410,6 @@
 		    showMonthAfterYear: true,
 		    yearSuffix: '년'
 		});
-	</script>
-	<script>
-	
-		var goUrlList = "/product/productList"; 			/* #-> */
-		var goUrlInst = "/product/productInst"; 			/* #-> */
-		var goUrlUpdt = "/product/productUpdt";				/* #-> */
-		var goUrlUele = "/product/productUele";				/* #-> */
-		var goUrlDele = "/product/productDele";				/* #-> */
-		
-		var form = $("form[name=formList]");
-
-		$("#btnReset").on("click", function() {
-			alert("test");
-			$(location).attr("href", goUrlList);
-		});
-		
-		
 	</script>
 </body>
 </html>

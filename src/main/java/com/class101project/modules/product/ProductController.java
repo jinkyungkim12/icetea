@@ -40,8 +40,6 @@ public class ProductController {
 			
 			return "infra/product/xdmin/productList";
 		}
-		
-//		
 			
 		@RequestMapping(value = "productForm")
 		public String productForm(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
@@ -69,7 +67,7 @@ public class ProductController {
 			return "redirect:/product/productList";
 		}
 		
-		@RequestMapping(value = "codeUele")
+		@RequestMapping(value = "productUele")
 		public String productUele(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
 			
 			service.uelete(dto);
@@ -77,7 +75,7 @@ public class ProductController {
 			return "redirect:/product/productList";
 		}
 		
-		@RequestMapping(value = "codeDele")
+		@RequestMapping(value = "productDele")
 		public String productDele(ProductVo vo, RedirectAttributes redirectAttributes) throws Exception {
 			
 			service.delete(vo);
@@ -114,16 +112,6 @@ public class ProductController {
 		@RequestMapping(value = "productEvent", method = RequestMethod.GET)
 		public String productEvent(Locale locale, Model model) {
 			return "/infra/product/user/productEvent";
-		}
-		
-		@RequestMapping(value = "productList", method = RequestMethod.GET)
-		public String productList(Locale locale, Model model) {
-			return "/infra/product/xdmin/productList";
-		}
-		
-		@RequestMapping(value = "productForm", method = RequestMethod.GET)
-		public String productRegForm(Locale locale, Model model) {
-			return "/infra/product/xdmin/productForm";
 		}
 					
 				

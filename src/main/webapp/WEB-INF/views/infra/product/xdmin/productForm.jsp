@@ -129,9 +129,10 @@
 			<p id="head" class="text-center"><b>클래스 등록</b></p>			
 		</div>
 	</div>
-		
+	
 	<!-- 회원등록 -->
-	<form method="post" name="form" action="/product/productInst">
+	<form method="post" name="form">
+	<!-- <form method="post" name="form" action="/product/productInst"> -->
 	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 	<div class="container">
 		<div class="row gy-3" id="firstrow">
@@ -172,7 +173,7 @@
 					<label class="form-label bb">가격 정보</label>
 					<div class="col-3">
 						<label class="form-label"><small>정가</small></label>
-			   			<input type="text" class="form-control" value="<c:out value="${item.price}"/>" name="title" placeholder="ex) 300,000원">
+			   			<input type="text" class="form-control" value="<c:out value="${item.price}"/>" name="price" placeholder="ex) 300,000원">
 					</div>
 					<div class="col-3">
 						<label class="form-label"><small>할인률</small></label>
@@ -256,25 +257,6 @@
 					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
-		    
-	    <!-- 휴지통 Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        정말로 삭제하시겠습니까?
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			        <button type="button" class="btn btn-dark">삭제 </button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
 			
 		 <!-- x버튼 Modal -->
 			<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -289,11 +271,31 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			        <button type="button" class="btn btn-dark">삭제 </button>
+			        <button type="button" class="btn btn-dark" id="btnUelete">삭제 </button>
 			      </div>
 			    </div>
 			  </div>
 			</div>
+			
+			 <!-- 휴지통 Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        정말로 삭제하시겠습니까?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-dark" id="btnDelete">삭제 </button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
 		</div>
    </div>
    <br>
@@ -305,6 +307,7 @@
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	
 		var goUrlList = "/product/productList"; 		/* #-> */
 		var goUrlInst = "/product/productInst"; 		/* #-> */
 		var goUrlUpdt = "/product/productUpdt";			/* #-> */
@@ -314,23 +317,26 @@
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
-		var formVo = $("form[name=formVo]");
+		/* var formVo = $("form[name=formVo]"); */
 		
 		
 		$("#btnSave").on("click", function(){
 			if (seq.val() == "0" || seq.val() == ""){
-		   		// insert
-		   		// if (validationInst() == false) return false;
 		   		form.attr("action", goUrlInst).submit();
 		   	} else {
-		   		// update
-		   		/* keyName.val(atob(keyName.val())); */
-		   		// if (validationUpdt() == false) return false;
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
 		}); 
 		
+	</script>
+	<script>
+		$("#btnUelete").on("click", function() {
+			form.attr("action", goUrlUele).submit();
+		});
 		
+		$("#btnDelete").on("click", function() {
+			form.attr("action", goUrlDele).submit();
+		});
 	</script>
 </body>
 </html>
