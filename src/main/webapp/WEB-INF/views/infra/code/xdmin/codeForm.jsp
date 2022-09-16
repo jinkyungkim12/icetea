@@ -120,8 +120,11 @@
 	<div class="container">
 		<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드 관리</b></h1></div>
 	</div>
-	<form method="post" name="form" action="/code/codeInst">
-	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+	<!-- <form method="post" name="form" action="/code/codeInst"> -->
+	<form id="form" name="form" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="codeVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="container" style="margin-top: 3rem; width: 80%;">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-6">
@@ -198,7 +201,7 @@
 	<div class="container" style="margin-top: 5rem;">
 		<div class="row justify-content-between">	
 	   		<div class="col-9">
-	     		<a type="button" class="btn btn-dark" href="/code/codeList"><i class="fa-solid fa-list"></i></a>
+	     		<button type="button" class="btn btn-dark" id="btnList"><i class="fa-solid fa-list"></i></button>
 	     		
 	    	</div>
 	    	<div class="col-3 text-end">
@@ -251,12 +254,12 @@
    <br>
    </form>
    
-   <c:forEach items="${list}" var="list" varStatus="status">
-		<c:out value="${list.seq }"/>/
-		<c:out value="${list.codeGroup_seq }"/>/
-		<c:out value="${list.nameKr }"/>/
-		<c:out value="${list.codeNameKr }"/>/
-	</c:forEach>
+   <form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="codeVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
+	</form>
+ 
 
 		
 <!-- end	 -->
@@ -264,44 +267,14 @@
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		/* function test() {
-			alert("코드 등록이 완료되었습니다.");
+	
+			var goUrlList = "/code/codeList"; 			
+			var goUrlInst = "/code/codeInst"; 			
+			var goUrlUpdt = "/code/codeUpdt";			
+			var goUrlUele = "/code/codeUele";			
+			var goUrlDele = "/code/codeDele";			
 			
-			alert(document.getElementById('codeGroup_seq').value);
-			
-			alert(document.getElementById('codeNameKr').value);
-			
-			alert(document.getElementById('codeName').value);
-			
-			
-			if(document.getElementById('codeGroup_seq').value == '' || document.getElementById('codeGroup_seq').value == null){
-				alert("코드그룹 번호를 입력해주시기 바랍니다.");
-				document.getElementById('codeGroup_seq').value = "";
-				document.getElementById('codeGroup_seq').focus();
-				
-			}
-			
-			if(document.getElementById('codeNameKr').value == '' || document.getElementById('codeNameKr').value == null){
-				alert("코드 이름(한글)을 입력해주시기 바랍니다.");
-				document.getElementById('codeNameKr').value = "";
-				document.getElementById('codeNameKr').focus();
-				
-			}
-			
-			if(document.getElementById('codeName').value == '' || document.getElementById('codeName').value == null){
-				alert("코드 이름(영문)를 입력해주시기 바랍니다.");
-				document.getElementById('codeName').value = "";
-				document.getElementById('codeName').focus();
-				
-			} */
-			
-			var goUrlList = "/code/codeList"; 			/* #-> */
-			var goUrlInst = "/code/codeInst"; 			/* #-> */
-			var goUrlUpdt = "/code/codeUpdt";			/* #-> */
-			var goUrlUele = "/code/codeUele";			/* #-> */
-			var goUrlDele = "/code/codeDele";			/* #-> */
-			
-			var seq = $("input:hidden[name=seq]");				/* #-> */
+			var seq = $("input:hidden[name=seq]");			
 			
 			var form = $("form[name=form]");
 			var formVo = $("form[name=formVo]");
@@ -320,6 +293,9 @@
 			   	}
 			}); 
 			
+			$("#btnList").on("click", function(){
+				formVo.attr("action", goUrlList).submit();
+			});
 			
 	</script>
 </body>

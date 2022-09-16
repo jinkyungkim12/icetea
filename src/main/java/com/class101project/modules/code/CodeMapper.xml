@@ -50,6 +50,7 @@
 			,a.codeRegDate
 			,a.codeModDate
 			<include refid="selectCommon" />
+			ORDER BY a.codeGroup_seq
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
@@ -83,8 +84,7 @@
 	<update id="update">
 		UPDATE code
 		SET
-			seq = #{seq}
-			,codeGroup_seq = #{codeGroup_seq}
+			codeGroup_seq = #{codeGroup_seq}
 			,codeNameKr = #{codeNameKr}
 			,codeName = #{codeName}
 			,codeUseNY = #{codeUseNY}

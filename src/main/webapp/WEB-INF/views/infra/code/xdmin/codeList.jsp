@@ -147,7 +147,9 @@
 	<div class="container-fluid p-4" style="width: 90%">
 
 	<!-- 세 번째 -->
-	<form method="post" action="/code/codeList" name="formList">
+	<form method="post" name="formList" id="formList">
+	<!-- <form method="post" action="/code/codeList" name="formList"> -->
+	<input type="hidden" name="seq">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 		<div class="container-fluid" style="margin-top: 3rem;">
@@ -250,7 +252,9 @@
 							<td><c:out value="${list.nameKr }"/></td>
 							<td><c:out value="${list.code }"/></td>
 							<td><c:out value="${list.codeAnother }"/></td>
-							<td><a href="/code/codeForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.codeNameKr}"/></a></td>
+							<td>
+								<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.codeNameKr}"/></a>
+							</td>
 							<td><c:out value="${list.codeName }"/></td>
 							<td>
 								<c:choose>
@@ -278,12 +282,12 @@
 			<div class="container-fluid">
 				<div class="row justify-content-between">	
 			   		<div class="col-10">
-			     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
-			     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
+			     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-x"></i></button>
+			     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height: 2.4rem;"><i class="fa-solid fa-trash-can"></i></button>
 			    	</div>
 			    	<div class="col-2 text-end">
 			     		<a type="button" class="btn btn-dark" href="/code/codeForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-						<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
+						<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 			    	</div>
 			    </div>
 		   </div>
@@ -337,7 +341,7 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -356,6 +360,43 @@
 		  // 행(Row) 삭제
 		  const newRow = table.deleteRow(rownum);
 		}
+	</script>
+	<script type="text/javascript">
+		var goUrlList = "/code/codeList"; 			
+		var goUrlInst = "/code/codeInst"; 			
+		var goUrlUpdt = "/code/codeUpdt";				
+		var goUrlUele = "/code/codeUele";				
+		var goUrlDele = "/code/codeDele";				
+		var goUrlForm = "/code/codeForm";
+	
+		var form = $("form[name=formList]");
+		
+		var seq = $("input:hidden[name=seq]");
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+	
+			$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
+		});
+			
+		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
 	</script>
 	
 	<script type="text/javascript">
@@ -376,30 +417,5 @@
 		    yearSuffix: '년'
 		});
 	</script>
-	<script type="text/javascript">
-		var goUrlList = "/code/codeList"; 			/* #-> */
-		var goUrlInst = "/code/codeInst"; 			/* #-> */
-		var goUrlUpdt = "/code/codeUpdt";				/* #-> */
-		var goUrlUele = "/code/codeUele";				/* #-> */
-		var goUrlDele = "/code/codeDele";				/* #-> */
-	
-		var form = $("form[name=formList]");  
-		
-		$("#btnSearch").on("click", function(){
-			if(validationList() == false) return false;
-			form.attr("action", goUrlList).submit();
-		});
-	
-			$("#btnReset").on("click", function(){
-			$(location).attr("href", goUrlList);
-		});
-			
-		goList = function(thisPage){
-			$("input:hidden[name=thisPage]").val(thisPage);
-			form.attr("action", goUrlList).submit();
-		}
-		
-	</script>
-	
 </body>
 </html>
