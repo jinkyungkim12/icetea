@@ -22,7 +22,7 @@ public class CodeController {
 	public void setSearchAndPaging(CodeVo vo) throws Exception{
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
-//		vo.setShCodeDelNY(vo.getShCodeDelNY() == null ? 0 : vo.getShCodeDelNY());
+		vo.setShCodeDelNY(vo.getShCodeDelNY() == null ? 0 : vo.getShCodeDelNY());
 		
 	}
 	

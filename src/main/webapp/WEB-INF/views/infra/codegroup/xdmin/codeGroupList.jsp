@@ -146,15 +146,18 @@
 	<div class="container-fluid p-4" style="width: 80%">
 	
 	<!-- <form method="post" action="/codeGroup/codeGroupList"> -->
-	<form method="post" >
+	<form method="post" name="formList" id="formList">
+	<input type="hidden" name="seq">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 		<div class="container-fluid" style="margin-top: 3rem;">
 			<div class="text-center"><h1><b>코드그룹 관리</b></h1></div>
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
 					<select id="shDelNY" name="shDelNY" class="form-select" aria-label="Default select example">
-					  <option value="">삭제여부</option>
-					  <option value="0">N</option>
-					  <option value="1">Y</option>
+					  <option  value="" <c:if test="${empty vo.shDelNY}">selected </c:if>>삭제여부</option>
+					  <option value="0" <c:if test="${vo.shDelNY eq 0}">selected </c:if>>N</option>
+					  <option value="1" <c:if test="${vo.shDelNY eq 1}">selected </c:if>>Y</option>
 					</select>
 				</div>
 				<div class="col-2">
@@ -243,7 +246,8 @@
 								</td>
 								<th scope="row"><c:out value="${list.seq }"/></th>
 								<td><c:out value="${list.codeGroupCode }"/></td>
-								<td><a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.nameKr}"/></a></td>
+								<td>
+									<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.nameKr}"/></a></td>
 								<td><c:out value="${list.name }"/></td>
 								<td><c:out value="${list.codeNum }"/></td>
 								<td>
@@ -281,7 +285,7 @@
 		    </div>	
 	   </div>
 	
-		<div class="container p-10">
+		<!-- <div class="container p-10">
 			<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-center">
 			    <li class="page-item">
@@ -299,7 +303,11 @@
 			    </li>
 			  </ul>
 			</nav>
-		</div>
+		</div> -->
+		
+		<!-- pagination s -->
+		<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+		<!-- pagination e -->
 		
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -353,7 +361,21 @@
 		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
-
+		var goUrlForm = "/codeGroup/codeGroupForm";
+		
+		var form = $("form[name=formList]");
+		
+		var seq = $("input:hidden[name=seq]");
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+		
+		goForm = function(keyValue) {
+			/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
 		
 		$("#btnSearch").on("click", function(){
 			if(validationList() == false) return false;
@@ -363,6 +385,11 @@
   		$("#btnReset").on("click", function(){
 			$(location).attr("href", goUrlList);
 		});
+  		
+  		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
 		
 	</script>
 	<script type="text/javascript">

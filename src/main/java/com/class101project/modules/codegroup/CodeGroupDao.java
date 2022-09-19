@@ -49,4 +49,6 @@ public class CodeGroupDao {
 		public int delete(CodeGroupVo vo) {
 			return sqlSession.delete(namespace + ".delete", vo);
 		}
+		
+		public int selectOneCount(CodeGroupVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 }

@@ -121,8 +121,10 @@
 			<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드그룹 관리</b></h1></div>
 		</div>
 		<!-- <form name="form" method="post" action="/codeGroup/codeGroupInst"> -->
-		<form name="form" method="post" >
-		<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+		<form  id="form" name="form" method="post" >
+		<!-- *Vo.jsp s -->
+		<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
 		<div class="container" style="margin-top: 3rem; width: 80%;">
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6">
@@ -194,7 +196,7 @@
 		<div class="container" style="margin-top: 5rem;">
 			<div class="row justify-content-between">	
 		   		<div class="col-9">
-		     		<a type="button" class="btn btn-dark" href="/codeGroup/codeGroupList"><i class="fa-solid fa-list"></i></a>
+		     		<button type="button" class="btn btn-dark" id="btnList"><i class="fa-solid fa-list"></i></button>
 		    	</div>
 		    	<div class="col-3 text-end">
 		     		<button type="button" class="btn btn-danger" id="uelBtn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
@@ -246,6 +248,12 @@
 	   <br>
    	   <br>
    	   </form>
+   	   
+   	   <form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+		</form>
 		
 		
 <!-- end	 -->
@@ -264,7 +272,7 @@
 		var seq = $("input:hidden[name=seq]");				
 		
 		var form = $("form[name=form]");
-		
+		var formVo = $("form[name=formVo]");
 		
 		$("#btnSave").on("click", function(){
 
@@ -273,7 +281,11 @@
 		   	} else {
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
-		}); 
+		});
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
 	 	
 	</script>
 	<script>

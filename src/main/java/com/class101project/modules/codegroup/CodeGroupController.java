@@ -16,17 +16,25 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
+	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
+			
+			vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShCgValue(): " + vo.getShCgValue());
 		System.out.println("vo.getShCgOption(): " + vo.getShCgOption());
 		System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
+		setSearchAndPaging(vo);
 		
+		if (vo.getTotalRows() > 0) {
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
+		}
 		return "infra/codegroup/xdmin/codeGroupList";
+		
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
@@ -37,14 +45,18 @@ public class CodeGroupController {
 		model.addAttribute("item", result);
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
+
 	
+//	@SuppressWarnings(value={"all"})
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
+	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/codeGroup/codeGroupList";
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 
@@ -53,7 +65,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/codeGroup/codeGroupList";
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupUele")

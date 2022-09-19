@@ -10,18 +10,8 @@
 
     <resultMap id="resultMapObj" type="com.class101project.modules.codegroup.CodeGroup"></resultMap>
 	 
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-		 a.seq
-           ,a.codeGroupCode
-           ,a.nameKr
-           ,a.name
-           ,(select count(b.codeGroup_seq) from code b where b.codeDelNY=0 and b.codeGroup_seq=a.seq)as codeNum
-           ,a.cgDelNY
-           ,a.cgUseNY
-           ,a.regDate
-           ,a.modDate
-		FROM codeGroup a
+	<sql id ="selectCommon">
+	 	FROM codeGroup a
 		WHERE 1=1
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.cgDelNY = #{shDelNY}</if>
@@ -37,7 +27,28 @@
 			<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			<when test="shOptionDate == 2">AND a.modDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
-				
+	</sql> 
+	 
+	 
+	<select id="selectList" resultMap="resultMapObj">
+	   <include refid="Base.selectListUpperForMysql" />
+		SELECT
+		 	a.seq
+           ,a.codeGroupCode
+           ,a.nameKr
+           ,a.name
+           ,(select count(b.codeGroup_seq) from code b where b.codeDelNY=0 and b.codeGroup_seq=a.seq)as codeNum
+           ,a.cgDelNY
+           ,a.cgUseNY
+           ,a.regDate
+           ,a.modDate
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<insert id="insert">
