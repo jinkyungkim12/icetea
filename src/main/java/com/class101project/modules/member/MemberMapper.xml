@@ -8,20 +8,7 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.member.Member"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		select a.seq
-			  ,a.name
-		      ,a.id
-		      ,a.position
-		      ,a.gender
-		      ,a.dob
-		      ,a.phone
-		      ,a.email
-		      ,a.mobileNY
-		      ,a.emailNY
-		      ,a.personalInfo
-		      ,a.delNY
-		      ,a.regDatetime
+	<sql id ="selectCommon">
 		FROM member a
 		WHERE 1=1
 			
@@ -40,7 +27,31 @@
 			<when test="shOptionDate == 1">AND a.dob BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			<when test="shOptionDate == 2">AND a.regDatetime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
-						
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT 
+			   a.seq
+			  ,a.name
+		      ,a.id
+		      ,a.position
+		      ,a.gender
+		      ,a.dob
+		      ,a.phone
+		      ,a.email
+		      ,a.mobileNY
+		      ,a.emailNY
+		      ,a.personalInfo
+		      ,a.delNY
+		      ,a.regDatetime
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<insert id="insert">

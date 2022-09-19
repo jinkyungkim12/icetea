@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>member RegForm</title>
+	<title>member Form</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -132,8 +132,11 @@
 	</div>
 	
 	<!-- 회원등록 -->
-	<form name="form" method="post" action="/member/memberInst">
-	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+	<!-- <form name="form" method="post" action="/member/memberInst"> -->
+	<form  id="form" name="form" method="post" >
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="container">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-6">
@@ -164,7 +167,7 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호 확인</label>
-	   			<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" name ="password" id="password">
+	   			<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인">
 			</div>
 			<div class="col-6">
 				<label class="form-label">소속회사</label>
@@ -320,7 +323,7 @@
 	<div class="container" style="margin-top: 5rem;">
 		<div class="row justify-content-between">	
 	   		<div class="col-9">
-	     		<a type="button" class="btn btn-dark" href="/member/memberList"><i class="fa-solid fa-list"></i></a>
+	     		<a type="button" class="btn btn-dark" id="btnList"><i class="fa-solid fa-list"></i></a>
 	    	</div>
 	    	<div class="col-3 text-end">
 	     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
@@ -372,16 +375,17 @@
    <br>
   </form>
 	
+  <form name="formVo" id="formVo" method="post">
+  <!-- *Vo.jsp s -->
+  <%@include file="memberVo.jsp"%>		<!-- #-> -->
+  <!-- *Vo.jsp e -->
+  </form>	
 		
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	/* function test() {
-		alert(document.querySelector("input[name='rdrd']:checked").value);
-		alert(document.querySelector("input[name='rdrd2']:checked").value);
-	} */
 	
 	var goUrlList = "/member/memberList"; 			/* #-> */
 	var goUrlInst = "/member/memberInst"; 			/* #-> */
@@ -409,7 +413,19 @@
 	   	}
 	}); 
 	
+	$("#btnList").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
 	
+	</script>
+	<script>
+		$("#btnUelete").on("click", function() {
+			form.attr("action", goUrlUele).submit();
+		});
+		
+		$("#btnDelete").on("click", function() {
+			form.attr("action", goUrlDele).submit();
+		});
 	</script>
 </body>
 </html>

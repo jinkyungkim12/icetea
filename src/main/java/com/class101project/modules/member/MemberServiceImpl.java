@@ -45,4 +45,11 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("service result: " + result);
 		return result;
 	}
+	
+	@Override
+	public int selectOneCount(MemberVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
+	
 }

@@ -155,7 +155,7 @@
 			<div class="row justify-content-end"  style="margin-top: 3rem;">
 				<div class="col-2">
 					<select id="shDelNY" name="shDelNY" class="form-select" aria-label="Default select example">
-					  <option  value="" <c:if test="${empty vo.shDelNY}">selected </c:if>>삭제여부</option>
+					  <option value="" <c:if test="${empty vo.shDelNY}">selected </c:if>>삭제여부</option>
 					  <option value="0" <c:if test="${vo.shDelNY eq 0}">selected </c:if>>N</option>
 					  <option value="1" <c:if test="${vo.shDelNY eq 1}">selected </c:if>>Y</option>
 					</select>

@@ -145,7 +145,10 @@
 	
 	<!-- 검색조건 -->
 	<!-- <form method="post" action="/member/memberList"> -->
-	<form method="post">
+	<form method="post" name="formList" id="formList">
+	<input type="hidden" name="seq">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
@@ -256,7 +259,9 @@
 							<input class="check" type="checkbox" name="check">
 						</td>
 						<th scope="row"><c:out value="${list.seq }"/></th>
-						<td><a href="/member/memberForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"/></a></td>
+						<td>
+							<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name}"/></a>
+						</td>
 						<td><c:out value="${list.id }"/></td>
 						<td>
 							<c:choose>
@@ -322,7 +327,7 @@
 	    </div>	
    </div>
 
-	<div class="container p-10">
+	<!-- <div class="container p-10">
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
 		    <li class="page-item">
@@ -340,7 +345,11 @@
 		    </li>
 		  </ul>
 		</nav>
-	</div>
+	</div> -->
+	
+	<!-- pagination s -->
+	<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+	<!-- pagination e -->
 		
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -365,7 +374,7 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -392,7 +401,21 @@
 		var goUrlUpdt = "/member/memberUpdt";				/* #-> */
 		var goUrlUele = "/member/memberUele";				/* #-> */
 		var goUrlDele = "/member/memberDele";				/* #-> */
-
+		var goUrlForm = "/member/memberForm";
+		
+		var form = $("form[name=formList]");
+		
+		var seq = $("input:hidden[name=seq]");
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
 		
 		$("#btnSearch").on("click", function(){
 			if(validationList() == false) return false;
@@ -403,6 +426,11 @@
 			$(location).attr("href", goUrlList);
 		});
 		
+  		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+  		
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function(){

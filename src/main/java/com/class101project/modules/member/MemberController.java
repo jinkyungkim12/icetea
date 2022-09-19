@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -16,6 +17,12 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	
+	public void setSearchAndPaging(MemberVo vo) throws Exception{
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+	}
 
 	@RequestMapping(value = "memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
@@ -24,10 +31,12 @@ public class MemberController {
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		System.out.println("vo.getShdelNY(): " + vo.getShdelNY());
 		System.out.println("vo.getShGender(): " + vo.getShGender());
+		setSearchAndPaging(vo);
 		
+		if (vo.getTotalRows() > 0) {
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
+		}
 		return "infra/member/xdmin/memberList";
 	}
 	
@@ -41,12 +50,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberInst")
-	public String memberInst(Member dto) throws Exception {
+	public String memberInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/member/memberList";
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberForm";
 	}
 	
 	@RequestMapping(value = "memberUpdt")
@@ -54,7 +65,7 @@ public class MemberController {
 		
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/member/memberList";
+		return "redirect:/member/memberForm";
 	}
 	
 	@RequestMapping(value = "memberUele")
