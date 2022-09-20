@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int insert(Member dto) throws Exception{
+		
 		int result = dao.insert(dto);
 		System.out.println("service result: " + result);
 		return result;
