@@ -22,7 +22,6 @@ public class ProductController {
 		public void setSearchAndPaging(ProductVo vo) throws Exception{
 			
 			vo.setParamsPaging(service.selectOneCount(vo));
-			vo.setShDelNY(vo.getShDelNY() == null ? 0 : vo.getShDelNY());
 		}
 		
 		@RequestMapping(value = "productList")
