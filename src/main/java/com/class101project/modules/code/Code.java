@@ -1,5 +1,8 @@
 package com.class101project.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //1. DTO 
 public class Code {
 
@@ -16,6 +19,10 @@ public class Code {
 	private String codeRegDate;
 	private String codeModDate;
 	
+	
+	//for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+
 	
 	public String getSeq() {
 		return seq;
