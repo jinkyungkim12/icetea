@@ -52,4 +52,10 @@ public class ProductServiceImpl implements ProductService{
 		return result;
 	}
 	
+	@Override
+	public int selectOneCount(ProductVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
+	
 }

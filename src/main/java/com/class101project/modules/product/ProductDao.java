@@ -47,5 +47,6 @@ public class ProductDao {
 	public int delete(ProductVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
-
+	
+	public int selectOneCount(ProductVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 }

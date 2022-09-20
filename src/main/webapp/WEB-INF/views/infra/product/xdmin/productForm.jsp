@@ -131,9 +131,11 @@
 	</div>
 	
 	<!-- 회원등록 -->
-	<form method="post" name="form">
+	<form id="form" name="form" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="productVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<!-- <form method="post" name="form" action="/product/productInst"> -->
-	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 	<div class="container">
 		<div class="row gy-3" id="firstrow">
 			<div class="col-12">
@@ -248,7 +250,7 @@
 	<div class="container" style="margin-top: 5rem;">
 		<div class="row justify-content-between">	
 	   		<div class="col-9">
-	     		<a type="button" class="btn btn-dark" href="/product/productList"><i class="fa-solid fa-list"></i></a>
+	     		<button type="button" class="btn btn-dark" id="btnList"><i class="fa-solid fa-list"></i></button>
 	     		
 	    	</div>
 	    	<div class="col-3 text-end">
@@ -301,6 +303,12 @@
    <br>
    <br>
    </form>
+   
+   <form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="productVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
+	</form>
 
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -317,7 +325,7 @@
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
-		/* var formVo = $("form[name=formVo]"); */
+		var formVo = $("form[name=formVo]");
 		
 		
 		$("#btnSave").on("click", function(){
@@ -327,6 +335,10 @@
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
 		}); 
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
 		
 	</script>
 	<script>

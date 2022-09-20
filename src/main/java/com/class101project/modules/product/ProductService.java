@@ -11,5 +11,6 @@ public interface ProductService {
 	public int update(Product dto) throws Exception;
 	public int uelete(Product dto) throws Exception;
 	public int delete(ProductVo vo) throws Exception;
+	public int selectOneCount(ProductVo vo) throws Exception;
 	
 }

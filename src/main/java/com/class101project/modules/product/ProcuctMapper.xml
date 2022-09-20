@@ -10,15 +10,13 @@
 <!-- code -> codegroup -->
     <resultMap id="resultMapObj" type="com.class101project.modules.product.Product"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.*
-		from classProduct a
+	
+	<sql id ="selectCommon">
+		FROM classProduct a
 		WHERE 1=1
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.classDelNY = #{shDelNY}</if>
 		<!-- <if test="shValue != null"></if> -->
-		
 		
 		<choose>
 			<when test="shOption == 1">AND a.category LIKE CONCAT('%', #{shValue},'%')</when>
@@ -31,7 +29,34 @@
 			<when test="shOptionDate == 1">AND a.classReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			<when test="shOptionDate == 2">AND a.classMod BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
-		
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq
+			,a.classDelNY
+			,a.category
+			,a.classDiv
+			,a.title
+			,a.price
+			,a.discountRate
+			,a.payMonth
+			,a.classAmount
+			,a.dateNY
+			,a.subtitleNY
+			,a.kitNY
+			,a.classInfo
+			,a.curriculum
+			,a.classReg
+			,a.classMod
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 
 	<insert id="insert">
@@ -75,8 +100,7 @@
 	<update id="update">
 		UPDATE classProduct
 		SET
-			seq = #{seq}
-			,classDelNY = #{classDelNY}
+			classDelNY = #{classDelNY}
 			,category = #{category}
 			,classDiv = #{classDiv}
 			,title = #{title}

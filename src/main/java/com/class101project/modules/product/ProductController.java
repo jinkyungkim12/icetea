@@ -19,24 +19,24 @@ public class ProductController {
 		@Autowired
 		ProductServiceImpl service;
 		
-		
-//		@RequestMapping(value = "productList")
-//		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
-//	
-//			System.out.println("vo.getShValue(): " + vo.getShValue());
-//			System.out.println("vo.getShOption(): " + vo.getShOption());
-//			System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
-//			
-//			List<Product> list = service.selectList(vo);
-//			model.addAttribute("list", list);
-//			
-//			return "infra/product/xdmin/productList";
-//		}
+		public void setSearchAndPaging(ProductVo vo) throws Exception{
+			
+			vo.setParamsPaging(service.selectOneCount(vo));
+			vo.setShDelNY(vo.getShDelNY() == null ? 0 : vo.getShDelNY());
+		}
 		
 		@RequestMapping(value = "productList")
 		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
+			
+			System.out.println("vo.getShValue(): " + vo.getShValue());
+			System.out.println("vo.getShOption(): " + vo.getShOption());
+			System.out.println("vo.getShDelNY(): " + vo.getShDelNY());
+			setSearchAndPaging(vo);
+			
+			if (vo.getTotalRows() > 0) {
 			List<Product> list = service.selectList(vo);
 			model.addAttribute("list", list);
+			}
 			
 			return "infra/product/xdmin/productList";
 		}
@@ -51,12 +51,14 @@ public class ProductController {
 		}
 		
 		@RequestMapping(value = "productInst")
-		public String productInst(Product dto) throws Exception {
+		public String productInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
 			
-			int result = service.insert(dto);
-			System.out.println("controller result: " + result);
+			service.insert(dto);
 			
-			return "redirect:/product/productList";
+			vo.setSeq(dto.getSeq());
+			redirectAttributes.addFlashAttribute("vo", vo);
+			
+			return "redirect:/product/productForm";
 		}
 		
 		@RequestMapping(value = "productUpdt")
@@ -64,7 +66,7 @@ public class ProductController {
 			
 			service.update(dto);
 			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/product/productList";
+			return "redirect:/product/productForm";
 		}
 		
 		@RequestMapping(value = "productUele")

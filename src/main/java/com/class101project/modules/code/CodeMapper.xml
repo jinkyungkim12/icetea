@@ -114,6 +114,4 @@
 			AND seq = #{seq}
 	</select>
 		
-	
-		
 </mapper>
