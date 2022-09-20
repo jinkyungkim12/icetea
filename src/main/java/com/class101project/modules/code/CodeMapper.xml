@@ -119,6 +119,7 @@
 		a.seq
 		,a.codeNameKr
 		,a.codeName
+		,a.codeGroup_seq
 		FROM code a
 		WHERE 1=1
 		 AND a.codeDelNY = 0

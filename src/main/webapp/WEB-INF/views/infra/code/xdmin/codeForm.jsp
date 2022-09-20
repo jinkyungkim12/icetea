@@ -120,6 +120,8 @@
 	<div class="container">
 		<div class="row content-justify-center text-center"style="margin-top: 3rem;"><h1><b>코드 관리</b></h1></div>
 	</div>
+	
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	<!-- <form method="post" name="form" action="/code/codeInst"> -->
 	<form id="form" name="form" method="post">
 	<!-- *Vo.jsp s -->

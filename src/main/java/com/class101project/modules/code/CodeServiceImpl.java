@@ -64,4 +64,18 @@ public class CodeServiceImpl implements CodeService{
 		System.out.println("cachedCodeArrayList: " + Code.cachedCodeArrayList.size() + " chached !");
 	}
 	
+	public static List<Code> selectListCachedCode(String seq) throws Exception {
+		List<Code> rt = new ArrayList<Code>();
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if (codeRow.getCodeGroup_seq().equals(seq)) {
+				rt.add(codeRow);
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+		
+	}
+	
+
 }

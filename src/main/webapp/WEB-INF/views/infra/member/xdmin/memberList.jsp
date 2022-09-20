@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+
+<jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
+
 <html> 
 <head>
 	<title>Member List</title>
@@ -97,6 +100,7 @@
 	
 	<!-- nav bar -->
 	
+	
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="dmin_List.html"><b>CLASS 101</b></a>
@@ -144,7 +148,6 @@
 	<div><img src="../../resources/images/back2.jpg"></div>
 	
 	<!-- 검색조건 -->
-	<!-- <form method="post" action="/member/memberList"> -->
 	<form method="post" name="formList" id="formList">
 	<input type="hidden" name="seq">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
@@ -152,13 +155,13 @@
 	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
-			<div class="col-2">
+			<!-- <div class="col-2">
 				<select id="shGender" name="shGender" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shGender}">selected </c:if>>성별</option>
 				   <option value="4" <c:if test="${vo.shGender eq 4}">selected </c:if>>남성</option>
 				   <option value="5" <c:if test="${vo.shGender eq 5}">selected </c:if>>여성</option>
 				</select>
-			</div>
+			</div> -->
 			<div class="col-2">
 				<select id="shdelNY" name="shdelNY" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shdelNY}">selected </c:if>>삭제여부</option>
@@ -246,6 +249,11 @@
 				</tr>
 			</thead>
 			<tbody>
+			
+			<c:set var="listCodePosition" value="${ CodeServiceImpl.selectListCachedCode('8') }"/>
+			<c:set var="listCodeGender" value="${ CodeServiceImpl.selectListCachedCode('2') }"/>
+			<c:set var="listCodePersonalInfo" value="${ CodeServiceImpl.selectListCachedCode('7') }"/>
+			
 			<c:choose>
 				<c:when test="${fn:length(list) eq 0}">
 					<tr>
@@ -264,17 +272,23 @@
 						</td>
 						<td><c:out value="${list.id }"/></td>
 						<td>
-							<c:choose>
+							<c:forEach items="${listCodePosition}" var="listPosition" varStatus="statusPosition">
+								<c:if test="${list.position eq listPosition.seq}"><c:out value="${listPosition.codeNameKr }"/></c:if>
+							</c:forEach>
+							<%-- <c:choose>
 								<c:when test="${list.position eq 22}">학생</c:when>
 								<c:when test="${list.position eq 23}">크리에이터</c:when>
 								<c:otherwise>manager</c:otherwise>
-							</c:choose>
+							</c:choose>--%>
 						</td>
 						<td>
-							<c:choose>
+							<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+								<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.codeNameKr }"/></c:if>
+							</c:forEach>
+							<%-- <c:choose>
 								<c:when test="${list.gender eq 5}">여성</c:when>
 								<c:otherwise>남성</c:otherwise>
-							</c:choose>
+							</c:choose> --%>
 						</td>
 						<td><c:out value="${list.dob }"/></td>
 						<td><c:out value="${list.phone }"/></td>
@@ -292,12 +306,15 @@
 							</c:choose>
 						</td>
 						<td>
-							<c:choose>
+							<c:forEach items="${listCodePersonalInfo}" var="listPersonalInfo" varStatus="statusPersonalInfo">
+								<c:if test="${list.personalInfo eq listPersonalInfo.seq}"><c:out value="${listPersonalInfo.codeNameKr }"/></c:if>
+							</c:forEach>
+							<%-- <c:choose>
 								<c:when test="${list.personalInfo eq 18}">1년</c:when>
 								<c:when test="${list.personalInfo eq 19}">3년</c:when>
 								<c:when test="${list.personalInfo eq 20}">10년</c:when>
 								<c:otherwise>평생회원</c:otherwise>
-							</c:choose>
+							</c:choose> --%>
 						</td>
 						<td>
 							<c:choose>
