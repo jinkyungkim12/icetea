@@ -271,34 +271,34 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-			var goUrlList = "/code/codeList"; 			
-			var goUrlInst = "/code/codeInst"; 			
-			var goUrlUpdt = "/code/codeUpdt";			
-			var goUrlUele = "/code/codeUele";			
-			var goUrlDele = "/code/codeDele";			
-			
-			var seq = $("input:hidden[name=seq]");			
-			
-			var form = $("form[name=form]");
-			var formVo = $("form[name=formVo]");
-			
-			
-			$("#btnSave").on("click", function(){
-				if (seq.val() == "0" || seq.val() == ""){
-			   		// insert
-			   		// if (validationInst() == false) return false;
-			   		form.attr("action", goUrlInst).submit();
-			   	} else {
-			   		// update
-			   		/* keyName.val(atob(keyName.val())); */
-			   		// if (validationUpdt() == false) return false;
-			   		form.attr("action", goUrlUpdt).submit();
-			   	}
-			}); 
-			
-			$("#btnList").on("click", function(){
-				formVo.attr("action", goUrlList).submit();
-			});
+		var goUrlList = "/code/codeList"; 			
+		var goUrlInst = "/code/codeInst"; 			
+		var goUrlUpdt = "/code/codeUpdt";			
+		var goUrlUele = "/code/codeUele";			
+		var goUrlDele = "/code/codeDele";			
+		
+		var seq = $("input:hidden[name=seq]");			
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		// if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
 			
 	</script>
 	<script>

@@ -10,6 +10,7 @@
 	
 	<sql id ="selectCommon">
 		FROM member a
+		left join transport b on b.seq = a.seq
 		WHERE 1=1
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
@@ -67,6 +68,7 @@
 			,phone2
 			,emailInsert
 			,emailDomain
+			,email
 			,mobileNY
 			,emailNY
 			,personalInfo
@@ -87,6 +89,7 @@
 			,#{phone2}
 			,#{emailInsert}
 			,#{emailDomain}
+			,#{email}
 			,#{mobileNY}
 			,#{emailNY}
 			,#{personalInfo}
@@ -95,6 +98,7 @@
 			,#{company}
 			,#{creatorNickname}
 		)
+		
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
@@ -121,7 +125,7 @@
 			,mobileNY = #{mobileNY}
 			,emailNY = #{emailNY}
 			,personalInfo = #{personalInfo}
-		WHERE
+			WHERE
 			seq = #{seq}
 	</update>
 	
@@ -142,7 +146,7 @@
 			a.*
 			FROM member a
 			WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 </mapper>

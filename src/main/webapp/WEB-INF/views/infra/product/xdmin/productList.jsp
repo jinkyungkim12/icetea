@@ -149,14 +149,12 @@
 	
 	
 	<div><img src="../../resources/images/back2.jpg"></div>
-	<div class="container-fluid p-4" style="width: 99%">
 	
-	<!-- 검색조건 -->
-	<!-- <form method="post" action="/product/productList"> -->
 	<form method="post" name="formList" id="formList">
 	<input type="hidden" name="seq">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+	<div class="container-fluid p-4" style="width: 99%">
 	<div class="container-fluid" style="margin-top: 3rem;">
 		<div class="text-center"><h1><b>클래스관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 3rem;">
@@ -342,7 +340,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
-	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script> -->
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 

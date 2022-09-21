@@ -20,11 +20,5 @@ public class ReviewController {
 	public String reviewForm(Locale locale, Model model) {
 		return "/infra/review/user/reviewForm";
 	}
-	
-	@RequestMapping(value = "reviewModForm", method = RequestMethod.GET)
-	public String reviewModForm(Locale locale, Model model) {
-		return "/infra/review/user/reviewModForm";
-	}
-
 
 }

@@ -239,19 +239,29 @@
 			</div>
 			<div class="col-6">
 				<div class="row"><label class="form-label">주소</label></div>
-				<div class="row">
+				<div class="row input-group">
 					<div class="col-8">	
-		   				<input type="text" class="form-control" value="" placeholder="우편번호">
+		   				<input type="text" class="form-control" id="zipcode">
 		   			</div>
 		   			<div class="col-4">
-		   				<a class="btn btn-outline-secondary" type="button" id="button-addon2" style="width: 100%">우편번호 찾기</a>
+		   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
+		   				<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 	   				</div>
 	   			</div>
 			</div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" value="" placeholder="주소"></div>
+			<div class="col-6"><input type="text" class="form-control" id="address" placeholder="주소" disabled></div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" value="" placeholder="상세주소"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addressDetail" aria-label="addressDetail" placeholder="상세주소"></div>
+			<div class="col-6"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
+			<div class="col-6"></div>
+			<div class="col-6">
+				<div class="row">
+					<div class="col-6"><input type="text" name="" class="form-control" id="" aria-label="" class="form-control" placeholder="위도" disabled></div>
+					<div class="col-6"><input type="text" name="" class="form-control" id="" aria-label="" class="form-control" placeholder="경도" disabled></div>
+				</div>
+			</div>
 			<div class="col-3">
 				<label class="form-label">모바일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
@@ -345,7 +355,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark">삭제 </button>
+		        <button type="button" class="btn btn-dark" id="btnDelete">삭제 </button>
 		      </div>
 		    </div>
 		  </div>
@@ -364,7 +374,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-dark">삭제 </button>
+		        <button type="button" class="btn btn-dark" id="btnUelete">삭제 </button>
 		      </div>
 		    </div>
 		  </div>
@@ -385,37 +395,38 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 	
-	var goUrlList = "/member/memberList"; 			/* #-> */
-	var goUrlInst = "/member/memberInst"; 			/* #-> */
-	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-	var goUrlUele = "/member/memberUele";			/* #-> */
-	var goUrlDele = "/member/memberDele";			/* #-> */
+		var goUrlList = "/member/memberList"; 			/* #-> */
+		var goUrlInst = "/member/memberInst"; 			/* #-> */
+		var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+		var goUrlUele = "/member/memberUele";			/* #-> */
+		var goUrlDele = "/member/memberDele";			/* #-> */
+		
+		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
 	
-	var seq = $("input:hidden[name=seq]");			/* #-> */
-	
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-	
-	
-	$("#btnSave").on("click", function(){
-
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   		// if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   		// if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-	
-	$("#btnList").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
-	});
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		// if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
 	
 	</script>
 	<script>
@@ -426,6 +437,51 @@
 		$("#btnDelete").on("click", function() {
 			form.attr("action", goUrlDele).submit();
 		});
+		
+	</script>
+	<script>
+		$("#clear").on("click", function() {
+			$("#zipcode").val('');
+			$("#address").val('');
+			$("#addressDetail").val('');
+			$("#addr3").val('');
+		});
+	</script>
+	<script>
+	 function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                var addr = '';
+	                var extraAddr = '';
+
+	                if (data.userSelectedType === 'R') {
+	                    addr = data.roadAddress;
+	                } else {
+	                    addr = data.jibunAddress;
+	                }
+
+	                if(data.userSelectedType === 'R'){
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    document.getElementById("addr3").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("addr3").value = '';
+	                }
+
+	                document.getElementById('zipcode').value = data.zonecode;
+	                document.getElementById("address").value = addr;
+	                document.getElementById("addressDetail").focus();
+	            }
+	        }).open();
+	    }
 	</script>
 </body>
 </html>

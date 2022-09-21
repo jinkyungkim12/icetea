@@ -17,8 +17,8 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "orderRegFormOption", method = RequestMethod.GET)
-	public String orderRegFormFirst(Locale locale, Model model) {
-		return "/infra/order/user/orderRegFormFirst";
+	public String orderRegFormOption(Locale locale, Model model) {
+		return "/infra/order/user/orderRegFormOption";
 	}
 	
 	@RequestMapping(value = "orderRegForm", method = RequestMethod.GET)

@@ -155,13 +155,13 @@
 	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>회원 관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
-			<!-- <div class="col-2">
+			<div class="col-2">
 				<select id="shGender" name="shGender" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shGender}">selected </c:if>>성별</option>
 				   <option value="4" <c:if test="${vo.shGender eq 4}">selected </c:if>>남성</option>
 				   <option value="5" <c:if test="${vo.shGender eq 5}">selected </c:if>>여성</option>
 				</select>
-			</div> -->
+			</div>
 			<div class="col-2">
 				<select id="shdelNY" name="shdelNY" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shdelNY}">selected </c:if>>삭제여부</option>

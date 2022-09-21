@@ -250,7 +250,7 @@
 							<th scope="row"><c:out value="${list.seq }"/></th>
 							<td><c:out value="${list.codeGroup_seq }"/></td>
 							<td><c:out value="${list.nameKr }"/></td>
-							<td><c:out value="${list.code }"/></td>
+							<td><c:out value="${list.seq }"/></td>
 							<td><c:out value="${list.codeAnother }"/></td>
 							<td>
 								<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.codeNameKr}"/></a>

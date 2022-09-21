@@ -16,6 +16,7 @@ public class MemberVo {
 	 
 	 private String name;
 	 private String seq;
+	
 	 
 	public Integer getShOption() {
 		return shOption;

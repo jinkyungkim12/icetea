@@ -22,6 +22,9 @@ public class Member {
 		private String regDatetime;
 		private String company;
 		private String creatorNickname;
+		private Integer zipcode;
+		private String address;
+		private String addressDetail;
 		
 		
 		public String getSeq() {
@@ -144,5 +147,24 @@ public class Member {
 		public void setCreatorNickname(String creatorNickname) {
 			this.creatorNickname = creatorNickname;
 		}
+		public Integer getZipcode() {
+			return zipcode;
+		}
+		public void setZipcode(Integer zipcode) {
+			this.zipcode = zipcode;
+		}
+		public String getAddress() {
+			return address;
+		}
+		public void setAddress(String address) {
+			this.address = address;
+		}
+		public String getAddressDetail() {
+			return addressDetail;
+		}
+		public void setAddressDetail(String addressDetail) {
+			this.addressDetail = addressDetail;
+		}
+		
 		
 }
