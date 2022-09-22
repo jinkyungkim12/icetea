@@ -216,7 +216,7 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label">생년월일</label>
-	   			<input type="date" class="form-control" value="<c:out value="${item.dob}"/>" placeholder ="1990-01-01" name="dob" id="dob">
+	   			<input type="text" class="form-control" value="<c:out value="${item.dob}"/>" placeholder ="1990-01-01" name="dob" id="dob">
 			</div>
 			<div class="col-6">
 				<label class="form-label">성별</label>
