@@ -188,7 +188,6 @@
 					</th>
 					<th scope="col" >NO</th>
 					<th scope="col">이름</th>
-					<th scope="col">성별</th>
 					<th scope="col">아이디</th>
 					<th scope="col">내용</th>
 					<th scope="col">강의번호</th>
@@ -204,7 +203,6 @@
 					</td>
 					<th scope="row">1</th>
 					<td>김진경</td>
-					<td>여성</td>
 					<td>yeriel</td>
 					<td>처음듣는데 매우 재밌습니다!</td>
 					<td>1</td>

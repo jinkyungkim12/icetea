@@ -258,8 +258,8 @@
 			<div class="col-6"></div>
 			<div class="col-6">
 				<div class="row">
-					<div class="col-6"><input type="text" name="" class="form-control" id="" aria-label="" class="form-control" placeholder="위도" disabled></div>
-					<div class="col-6"><input type="text" name="" class="form-control" id="" aria-label="" class="form-control" placeholder="경도" disabled></div>
+					<div class="col-6"><input type="text" name="lat" class="form-control" id="lat" aria-label="" placeholder="위도"></div>
+					<div class="col-6"><input type="text" name="lng" class="form-control" id="lng" aria-label="" placeholder="경도"></div>
 				</div>
 			</div>
 			<div class="col-3">
@@ -396,6 +396,7 @@
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
 	<script type="text/javascript">
 	
 		var goUrlList = "/member/memberList"; 			/* #-> */
@@ -427,6 +428,8 @@
 		$("#btnList").on("click", function(){
 			formVo.attr("action", goUrlList).submit();
 		});
+		
+		alert("성별: " + document.querySelector("input[name='gender']:checked").value);;
 	
 	</script>
 	<script>
@@ -445,6 +448,8 @@
 			$("#address").val('');
 			$("#addressDetail").val('');
 			$("#addr3").val('');
+			$("#lat").val('');
+			$("#lng").val('');
 		});
 	</script>
 	<script>
@@ -479,7 +484,23 @@
 	                document.getElementById('zipcode').value = data.zonecode;
 	                document.getElementById("address").value = addr;
 	                document.getElementById("addressDetail").focus();
+	                
+	                
+	                var geocoder = new daum.maps.services.Geocoder();
+					
+					// 주소로 좌표를 검색
+					geocoder.addressSearch(addr, function(result, status) {
+					 
+						// 정상적으로 검색이 완료됐으면,
+						if (status == daum.maps.services.Status.OK) {
+							
+							document.getElementById("lng").value=result[0].x;
+							document.getElementById("lat").value=result[0].y;
+						}
+					});
+	                
 	            }
+	        
 	        }).open();
 	    }
 	</script>
