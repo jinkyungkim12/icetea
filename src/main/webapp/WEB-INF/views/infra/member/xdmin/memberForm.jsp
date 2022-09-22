@@ -429,7 +429,6 @@
 			formVo.attr("action", goUrlList).submit();
 		});
 		
-		alert("성별: " + document.querySelector("input[name='gender']:checked").value);;
 	
 	</script>
 	<script>
