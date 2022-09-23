@@ -44,8 +44,12 @@ public class MemberDao {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
 	
-	public int selectOneCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	public int selectOneCount(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
 	
-	public int selectOneIdCheck(Member dto) {return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);}
+	public int selectOneIdCheck(Member dto) {
+		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
+	}
 	
 }
