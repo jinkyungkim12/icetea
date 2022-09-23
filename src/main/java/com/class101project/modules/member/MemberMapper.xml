@@ -148,5 +148,10 @@
 			WHERE 1=1
 			AND a.seq = #{seq}
 	</select>
-	
+	<select id="selectOneIdCheck" resultType="Integer">
+		SELECT 
+			COUNT(id) 
+			FROM member 
+			WHERE id= #{id}
+	</select>
 </mapper>

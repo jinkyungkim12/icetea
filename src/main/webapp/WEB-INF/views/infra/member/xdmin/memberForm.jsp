@@ -158,7 +158,9 @@
 			</div>
 			<div class="col-6">
 				<label class="form-label">아이디</label>
-	   			<input type="text" class="form-control" value="<c:out value="${item.id}"/>" placeholder="아이디" name ="id" id="id">
+				<input type="hidden" id="idAllowedNY" name="idAllowedNY" value="0">
+	   			<input type="text" class="form-control"	value="<c:out value="${item.id}"/>" placeholder="아이디" name ="id" id="id">
+	   			<div class="invalid-feedback" id="idFeedback"></div>
 			</div>
 			<div class="col-6">
 				<label class="form-label">비밀번호</label>
@@ -186,14 +188,14 @@
 			<div class="col-6">
 				<label class="form-label">성별</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-3 form-check" name="gender">
-					  <input class="form-check-input" type="radio" value="4" <c:if test="${item.gender eq 4 }"> selected</c:if>" name="gender" id="rd1v1">
+					<div class="col-3 form-check form-check-inline" name="gender">
+					  <input class="form-check-input" type="radio" value="4" <c:if test="${item.gender eq 4 }"> selected</c:if>" name="gender" id="gender1">
 					  <label class="form-check-label" for="rd1v1">
 					    남성
 					  </label>
 					</div>
-					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" value="5" <c:if test="${item.gender eq 5 }"> selected</c:if>" name="gender" id="rd1v2">
+					<div class="col-3 form-check form-check-inline" name="gender">
+					  <input class="form-check-input" type="radio" value="5" <c:if test="${item.gender eq 5 }"> selected</c:if>" name="gender" id="gender2">
 					  <label class="form-check-label" for="rd1v2">
 					    여성
 					  </label>
@@ -429,6 +431,8 @@
 			formVo.attr("action", goUrlList).submit();
 		});
 		
+		$("input[name='gender']:checked").val();
+		
 	</script>
 	<script>
 		$("#btnUelete").on("click", function() {
@@ -502,5 +506,44 @@
 	        }).open();
 	    }
 	</script>
+	<script>
+		$("#id").on("focusout", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/checkId"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,success: function(response) {
+					if(response.rt == "success") {
+						document.getElementById("id").classList.remove('is-invalid');
+						document.getElementById("id").classList.add('is-valid');
+	
+						document.getElementById("idFeedback").classList.remove('invalid-feedback');
+						document.getElementById("idFeedback").classList.add('valid-feedback');
+						document.getElementById("idFeedback").innerText = "ID 사용 가능 합니다.";
+						
+						document.getElementById("idAllowedNY").value = 1;
+						
+					} else {
+						document.getElementById("id").classList.add('is-invalid');
+						
+						document.getElementById("idFeedback").classList.remove('valid-feedback');
+						document.getElementById("idFeedback").classList.add('invalid-feedback');
+						document.getElementById("idFeedback").innerText = "ID 사용 불가능 합니다";
+						
+						document.getElementById("idAllowedNY").value = 0;
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+			
+		});
+	</script>
+	
 </body>
 </html>
