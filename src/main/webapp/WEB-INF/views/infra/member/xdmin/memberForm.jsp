@@ -429,7 +429,6 @@
 			formVo.attr("action", goUrlList).submit();
 		});
 		
-	
 	</script>
 	<script>
 		$("#btnUelete").on("click", function() {

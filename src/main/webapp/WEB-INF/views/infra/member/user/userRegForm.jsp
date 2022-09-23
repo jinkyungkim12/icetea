@@ -301,14 +301,14 @@
 				<label class="form-label">모바일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
 					<div class="col-6 form-check" name="mobileNY">
-					  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> selected</c:if>" id="flexRadioDefault1">
-					  <label class="form-check-label" for="flexRadioDefault1">
+					  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> selected</c:if>" id="mobileNY1">
+					  <label class="form-check-label" for="mobileNY1">
 					    동의
 					  </label>
 					</div>
 					<div class="col-6 form-check">
-					  <input class="form-check-input" type="radio" name="mobileNY" value="0" <c:if test="${item.mobileNY eq 0 }"> selected</c:if>" id="flexRadioDefault2">
-					  <label class="form-check-label" for="flexRadioDefault2">
+					  <input class="form-check-input" type="radio" name="mobileNY" value="0" <c:if test="${item.mobileNY eq 0 }"> selected</c:if>" id="mobileNY2">
+					  <label class="form-check-label" for="mobileNY2">
 					    비동의
 					  </label>
 					</div>
@@ -318,14 +318,14 @@
 				<label class="form-label">이메일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
 					<div class="col-6 form-check" name="emailNY">
-					  <input class="form-check-input" type="radio" name="emailNY" value="1" <c:if test="${item.emailNY eq 1 }"> selected</c:if>" id="flexRadioDefault1" >
-					  <label class="form-check-label" for="flexRadioDefault1">
+					  <input class="form-check-input" type="radio" name="emailNY" value="1" <c:if test="${item.emailNY eq 1 }"> selected</c:if>" id="emailNY1" >
+					  <label class="form-check-label" for="emailNY1">
 					    동의
 					  </label>
 					</div>
 					<div class="col-6 form-check">
-					  <input class="form-check-input" type="radio" name="emailNY" value="0" <c:if test="${item.emailNY eq 0 }"> selected</c:if>" id="flexRadioDefault2">
-					  <label class="form-check-label" for="flexRadioDefault2">
+					  <input class="form-check-input" type="radio" name="emailNY" value="0" <c:if test="${item.emailNY eq 0 }"> selected</c:if>" id="emailNY2">
+					  <label class="form-check-label" for="emailNY2">
 					    비동의
 					  </label>
 					</div>
@@ -335,26 +335,26 @@
 				<label class="form-label">개인정보 유효기간</label>
 				<div class="row" style="margin-left: 10px;">
 					<div class="col-3 form-check" name="personalInfo">
-					  <input class="form-check-input" type="radio" name="personalInfo" value="18" <c:if test="${item.personalInfo eq 18 }"> selected</c:if>" id="flexRadioDefault1">
-					  <label class="form-check-label" for="flexRadioDefault1">
+					  <input class="form-check-input" type="radio" name="personalInfo" value="18" <c:if test="${item.personalInfo eq 18 }"> selected</c:if>" id="personalInfo1">
+					  <label class="form-check-label" for="personalInfo1">
 					    1년
 					  </label>
 					</div>
 					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" name="personalInfo" value="19" <c:if test="${item.personalInfo eq 19 }"> selected</c:if>" id="flexRadioDefault2">
-					  <label class="form-check-label" for="flexRadioDefault2">
+					  <input class="form-check-input" type="radio" name="personalInfo" value="19" <c:if test="${item.personalInfo eq 19 }"> selected</c:if>" id="personalInfo2">
+					  <label class="form-check-label" for="personalInfo2">
 					    3년
 					  </label>
 					</div>
 					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" name="personalInfo" value="20" <c:if test="${item.personalInfo eq 20 }"> selected</c:if>" id="flexRadioDefault3">
-					  <label class="form-check-label" for="flexRadioDefault3">
+					  <input class="form-check-input" type="radio" name="personalInfo" value="20" <c:if test="${item.personalInfo eq 20 }"> selected</c:if>" id="personalInfo3">
+					  <label class="form-check-label" for="personalInfo3">
 					    10년
 					  </label>
 					</div>
 					<div class="col-3 form-check">
-					  <input class="form-check-input" type="radio" name="personalInfo" value="21" <c:if test="${item.personalInfo eq 21 }"> selected</c:if>" id="flexRadioDefault4">
-					  <label class="form-check-label" for="flexRadioDefault4">
+					  <input class="form-check-input" type="radio" name="personalInfo" value="21" <c:if test="${item.personalInfo eq 21 }"> selected</c:if>" id="personalInfo4">
+					  <label class="form-check-label" for="personalInfo4">
 					    평생회원
 					  </label>
 					</div>
