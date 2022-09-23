@@ -265,7 +265,7 @@
 			<div class="col-3">
 				<label class="form-label">모바일 수신동의</label>
 				<div class="row" style="margin-left: 10px;">
-					<div class="col-6 form-check" name="mobileNY">
+					<div class="col-6 form-check" name="mobileNY" >
 					  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> selected</c:if>" id="flexRadioDefault1">
 					  <label class="form-check-label" for="flexRadioDefault1">
 					    동의
