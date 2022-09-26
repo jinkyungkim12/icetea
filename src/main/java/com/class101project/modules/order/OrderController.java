@@ -39,7 +39,7 @@ public class OrderController {
 		return "/infra/order/xdmin/orderList";
 	}
 	
-	@RequestMapping(value = "orderRegForm")
+	@RequestMapping(value = "orderForm")
 	public String orderRegForm(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
@@ -47,7 +47,7 @@ public class OrderController {
 		model.addAttribute("item", item);
 		
 		
-		return "/infra/order/user/orderRegForm";
+		return "/infra/order/xdmin/orderForm";
 	}
 	
 	
@@ -76,7 +76,7 @@ public class OrderController {
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/order/orderRegForm";
+		return "redirect:/order/orderForm";
 	}
 	
 	@RequestMapping(value = "orderRegFormOption", method = RequestMethod.GET)

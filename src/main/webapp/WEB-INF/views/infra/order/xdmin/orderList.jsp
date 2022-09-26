@@ -353,7 +353,7 @@
 		var goUrlUpdt = "/order/orderUpdt";				/* #-> */
 		var goUrlUele = "/order/orderUele";				/* #-> */
 		var goUrlDele = "/order/orderDele";				/* #-> */
-		var goUrlForm = "/order/orderRegForm";
+		var goUrlForm = "/order/orderForm";
 		
 		var form = $("form[name=formList]");
 		

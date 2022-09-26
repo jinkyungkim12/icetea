@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+<jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
 <html>
 <head>
 	<title>Class101</title>
@@ -175,7 +176,11 @@
 	</div>
 	
 	<!-- content -->
-	
+	<!-- <form name="form" method="post" action="/member/memberInst"> -->
+	<form  id="form" name="form" method="post" >
+	<!-- *Vo.jsp s -->
+	<%@include file="orderVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="container" id="containerFont">
 		<div class="row" style="margin-top: 5rem;"><h2><b>2022.07.22 결제 내역</b></h2></div>
 		<hr class="hrstyle">
@@ -208,28 +213,28 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>구매자 배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="김진경" placeholder="" disabled readonly></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" disabled readonly></div>
 	   		<div style="margin-top: 0.5rem;"><span class="down">배송시 수령인  확인을 위해 실명을 입력해 주세요.</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>휴대폰 번호</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="010-0000-0000" placeholder="" disabled readonly></div>
+	   		<div class="input"><input type="text" class="form-control" name="phone" value="<c:out value="${item.phone}"/>" disabled readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송주소</b></label>
 		</div>
 		<div class="row">
-			<div class="input"><input type="text" class="form-control" value="12345" placeholder="" readonly></div>
+			<div class="input"><input type="text" class="form-control" value="12345" placeholder="" readonly disabled></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="서울시 은평구 oo동" placeholder="" readonly></div>
+			<div class="input"><input type="text" class="form-control" value="서울시 은평구 oo동" placeholder="" readonly disabled></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="래미안 oo동 oo호" placeholder="" readonly></div>
+			<div class="input"><input type="text" class="form-control" value="래미안 oo동 oo호" placeholder="" readonly disabled></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="예) 경비실에 맡겨주세요." placeholder="" readonly></div>
+	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="${CodeServiceImpl.selectOneCachedCode(item.request)}" readonly disabled></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 성공</b></h4></div>
@@ -238,15 +243,15 @@
 		<div id="gray">
 			<div class="row" style="margin-top: 1rem;">
 				<div class="col-10"><span><b>총 상품금액</b></span></div>
-				<div class="col-2 text-end"><span>1,300,000원</span></div>
+				<div class="col-2 text-end"><span><c:out value="${item.price}"/>원</span></div>
 			</div>
 			<div class="row" style="margin-top: 1rem;">
 				<div class="col-10"><span><b>상품 할인 금액</b></span></div>
-				<div class="col-2 text-end"><span> - 220,000원</span></div>
+				<div class="col-2 text-end"><span> - <c:out value="${item.priceDiscount}"/>원</span></div>
 			</div>
 			<div class="row" style="margin-top: 1rem;">
 				<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-				<div class="col-2 text-end"><span> - 40,000원</span></div>
+				<div class="col-2 text-end"><span> - <c:out value="${item.couponDiscount}"/>원</span></div>
 			</div>
 			<div class="row" style="margin-top: 1rem;">
 				<div class="col-10"><span><b>배송비</b></span></div>
@@ -256,19 +261,26 @@
 		<hr style="margin-top: 1rem;">
 		<div class="row justify-content-between" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><h5><b>총 결제 금액</b></h5></div>
-			<div class="col-2 text-end" id="finalPrice"><span><h5><b>1,040,000원</b></h5></span></div>
+			<div class="col-2 text-end" id="finalPrice"><span><h5><b><c:out value="${item.finalPrice}"/>원</b></h5></span></div>
 		</div>
 		<div class="row justify-content-between">
-			<div class="col-3"><span>카카오 페이 결제 금액</span></div>
-			<div class="col-2 text-end" id="finalPrice"><span>1,040,000원</span></div>
+			<div class="col-3"><span><c:out value="${CodeServiceImpl.selectOneCachedCode(item.pay)}"/>&nbsp;결제 금액</span></div>
+			<div class="col-2 text-end" id="finalPrice"><span><c:out value="${item.finalPrice}"/>원</span></div>
 		</div>	
 		<div class="row justify-content-center" style="margin-top: 1rem;">
-			<a type="button" href="/home" role="button" class="btn btn-danger" id="buttonPrice">완료 하기</a>
+			<button type="button" href="/home" role="button" class="btn btn-danger" id="btnComplete">완료 하기</button>
 		</div>	
 	</div>
 	<div></div>
 	<div></div>
 	<div></div>
+	</form>
+	
+	  <form name="formVo" id="formVo" method="post">
+	  <!-- *Vo.jsp s -->
+	  <%@include file="orderVo.jsp"%>		<!-- #-> -->
+	  <!-- *Vo.jsp e -->
+	  </form>	
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -306,7 +318,42 @@
 		
 
 <!-- end	 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
+	<script type="text/javascript">
+	
+		var goUrlList = "/order/orderList"; 			/* #-> */
+		var goUrlInst = "/order/orderInst"; 			/* #-> */
+		var goUrlUpdt = "/order/orderUpdt";
+		var goUrlHome = "/home";	
+		
+		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
+	
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		// if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#btnComplete").on("click", function(){
+			formVo.attr("action", goUrlHome).submit();
+		});
+		
+	</script>
 </body>
 </html>
