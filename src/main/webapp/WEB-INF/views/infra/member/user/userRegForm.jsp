@@ -431,7 +431,7 @@
 		    var value = document.querySelector('input[name="gender"]:checked').value;
 		</script>
 		<script type="text/javascript">
-			var goUrlList = "/member/"; /* #-> */
+			var goUrlList = "/member/userComplete"; /* #-> */
 			var goUrlInst = "/member/userInst"; /* #-> */
 			var goUrlUpdt = "/member/memberUpdt"; /* #-> */
 
