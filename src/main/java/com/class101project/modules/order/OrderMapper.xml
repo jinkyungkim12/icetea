@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--2. mapper .xml -->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.class101project.modules.order.OrderMapper">
+<!-- code -> codegroup -->
+    <resultMap id="resultMapObj" type="com.class101project.modules.order.Order"></resultMap>
+	
+	<!-- paging -->
+	<sql id ="selectCommon">
+		from classOrder a 
+		left join member b on b.seq = a.member_seq
+		left join transport c on c.seq = a.transport_seq
+		left join classProduct d on d.seq = a.classProduct_seq
+		 WHERE 1=1
+		
+		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.delNY = #{shDelNY}</if>
+		<if test="shValue != null"></if>
+		
+		
+		<choose>
+			<when test="shOption == 1">AND b.name LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 2">AND b.id LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 3">AND b.email LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 4">AND c.address LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 5">AND a.price = #{shValue}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.orderDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+	</sql>
+	
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq
+			,b.name
+			,b.id
+			,b.email
+			,d.title
+			,a.price
+			,a.priceDiscount
+			,a.couponDiscount
+			,a.finalPrice
+			,a.pay
+			,a.delNY
+			,c.address
+			,a.orderDate
+			<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+
+	<insert id="insert">
+		INSERT INTO classOrder a(
+			b.name
+			,b.phone
+			,c.zipcode
+			,c.address
+			,c.addressDetail
+			,a.request
+			,a.price
+			,a.priceDiscount
+			,a.couponDiscount
+			,a.finalPrice
+			,a.pay
+			,a.orderDate
+		)
+		VALUES (
+			#{b.name}
+			,#{b.phone}
+			,#{c.zipcode}
+			,#{c.address}
+			,#{c.addressDetail}
+			,#{a.request}
+			,#{a.price}
+			,#{a.priceDiscount}
+			,#{a.couponDiscount}
+			,#{a.finalPrice}
+			,#{a.pay}
+			,now()
+		)
+		from classOrder a 
+		left join member b on b.seq = a.member_seq
+		left join transport c on c.seq = a.transport_seq
+		left join classProduct d on d.seq = a.classProduct_seq
+		 WHERE 1=1
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE classOrder
+		SET
+			b.name = #{b.name}
+			,b.phone = #{b.phone}
+			,c.zipcode = #{c.zipcode}
+			,c.address = #{c.address}
+			,c.addressDetail = #{c.addressDetail}
+			,a.request = #{a.request}
+			,a.price = #{a.price}
+			,a.priceDiscount = #{a.priceDiscount}
+			,a.couponDiscount = #{a.couponDiscount}
+			,a.finalPrice = #{a.finalPrice}
+			,a.pay = #{a.pay}
+			,a.orderDate = now()
+		WHERE
+			seq = #{seq}
+		from classOrder a 
+		left join member b on b.seq = a.member_seq
+		left join transport c on c.seq = a.transport_seq
+		left join classProduct d on d.seq = a.classProduct_seq
+		 WHERE 1=1
+	</update>
+	
+	<update id="uelete">
+		UPDATE classOrder
+		SET
+			delNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM classOrder WHERE seq = #{seq}
+	</delete>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.*
+			FROM classOrder a
+			WHERE 1=1
+			AND seq = #{seq}
+	</select>
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT
+		a.seq
+		,a.price
+		,a.finalPrice
+		FROM classOrder a
+		WHERE 1=1
+		 AND a.delNY = 0
+	</select>
+	
+</mapper>
