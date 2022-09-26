@@ -124,18 +124,6 @@
 		 WHERE 1=1
 	</update>
 	
-	<update id="uelete">
-		UPDATE classOrder
-		SET
-			delNY = 1
-		WHERE
-			seq = #{seq}
-	</update>
-	
-	<delete id="delete">
-		DELETE FROM classOrder WHERE seq = #{seq}
-	</delete>
-	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.*

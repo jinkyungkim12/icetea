@@ -79,7 +79,7 @@
 		#DCcoupon{
 			color: red;
 		}
-		#buttonPrice{
+		#btnSave{
 			width: 500px;
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
@@ -188,6 +188,11 @@
 	</div>
 	
 	<!-- content -->
+	<!-- <form name="form" method="post" action="/member/memberInst"> -->
+	<form  id="form" name="form" method="post" >
+	<!-- *Vo.jsp s -->
+	<%@include file="orderVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	
 	<div class="container" id="containerFont">
 		<div class="row" style="margin-top: 5rem;"><h2><b>결제하기</b></h2></div>
@@ -221,33 +226,37 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="" placeholder="이름"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름"></div>
 	   		<div style="margin-top: 0.5rem;"><span class="down">배송시 수령인  확인을 위해 실명을 입력해 주세요.</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>휴대폰 번호</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="" placeholder="010-0000-0000"></div>
+	   		<div class="input"><input type="text" class="form-control"name="phone" value="<c:out value="${item.phone}"/>" id="phone" placeholder="01000000000"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송주소</b></label>
-	   		<div class="row">
+	   		<div class="row input-group">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="" placeholder="우편번호">
+		   			<input type="text" class="form-control" id="zipcode" placeholder="우편번호" style="width: 100%;">
 		   		</div>
 		   		<div class="col-3">
-		   			<a type="button" href="#" role="button" class="btn btn-dark" id="zipcode">우편번호 찾기</a>
+		   			<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
+		   			<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
 			</div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="" placeholder="주소"></div>
+			<div class="input"><input type="text" class="form-control" id="address" placeholder="주소"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="" placeholder="상세 주소"></div>
+			<div class="input"><input type="text" class="form-control" id="addressDetail" placeholder="상세 주소"></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<div class="input"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="" placeholder="예) 경비실에 맡겨주세요."></div>
+	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="<c:out value="${item.request}"/>" placeholder="예) 경비실에 맡겨주세요."></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>쿠폰/캐시</b></h4></div>
@@ -255,7 +264,7 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="40,000원" placeholder="">
+		   			<input type="text" class="form-control" value="<c:out value="${item.couponDiscount}"/>원" name="couponDiscount" placeholder="">
 		   		</div>
 		   		<div class="col-3">
 		   			<a type="button" href="#" role="button" class="btn btn-dark" id="zipcode">쿠폰 변경</a>
@@ -263,23 +272,11 @@
 			</div>
 			<div style="margin-top: 0.5rem;"><span class="down">적용 쿠폰 <7월 로그인 기념 쿠폰 > 4만원 바로수강 클래스 할인</span></div>
 		</div>
-		<div class="row" style="margin-top: 2rem;">
-			<label class="form-label"><b>캐시</b></label>
-	   		<div class="row">
-		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="" placeholder="0원">
-		   		</div>
-		   		<div class="col-3">
-		   			<a type="button" href="#" role="button" class="btn btn-dark" id="zipcode">잔액 사용</a>
-				</div>
-				<div style="margin-top: 0.5rem;"><span class="down">사용가능한 캐시 0원</span></div>
-			</div>
-		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>총 상품금액</b></span></div>
-			<div class="col-2 text-end"><span><b>1,300,000원</b></span></div>
+			<div class="col-2 text-end"><span><b><c:out value="${item.price}"/>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>배송비</b></span></div>
@@ -287,34 +284,41 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-2 text-end"><span> - 220,000원</span></div>
+			<div class="col-2 text-end"><span> - <c:out value="${item.priceDiscount}"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-2 text-end" id="DCcoupon"><span> - 40,000원</span></div>
+			<div class="col-2 text-end" id="DCcoupon"><span> - <c:out value="${item.couponDiscount}"/>원</span></div>
 		</div>
 		<div class="row justify-content-end" style="margin-top: 1rem;">5개월 할부 시 월 208,000원</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><h5><b>최종 가격</b></h5></div>
 			<div class="col-8" id="mip">무이자 할부 가능</div>
-			<div class="col-2 text-end" id="finalPrice"><span><h5><b>1,040,000원</b></h5></span></div>
+			<div class="col-2 text-end" id="finalPrice"><span><h5><b><c:out value="${item.finalPrice}"/>원</b></h5></span></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
 		<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
-			<div class="col-2 form-check">
-			  <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault1" checked>
-			  <label class="form-check-label" for="flexRadioDefault1">카카오페이</label>
+			<div class="col-2 form-check" name="pay">
+			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${item.pay eq 6 }"> checked</c:if>>
+			  <label class="form-check-label" for="pay1">카카오페이</label>
 			</div>
-			<div class="col-2 form-check">
-			  <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2">
-			  <label class="form-check-label" for="flexRadioDefault2">무통장 입금</label>
+			<div class="col-2 form-check" name="pay">
+			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${item.pay eq 7 }"> checked</c:if>>
+			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<a type="button" href="/order/orderViewForm" role="button" class="btn btn-danger" id="buttonPrice">결제 하기</a>
+			<a type="button" href="/order/orderViewForm" role="button" class="btn btn-danger" id="btnSave">결제 하기</a>
 		</div>	
 	</div>
+	</form>
+	
+  <form name="formVo" id="formVo" method="post">
+  <!-- *Vo.jsp s -->
+  <%@include file="orderVo.jsp"%>		<!-- #-> -->
+  <!-- *Vo.jsp e -->
+  </form>	
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -351,8 +355,88 @@
 	
 		
 
-<!-- end	 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<!-- end	 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
+	<script type="text/javascript">
+	
+		var goUrlList = "/order/orderList"; 			/* #-> */
+		var goUrlInst = "/order/orderInst"; 			/* #-> */
+		var goUrlUpdt = "/order/orderUpdt";			/* #-> */
+		
+		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
+	
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		// if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
+		
+	</script>
+	<script>
+		$("#clear").on("click", function() {
+			$("#zipcode").val('');
+			$("#address").val('');
+			$("#addressDetail").val('');
+			$("#addr3").val('');
+		});
+	</script>
+	<script>
+	 function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                var addr = '';
+	                var extraAddr = '';
+
+	                if (data.userSelectedType === 'R') {
+	                    addr = data.roadAddress;
+	                } else {
+	                    addr = data.jibunAddress;
+	                }
+
+	                if(data.userSelectedType === 'R'){
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    document.getElementById("addr3").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("addr3").value = '';
+	                }
+
+	                document.getElementById('zipcode').value = data.zonecode;
+	                document.getElementById("address").value = addr;
+	                document.getElementById("addressDetail").focus();
+	                
+	            }
+	        
+	        }).open();
+	    }
+	</script>
 </body>
 </html>

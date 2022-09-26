@@ -36,14 +36,6 @@ public class OrderDao {
 		return sqlSession.update(namespace + ".update", dto);
 	}
 	
-	public int uelete(Order dto) {
-		return sqlSession.update(namespace + ".uelete", dto);
-	}
-	
-	public int delete(OrderVo vo) {
-		return sqlSession.delete(namespace + ".delete", vo);
-	}
-	
 	public int selectOneCount(OrderVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
 //	for cache

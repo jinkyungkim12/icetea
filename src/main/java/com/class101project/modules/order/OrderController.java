@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/order/")
@@ -47,6 +48,35 @@ public class OrderController {
 		
 		
 		return "/infra/order/user/orderRegForm";
+	}
+	
+	
+	@RequestMapping(value = "orderInst")
+	public String orderInst(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.insert(dto);
+		
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/order/orderRegForm";
+		
+//		if(Constants.INSERT_AFTER_TYPE == 1) {
+//			return "redirect:/code/codeForm";
+//		} else {
+//			return "redirect:/code/codeList";
+//		}
+		
+		
+	}
+	
+	@RequestMapping(value = "orderUpdt")
+	public String orderUpdt(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/order/orderRegForm";
 	}
 	
 	@RequestMapping(value = "orderRegFormOption", method = RequestMethod.GET)
