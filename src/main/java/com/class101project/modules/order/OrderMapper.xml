@@ -144,14 +144,4 @@
 			AND seq = #{seq}
 	</select>
 	
-	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
-		SELECT
-		a.seq
-		,a.price
-		,a.finalPrice
-		FROM classOrder a
-		WHERE 1=1
-		 AND a.delNY = 0
-	</select>
-	
 </mapper>

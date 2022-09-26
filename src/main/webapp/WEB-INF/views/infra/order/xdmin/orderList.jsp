@@ -83,6 +83,15 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
+		table, td, th{
+			text-align: center;
+		}
+		a {
+	   	color: #000000;
+	    }
+	    a:focus, a:hover{
+	    	color: #F7670E;
+	    }
 	</style>
 </head>
 <body>
@@ -143,7 +152,7 @@
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	
-	<div class="container-fluid p-4" style="width: 90%; margin-top: 2rem;">
+	<div class="container-fluid p-4" style="width: 99%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>주문관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
 			<div class="col-2">
@@ -167,7 +176,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid" style="width: 90%;">
+	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-end">
 			<div class="col-2">
 				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
@@ -193,7 +202,7 @@
 	<!-- order List -->
 	
 	<!-- member List -->
-	<div class="container-fluid" style="width: 90%;">
+	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">
 			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
 			<div class="col-1 text-end">
@@ -207,7 +216,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 90%; margin-top: 1rem;">
+	<div class="container-fluid text-center" style="width: 99%; margin-top: 1rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
@@ -231,7 +240,7 @@
 			</thead>
 			<tbody>
 			
-			<c:set var="listPay" value="${ CodeServiceImpl.selectListCachedCode('3') }"/>
+			<c:set var="listCodePay" value="${ CodeServiceImpl.selectListCachedCode('3') }"/>
 			
 			<c:choose>
 				<c:when test="${fn:length(list) eq 0}">
@@ -257,7 +266,7 @@
 						<td><c:out value="${list.couponDiscount }"/></td>
 						<td><c:out value="${list.finalPrice }"/></td>
 						<td>
-							<c:forEach items="${listPay}" var="listPay" varStatus="statusPay">
+							<c:forEach items="${listCodePay}" var="listPay" varStatus="statusPay">
 								<c:if test="${list.pay eq listPay.seq}"><c:out value="${listPay.codeNameKr }"/></c:if>
 							</c:forEach>
 						</td>
@@ -277,7 +286,7 @@
 		</table>
 	</div>
 		
-	<div class="container-fluid" style="width: 90%;">
+	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
 	     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
@@ -343,7 +352,7 @@
 		var goUrlUpdt = "/order/orderUpdt";				/* #-> */
 		var goUrlUele = "/order/orderUele";				/* #-> */
 		var goUrlDele = "/order/orderDele";				/* #-> */
-		var goUrlForm = "/order/orderForm";
+		var goUrlForm = "/order/orderRegForm";
 		
 		var form = $("form[name=formList]");
 		

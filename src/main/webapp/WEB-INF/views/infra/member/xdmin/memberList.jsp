@@ -275,20 +275,11 @@
 							<c:forEach items="${listCodePosition}" var="listPosition" varStatus="statusPosition">
 								<c:if test="${list.position eq listPosition.seq}"><c:out value="${listPosition.codeNameKr }"/></c:if>
 							</c:forEach>
-							<%-- <c:choose>
-								<c:when test="${list.position eq 22}">학생</c:when>
-								<c:when test="${list.position eq 23}">크리에이터</c:when>
-								<c:otherwise>manager</c:otherwise>
-							</c:choose>--%>
 						</td>
 						<td>
 							<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
 								<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.codeNameKr }"/></c:if>
 							</c:forEach>
-							<%-- <c:choose>
-								<c:when test="${list.gender eq 5}">여성</c:when>
-								<c:otherwise>남성</c:otherwise>
-							</c:choose> --%>
 						</td>
 						<td><c:out value="${list.dob }"/></td>
 						<td><c:out value="${list.phone }"/></td>
@@ -309,12 +300,6 @@
 							<c:forEach items="${listCodePersonalInfo}" var="listPersonalInfo" varStatus="statusPersonalInfo">
 								<c:if test="${list.personalInfo eq listPersonalInfo.seq}"><c:out value="${listPersonalInfo.codeNameKr }"/></c:if>
 							</c:forEach>
-							<%-- <c:choose>
-								<c:when test="${list.personalInfo eq 18}">1년</c:when>
-								<c:when test="${list.personalInfo eq 19}">3년</c:when>
-								<c:when test="${list.personalInfo eq 20}">10년</c:when>
-								<c:otherwise>평생회원</c:otherwise>
-							</c:choose> --%>
 						</td>
 						<td>
 							<c:choose>
