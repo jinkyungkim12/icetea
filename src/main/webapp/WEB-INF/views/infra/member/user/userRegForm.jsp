@@ -32,114 +32,114 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
 
-<style type="text/css">
-#ListClass {
-	color: red;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 20px;
-}
-
-#ListStore {
-	color: black;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 20px;
-}
-
-@font-face {
-	font-family: 'Happiness-Sans-Bold';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2')
-		format('woff2');
-	font-weight: 700;
-	font-style: normal;
-}
-
-#leftList {
-	color: black;
-	font-family: 'Happiness-Sans-Regular';
-	font-style: normal;
-	font-size: 15px;
-}
-
-@font-face {
-	font-family: 'Happiness-Sans-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Regular.woff2')
-		format('woff2');
-	font-weight: 400;
-	font-style: normal;
-}
-
-#head {
-	color: black;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 30px;
-	margin-top: 4rem;
-}
-
-#firstrow {
-	margin-top: 2rem;
-}
-
-#btnSave {
-	width: 500px;
-	height: 40px;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 18px;
-	margin-top: 3rem;
-	background-color: #FF5600;
-	color: white;
-}
-
-#kakao {
-	width: 500px;
-	height: 40px;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 18px;
-	background-color: #FEE500;
-}
-
-#other {
-	width: 500px;
-	height: 40px;
-	font-family: 'Happiness-Sans-Bold';
-	font-style: normal;
-	font-size: 18px;
-	margin-top: 0.5rem;
-	color: white;
-}
-
-#aaa {
-	width: 500px;
-}
-
-#bbb {
-	color: black;
-	font-family: 'Happiness-Sans-Regular';
-	font-style: normal;
-	font-size: 14px;
-	margin-top: 0.5rem;
-}
-
-.nav { -
-	-bs-nav-link-color: #000000; -
-	-bs-nav-link-hover-color: #FF5600;
-}
-
-.form-check-input:checked {
-	background-color: #FF5600;
-	border-color: #FF5600;
-}
-
-.form-label {
-	font-weight: bold;
-}
-</style>
+	<style type="text/css">
+	#ListClass {
+		color: red;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 20px;
+	}
+	
+	#ListStore {
+		color: black;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 20px;
+	}
+	
+	@font-face {
+		font-family: 'Happiness-Sans-Bold';
+		src:
+			url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2')
+			format('woff2');
+		font-weight: 700;
+		font-style: normal;
+	}
+	
+	#leftList {
+		color: black;
+		font-family: 'Happiness-Sans-Regular';
+		font-style: normal;
+		font-size: 15px;
+	}
+	
+	@font-face {
+		font-family: 'Happiness-Sans-Regular';
+		src:
+			url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Regular.woff2')
+			format('woff2');
+		font-weight: 400;
+		font-style: normal;
+	}
+	
+	#head {
+		color: black;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 30px;
+		margin-top: 4rem;
+	}
+	
+	#firstrow {
+		margin-top: 2rem;
+	}
+	
+	#btnSave {
+		width: 500px;
+		height: 40px;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 18px;
+		margin-top: 3rem;
+		background-color: #FF5600;
+		color: white;
+	}
+	
+	#kakao {
+		width: 500px;
+		height: 40px;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 18px;
+		background-color: #FEE500;
+	}
+	
+	#other {
+		width: 500px;
+		height: 40px;
+		font-family: 'Happiness-Sans-Bold';
+		font-style: normal;
+		font-size: 18px;
+		margin-top: 0.5rem;
+		color: white;
+	}
+	
+	#aaa {
+		width: 500px;
+	}
+	
+	#bbb {
+		color: black;
+		font-family: 'Happiness-Sans-Regular';
+		font-style: normal;
+		font-size: 14px;
+		margin-top: 0.5rem;
+	}
+	
+	.nav { -
+		-bs-nav-link-color: #000000; -
+		-bs-nav-link-hover-color: #FF5600;
+	}
+	
+	.form-check-input:checked {
+		background-color: #FF5600;
+		border-color: #FF5600;
+	}
+	
+	.form-label {
+		font-weight: bold;
+	}
+	</style>
 </head>
 <body>
 
@@ -431,8 +431,8 @@
 		    var value = document.querySelector('input[name="gender"]:checked').value;
 		</script>
 		<script type="text/javascript">
-			var goUrlList = "/member/memberList"; /* #-> */
-			var goUrlInst = "/member/memberInst"; /* #-> */
+			var goUrlList = "/member/"; /* #-> */
+			var goUrlInst = "/member/userInst"; /* #-> */
 			var goUrlUpdt = "/member/memberUpdt"; /* #-> */
 
 			var seq = $("input:hidden[name=seq]"); /* #-> */

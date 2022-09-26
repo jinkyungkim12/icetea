@@ -86,6 +86,29 @@ public class MemberController {
 		return "redirect:/member/memberForm";
 	}
 	
+	@RequestMapping(value = "userRegForm")
+	public String userRegForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		Member result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		
+		return "infra/member/user/userRegForm";
+	}
+	
+	@RequestMapping(value = "userInst")
+	public String userInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		dto.setEmail(dto.getEmailInsert() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
+		System.out.println("dto.getEmail: " + dto.getEmail());
+		service.insert(dto);
+		
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "infra/member/user/userComplete";
+	}
+	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
