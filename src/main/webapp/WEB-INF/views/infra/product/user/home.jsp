@@ -224,12 +224,12 @@
 	            전체 카테고리
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">창업/부업</a></li>
-	            <li><a class="dropdown-item" href="#">투자</a></li>
-	            <li><a class="dropdown-item" href="#">직무교육</a></li>
-	            <li><a class="dropdown-item" href="#">미술</a></li>
-	            <li><a class="dropdown-item" href="#">사진/영상</a></li>
-	            <li><a class="dropdown-item" href="#">요리</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">창업/부업</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">투자</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">직무교육</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">미술</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">사진/영상</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">요리</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item">
@@ -679,7 +679,7 @@
 			</div>
 			<div class="col-4">
 					<div class="endTitle">고객센터</div>
-					<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+					<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 					<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

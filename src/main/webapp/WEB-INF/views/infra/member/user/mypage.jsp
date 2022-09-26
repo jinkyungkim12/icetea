@@ -203,7 +203,7 @@
 								</div>
 								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="#" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
+								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
 					</div>
@@ -356,7 +356,7 @@
 				  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
 				  	<div class="row justify-content-between" style="margin-top: 2rem;">
 					<div class="col-2"><span>2022.07.22</span></div>
-					<div class="col-2 text-end"><span><a class="nav-link" type="button" href="mypageOrderView.html" style="color: #FF5600">주문 상세 보기</a></span></div>
+					<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
 					<hr>
 					<div class="row" style="margin-top: 2rem;"><h5><b>배송 완료</b></h5></div>
@@ -396,7 +396,7 @@
 					</div>
 					<div class="row justify-content-between" style="margin-top: 2rem;">
 						<div class="col-2"><span>2022.05.17</span></div>
-						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="mypageOrderView2.html" style="color: #FF5600">주문 상세 보기</a></span></div>
+						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
 					<hr>
 					<div class="row" style="margin-top: 2rem;"><h5><b>배송 완료</b></h5></div>
@@ -414,7 +414,7 @@
 					</div>
 					<div class="row justify-content-between" style="margin-top: 2rem;">
 						<div class="col-2"><span>2022.01.01</span></div>
-						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="mypageOrderView3.html" style="color: #FF5600">주문 상세 보기</a></span></div>
+						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
 					<hr>
 					<div class="row" style="margin-top: 2rem;"><h5><b>배송 완료</b></h5></div>
@@ -604,7 +604,7 @@
 			</div>
 			<div class="col-4">
 				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

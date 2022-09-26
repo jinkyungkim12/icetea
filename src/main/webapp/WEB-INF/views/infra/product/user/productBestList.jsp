@@ -214,9 +214,9 @@
 										<h5><b>김진경</b></h5>
 									</div>
 								</div>
-								<a href="../mypage/mypage.html" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="../member/member_loginForm.html" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
+								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
 					</div>
@@ -236,16 +236,16 @@
 	            전체 카테고리
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">창업/부업</a></li>
-	            <li><a class="dropdown-item" href="#">투자</a></li>
-	            <li><a class="dropdown-item" href="#">직무교육</a></li>
-	            <li><a class="dropdown-item" href="#">미술</a></li>
-	            <li><a class="dropdown-item" href="#">사진/영상</a></li>
-	            <li><a class="dropdown-item" href="#">요리</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">창업/부업</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">투자</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">직무교육</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">미술</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">사진/영상</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">요리</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="productBestList.html">BEST</a>
+	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
@@ -1016,7 +1016,7 @@
 			</div>
 			<div class="col-4">
 					<div class="endTitle">고객센터</div>
-					<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+					<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 					<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

@@ -263,7 +263,7 @@
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
 				  <div class="container-fluid">
-				    <a class="navbar-brand" href="../product/productList.html">
+				    <a class="navbar-brand" href="/home">
       					<img src="../../resources/images/logo.png" alt="">
 				    </a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -302,9 +302,9 @@
 										<h5><b>김진경</b></h5>
 									</div>
 								</div>
-								<a href="../mypage/mypage.html" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="../member/member_loginForm.html" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
+								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
 					</div>
@@ -770,7 +770,7 @@
 			</div>
 			<div class="col-4">
 				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

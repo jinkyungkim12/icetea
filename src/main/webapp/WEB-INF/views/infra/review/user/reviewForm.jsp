@@ -440,7 +440,7 @@
 			</div>
 			<div class="col-4">
 				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

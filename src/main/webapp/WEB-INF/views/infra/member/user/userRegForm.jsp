@@ -151,7 +151,7 @@
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
 					<div class="container-fluid">
-						<a class="navbar-brand" href="#"> <img
+						<a class="navbar-brand" href="/home"> <img
 							src="../../resources/images/logo.png" alt="">
 						</a>
 						<button class="navbar-toggler" type="button"
@@ -510,20 +510,16 @@
 								var geocoder = new daum.maps.services.Geocoder();
 
 								// 주소로 좌표를 검색
-								geocoder
-										.addressSearch(
-												addr,
-												function(result, status) {
+								geocoder.addressSearch(addr, function(result, status) {
+									// 정상적으로 검색이 완료됐으면,
+									if (status == daum.maps.services.Status.OK) {
 
-													// 정상적으로 검색이 완료됐으면,
-													if (status == daum.maps.services.Status.OK) {
-
-														document
-																.getElementById("lng").value = result[0].x;
-														document
-																.getElementById("lat").value = result[0].y;
-													}
-												});
+										document
+												.getElementById("lng").value = result[0].x;
+										document
+												.getElementById("lat").value = result[0].y;
+									}
+								});
 
 							}
 

@@ -99,7 +99,7 @@
 	
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="../member/dmin_List.html"><b>CLASS 101</b></a>
+	    <a class="navbar-brand" href="/codeGroup/codeGroupList"><b>CLASS 101</b></a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -111,28 +111,28 @@
 	      <div class="offcanvas-body">
 	        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./member/dmin_List.html">회원관리</a>
+	            <a class="nav-link bbb" href="/member/memberList">회원관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./product/dmin_product.html">클래스관리</a>
+	            <a class="nav-link bbb" href="/product/productList">클래스관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./review/dmin_review.html">리뷰관리</a>
+	            <a class="nav-link bbb" href="/review/reviewList">리뷰관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="./order/dmin_order.html">주문관리</a>
+	            <a class="nav-link bbb" href="/order/orderList">주문관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="codeGroup.html">코드그룹관리</a>
+	            <a class="nav-link bbb" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="code.html">코드관리</a>
+	            <a class="nav-link bbb" href="/code/codeList">코드관리</a>
 	          </li>
 	        </ul>
 	        <div class="text-center">
 		         <ul class="navbar-nav" style="margin-top: 3rem;">
 			      <li class="nav-item justify-content-end">
-			        <a type="button" class="nav-link btn btn-warining" href="/member/memberLogin" style="background-color: #F87320; color: white;">logout</a>
+			        <a type="button" class="nav-link btn btn-warining" href="/member/dmin_login" style="background-color: #F87320; color: white;">logout</a>
 			      </li>
 			     </ul>
 		     </div>
@@ -192,9 +192,6 @@
 					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 				</div>
 				<div class="col-2">
-				 	<!-- <button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
-					<button class="btn btn-outline-dark" type="submit" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button> -->
-				
 					<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
 					<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;" id="btnReset" name=""><i class="fa-solid fa-rotate-left"></i></button>
 				</div>
@@ -291,26 +288,6 @@
 			    	</div>
 			    </div>
 		   </div>
-	
-			<!-- <div class="container p-10">
-				<nav aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li>
-				  </ul>
-				</nav>
-			</div> -->
 			
 			<!-- pagination s -->
 			<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>

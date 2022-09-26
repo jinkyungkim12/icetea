@@ -72,7 +72,7 @@
 	
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="../member/dmin_List.html"><b>CLASS 101</b></a>
+	    <a class="navbar-brand" href="/codeGroup/codeGroupList"><b>CLASS 101</b></a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -105,7 +105,7 @@
 	        <div class="text-center">
 		         <ul class="navbar-nav" style="margin-top: 3rem;">
 			      <li class="nav-item justify-content-end">
-			        <a type="button" class="nav-link btn btn-warining" href="/member/memberLogin" style="background-color: #F87320; color: white;">logout</a>
+			        <a type="button" class="nav-link btn btn-warining" href="/member/dmin_login" style="background-color: #F87320; color: white;">logout</a>
 			      </li>
 			     </ul>
 		     </div>

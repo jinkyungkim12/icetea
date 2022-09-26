@@ -186,9 +186,9 @@
 										<h5><b>김진경</b></h5>
 									</div>
 								</div>
-								<a href="mypage.html" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="/member/login" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
+								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
 					</div>
@@ -199,8 +199,8 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" href="mypage.html" class="nav-link">김진경</a></b></h3></div>
-		<div><a type="button" href="ModForm_student.html" class="nav-link"><h6>example@naver.com</h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypageModForm" class="nav-link">김진경</a></b></h3></div>
+		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6>example@naver.com</h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">
@@ -210,8 +210,8 @@
 				<div style="margin-top: 3rem;"><h5><b>내등급</b></h5></div>
 				<div class="shadow p-3 mb-5 rounded" style="margin-top: 1rem;" id="leveltap">
 					<div class="row justify-content-between">
-						<div class="col-5"><h5><b><a type=button class="nav-link text-white" href="#">Lv. Amateur</a></b></h5></div>
-						<div class="col-4 text-end"><span><a type=button class="nav-link text-white" href="#">혜택보기</a></soan></div>
+						<div class="col-5"><h5><b><a type=button class="nav-link text-white" href="/member/mypageGrade">Lv. Amateur</a></b></h5></div>
+						<div class="col-4 text-end"><span><a type=button class="nav-link text-white" href="/member/mypageGrade">혜택보기</a></soan></div>
 					</div>
 					<hr class="hrStyle">
 					<div><b>10,000P</b>&emsp;<span>추가 적립시 다음 달 &nbsp; Lv. Professtional</span></div>
@@ -365,7 +365,7 @@
 			</div>
 			<div class="col-4">
 				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" href="#" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
+				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
 				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
 			</div>
 		</div>

@@ -93,7 +93,7 @@
 					<div class="col">
 						<nav class="navbar bg-white">
 						  <div class="container">
-						    <a class="navbar-brand" href="#">
+						    <a class="navbar-brand" href="/home">
 						      <img src="../../resources/images/logo.png" alt="">
 						    </a>
 						  </div>
