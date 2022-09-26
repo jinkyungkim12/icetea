@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+<jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
 <html>
 <head>
 	<title>order List</title>
@@ -293,7 +294,7 @@
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
-	     		<a type="button" class="btn btn-dark" href="/product/productForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
+	     		<a type="button" class="btn btn-dark" href="#" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
 				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
 	    	</div>
 	    </div>	

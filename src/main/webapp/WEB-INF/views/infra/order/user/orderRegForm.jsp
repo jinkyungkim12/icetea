@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+<jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
 <html>
 <head>
 	<title>Class101</title>
@@ -193,7 +194,6 @@
 	<!-- *Vo.jsp s -->
 	<%@include file="orderVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->
-	
 	<div class="container" id="containerFont">
 		<div class="row" style="margin-top: 5rem;"><h2><b>결제하기</b></h2></div>
 		<hr class="hrstyle">
@@ -256,7 +256,7 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="<c:out value="${item.request}"/>" placeholder="예) 경비실에 맡겨주세요."></div>
+	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="${CodeServiceImpl.selectOneCachedCode(item.request)}" placeholder="예) 경비실에 맡겨주세요."></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>쿠폰/캐시</b></h4></div>
@@ -264,10 +264,10 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="<c:out value="${item.couponDiscount}"/>원" name="couponDiscount" placeholder="">
+		   			<input type="text" class="form-control" value="${item.couponDiscount}원" name="couponDiscount" placeholder="">
 		   		</div>
 		   		<div class="col-3">
-		   			<a type="button" href="#" role="button" class="btn btn-dark" id="zipcode">쿠폰 변경</a>
+		   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
 				</div>
 			</div>
 			<div style="margin-top: 0.5rem;"><span class="down">적용 쿠폰 <7월 로그인 기념 쿠폰 > 4만원 바로수강 클래스 할인</span></div>
@@ -314,11 +314,11 @@
 	</div>
 	</form>
 	
-  <form name="formVo" id="formVo" method="post">
-  <!-- *Vo.jsp s -->
-  <%@include file="orderVo.jsp"%>		<!-- #-> -->
-  <!-- *Vo.jsp e -->
-  </form>	
+	  <form name="formVo" id="formVo" method="post">
+	  <!-- *Vo.jsp s -->
+	  <%@include file="orderVo.jsp"%>		<!-- #-> -->
+	  <!-- *Vo.jsp e -->
+	  </form>	
 	
 	<!-- 끝 -->
 	<div class="container">

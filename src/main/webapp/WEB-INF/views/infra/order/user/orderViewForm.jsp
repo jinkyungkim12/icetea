@@ -219,17 +219,17 @@
 			<label class="form-label"><b>배송주소</b></label>
 		</div>
 		<div class="row">
-			<div class="input"><input type="text" class="form-control" value="12345" placeholder="" disabled readonly></div>
+			<div class="input"><input type="text" class="form-control" value="12345" placeholder="" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="서울시 은평구 oo동" placeholder="" disabled readonly></div>
+			<div class="input"><input type="text" class="form-control" value="서울시 은평구 oo동" placeholder="" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" value="래미안 oo동 oo호" placeholder="" disabled readonly></div>
+			<div class="input"><input type="text" class="form-control" value="래미안 oo동 oo호" placeholder="" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="예) 경비실에 맡겨주세요." placeholder="" disabled readonly></div>
+	   		<div class="input"><input type="text" class="form-control" value="예) 경비실에 맡겨주세요." placeholder="" readonly></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 성공</b></h4></div>

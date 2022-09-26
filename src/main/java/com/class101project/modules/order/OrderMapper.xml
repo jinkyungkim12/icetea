@@ -126,10 +126,22 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.*
+			b.name
+			,b.phone
+			,c.zipcode
+			,c.address
+			,c.addressDetail
+			,a.request
+			,a.price
+			,a.priceDiscount
+			,a.couponDiscount
+			,a.finalPrice
+			,a.pay
 			FROM classOrder a
+				left join member b on b.seq = a.member_seq
+				left join transport c on c.seq = a.transport_seq
 			WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 </mapper>
