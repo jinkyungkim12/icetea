@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>class101</title>
@@ -34,7 +34,7 @@
 			font-size: 16px;
 			color: gray;
 		}
-		#login{
+		#btnLogin{
 			width: 500px;
 			height: 40px;
 			font-family: 'Happiness-Sans-Bold';
@@ -107,13 +107,19 @@
 					<p>로그인</p>
 				</div>
 				<div class="row" style="margin-top: 2rem" id="input1">
-					<label for="exampleFormControlInput1" class="form-label">이메일</label>
- 					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="width: 500px;">
+					<label for="exampleFormControlInput1" class="form-label">아이디</label>
+ 					<input type="text" class="form-control" name="id" id="id" placeholder="example" style="width: 500px;">
 				</div>
 				<div class="row" style="margin-top: 2rem" id="input1">
 					<label for="exampleFormControlInput1" class="form-label">비밀번호</label>
- 					<input type="password" class="form-control" id="inputPassword" style="width: 500px;">
+ 					<input type="password" class="form-control" name="password" id="password" style="width: 500px;">
 				</div>
+				<div class="row" style="margin-top: 1rem;">
+				<div class="form-check form-switch">
+				  <input class="form-check-input" type="checkbox" role="switch" id="autoLogin">
+				  <label class="form-check-label" for="autoLogin">Auto login</label>
+				</div>
+			</div>
 				<div class="row justify-content-between" id="btw">
 					<div class="col">
 						<a class="nav-link" href="/member/IdPassword">비밀번호를 잊으셨나요?</a>
@@ -123,7 +129,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<a type="button" class="btn" href="/member/memberLogin" id="login">로그인</a>
+					<button type="button" class="btn" id="btnLogin">로그인</button>
 				</div>
 				<div class="row">
 					<a type="button" class="btn btn-light" href="#" id="kakao" style="margin-top: 3rem;">
@@ -155,5 +161,39 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		$("#btnLogin").on("click", function(){
+			
+			/* if(validation() == false) return false; */
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/loginProc"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val(), "password" : $("#password").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/home";
+					} else {
+						alert("회원없음");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+	
+		/* validation = function(){
+			if(!checkNull($("id"), $.trim($("id").val()), "아이디를 입력해주세요!")) return false;
+			if(!checkNull($("password"), $.trim($("password").val()), "비밀번호를 입력해주세요!")) return false;
+		} */
+	</script>
 </body>
 </html>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.class101project.common.util.UtilSecurity;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 	
@@ -19,6 +21,8 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insert(Member dto) throws Exception{
 		
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		
 		int result = dao.insert(dto);
 		System.out.println("service result: " + result);
 		return result;
@@ -26,6 +30,9 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int update(Member dto) throws Exception{
+		
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		
 		return dao.update(dto);
 	}
 	
@@ -56,6 +63,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int selectOneIdCheck(Member dto) {
 		return dao.selectOneIdCheck(dto);
+	}
+
+	public Member selectOneLogin(Member dto) {
+		return dao.selectOneLogin(dto);
 	}
 	
 }

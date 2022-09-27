@@ -14,7 +14,7 @@ public class MemberDao {
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
-	
+
 	private static String namespace = "com.class101project.modules.member.MemberMapper";
 	
 	public List<Member> selectList(MemberVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
@@ -50,6 +50,10 @@ public class MemberDao {
 	
 	public int selectOneIdCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
+	}
+	
+	public Member selectOneLogin(Member dto) {
+		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
 	}
 	
 }

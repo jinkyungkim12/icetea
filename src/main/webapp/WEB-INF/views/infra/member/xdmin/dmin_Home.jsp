@@ -75,7 +75,7 @@
 	    <a class="navbar-brand" href="/home"><img src="./image/logo.png" alt=""></a>
 	    <ul class="navbar-nav">
 	      <li class="nav-item justify-content-end">
-	        <a type="button" class="nav-link btn btn-warining" href="/member/dmin_login" style="background-color: #F87320;color: white;">logout</a>
+	        <a type="button" class="nav-link btn btn-warining" href="/member/memberLoginResult" style="background-color: #F87320;color: white;">logout</a>
 	      </li>
 	     </ul>
 	  </div>

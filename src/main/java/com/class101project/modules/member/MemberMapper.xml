@@ -154,4 +154,21 @@
 			FROM member 
 			WHERE id= #{id}
 	</select>
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT 
+			a.seq
+			,a.id
+			FROM member a 
+			WHERE a.id= #{id}
+	</select>
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT 
+			a.seq
+			,a.id
+			,a.name
+			,a.email
+			FROM member a 
+			WHERE a.id= #{id}
+			AND a.password = #{password}
+	</select>
 </mapper>

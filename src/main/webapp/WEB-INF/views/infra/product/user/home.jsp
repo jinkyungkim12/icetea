@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+
 <html>
 <head>
 	<title>Class101</title>
@@ -199,7 +199,7 @@
 										<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
 									</div>
 									<div class="col-8 text-center" style="margin-top: 0.9rem;">
-										<h5><b>김진경</b></h5>
+										<h5><b><c:out value="${sessName}"/></b></h5>
 									</div>
 								</div>
 								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 

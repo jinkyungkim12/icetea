@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
+
 <html>
 <head>
 	<title>class101</title>
@@ -198,7 +199,7 @@
 										<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
 									</div>
 									<div class="col-8 text-center" style="margin-top: 0.9rem;">
-										<h5><b>김진경</b></h5>
+										<h5><b><c:out value="${sessName}"/></b></h5>
 									</div>
 								</div>
 								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
@@ -214,8 +215,8 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypage" class="nav-link">김진경</a></b></h3></div>
-		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6>example@naver.com</h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypage" class="nav-link"><c:out value="${sessName}"/></a></b></h3></div>
+		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">

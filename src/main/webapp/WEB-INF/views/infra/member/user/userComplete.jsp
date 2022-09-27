@@ -53,7 +53,7 @@
 			color: white;
 			font-family: 'Happiness-Sans-Bold';
 			font-style: normal;
-			font-size: 40px;
+			font-size: 70px;
 			margin-top: 7rem;
 		}
 		#bbb{
@@ -69,17 +69,27 @@
 		}
 		#ddd{
 			width: 500px;
-			height: 50px;
+			height: 30px;
 			font-family: 'Happiness-Sans-Bold';
 			font-style: normal;
-			font-size: 18px;
+			font-size: 20px;
 			margin-top: 3rem;
 			background-color: #FF5600;
 			color: white;
+			verticla-align: middle;
 		}
 		#eee{
 			height: 70px;
 			background-color: black;
+		}
+		.nav-link{
+			color: black;
+		}
+		.nav{
+			--bs-nav-link-hover-color: #FF5600;
+		}
+		a{
+			text-decoration: none;
 		}
 	</style>
 
@@ -116,7 +126,7 @@
 				    </div>
 				 </nav>  
 			</div>
-			<div class="col">
+			<div class="col alink">
 				<ul class="nav justify-content-end" id="leftList">
 				  <li class="nav-item">
 				    <a class="nav-link active" aria-current="page" href="#">크리에이터 지원</a>
@@ -140,13 +150,14 @@
 			<p id="bbb">신규회원 총 32만원 쿠폰팩 증정</p>		
 		</div>
 		<div class="row justify-content-center">
-			<img src="../image/coupon.png" alt="" id="ccc">
+			<img src="../../resources/images/coupon.png" alt="" id="ccc">
 		</div>
-		<div class="row justify-content-center">
-			<button type="button" href="/home" id="ddd">지금 바로 쿠폰 발급받기</button>
+		<div class="row justify-content-center text-center">
+			<a type="button" href="/home" id="ddd">지금 바로 시작하기</a>
 		</div>
 		<div id="eee"></div>
 	</div>
+	
 	
 <!-- end	 -->
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
