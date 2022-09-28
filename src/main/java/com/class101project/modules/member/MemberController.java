@@ -49,9 +49,6 @@ public class MemberController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 	}
-	
-	
-	
 	// 로그인 세션
 	
 	@ResponseBody
@@ -76,7 +73,20 @@ public class MemberController {
 		return returnMap;
 	}
 	
-
+	
+	// 로그아웃
+	
+	@ResponseBody
+	@RequestMapping(value = "logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
+	
+	// 마이페이지
+	
 	@RequestMapping(value = "mypage")
 	public String mypage(Member dto, MemberVo vo, HttpSession httpSession) throws Exception {
 		System.out.println("dto.getSeq() : " + dto.getSeq());
@@ -111,12 +121,15 @@ public class MemberController {
 		return "infra/member/xdmin/memberForm";
 	}
 	
+	// 등록 
+	
 	@RequestMapping(value = "memberInst")
 	public String memberInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		dto.setEmail(dto.getEmailInsert() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		System.out.println("dto.getEmail: " + dto.getEmail());
-		service.insert(dto);
+		
+		service.totalInsert(dto);
 		
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
@@ -134,6 +147,7 @@ public class MemberController {
 		return "infra/member/user/userComplete";
 	}
 	
+	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -141,6 +155,35 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/memberForm";
 	}
+
+	
+	@RequestMapping(value = "mypageUpdt")
+	public String mypageUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		
+		dto.setSeq(seq);
+		
+		service.totalUpdate(dto);
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/mypageModForm";
+	}
+	
+	@RequestMapping(value = "mypageModForm")
+	public String mypageModForm(MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		vo.setSeq(seq);
+		
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		Member item1 = service.selectOneAdd(vo);
+		model.addAttribute("item1", item1);
+		
+		return "infra/member/user/mypageModForm";
+	}	
 	
 	@RequestMapping(value = "memberUele")
 	public String memberUele(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
@@ -189,12 +232,6 @@ public class MemberController {
 		
 		return "infra/member/user/IdPassword";
 	}
-	
-	@RequestMapping(value = "mypageModForm")
-	public String mypageModForm() throws Exception {
-		
-		return "infra/member/user/mypageModForm";
-	}	
 	
 	
 	@RequestMapping(value = "mypageGrade")

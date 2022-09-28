@@ -10,7 +10,7 @@
 	
 	<sql id ="selectCommon">
 		FROM member a
-		left join transport b on b.seq = a.seq
+		left join transport b on b.aSeq = a.seq
 		WHERE 1=1
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
@@ -104,6 +104,26 @@
 		</selectKey>
 	</insert>
 	
+	<insert id="addressInsert">
+		INSERT INTO transport (
+			zipcode
+			,address
+			,addressDetail
+			,addr3
+			,member_seq
+		)
+		VALUES (
+			#{zipcode}
+			,#{address}
+			,#{addressDetail}
+			,#{addr3}
+			,#{seq}
+		)
+		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<update id="update">
 		UPDATE member
 		SET
@@ -129,6 +149,17 @@
 			seq = #{seq}
 	</update>
 	
+	<update id="addressUpdate">
+		UPDATE transport
+		SET
+			zipcode = #{zipcode}
+			,address = #{address}
+			,addressDetail = #{addressDetail}
+			,addr3 = #{addr3}
+		WHERE
+			member_seq = #{seq}
+	</update>
+	
 	<update id="uelete">
 		UPDATE member
 		SET
@@ -148,6 +179,15 @@
 			WHERE 1=1
 			AND a.seq = #{seq}
 	</select>
+	
+	<select id="selectOneAdd" resultMap="resultMapObj">
+		SELECT
+			a.*
+			FROM transport a
+			WHERE 1=1
+			AND member_seq = #{seq}
+	</select>
+	
 	<select id="selectOneIdCheck" resultType="Integer">
 		SELECT 
 			COUNT(id) 

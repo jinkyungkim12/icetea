@@ -26,14 +26,26 @@ public class MemberDao {
 		return result;
 	}
 	
+	public int addInsert(Member dto) {
+		return sqlSession.insert(namespace + ".addressInsert", dto);
+	}
+	
 	public Member selectOne(MemberVo vo) {
 		Member result = sqlSession.selectOne(namespace + ".selectOne", vo);
 		System.out.println("dao result: " + result);
 		return result;
 	}
 	
+	public Member selectOneAdd(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneAdd", vo);
+	}
+	
 	public int update(Member dto) {
 		return sqlSession.update(namespace + ".update", dto);
+	}
+	
+	public int addUpdate(Member dto) {
+		return sqlSession.update(namespace + ".addressUpdate", dto);
 	}
 	
 	public int uelete(Member dto) {

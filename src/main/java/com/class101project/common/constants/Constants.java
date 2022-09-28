@@ -8,4 +8,6 @@ public class Constants {
 	
 	public static final int INSERT_AFTER_TYPE = 1;
 	public static final int UPDATE_AFTER_TYPE = 1;
+	
+	public static final String URL_LOGINFORM = "/member/memberLoginResult";
 }

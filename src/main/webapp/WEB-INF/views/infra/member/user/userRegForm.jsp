@@ -291,27 +291,23 @@
 					</div>
 				</div>
 				<div class="col-6">
-					<div class="row">
-						<label class="form-label">주소</label>
-					</div>
+					<div class="row"><label class="form-label">주소</label></div>
 					<div class="row input-group">
-						<div class="col-8">
-							<input type="text" class="form-control" id="zipcode">
-						</div>
-						<div class="col-4">
-							<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()">우편번호 검색</button>
-							<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;">
-								<i class="fa-solid fa-rotate-left"></i>
-							</button>
-						</div>
-					</div>
+						<div class="col-8">	
+			   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>">
+			   			</div>
+			   			<div class="col-4">
+			   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
+			   				<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+		   				</div>
+		   			</div>
 				</div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="address" placeholder="주소" disabled></div>
+				<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="addressDetail" placeholder="상세주소"></div>
+				<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
+				<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 				<div class="col-6"></div>
 				<div class="col-3">
 					<label class="form-label">모바일 수신동의</label>
@@ -512,22 +508,7 @@
 
 								document.getElementById('zipcode').value = data.zonecode;
 								document.getElementById("address").value = addr;
-								document.getElementById("addressDetail")
-										.focus();
-
-								var geocoder = new daum.maps.services.Geocoder();
-
-								// 주소로 좌표를 검색
-								geocoder.addressSearch(addr, function(result, status) {
-									// 정상적으로 검색이 완료됐으면,
-									if (status == daum.maps.services.Status.OK) {
-
-										document
-												.getElementById("lng").value = result[0].x;
-										document
-												.getElementById("lat").value = result[0].y;
-									}
-								});
+								document.getElementById("addressDetail").focus();
 
 							}
 

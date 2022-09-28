@@ -29,18 +29,35 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public int update(Member dto) throws Exception{
-		
+	public int addInsert(Member dto) throws Exception {
+		return dao.addInsert(dto);
+	}
+	
+	public void totalInsert(Member dto) throws Exception {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
-		
+		insert(dto);
+		addInsert(dto);
+	}
+
+	public void totalUpdate(Member dto) throws Exception {
+		update(dto);
+		addUpdate(dto);
+	}
+	@Override
+	public int update(Member dto) throws Exception{
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.update(dto);
 	}
 	
 	@Override
+	public int addUpdate(Member dto) throws Exception {
+		return dao.addUpdate(dto);
+	}
+
+	@Override
 	public int uelete(Member dto) throws Exception{
 		return dao.uelete(dto);
 	}
-	
 	
 	@Override
 	public int delete(MemberVo vo) throws Exception{
@@ -52,6 +69,11 @@ public class MemberServiceImpl implements MemberService{
 		Member result = dao.selectOne(vo);
 		System.out.println("service result: " + result);
 		return result;
+	}
+
+	@Override
+	public Member selectOneAdd(MemberVo vo) throws Exception{
+		return dao.selectOneAdd(vo);
 	}
 	
 	@Override

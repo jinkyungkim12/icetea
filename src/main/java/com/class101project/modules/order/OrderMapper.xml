@@ -92,7 +92,7 @@
 		)
 		from classOrder a 
 		left join member b on b.seq = a.member_seq
-		left join transport c on c.seq = a.transport_seq
+		left join transport c on c.aSeq = a.transport_seq
 		left join classProduct d on d.seq = a.classProduct_seq
 		 WHERE 1=1
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">

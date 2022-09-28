@@ -22,11 +22,33 @@ public class Member {
 		private String regDatetime;
 		private String company;
 		private String creatorNickname;
+		
+		/* address */
+		private String aSeq;
 		private Integer zipcode;
 		private String address;
 		private String addressDetail;
+		private String addr3;
+		private String member_seq;
 		
-		
+		public String getMember_seq() {
+			return member_seq;
+		}
+		public void setMember_seq(String member_seq) {
+			this.member_seq = member_seq;
+		}
+		public String getaSeq() {
+			return aSeq;
+		}
+		public void setaSeq(String aSeq) {
+			this.aSeq = aSeq;
+		}
+		public String getAddr3() {
+			return addr3;
+		}
+		public void setAddr3(String addr3) {
+			this.addr3 = addr3;
+		}
 		public String getSeq() {
 			return seq;
 		}

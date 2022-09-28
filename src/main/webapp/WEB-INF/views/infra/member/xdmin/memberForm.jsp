@@ -243,7 +243,7 @@
 				<div class="row"><label class="form-label">주소</label></div>
 				<div class="row input-group">
 					<div class="col-8">	
-		   				<input type="text" class="form-control" id="zipcode">
+		   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>">
 		   			</div>
 		   			<div class="col-4">
 		   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -252,11 +252,11 @@
 	   			</div>
 			</div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="address" placeholder="주소" disabled></div>
+			<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="addressDetail" aria-label="addressDetail" placeholder="상세주소"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 			<div class="col-6"></div>
 			<div class="col-6">
 				<div class="row">
@@ -394,12 +394,12 @@
   </form>	
 		
 <!-- end	 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
-	<script type="text/javascript">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
+<script type="text/javascript">
 	
 		var goUrlList = "/member/memberList"; 			/* #-> */
 		var goUrlInst = "/member/memberInst"; 			/* #-> */

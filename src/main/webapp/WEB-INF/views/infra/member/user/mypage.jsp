@@ -156,7 +156,10 @@
 <body>
 
 <!-- start -->
-	
+<form  id="form" name="form" method="post" >
+<!-- *Vo.jsp s -->
+<%@include file="memberVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
 <!-- NAV bar	 -->
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
@@ -204,7 +207,7 @@
 								</div>
 								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
 								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
+								<div class="row justify-content-center"><a type="button" href="/member/memberLoginResult" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
 					</div>
@@ -215,7 +218,7 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypage" class="nav-link"><c:out value="${sessName}"/></a></b></h3></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')"><c:out value="${sessName}"/></a></b></h3></div>
 		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
@@ -612,9 +615,23 @@
 	</div>
 	<br>
 	<br>
-		
+	</form>	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+		var goUrlForm = "/member/mypageModForm";
+	
+		var form = $("form[name=form]");
+		var seq = $("input:hidden[name=seq]");
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+		
+	</script>
 </body>
 </html>
