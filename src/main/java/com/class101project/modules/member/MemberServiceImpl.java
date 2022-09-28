@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectList(vo);
 	}
 	
+	// insert
 	@Override
 	public int insert(Member dto) throws Exception{
 		
@@ -39,13 +40,24 @@ public class MemberServiceImpl implements MemberService{
 		addInsert(dto);
 	}
 
+	
+	
+	// update
 	public void totalUpdate(Member dto) throws Exception {
-		update(dto);
+		
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		mypageUpdate(dto);
 		addUpdate(dto);
 	}
+	
 	@Override
 	public int update(Member dto) throws Exception{
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		return dao.update(dto);
+	}
+	
+	@Override
+	public int mypageUpdate(Member dto) throws Exception{
 		return dao.update(dto);
 	}
 	
@@ -54,6 +66,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.addUpdate(dto);
 	}
 
+	
+	// uelete, delete
 	@Override
 	public int uelete(Member dto) throws Exception{
 		return dao.uelete(dto);
@@ -64,6 +78,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.delete(vo);
 	}
 	
+	
+	// selectOne
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception{
 		Member result = dao.selectOne(vo);
@@ -81,12 +97,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.selectOneCount(vo);
 	}
-	
+
+	// id 중복체크 
 	@Override
 	public int selectOneIdCheck(Member dto) {
 		return dao.selectOneIdCheck(dto);
 	}
 
+	
+	// 로그인
 	public Member selectOneLogin(Member dto) {
 		return dao.selectOneLogin(dto);
 	}

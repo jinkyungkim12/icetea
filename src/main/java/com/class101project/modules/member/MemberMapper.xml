@@ -149,6 +149,31 @@
 			seq = #{seq}
 	</update>
 	
+	<update id="mypageUpdate">
+		UPDATE member
+		SET
+			position = #{position}
+			,seq = #{seq}
+			,name = #{name}
+			,id = #{id}
+			,password = #{password}
+			,password = #{password}
+			,company = #{company}
+			,creatorNickname = #{creatorNickname}
+			,dob = #{dob}
+			,gender = #{gender}
+			,telCompany = #{telCompany}
+			,phone = #{phone}
+			,phone2 = #{phone2}
+			,emailInsert = #{emailInsert}
+			,emailDomain = #{emailDomain}
+			,mobileNY = #{mobileNY}
+			,emailNY = #{emailNY}
+			,personalInfo = #{personalInfo}
+			WHERE
+			seq = #{seq}
+	</update>
+	
 	<update id="addressUpdate">
 		UPDATE transport
 		SET
