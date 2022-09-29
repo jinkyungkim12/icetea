@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>codeGroup Form</title>
@@ -105,7 +105,7 @@
 		        <div class="text-center">
 			         <ul class="navbar-nav" style="margin-top: 3rem;">
 				      <li class="nav-item justify-content-end">
-				        <a type="button" class="nav-link btn btn-warining" href="/member/memberLoginResult" style="background-color: #F87320; color: white;">logout</a>
+				         <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320; color: white;">logout</button>
 				      </li>
 				     </ul>
 			     </div>
@@ -295,6 +295,28 @@
 		
 		$("#btnDelete").on("click", function() {
 			form.attr("action", goUrlDele).submit();
+		});
+	</script>
+	<script type="text/javascript">
+		$("#logoutButton").on("click", function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/member/memberLoginResult";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
 		});
 	</script>
 </body>
