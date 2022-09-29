@@ -124,9 +124,9 @@
 	          <li class="nav-item">
 	            <a class="nav-link bbb" href="/review/reviewList">리뷰관리</a>
 	          </li>
-	          <li class="nav-item">
+	          <!-- <li class="nav-item">
 	            <a class="nav-link bbb" href="/order/orderList">주문관리</a>
-	          </li>
+	          </li> -->
 	          <li class="nav-item">
 	            <a class="nav-link bbb" href="/codeGroup/codeGroupList">코드그룹관리</a>
 	          </li>

@@ -120,7 +120,7 @@
 	            <a class="nav-link bbb" href="/review/reviewList">리뷰관리</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link bbb" href="/order/orderList">주문관리</a>
+	            <a class="nav-link bbb" href="/order/orderList" disabled>주문관리</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link bbb" href="/codeGroup/codeGroupList">코드그룹관리</a>
