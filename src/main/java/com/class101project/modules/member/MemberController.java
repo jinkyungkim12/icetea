@@ -44,11 +44,14 @@ public class MemberController {
 	}
 	
 	
+	// 페이징
+	
 	public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 	}
+	
 	// 로그인 세션
 	
 	@ResponseBody
@@ -148,6 +151,8 @@ public class MemberController {
 	}
 	
 	
+	// 업데이트
+	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -184,6 +189,9 @@ public class MemberController {
 		
 		return "infra/member/user/mypageModForm";
 	}	
+	
+	
+	// 삭제
 	
 	@RequestMapping(value = "memberUele")
 	public String memberUele(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {

@@ -69,6 +69,7 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	// 아이디 중복체크
 	public int selectOneIdCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
 	}
