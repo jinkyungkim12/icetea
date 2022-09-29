@@ -179,9 +179,13 @@
 				,data : { "id" : $("#id").val(), "password" : $("#password").val()}
 				,success: function(response) {
 					if(response.rt == "success") {
-						location.href = "/home";
+						if($("#id").val() == "manager" || $("#id").val() == "strawberry"){
+							location.href = "/dmin_Home";
+						}else{
+							location.href = "/home";
+						}
 					} else {
-						alert("회원없음");
+						alert("아이디 또는 비밀번호를 잘못 입력하셨습니다. 다시 입력해주세요.");
 					}
 				}
 				,error : function(jqXHR, textStatus, errorThrown){

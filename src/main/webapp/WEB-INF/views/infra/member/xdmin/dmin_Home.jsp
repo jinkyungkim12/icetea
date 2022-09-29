@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>관리자 Home</title>
@@ -75,12 +75,11 @@
 	    <a class="navbar-brand" href="/home"><img src="./image/logo.png" alt=""></a>
 	    <ul class="navbar-nav">
 	      <li class="nav-item justify-content-end">
-	        <a type="button" class="nav-link btn btn-warining" href="/member/memberLoginResult" style="background-color: #F87320;color: white;">logout</a>
+	        <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320;color: white;">Logout</button>
 	      </li>
 	     </ul>
 	  </div>
 	</nav>
-
 
 	
 	<div class="container" style="margin-top: 5rem;">
@@ -138,5 +137,28 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$("#logoutButton").on("click", function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/home";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

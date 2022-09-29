@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>class101</title>
@@ -170,30 +170,47 @@
 				    </div>
 				 </nav>  
 			</div>
-			<div class="col">
-				<div class="row text-end">
-					<div class="dropdown">
-						<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
-						</a>
-						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-							<div class="container">
-								<div class="row">
-									<div class="col-4 text-center">
-										<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
+			
+				<!-- 로그인 전	 -->
+			<c:if test="${sessSeq eq null}">
+				<div class="col">
+					<ul class="nav justify-content-end" id="leftList">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="#">크리에이터 지원</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">기업교육</a></li>
+						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
+					</ul>
+				</div>
+			</c:if>
+			
+			<!-- 로그인 후 -->
+			<c:if test="${sessSeq ne null}">
+				<div class="col">
+					<div class="row text-end">
+						<div class="dropdown">
+							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img alt="..." src="../../resources/images/profile.png" class="avatar avatar-rounded-circle"> 
+							</a>
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+								<div class="container">
+									<div class="row">
+										<div class="col-4 text-center">
+											<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
+										</div>
+										<div class="col-8 text-center" style="margin-top: 0.9rem;">
+											<h5><b><c:out value="${sessName}"/></b></h5>
+										</div>
 									</div>
-									<div class="col-8 text-center" style="margin-top: 0.9rem;">
-										<h5><b>김진경</b></h5>
-									</div>
+									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+									<hr class="dropdown-divider">
+									<div class="row justify-content-center"><button type="button" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</button></div>
 								</div>
-								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
-								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
-					</div>
-				</div>	
-			</div>	
+					</div>	
+				</div>
+			</c:if>
+				
 		</div>
 	</div>
 	
@@ -376,6 +393,44 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		var goUrlForm = "/member/mypageModForm";
+	
+		var form = $("form[name=form]");
+		var seq = $("input:hidden[name=seq]");
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+		
+	</script>
+	<script type="text/javascript">
+		$("#logoutButton").on("click", function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/home";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+	</script>
+</body>
 	<script>
 		const myModal = document.getElementById('myModal')
 		const myInput = document.getElementById('myInput')
