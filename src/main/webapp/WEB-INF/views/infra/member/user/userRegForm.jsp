@@ -232,8 +232,8 @@
 				</div>
 				<div class="col-6">
 					<label class="form-label">비밀번호 확인</label> 
-					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인">
-					<div class="invalid-feedback" id="passwordFeedback"></div>
+					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" id="password2">
+					<div class="invalid-feedback" id="password2Feedback"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">소속회사</label> 
@@ -330,7 +330,6 @@
 				<div class="col-6"></div>
 				<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 				<div class="invalid-feedback" id="addr3Feedback"></div>
-				<div class="col-6"></div>
 				<div class="col-3">
 					<label class="form-label">모바일 수신동의</label>
 					<div class="row" style="margin-left: 10px;">
@@ -538,36 +537,39 @@
 			});
 			
 		});
+		
 	</script>
 	
 	<!-- validation -->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	
 		 $('.error').hide();
 	     validationUpdt = function() {
-	         if (!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
+	         if (!name_V($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
 	             return false;
-	         } else if(!email_regex($('input[name=email]'), $('input[name=email]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
+	         } else if(!emailInsert_V($('input[name=emailInsert]'), $('input[name=emailInsert]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
 	             return false;
-	         } else if(!pwd_regex($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd_msg'))) {
+	         } else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd_msg'))) {
 	             return false;
-	         } else if(!pwd2_regex($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd2_msg'))) {
+	         } else if(!password2_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd2_msg'))) {
 	             return false;
-	         } else if(!dob_regex($('input[name=dob]'), $('input[name=dob]').val(), "생년월일을 입력하세요!", $('#dob_msg'))) {
+	         } else if(!dob_V($('input[name=dob]'), $('input[name=dob]').val(), "생년월일을 입력하세요!", $('#dob_msg'))) {
 	             return false;
-	         } else if(!gender_regex($('#gender'), $('#gender').val(), "성별을 선택하세요!", $('#gender_msg'))) {
+	         } else if(!gender_V($('#gender'), $('#gender').val(), "성별을 선택하세요!", $('#gender_msg'))) {
 	             return false;
-	         } else if(!radio_regex($('#radio_operator'), $('#radio_operator').val(), "통신사를 선택하세요!", $('#radio_operator_msg'))) {
+	         } else if(!telCompany_V($('#telCompany'), $('#telCompany').val(), "통신사를 선택하세요!", $('#radio_operator_msg'))) {
 	             return false;
-	         } else if(!tel_regex($('input[name=phone]'), $('input[name=phone]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
+	         } else if(!phone_V($('input[name=phone]'), $('input[name=phone]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
 	             return false;
-	         } else if(!zip_regex($('input[name=zip]'), $('input[name=zip]').val(), "우편번호를 입력하세요!", $('#zip_msg'))) {
+	         } else if(!phone2_V($('input[name=phone2]'), $('input[name=phone2]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
 	             return false;
-	         } else if(!add_regex($('input[name=address]'), $('input[name=address]').val(), "주소를 입력하세요!", $('#address_msg'))) {
+	         } else if(!zipcode_V($('input[name=zip]'), $('input[name=zip]').val(), "우편번호를 입력하세요!", $('#zip_msg'))) {
+	             return false;
+	         } else if(!address_V($('input[name=address]'), $('input[name=address]').val(), "주소를 입력하세요!", $('#address_msg'))) {
 	         	return false;
-	         } else if (!detail_regex($('input[name=address_detail]'), $('input[name=address_detail]').val(), "우편번호를 입력하세요!", $('#address_detail_msg'))) {
+	         } else if (!addressDetail_V($('input[name=address_detail]'), $('input[name=address_detail]').val(), "우편번호를 입력하세요!", $('#address_detail_msg'))) {
 	         	return false;
-	         } else if(!team_regex($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
+	         } else if(!team_V($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
 	         	return false;
 	         } else {
 	             return true;
@@ -575,73 +577,6 @@
 	        	alert("회원가입이 완료 되었습니다.");
 	     };	
 	
-		checkNull = function(obj, value) {
-		    if (value == "" || value == null) {
-		        obj.focus();
-		        return false;
-		    } else {
-		        return true;
-		    }
-		}
-	
-		checkNullWithoutFocus = function(value) {
-		    if (value == "" || value == null) {
-		        alert(message);
-		        hide.parent().addClass('error')
-		        $(hide).text(message)
-		        $(hide).show()
-		        return false;
-		    } else {
-		        hide.parent().removeClass('error')
-		        hide.parent().addClass('success')
-		        $(hide).hide()
-		        return true;
-		    }
-		}
-	
-		const setError = (element, message) => {
-		    const inputControl = element.parentElement;
-		    const errorDisplay = inputControl.querySelector('.error');
-	
-		    errorDisplay.innerText = message;
-		    inputControl.classList.add('error');
-		    inputControl.classList.remove('success');
-		};
-	
-		const setSuccess = element => {
-		    const inputControl = element.parentElement;
-		    const errorDisplay = inputControl.querySelector('.error');
-	
-		    errorDisplay.innerText = '';
-		    inputControl.classList.add('success');
-		    inputControl.classList.remove('error');
-		};
-	
-		name_regex = function(obj, value, message, hide) {
-		    const re = /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;
-		    if (!checkNull(obj, value)) {
-		        hide.parent().addClass('error')
-		        $(hide).text(message)
-		        $(hide).show()
-		        return false;
-		    } else if (!(re.test($.trim($(obj).val())))) {
-		        $(hide).text('양식에 맞게 작성하시오')
-		        hide.parent().addClass('error')
-		        $(hide).show()
-		        return false;
-		    } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
-		        $(hide).text('2~10자 사이의 이름을 작성하시오')
-		        hide.parent().addClass('error')
-		        $(hide).show()
-		        return false;
-		    } else {
-		        hide.parent().removeClass('error')
-		        hide.parent().addClass('success')
-		        $(hide).hide()
-		        return true;
-		    }
-		}
-		
-	</script>
+	</script> -->
 </body>
 </html>

@@ -44,9 +44,12 @@ public class MemberServiceImpl implements MemberService{
 	
 	// update
 	public void totalUpdate(Member dto) throws Exception {
-		
-		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		mypageUpdate(dto);
+		addUpdate(dto);
+	}
+	
+	public void totalUpdate2(Member dto) throws Exception {
+		update(dto);
 		addUpdate(dto);
 	}
 	
@@ -58,7 +61,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int mypageUpdate(Member dto) throws Exception{
-		return dao.update(dto);
+		return dao.mypageUpdate(dto);
 	}
 	
 	@Override

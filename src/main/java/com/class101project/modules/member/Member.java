@@ -25,7 +25,7 @@ public class Member {
 		
 		/* address */
 		private String aSeq;
-		private Integer zipcode;
+		private String zipcode;
 		private String address;
 		private String addressDetail;
 		private String addr3;
@@ -169,10 +169,10 @@ public class Member {
 		public void setCreatorNickname(String creatorNickname) {
 			this.creatorNickname = creatorNickname;
 		}
-		public Integer getZipcode() {
+		public String getZipcode() {
 			return zipcode;
 		}
-		public void setZipcode(Integer zipcode) {
+		public void setZipcode(String zipcode) {
 			this.zipcode = zipcode;
 		}
 		public String getAddress() {

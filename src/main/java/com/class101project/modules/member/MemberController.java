@@ -118,8 +118,12 @@ public class MemberController {
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
+		
 		Member result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		
+		Member item1 = service.selectOneAdd(vo);
+		model.addAttribute("item1", item1);
 		
 		return "infra/member/xdmin/memberForm";
 	}
@@ -156,7 +160,7 @@ public class MemberController {
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.update(dto);
+		service.totalUpdate2(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/memberForm";
 	}

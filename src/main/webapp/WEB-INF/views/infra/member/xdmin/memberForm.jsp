@@ -112,7 +112,7 @@
 	        <div class="text-center">
 		         <ul class="navbar-nav" style="margin-top: 3rem;">
 			      <li class="nav-item justify-content-end">
-			         <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320; color: white;">logout</button>
+			         <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320; color: white; width: 100%;">logout</button>
 			      </li>
 			     </ul>
 		     </div>
@@ -243,7 +243,7 @@
 				<div class="row"><label class="form-label">주소</label></div>
 				<div class="row input-group">
 					<div class="col-8">	
-		   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>">
+		   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item1.zipcode}"/>">
 		   			</div>
 		   			<div class="col-4">
 		   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -252,11 +252,11 @@
 	   			</div>
 			</div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
+			<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item1.address}"/>" placeholder="주소" readonly></div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item1.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
 			<div class="col-6"></div>
-			<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
+			<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item1.addr3}"/>" placeholder="참고사항"></div>
 			<div class="col-6"></div>
 			<div class="col-6">
 				<div class="row">

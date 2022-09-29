@@ -47,7 +47,7 @@ public class MemberDao {
 	}
 	
 	public int mypageUpdate(Member dto) {
-		return sqlSession.update(namespace + ".update", dto);
+		return sqlSession.update(namespace + ".mypageUpdate", dto);
 	}
 	
 	public int addUpdate(Member dto) {
