@@ -168,6 +168,12 @@
 			,telCompany = #{telCompany}
 			,phone = #{phone}
 			,phone2 = #{phone2}
+			,email = CONCAT(#{emailInsert},
+			<choose>
+				<when test="emailDomain eq 28">'@naver.com')</when>
+				<when test="emailDomain eq 29">'@gmail.com')</when>
+				<when test="emailDomain eq 30">'@daum.net')</when>
+			</choose>
 			,emailInsert = #{emailInsert}
 			,emailDomain = #{emailDomain}
 			,mobileNY = #{mobileNY}

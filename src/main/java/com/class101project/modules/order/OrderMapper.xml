@@ -14,7 +14,7 @@
 	<sql id ="selectCommon">
 		from classOrder a 
 		left join member b on b.seq = a.member_seq
-		left join transport c on c.seq = a.transport_seq
+		left join transport c on c.aSeq = a.transport_seq
 		left join classProduct d on d.seq = a.classProduct_seq
 		 WHERE 1=1
 		
@@ -68,6 +68,7 @@
 			,c.zipcode
 			,c.address
 			,c.addressDetail
+			,c.addr3
 			,a.request
 			,a.price
 			,a.priceDiscount
@@ -82,6 +83,7 @@
 			,#{c.zipcode}
 			,#{c.address}
 			,#{c.addressDetail}
+			,#{c.addr3}
 			,#{a.request}
 			,#{a.price}
 			,#{a.priceDiscount}
@@ -108,6 +110,7 @@
 			,c.zipcode = #{c.zipcode}
 			,c.address = #{c.address}
 			,c.addressDetail = #{c.addressDetail}
+			,c.addr3 = #{c.addr3}
 			,a.request = #{a.request}
 			,a.price = #{a.price}
 			,a.priceDiscount = #{a.priceDiscount}
@@ -119,7 +122,7 @@
 			seq = #{seq}
 		from classOrder a 
 		left join member b on b.seq = a.member_seq
-		left join transport c on c.seq = a.transport_seq
+		left join transport c on c.aSeq = a.transport_seq
 		left join classProduct d on d.seq = a.classProduct_seq
 		 WHERE 1=1
 	</update>
@@ -131,6 +134,7 @@
 			,c.zipcode
 			,c.address
 			,c.addressDetail
+			,c.addr3
 			,a.request
 			,a.price
 			,a.priceDiscount
@@ -139,7 +143,7 @@
 			,a.pay
 			FROM classOrder a
 				left join member b on b.seq = a.member_seq
-				left join transport c on c.seq = a.transport_seq
+				left join transport c on c.aSeq = a.transport_seq
 			WHERE 1=1
 			AND a.seq = #{seq}
 	</select>

@@ -133,8 +133,8 @@
 	        </ul>
 	        <div class="text-center">
 		         <ul class="navbar-nav" style="margin-top: 3rem;">
-			      <li class="nav-item justify-content-end">
-			         <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320; color: white;">logout</button>
+			       <li class="nav-item justify-content-end">
+			        <button type="button" class="nav-link btn btn-warining" id="logoutButton" style="background-color: #F87320; color: white; width: 100%;">logout</button>
 			      </li>
 			     </ul>
 		     </div>

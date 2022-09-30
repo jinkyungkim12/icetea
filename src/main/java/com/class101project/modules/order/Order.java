@@ -17,7 +17,8 @@ public class Order {
 	private String email;
 	private String address;
 	private String addressDetail;
-	private Integer zipcode;
+	private String addr3;
+	private String zipcode;
 	private Integer delNY;
 	private String phone;
 	private Integer request;
@@ -41,10 +42,16 @@ public class Order {
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
 	}
-	public Integer getZipcode() {
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+	public String getZipcode() {
 		return zipcode;
 	}
-	public void setZipcode(Integer zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	public String getPhone() {
