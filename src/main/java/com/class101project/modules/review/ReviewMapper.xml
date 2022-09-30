@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.class101project.modules.review.ReviewMapper">
+<!-- code -> codegroup -->
+    <resultMap id="resultMapObj" type="com.class101project.modules.review.Review"></resultMap>
+	
+	<sql id ="selectCommon">
+		FROM review a
+		left join classProduct b on b.seq = a.classProduct_seq
+		WHERE 1=1
+			
+		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.reviewDelNY = #{shdelNY}</if>
+		<if test="shValue != null"></if>
+		
+		<choose>
+			<when test="shOption == 1">AND a.id LIKE CONCAT('%', #{shValue},'%')</when>
+			<when test="shOption == 2">AND a.content LIKE CONCAT('%', #{shValue},'%')</when>
+		</choose>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.reviewRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.reviewModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT 
+			   a.seq
+		      ,a.id
+		      ,a.preferenceStar
+		      ,a.content
+		      ,a.classProgressRate
+		      ,a.reviewLike
+		      ,a.reviewDelNY
+		      ,a.reviewRegDate
+		      ,a.reviewModDate
+		      ,a.classProduct_seq
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO review(
+		      id
+		      ,preferenceStar
+		      ,content
+		      ,classProgressRate
+		      ,reviewLike
+		      ,reviewDelNY
+		      ,reviewRegDate
+		)
+		VALUES (
+			  #{id}
+		      ,#{preferenceStar}
+		      ,#{content}
+		      ,#{classProgressRate}
+		      ,#{reviewLike}
+		      ,0
+		      ,now()
+		)
+		
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="memberInsert">
+		INSERT INTO member (
+			name
+			,id
+		)
+		VALUES (
+			#{name}
+			,#{id}
+		)
+		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE review
+		SET
+			id = #{id}
+			,preferenceStar = #{preferenceStar}
+			,content = #{content}
+			,classProgressRate = #{classProgressRate}
+			,reviewLike = #{reviewLike}
+			,reviewDelNY = #{reviewDelNY}
+			,reviewModDate = now()
+			WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="memberUpdate">
+		UPDATE member
+		SET
+			,name = #{name}
+			,id = #{id}
+			WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE review
+		SET
+			reviewDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM review WHERE seq = #{seq}
+	</delete>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.*
+			FROM review a
+			WHERE 1=1
+			AND a.seq = #{seq}
+	</select>
+	
+	<select id="memberSelectOne" resultMap="resultMapObj">
+		SELECT
+			a.*
+			FROM member a
+			WHERE 1=1
+			AND member_seq = #{seq}
+	</select>
+	
+</mapper>

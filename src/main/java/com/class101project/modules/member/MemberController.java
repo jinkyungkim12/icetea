@@ -149,7 +149,7 @@ public class MemberController {
 		
 		dto.setEmail(dto.getEmailInsert() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		System.out.println("dto.getEmail: " + dto.getEmail());
-		service.insert(dto);
+		service.totalInsert(dto);
 		
 		return "infra/member/user/userComplete";
 	}

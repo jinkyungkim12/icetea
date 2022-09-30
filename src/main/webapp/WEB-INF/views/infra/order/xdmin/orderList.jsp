@@ -93,6 +93,14 @@
 	    a:focus, a:hover{
 	    	color: #F7670E;
 	    }
+	    .overflow-x-auto {
+			overflow-x: auto;
+		}
+				
+		.overflow-x-auto table {
+			width: auto!important; 
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>
@@ -217,7 +225,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 99%; margin-top: 1rem;">
+	<div class="container-fluid text-center overflow-x-auto" style="width: 99%; margin-top: 1rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">

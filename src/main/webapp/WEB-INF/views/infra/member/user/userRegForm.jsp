@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-<%@ page session="true"%>
+
 <html>
 <head>
 	<title>class101</title>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"	crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
-
+	<!-- <script defer type="text/javascript" src="/resources/js/validation.js"></script> -->
 	<style type="text/css">
 		#ListClass {
 			color: red;
@@ -133,6 +133,58 @@
 		.nav-link{
 			color: black;
 		}
+		
+		.input-control {
+		    display: flex;
+		    flex-direction: column;
+		}
+		
+		.input-control input {
+		    border: 2px solid #f0f0f0;
+		    border-radius: 4px;
+		    display: block;
+		    font-size: 12px;
+		    padding: 10px;
+		    width: 100%;
+		}
+		
+		.input-control select {
+		    border: 2px solid #f0f0f0;
+		    border-radius: 4px;
+		    display: block;
+		    font-size: 12px;
+		    padding: 10px;
+		    width: 100%;
+		    background: white;
+		    height: 42px;
+		}
+		
+		.input-control input:focus {
+		    outline: 0;
+		}
+		
+		.input-control.success input {
+		    border-color: #09c372;
+		}
+		
+		.input-control.error input {
+		    border-color: #ff3860;
+		}
+		
+		.input-control .error {
+		    color: #ff3860;
+		    font-size: 15px;
+		    height: 15px;
+		    margin: 0 5px;
+		}
+		
+		.input-control.success select {
+		    border-color: #09c372;
+		}
+		
+		.input-control.error select {
+		    border-color: #ff3860;
+		}
 	</style>
 </head>
 <body>
@@ -197,10 +249,9 @@
 	<!-- 회원가입 항목 -->
 
 	<form id="form" name="form" method="post">
-		<!-- *Vo.jsp s -->
-		<%@include file="memberVo.jsp"%>
-		<!-- #-> -->
-		<!-- *Vo.jsp e -->
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>
+	<!-- *Vo.jsp e -->
 		<div class="container">
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6">
@@ -210,13 +261,11 @@
 						<option value="23"	<c:if test="${item.position eq 23 }"> selected</c:if>>크리에이터</option>
 						<option value="24"	<c:if test="${item.position eq 24 }"> selected</c:if>>매니저</option>
 					</select>
-					<div class="invalid-feedback" id="positionFeedback"></div>
 				</div>
 				<div class="col-6"></div>
 				<div class="col-6">
 					<label class="form-label">이름</label> 
-					<input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름">
-					<div class="invalid-feedback" id="nameFeedback"></div>
+					<input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름" onkeypress="validationUpdt()">
 				</div>
 				<div class="col-6">
 					<label class="form-label">아이디</label> 
@@ -228,12 +277,10 @@
 					<label class="form-label">비밀번호</label> 
 					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호" name="password" id="password"> 
 					<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합, 8자~32자</small>
-					<div class="invalid-feedback" id="passwordFeedback"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">비밀번호 확인</label> 
 					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" id="password2">
-					<div class="invalid-feedback" id="password2Feedback"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">소속회사</label> 
@@ -246,7 +293,6 @@
 				<div class="col-6">
 					<label class="form-label">생년월일</label> 
 					<input type="text" class="form-control" value="<c:out value="${item.dob}"/>" placeholder="1990-01-01" name="dob" id="dob">
-					<div class="invalid-feedback" id="dobFeedback"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">성별</label>
@@ -263,7 +309,6 @@
 						    여성
 						  </label>
 						</div>
-						<div class="invalid-feedback" id="genderFeedback"></div> 
 					</div>
 				</div>
 				<div class="col-6">
@@ -275,9 +320,7 @@
 							<option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
-						<div class="invalid-feedback" id="telcompanyFeedback"></div>  
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone">
-						<div class="invalid-feedback" id="phoneFeedback"></div>
 					</div>
 				</div>
 				<div class="col-6">
@@ -289,15 +332,13 @@
 							<option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
-						<div class="invalid-feedback" id="telcompanyFeedback"></div> 
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone2" value="<c:out value="${item.phone2}"/>" id="phone2">
-						<div class="invalid-feedback" id="phone2Feedback"></div>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="email" class="form-label">이메일</label>
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="example" value="<c:out value="${item.emailInsert}"/>" name="emailInsert" id="emailInsert"> 
+						<input type="text" class="form-control" placeholder="example" value="<c:out value="${item.emailInsert}"/>" name="emailInsert" id="emailInsert">
 						<span class="input-group-text">@</span>
 						<select class="form-select" aria-label=".form-select example" name="emailDomain">
 							<option selected>선택</option>
@@ -305,7 +346,6 @@
 							<option value="29" <c:if test="${item.emailDomain eq 29 }"> selected</c:if>>gmail.com</option>
 							<option value="30" <c:if test="${item.emailDomain eq 30 }"> selected</c:if>>daum.net</option>
 						</select>
-						<div class="invalid-feedback" id="emailDomainFeedback"></div>
 					</div>
 				</div>
 				<div class="col-6">
@@ -313,7 +353,6 @@
 					<div class="row input-group">
 						<div class="col-8">	
 			   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>">
-			   				<div class="invalid-feedback" id="zipcodeFeedback"></div>
 			   			</div>
 			   			<div class="col-4">
 			   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -323,13 +362,10 @@
 				</div>
 				<div class="col-6"></div>
 				<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
-				<div class="invalid-feedback" id="addressFeedback"></div>
 				<div class="col-6"></div>
 				<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
-				<div class="invalid-feedback" id="addressDetailFeedback"></div>
 				<div class="col-6"></div>
 				<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
-				<div class="invalid-feedback" id="addr3Feedback"></div>
 				<div class="col-3">
 					<label class="form-label">모바일 수신동의</label>
 					<div class="row" style="margin-left: 10px;">
@@ -346,7 +382,6 @@
 						  </label>
 						</div>
 					</div>
-					<div class="invalid-feedback" id="mobileNYFeedback"></div>
 				</div>
 				<div class="col-3">
 					<label class="form-label">이메일 수신동의</label>
@@ -363,7 +398,6 @@
 						    비동의
 						  </label>
 						</div>
-						<div class="invalid-feedback" id="emailNYFeedback"></div>
 					</div>
 				</div>
 				<div class="col-6">
@@ -393,7 +427,6 @@
 						    평생회원
 						  </label>
 						</div>
-						<div class="invalid-feedback" id="personalInfoFeedback"></div>
 					</div>
 				</div>
 			</div>
@@ -401,7 +434,7 @@
 
 		<div class="container" id="aaa">
 			<div class="row">
-				<button type="button" class="btn btn-dark" id="btnSave">동의하고 회원가입</button>
+				<button type="button" class="btn" id="btnSave">동의하고 회원가입</button>
 			</div>
 			<div id="bbb">
 				<a class="nav-link" href="#">이용약관, 개인정보 수집 및 이용, 개인정보 제공 내용을 확인하였고 동의합니다.</a>
@@ -436,16 +469,17 @@
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
 	<script type="text/javascript">
-			var goUrlInst = "/member/userInst"; /* #-> */
+		
+		var goUrlInst = "/member/userInst"; /* #-> */
 
-			var seq = $("input:hidden[name=seq]"); /* #-> */
+		var seq = $("input:hidden[name=seq]"); /* #-> */
 
-			var form = $("form[name=form]");
-			var formVo = $("form[name=formVo]");
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
 
-			$("#btnSave").on("click", function() {
-				form.attr("action", goUrlInst).submit();
-			});
+		$("#btnSave").on("click", function() {
+			form.attr("action", goUrlInst).submit();
+		});
 	</script>
 	<script>
 		$("#clear").on("click", function() {
@@ -547,27 +581,29 @@
 	     validationUpdt = function() {
 	         if (!name_V($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
 	             return false;
-	         } else if(!emailInsert_V($('input[name=emailInsert]'), $('input[name=emailInsert]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
+	         } else if(!emailInsert_V($('input[name=emailInsert]'), $('input[name=emailInsert]').val(), "이메일ID를 입력하세요!", $('#email_msg'))) {
 	             return false;
-	         } else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd_msg'))) {
+	         }  else if(!gender_V($('#emailDomain'), $('#emailDomain').val(), "이메일 도메인을 선택하세요!", $('#emailDomain_msg'))) {
 	             return false;
-	         } else if(!password2_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#pwd2_msg'))) {
+	         }  else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password_msg'))) {
+	             return false;
+	         } else if(!password2_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password2_msg'))) {
 	             return false;
 	         } else if(!dob_V($('input[name=dob]'), $('input[name=dob]').val(), "생년월일을 입력하세요!", $('#dob_msg'))) {
 	             return false;
 	         } else if(!gender_V($('#gender'), $('#gender').val(), "성별을 선택하세요!", $('#gender_msg'))) {
 	             return false;
-	         } else if(!telCompany_V($('#telCompany'), $('#telCompany').val(), "통신사를 선택하세요!", $('#radio_operator_msg'))) {
+	         } else if(!telCompany_V($('#telCompany'), $('#telCompany').val(), "통신사를 선택하세요!", $('#telCompany_msg'))) {
 	             return false;
 	         } else if(!phone_V($('input[name=phone]'), $('input[name=phone]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
 	             return false;
-	         } else if(!phone2_V($('input[name=phone2]'), $('input[name=phone2]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
+	         } else if(!phone2_V($('input[name=phone2]'), $('input[name=phone2]').val(), "전화번호를 입력하세요!", $('#phone2_msg'))) {
 	             return false;
-	         } else if(!zipcode_V($('input[name=zip]'), $('input[name=zip]').val(), "우편번호를 입력하세요!", $('#zip_msg'))) {
+	         } else if(!zipcode_V($('input[name=zipcode]'), $('input[name=zipcode]').val(), "우편번호를 입력하세요!", $('#zipcode_msg'))) {
 	             return false;
 	         } else if(!address_V($('input[name=address]'), $('input[name=address]').val(), "주소를 입력하세요!", $('#address_msg'))) {
 	         	return false;
-	         } else if (!addressDetail_V($('input[name=address_detail]'), $('input[name=address_detail]').val(), "우편번호를 입력하세요!", $('#address_detail_msg'))) {
+	         } else if (!addressDetail_V($('input[name=addressDetail]'), $('input[name=addressDetail]').val(), "상세주소를 입력하세요!", $('#addressDetail_msg'))) {
 	         	return false;
 	         } else if(!team_V($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
 	         	return false;

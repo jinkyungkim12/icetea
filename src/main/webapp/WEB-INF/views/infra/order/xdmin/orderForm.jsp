@@ -226,18 +226,18 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름" readonly></div>
 	   		<div style="margin-top: 0.5rem;"><span class="down">배송시 수령인  확인을 위해 실명을 입력해 주세요.</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>휴대폰 번호</b></label>
-	   		<div class="input"><input type="text" class="form-control" name="phone" value="<c:out value="${item.phone}"/>" id="phone" placeholder="01000000000"></div>
+	   		<div class="input"><input type="text" class="form-control" name="phone" value="<c:out value="${item.phone}"/>" id="phone" placeholder="01000000000" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송주소</b></label>
 	   		<div class="row input-group">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" id="zipcode" placeholder="우편번호" style="width: 100%;">
+		   			<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>" placeholder="우편번호" style="width: 100%;" readonly>
 		   		</div>
 		   		<div class="col-3">
 		   			<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -246,17 +246,17 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="address" placeholder="주소"></div>
+			<div class="input"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addressDetail" placeholder="상세 주소"></div>
+			<div class="input"><input type="text" class="form-control" id="addressDetail" name="addressDetail"  value="<c:out value="${item.addressDetail}"/>" placeholder="상세 주소" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
+			<div class="input"><input type="text" class="form-control" id="addr3" name="addr3"  value="<c:out value="${item.addr3}"/>" placeholder="참고사항" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="${CodeServiceImpl.selectOneCachedCode(item.request)}" placeholder="예) 경비실에 맡겨주세요."></div>
+	   		<div class="input"><input type="text" class="form-control" name="request" id="request" value="${CodeServiceImpl.selectOneCachedCode(item.request)}" placeholder="예) 경비실에 맡겨주세요." readonly></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>쿠폰/캐시</b></h4></div>
@@ -264,7 +264,7 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="${item.couponDiscount}원" name="couponDiscount" placeholder="">
+		   			<input type="text" class="form-control" value="${item.couponDiscount}원" name="couponDiscount" placeholder="" readonly>
 		   		</div>
 		   		<div class="col-3">
 		   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>

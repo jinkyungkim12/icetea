@@ -7,21 +7,6 @@ checkNull = function(obj, value) {
     }
 }
 
-checkNullWithoutFocus = function(value) {
-    if (value == "" || value == null) {
-        alert(message);
-        hide.parent().addClass('error')
-        $(hide).text(message)
-        $(hide).show()
-        return false;
-    } else {
-        hide.parent().removeClass('error')
-        hide.parent().addClass('success')
-        $(hide).hide()
-        return true;
-    }
-}
-
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
@@ -51,8 +36,9 @@ const setSuccess = element => {
 
 // name
 name_V = function(obj, value, message, hide) {
-    const re = /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;
+    /*const re = /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;*/
     if (!checkNull(obj, value)) {
+		alert("AWwe");
         hide.parent().addClass('error')
         $(hide).text(message)
         $(hide).show()

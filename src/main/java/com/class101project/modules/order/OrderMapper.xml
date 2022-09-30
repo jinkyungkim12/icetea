@@ -50,7 +50,10 @@
 			,a.finalPrice
 			,a.pay
 			,a.delNY
+			,c.zipcode
 			,c.address
+			,c.addressDetail
+			,c.addr3
 			,a.orderDate
 			<include refid="selectCommon" />
 		<include refid="Base.selectListLowerForMysql" />
