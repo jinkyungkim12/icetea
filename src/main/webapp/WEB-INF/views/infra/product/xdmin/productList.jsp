@@ -96,6 +96,9 @@
 	    table, td, th{
 			text-align: center;
 		}
+		.tdtd{
+			text-align: left !important;
+		}
 	</style>
 </head>
 <body>
@@ -260,7 +263,7 @@
 								<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.category}"/></a>
 							</td>
 							<td><c:out value="${list.classDiv }"/></td>
-							<td><c:out value="${list.title }"/></td>
+							<td class="tdtd"><c:out value="${list.title }"/></td>
 							<td><c:out value="${list.price }"/></td>
 							<td><c:out value="${list.discountRate }"/></td>
 							<td><c:out value="${list.payMonth }"/></td>

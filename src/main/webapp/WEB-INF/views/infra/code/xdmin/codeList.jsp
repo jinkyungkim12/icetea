@@ -226,7 +226,6 @@
 						<th scope="col">코드그룹 이름(영문)</th>
 						<th scope="col">사용여부</th>
 						<th scope="col">삭제여부</th>
-						<th scope="col">순서</th>
 						<th scope="col">등록일</th>
 						<th scope="col">수정일</th>
 					</tr>
@@ -265,7 +264,6 @@
 									<c:otherwise>Y</c:otherwise>
 								</c:choose>
 							</td>
-							<td><c:out value="${list.order }"/></td>
 							<td><c:out value="${list.codeRegDate }"/></td>
 							<td><c:out value="${list.codeModDate }"/></td>
 						</tr>
