@@ -179,15 +179,9 @@ telCompany_V = function(obj, value, message, hide) {
 
 // 전화번호
 phone_V = function(obj, value, message, hide) {
-    /*const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/;*/
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
-        $(hide).show()
-        return false;
-    } else if (!(re.test($.trim($(obj).val())))) {
-        hide.parent().addClass('error')
-        $(hide).text("양식에 맞게 작성하세요")
         $(hide).show()
         return false;
     } else {
@@ -205,11 +199,6 @@ emailInsert_V = function(obj, value, message, hide) {
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
-        $(hide).show()
-        return false;
-    } else if (!(re.test($.trim($(obj).val())))) {
-        $(hide).text('양식에 맞게 작성하시오')
-        hide.parent().addClass('error')
         $(hide).show()
         return false;
     } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {

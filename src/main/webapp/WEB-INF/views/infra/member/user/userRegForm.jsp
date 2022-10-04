@@ -154,7 +154,7 @@
 		}
 		
 		.input-control.success select {
-		    border-color: #198754;
+		    border-color: #198754;  
 		}
 		
 		.input-control.error select {
@@ -275,7 +275,7 @@
 				</div>
 				<div class="col-6 input-control">
 					<label class="form-label">비밀번호 확인<span style="color: red;">*</span></label> 
-					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" id="password2" onkeypress="validationUpdt()">
+					<input type="password" class="form-control" placeholder="비밀번호 확인" id="password2" name="password" onkeypress="validationUpdt()">
 					<div class="msg" id="password2_msg" name="password2_msg" style="display: none;"></div>
 				</div>
 				<div class="col-6">
@@ -319,8 +319,8 @@
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
-						<div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
 					</div>
+					<div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">연락처(선택)</label>
@@ -590,7 +590,7 @@
 	             return false;
 	         } else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password_msg'))) {
 	             return false;
-	         } else if(!password2_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password2_msg'))) {
+	         } else if(!password2_V($('input[name=password2]'), $('input[name=password2]').val(), "비밀번호가 일치하지 않습니다.", $('#password2_msg'))) {
 	             return false;
 	         } else if(!dob_V($('input[name=dob]'), $('input[name=dob]').val(), "생년월일을 입력하세요!", $('#dob_msg'))) {
 	             return false;
