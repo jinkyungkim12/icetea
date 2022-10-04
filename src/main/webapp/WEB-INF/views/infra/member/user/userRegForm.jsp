@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-
+<%@ page session="true" %>
 <html>
 <head>
 	<title>class101</title>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"	crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
-	<!-- <script defer type="text/javascript" src="/resources/js/validation.js"></script> -->
+	<script defer type="text/javascript" src="/resources/js/validation.js"></script>
 	<style type="text/css">
 		#ListClass {
 			color: red;
@@ -134,37 +134,12 @@
 			color: black;
 		}
 		
-		.input-control {
-		    display: flex;
-		    flex-direction: column;
-		}
-		
-		.input-control input {
-		    border: 2px solid #f0f0f0;
-		    border-radius: 4px;
-		    display: block;
-		    font-size: 12px;
-		    padding: 10px;
-		    width: 100%;
-		}
-		
-		.input-control select {
-		    border: 2px solid #f0f0f0;
-		    border-radius: 4px;
-		    display: block;
-		    font-size: 12px;
-		    padding: 10px;
-		    width: 100%;
-		    background: white;
-		    height: 42px;
-		}
-		
 		.input-control input:focus {
 		    outline: 0;
 		}
 		
 		.input-control.success input {
-		    border-color: #09c372;
+		    border-color: #198754;
 		}
 		
 		.input-control.error input {
@@ -172,18 +147,34 @@
 		}
 		
 		.input-control .error {
-		    color: #ff3860;
+		    color: #dc3545;
 		    font-size: 15px;
 		    height: 15px;
 		    margin: 0 5px;
 		}
 		
 		.input-control.success select {
-		    border-color: #09c372;
+		    border-color: #198754;
 		}
 		
 		.input-control.error select {
-		    border-color: #ff3860;
+		    border-color: #dc3545;
+		}
+		
+		.input-control.success radio {
+		    border-color: #198754;
+		}
+		
+		.input-control.error radio {
+		    border-color: #dc3545;
+		}
+		
+		.msg.success {
+			color: #198754;
+		}
+		
+		.msg.error {
+			color: #dc3545;
 		}
 	</style>
 </head>
@@ -254,33 +245,38 @@
 	<!-- *Vo.jsp e -->
 		<div class="container">
 			<div class="row gy-3" id="firstrow">
-				<div class="col-6">
-					<label class="form-label">구분</label> <select class="form-select"
-						aria-label="Default select example" name="position">
+				<div class="col-6 input-control">
+					<label class="form-label">구분<span style="color: red;">*</span></label> 
+					<select class="form-select" aria-label="Default select example" name="position" id="position" onfocusout="validationUpdt()">
+						<option value=""	<c:if test="${empty item.position }"> selected</c:if>>선택</option>
 						<option value="22"	<c:if test="${item.position eq 22 }"> selected</c:if>>수강생</option>
 						<option value="23"	<c:if test="${item.position eq 23 }"> selected</c:if>>크리에이터</option>
 						<option value="24"	<c:if test="${item.position eq 24 }"> selected</c:if>>매니저</option>
 					</select>
+					<div class="msg" id="position_msg" name="position_msg" style="display: none;"></div>
 				</div>
 				<div class="col-6"></div>
-				<div class="col-6">
-					<label class="form-label">이름</label> 
+				<div class="col-6 input-control">
+					<label class="form-label">이름<span style="color: red;">*</span></label> 
 					<input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름" onkeypress="validationUpdt()">
+					<div class="msg" id="name_msg" name="name_msg" style="display: none;"></div>
 				</div>
-				<div class="col-6">
-					<label class="form-label">아이디</label> 
+				<div class="col-6 input-control">
+					<label class="form-label">아이디<span style="color: red;">*</span></label> 
 					<input type="hidden" id="idAllowedNY" name="idAllowedNY" value="0">
 					<input type="text" class="form-control" value="<c:out value="${item.id}"/>" placeholder="아이디" name="id" id="id">
 					<div class="invalid-feedback" id="idFeedback"></div>
 				</div>
-				<div class="col-6">
-					<label class="form-label">비밀번호</label> 
-					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호" name="password" id="password"> 
+				<div class="col-6 input-control">
+					<label class="form-label">비밀번호<span style="color: red;">*</span></label> 
+					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호" name="password" id="password" onkeypress="validationUpdt()"> 
 					<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합, 8자~32자</small>
+					<div class="msg" id="password_msg" name="password_msg" style="display: none;"></div>
 				</div>
-				<div class="col-6">
-					<label class="form-label">비밀번호 확인</label> 
-					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" id="password2">
+				<div class="col-6 input-control">
+					<label class="form-label">비밀번호 확인<span style="color: red;">*</span></label> 
+					<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인" id="password2" onkeypress="validationUpdt()">
+					<div class="msg" id="password2_msg" name="password2_msg" style="display: none;"></div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">소속회사</label> 
@@ -290,12 +286,13 @@
 					<label class="form-label">크리에이터 활동명</label> 
 					<input type="text" class="form-control" value="<c:out value="${item.creatorNickname}"/>" placeholder="크리에이터 활동명" name="creatorNickname"	id="creatorNickname">
 				</div>
-				<div class="col-6">
-					<label class="form-label">생년월일</label> 
-					<input type="text" class="form-control" value="<c:out value="${item.dob}"/>" placeholder="1990-01-01" name="dob" id="dob">
+				<div class="col-6 input-control">
+					<label class="form-label">생년월일<span style="color: red;">*</span></label> 
+					<input type="text" class="form-control" value="<c:out value="${item.dob}"/>" placeholder="1990-01-01" name="dob" id="dob" onkeypress="validationUpdt()">
+					<div class="msg" id="dob_msg" name="dob_msg" style="display: none;"></div>
 				</div>
-				<div class="col-6">
-					<label class="form-label">성별</label>
+				<div class="col-6 input-control">
+					<label class="form-label">성별<span style="color: red;">*</span></label>
 					<div class="row" style="margin-left: 10px;">
 						<div class="col-3 form-check form-check-inline" name="gender">
 						  <input class="form-check-input" type="radio" value="4" <c:if test="${item.gender eq 4 }"> checked</c:if> name="gender" id="gender1">
@@ -309,25 +306,27 @@
 						    여성
 						  </label>
 						</div>
+						<div class="msg" id="gender_msg" name="gender_msg" style="display: none;"></div>
 					</div>
 				</div>
-				<div class="col-6">
-					<label class="form-label">연락처(필수)</label>
+				<div class="col-6 input-control">
+					<label class="form-label">연락처(필수)<span style="color: red;">*</span></label>
 					<div class="input-group">
-						<select class="form-select col-2" aria-label="Default select example" name="telCompany"	id="telCompany">
-							<option selected>통신사</option>
+						<select class="form-select col-2" aria-label="Default select example" name="telCompany"	id="telCompany" onfocusout="validationUpdt()">
+							<option value=""  <c:if test="${empty item.telCompany }"> selected</c:if>>선택</option>
 							<option value="1" <c:if test="${item.telCompany eq 1 }"> selected</c:if>>SKT</option>
 							<option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
-						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone">
+						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
+						<div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
 					</div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">연락처(선택)</label>
 					<div class="input-group">
 						<select class="form-select col-2" aria-label="Default select example" name="telCompany">
-							<option selected>통신사</option>
+							<option value=""  <c:if test="${empty item.telCompany }"> selected</c:if>>선택</option>
 							<option value="1" <c:if test="${item.telCompany eq 1 }"> selected</c:if>>SKT</option>
 							<option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
@@ -335,24 +334,26 @@
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone2" value="<c:out value="${item.phone2}"/>" id="phone2">
 					</div>
 				</div>
-				<div class="col-6">
-					<label for="email" class="form-label">이메일</label>
+				<div class="col-6 input-control">
+					<label for="email" class="form-label">이메일<span style="color: red;">*</span></label>
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="example" value="<c:out value="${item.emailInsert}"/>" name="emailInsert" id="emailInsert">
+						<input type="text" class="form-control" placeholder="example" value="<c:out value="${item.emailInsert}"/>" name="emailInsert" id="emailInsert" onkeypress="validationUpdt()">
+						<div class="msg" id="emailInsert_msg" name="emailInsert_msg" style="display: none;"></div>
 						<span class="input-group-text">@</span>
-						<select class="form-select" aria-label=".form-select example" name="emailDomain">
-							<option selected>선택</option>
+						<select class="form-select" aria-label=".form-select example" name="emailDomain" onfocusout="validationUpdt()">
+							<option value=""  <c:if test="${empty item.emailDomain }"> selected</c:if>>선택</option>
 							<option value="28" <c:if test="${item.emailDomain eq 28 }"> selected</c:if>>naver.com</option>
 							<option value="29" <c:if test="${item.emailDomain eq 29 }"> selected</c:if>>gmail.com</option>
 							<option value="30" <c:if test="${item.emailDomain eq 30 }"> selected</c:if>>daum.net</option>
 						</select>
 					</div>
 				</div>
-				<div class="col-6">
-					<div class="row"><label class="form-label">주소</label></div>
+				<div class="col-6 input-control">
+					<div class="row"><label class="form-label">주소<span style="color: red;">*</span></label></div>
 					<div class="row input-group">
 						<div class="col-8">	
-			   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>">
+			   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item.zipcode}"/>" onfocusout="validationUpdt()">
+			   				<div class="msg" id="zipcode_msg" name="zipcode_msg" style="display: none;"></div>
 			   			</div>
 			   			<div class="col-4">
 			   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -361,73 +362,78 @@
 		   			</div>
 				</div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
+				<div class="col-6 input-control"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address}"/>" placeholder="주소" onfocusout="validationUpdt()" readonly></div>
+				<div class="msg" id="address_msg" name="address_msg" style="display: none;"></div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
+				<div class="col-6 input-control"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" onfocusout="validationUpdt()" placeholder="상세주소"></div>
+				<div class="msg" id="addressDetail_msg" name="addressDetail_msg" style="display: none;"></div>
 				<div class="col-6"></div>
-				<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
+				<div class="col-6 input-control"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 				<div class="col-3">
-					<label class="form-label">모바일 수신동의</label>
-					<div class="row" style="margin-left: 10px;">
+					<label class="form-label">모바일 수신동의<span style="color: red;">*</span></label>
+					<div class="row input-control" style="margin-left: 10px;">
 						<div class="col-6 form-check" name="mobileNY" >
-						  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> checked</c:if> id="flexRadioDefault1">
-						  <label class="form-check-label" for="flexRadioDefault1">
+						  <input class="form-check-input" type="radio" name="mobileNY" value="1" <c:if test="${item.mobileNY eq 1 }"> checked</c:if> id="mobileNY1" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="mobileNY1">
 						    동의
 						  </label>
 						</div>
 						<div class="col-6 form-check">
-						  <input class="form-check-input" type="radio" name="mobileNY" value="0" <c:if test="${item.mobileNY eq 0 }"> checked</c:if> id="flexRadioDefault2">
-						  <label class="form-check-label" for="flexRadioDefault2">
+						  <input class="form-check-input" type="radio" name="mobileNY" value="0" <c:if test="${item.mobileNY eq 0 }"> checked</c:if> id="mobileNY2" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="mobileNY2">
 						    비동의
 						  </label>
 						</div>
 					</div>
+					<div class="msg" id="mobileNY_msg" name="mobileNY_msg" style="display: none;"></div>
 				</div>
 				<div class="col-3">
-					<label class="form-label">이메일 수신동의</label>
-					<div class="row" style="margin-left: 10px;">
+					<label class="form-label">이메일 수신동의<span style="color: red;">*</span></label>
+					<div class="row input-control" style="margin-left: 10px;">
 						<div class="col-6 form-check" name="emailNY">
-						  <input class="form-check-input" type="radio" name="emailNY" value="1" <c:if test="${item.emailNY eq 1 }"> checked</c:if> id="flexRadioDefault1" >
-						  <label class="form-check-label" for="flexRadioDefault1">
+						  <input class="form-check-input" type="radio" name="emailNY" value="1" <c:if test="${item.emailNY eq 1 }"> checked</c:if> id="emailNY1" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="emailNY1">
 						    동의
 						  </label>
 						</div>
 						<div class="col-6 form-check">
-						  <input class="form-check-input" type="radio" name="emailNY" value="0" <c:if test="${item.emailNY eq 0 }"> checked</c:if> id="flexRadioDefault2">
-						  <label class="form-check-label" for="flexRadioDefault2">
+						  <input class="form-check-input" type="radio" name="emailNY" value="0" <c:if test="${item.emailNY eq 0 }"> checked</c:if> id="emailNY2" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="emailNY2">
 						    비동의
 						  </label>
 						</div>
 					</div>
+					<div class="msg" id="emailNY_msg" name="emailNY_msg" style="display: none;"></div>
 				</div>
 				<div class="col-6">
-					<label class="form-label">개인정보 유효기간</label>
-					<div class="row" style="margin-left: 10px;">
+					<label class="form-label">개인정보 유효기간<span style="color: red;">*</span></label>
+					<div class="row input-control" style="margin-left: 10px;">
 						<div class="col-3 form-check" name="personalInfo">
-						  <input class="form-check-input" type="radio" name="personalInfo" value="18" <c:if test="${item.personalInfo eq 18 }"> checked</c:if> id="flexRadioDefault1">
-						  <label class="form-check-label" for="flexRadioDefault1">
+						  <input class="form-check-input" type="radio" name="personalInfo" value="18" <c:if test="${item.personalInfo eq 18 }"> checked</c:if> id="personalInfo1" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="personalInfo1">
 						    1년
 						  </label>
 						</div>
 						<div class="col-3 form-check">
-						  <input class="form-check-input" type="radio" name="personalInfo" value="19" <c:if test="${item.personalInfo eq 19 }"> checked</c:if> id="flexRadioDefault2">
-						  <label class="form-check-label" for="flexRadioDefault2">
+						  <input class="form-check-input" type="radio" name="personalInfo" value="19" <c:if test="${item.personalInfo eq 19 }"> checked</c:if> id="personalInfo2" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="personalInfo2">
 						    3년
 						  </label>
 						</div>
 						<div class="col-3 form-check">
-						  <input class="form-check-input" type="radio" name="personalInfo" value="20" <c:if test="${item.personalInfo eq 20 }"> checked</c:if> id="flexRadioDefault3">
-						  <label class="form-check-label" for="flexRadioDefault3">
+						  <input class="form-check-input" type="radio" name="personalInfo" value="20" <c:if test="${item.personalInfo eq 20 }"> checked</c:if> id="personalInfo3" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="personalInfo3">
 						    10년
 						  </label>
 						</div>
 						<div class="col-3 form-check">
-						  <input class="form-check-input" type="radio" name="personalInfo" value="21" <c:if test="${item.personalInfo eq 21 }"> checked</c:if> id="flexRadioDefault4">
-						  <label class="form-check-label" for="flexRadioDefault4">
+						  <input class="form-check-input" type="radio" name="personalInfo" value="21" <c:if test="${item.personalInfo eq 21 }"> checked</c:if> id="personalInfo4" onfocusout="validationUpdt()">
+						  <label class="form-check-label" for="personalInfo4">
 						    평생회원
 						  </label>
 						</div>
 					</div>
+					<div class="msg" id="personalInfo_msg" name="personalInfo_msg" style="display: none;"></div>
 				</div>
 			</div>
 		</div>
@@ -481,6 +487,7 @@
 			form.attr("action", goUrlInst).submit();
 		});
 	</script>
+	
 	<script>
 		$("#clear").on("click", function() {
 			$("#zipcode").val('');
@@ -573,31 +580,27 @@
 		});
 		
 	</script>
-	
 	<!-- validation -->
-	<!-- <script type="text/javascript">
-	
+	<script type="text/javascript">
 		 $('.error').hide();
 	     validationUpdt = function() {
-	         if (!name_V($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
+	         if (!position_V($('#position'), $('#position').val(), "구분을 선택하세요!", $('#position_msg'))){
+	        	 return false;
+	         } else if(!name_V($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
 	             return false;
-	         } else if(!emailInsert_V($('input[name=emailInsert]'), $('input[name=emailInsert]').val(), "이메일ID를 입력하세요!", $('#email_msg'))) {
-	             return false;
-	         }  else if(!gender_V($('#emailDomain'), $('#emailDomain').val(), "이메일 도메인을 선택하세요!", $('#emailDomain_msg'))) {
-	             return false;
-	         }  else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password_msg'))) {
+	         } else if(!password_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password_msg'))) {
 	             return false;
 	         } else if(!password2_V($('input[name=password]'), $('input[name=password]').val(), "비밀번호를 입력하세요!", $('#password2_msg'))) {
 	             return false;
 	         } else if(!dob_V($('input[name=dob]'), $('input[name=dob]').val(), "생년월일을 입력하세요!", $('#dob_msg'))) {
 	             return false;
-	         } else if(!gender_V($('#gender'), $('#gender').val(), "성별을 선택하세요!", $('#gender_msg'))) {
+	         } else if(!gender_V($('input[name=gender]'), $('input[name=gender]').val(), "성별을 선택하세요!", $('#gender_msg'))) {
 	             return false;
 	         } else if(!telCompany_V($('#telCompany'), $('#telCompany').val(), "통신사를 선택하세요!", $('#telCompany_msg'))) {
 	             return false;
 	         } else if(!phone_V($('input[name=phone]'), $('input[name=phone]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
 	             return false;
-	         } else if(!phone2_V($('input[name=phone2]'), $('input[name=phone2]').val(), "전화번호를 입력하세요!", $('#phone2_msg'))) {
+	         } else if(!emailInsert_V($('input[name=emailInsert]'), $('input[name=emailInsert]').val(), "이메일ID를 입력하세요!", $('#email_msg'))) {
 	             return false;
 	         } else if(!zipcode_V($('input[name=zipcode]'), $('input[name=zipcode]').val(), "우편번호를 입력하세요!", $('#zipcode_msg'))) {
 	             return false;
@@ -605,14 +608,17 @@
 	         	return false;
 	         } else if (!addressDetail_V($('input[name=addressDetail]'), $('input[name=addressDetail]').val(), "상세주소를 입력하세요!", $('#addressDetail_msg'))) {
 	         	return false;
-	         } else if(!team_V($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
+	         } else if(!mobileNY_V($('input[name=mobileNY]'), $('input[name=mobileNY]').val(), "모바일 수신동의를 선택하세요!", $('#mobileNY_msg'))) {
 	         	return false;
+	         }  else if(!emailNY_V($('input[name=emailNY]'), $('input[name=emailNY]').val(), "이메일 수신동의를 선택하세요!", $('#emailNY_msg'))) {
+	             return false;
+	         } else if(!personalInfo_V($('input[name=personalInfo]'), $('input[name=personalInfo]').val(), "개인정보 유효기간을 선택하세요!", $('#personalInfo_msg'))) {
+	             return false;
 	         } else {
 	             return true;
 	         }
 	        	alert("회원가입이 완료 되었습니다.");
 	     };	
-	
-	</script> -->
+	</script>
 </body>
 </html>

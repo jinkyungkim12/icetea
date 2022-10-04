@@ -34,11 +34,25 @@ const setSuccess = element => {
 // mobileNY emailNY personalInfo 
 
 
+//postion
+position_V = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}
+
 // name
 name_V = function(obj, value, message, hide) {
-    /*const re = /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;*/
+    const re = /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;
     if (!checkNull(obj, value)) {
-		alert("AWwe");
         hide.parent().addClass('error')
         $(hide).text(message)
         $(hide).show()
@@ -51,50 +65,6 @@ name_V = function(obj, value, message, hide) {
     } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
         $(hide).text('2~10자 사이의 이름을 작성하시오')
         hide.parent().addClass('error')
-        $(hide).show()
-        return false;
-    } else {
-        hide.parent().removeClass('error')
-        hide.parent().addClass('success')
-        $(hide).hide()
-        return true;
-    }
-}
-
-
-// emailInsert
-
-emailInsert_V = function(obj, value, message, hide) {
-    const re =   /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;
-    if (!checkNull(obj, value)) {
-        hide.parent().addClass('error')
-        $(hide).text(message)
-        $(hide).show()
-        return false;
-    } else if (!(re.test($.trim($(obj).val())))) {
-        $(hide).text('양식에 맞게 작성하시오')
-        hide.parent().addClass('error')
-        $(hide).show()
-        return false;
-    } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
-        $(hide).text('4~20자 사이의 이메일ID를 작성하시오')
-        hide.parent().addClass('error')
-        $(hide).show()
-        return false;
-    } else {
-        hide.parent().removeClass('error')
-        hide.parent().addClass('success')
-        $(hide).hide()
-        return true;
-    }
-}
-
-//emailDomain_V
-
-emailDomain_V = function(obj, value, message, hide) {
-    if (!checkNull(obj, value)) {
-        hide.parent().addClass('error')
-        $(hide).text(message)
         $(hide).show()
         return false;
     } else {
@@ -143,7 +113,7 @@ password2_V = function(obj, value, message, hide) {
         $(hide).text("최소 8자, 하나 이상의 대문자, 소문자, 숫자 및 하나의 특수 문자 입력하시오")
         $(hide).show()
         return false;
-	} else if(!(($.trim($(obj).val()) === $.trim($('#pwd').val())))) {
+	} else if(!(($.trim($(obj).val()) === $.trim($('#password').val())))) {
         $(hide).text('비밀번호가 일치하지 않습니다.')
         hide.parent().addClass('error')
         $(hide).show()
@@ -177,6 +147,20 @@ dob_V = function(obj, value, message, hide) {
     }
 }
 
+// 성별
+gender_V = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}
 
 // 통신사
 telCompany_V = function(obj, value, message, hide) {
@@ -195,7 +179,7 @@ telCompany_V = function(obj, value, message, hide) {
 
 // 전화번호
 phone_V = function(obj, value, message, hide) {
-    const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/;
+    /*const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/;*/
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
@@ -214,16 +198,23 @@ phone_V = function(obj, value, message, hide) {
     }
 }
 
-phone2_V = function(obj, value, message, hide) {
-    const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/;
+// emailInsert
+
+emailInsert_V = function(obj, value, message, hide) {
+    const re =   /^[ㄱ-ㅎ가-힣a-zA-z]{1,10}$/g;
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
         $(hide).show()
         return false;
     } else if (!(re.test($.trim($(obj).val())))) {
+        $(hide).text('양식에 맞게 작성하시오')
         hide.parent().addClass('error')
-        $(hide).text("양식에 맞게 작성하세요")
+        $(hide).show()
+        return false;
+    } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
+        $(hide).text('4~20자 사이의 이메일ID를 작성하시오')
+        hide.parent().addClass('error')
         $(hide).show()
         return false;
     } else {
@@ -233,6 +224,25 @@ phone2_V = function(obj, value, message, hide) {
         return true;
     }
 }
+
+//emailDomain_V
+
+emailDomain_V = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}
+
+
+
 
 // 주소
 zipcode_V = function(obj, value, message, hide) {
@@ -293,15 +303,12 @@ addressDetail_V = function(obj, value, message, hide) {
     }
 }
 
-addr3_V = function(obj, value, message, hide) {
+
+// 모바일동의
+mobileNY_V = function(obj, value, message, hide) {
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
-        $(hide).show()
-        return false;
-    } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
-        $(hide).text('10자 사이의 참고사항을 작성하시오')
-        hide.parent().addClass('error')
         $(hide).show()
         return false;
     } else {
@@ -312,4 +319,33 @@ addr3_V = function(obj, value, message, hide) {
     }
 }
 
+// 이메일동의
+emailNY_V = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}
+
+// 개인정보동의
+personalInfo_V = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}
 
