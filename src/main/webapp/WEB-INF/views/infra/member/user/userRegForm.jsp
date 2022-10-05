@@ -176,6 +176,7 @@
 		.msg.error {
 			color: #dc3545;
 		}
+		
 	</style>
 </head>
 <body>
@@ -443,7 +444,13 @@
 				<button type="button" class="btn" id="btnSave">동의하고 회원가입</button>
 			</div>
 			<div id="bbb">
-				<a class="nav-link" href="#">이용약관, 개인정보 수집 및 이용, 개인정보 제공 내용을 확인하였고 동의합니다.</a>
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+				  <label class="form-check-label" for="flexCheckChecked">
+				    이용약관, 개인정보 수집 및 이용, 개인정보 제공 내용을 확인하였고 동의합니다.
+				  </label>
+				</div>
+				<!-- <a class="nav-link" href="#">이용약관, 개인정보 수집 및 이용, 개인정보 제공 내용을 확인하였고 동의합니다.</a> -->
 			</div>
 			<hr>
 			<div class="row">
@@ -484,7 +491,8 @@
 		var formVo = $("form[name=formVo]");
 
 		$("#btnSave").on("click", function() {
-			form.attr("action", goUrlInst).submit();
+			if(validationUpdt())
+				form.attr("action", goUrlInst).submit();
 		});
 	</script>
 	
@@ -617,9 +625,10 @@
 	         } else if(!personalInfo_V($('input[name=personalInfo]'), $('input[name=personalInfo]').val(), "개인정보 유효기간을 선택하세요!", $('#personalInfo_msg'))) {
 	             return false;
 	         } else {
+	        	 //alert("회원가입이 완료 되었습니다.");
 	             return true;
 	         }
-	        	alert("회원가입이 완료 되었습니다.");
+	        	
 	     };	
 	</script>
 </body>

@@ -197,7 +197,7 @@
 				</div>
 			</div>
 		</form>	
-			<div class="row justify-content-between" style="margin-top: 1rem;">
+			<div class="row justify-content-between">
 				<div class="col-1 text-start"><h5><b>Total: <c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></b></h5></div>
 				<div class="col-1 text-end">
 					<select class="form-select" aria-label="Default select example">
@@ -210,7 +210,7 @@
 			</div>
 		</div>
 		
-		<div class="container-fluid text-center" style="margin-top: 0.5rem;">
+		<div class="container-fluid text-center">
 			<table class="table table-hover" id="minus">
 				<thead>
 					<tr class="table-dark text-white">

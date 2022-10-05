@@ -145,11 +145,18 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "userInst")
-	public String userInst(MemberVo vo, Member dto) throws Exception {
+	public String userInst(HttpSession httpSession, MemberVo vo, Member dto) throws Exception {
 		
 		dto.setEmail(dto.getEmailInsert() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		System.out.println("dto.getEmail: " + dto.getEmail());
 		service.totalInsert(dto);
+		
+		Member rtMember = service.selectOneLogin(dto);
+		
+		httpSession.setAttribute("sessSeq", rtMember.getSeq());
+		httpSession.setAttribute("sessId", rtMember.getId());
+		httpSession.setAttribute("sessName", rtMember.getName());
+		httpSession.setAttribute("sessEmail", rtMember.getEmail());
 		
 		return "infra/member/user/userComplete";
 	}
@@ -221,6 +228,12 @@ public class MemberController {
 //		return "infra/member/xdmin/memberForm";
 //	}
 	
+	@RequestMapping(value = "main_home")
+	public String main_home() throws Exception {
+		
+		return "infra/member/user/main_home";
+	}
+	
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin() throws Exception {
 		
@@ -258,9 +271,4 @@ public class MemberController {
 		return "infra/member/xdmin/dmin_login";
 	}	
 	
-	@RequestMapping(value = "mainHome")
-	public String mainHome() throws Exception {
-		
-		return "infra/member/user/mainHome";
-	}
 }

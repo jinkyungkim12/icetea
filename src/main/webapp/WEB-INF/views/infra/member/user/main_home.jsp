@@ -61,6 +61,14 @@
 		.container{
 			font-family: 'Happiness-Sans-Regular';
 		}
+		body{
+			background-image: url(../../resources/images/homemain1.jpg);
+			
+		}
+		.bg-body {
+		    --bs-bg-opacity: 0.6;
+		    background-color: rgba(var(--bs-body-bg-rgb),var(--bs-bg-opacity))!important;
+		}
 	</style>
 
 </head>
@@ -81,25 +89,24 @@
 	  </div>
 	</nav> -->
 
-	
-	<div class="container" style="margin-top: 5rem;">
+	<div class="container" style="margin-top: 7rem;">
 		<div class="row">
 			
 			<!-- 클래스 구매 -->
 			
-			<div class="col-6 ">
+			<div class="col-6">
 				<div class="shadow p-3 mb-5 bg-body rounded-4">
-					<div style="padding: 30px;">
-						<div class="text-center"><h1><b>회원</b></h1></div>
+					<div style="padding: 50px;">
+						<div class="text-center" style="color: black;"><h1><b>회원</b></h1></div>
 						
 						<!-- 이미지 -->
-						<div style="margin-top: 5rem;">
-							<img src="" width="540" height="265">						
+						<div class="row justify-content-center" style="margin-top: 5rem;">
+							<img src="../../resources/images/main_home2.jpg" width="504" height="350">						
 						</div>
 						
 						<!-- 버튼 -->
 						<div class="row justify-content-center" style="margin-top: 3rem;">
-							<a type="button" class="btn btn-light" href="/home" style="width: 70%; background-color: #FF5600; color: white;"><b>입장하기</b></a>
+							<a type="button" class="btn btn-light" href="/home" style="width: 70%; background-color: #FF5600; color: white; border: 0px solid transparent;"><b>입장하기</b></a>
 						</div>
 						
 					</div>
@@ -111,17 +118,17 @@
 			
 			<div class="col-6">
 				<div class="shadow p-3 mb-5 bg-body rounded-4">
-					<div style="padding: 30px;">
-						<div class="text-center"><h1><b>관리자</b></h1></div>
+					<div style="padding: 50px;">
+						<div class="text-center" style="color: black;"><h1><b>관리자</b></h1></div>
 						
 						<!-- 이미지 -->
 						<div style="margin-top: 5rem;">
-							<img src="" width="540" height="265">						
+							<img src="../../resources/images/main_home1.jpg" width="504" height="350">					
 						</div>
 										
 						<!-- 버튼 -->
 						<div class="row justify-content-center" style="margin-top: 3rem;">
-							<a type="button" class="btn btn-light" href="/member/memberLoginResult" style="width: 70%; background-color: #FF5600; color: white;"><b>입장하기</b></a>
+							<a type="button" class="btn btn-light" href="/member/memberLoginResult" style="width: 70%; background-color: #FF5600; color: white; border: 0px solid transparent;"><b>입장하기</b></a>
 						</div>
 					
 					</div>
@@ -129,7 +136,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>

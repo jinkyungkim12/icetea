@@ -37,6 +37,7 @@
 			<exclude-mapping path="/member/userRegForm" />
 			<exclude-mapping path="/member/userComplete" />
 			<exclude-mapping path="/member/checkId" />
+			<exclude-mapping path="/member/main_home" />
 			<beans:bean id="checkLoginSessionInterception" class="com.class101project.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
