@@ -83,16 +83,6 @@ password_V = function(obj, value, message, hide) {
         $(hide).text(message)
         $(hide).show()
         return false;
-    } else if (re.test($.trim($(obj).val()))) {
-		hide.parent().addClass('error')
-        $(hide).text("최소 8자, 하나 이상의 대문자, 소문자, 숫자 및 하나의 특수 문자 입력하시오")
-        $(hide).show()
-        return false;
-	} else if(!(($.trim($(obj).val()).length > 7))) {
-        $(hide).text('8자 이상의 비밀번호를 작성하시오')
-        hide.parent().addClass('error')
-        $(hide).show()
-        return false;
     } else {
         hide.parent().removeClass('error')
         hide.parent().addClass('success')
@@ -108,12 +98,7 @@ password2_V = function(obj, value, message, hide) {
         $(hide).text(message)
         $(hide).show()
         return false;
-    } else if ((re.test($.trim($(obj).val())))) {
-		hide.parent().addClass('error')
-        $(hide).text("최소 8자, 하나 이상의 대문자, 소문자, 숫자 및 하나의 특수 문자 입력하시오")
-        $(hide).show()
-        return false;
-	} else if(!(($.trim($(obj).val()) === $.trim($('#password').val())))) {
+    } else if(!(($.trim($(obj).val()) === $.trim($('#password').val())))) {
         $(hide).text('비밀번호가 일치하지 않습니다.')
         hide.parent().addClass('error')
         $(hide).show()

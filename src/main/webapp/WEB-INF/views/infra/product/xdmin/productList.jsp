@@ -210,7 +210,7 @@
 	
 	<div class="container-fluid">
 		<div class="row justify-content-between">
-			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
+			<div class="col-1 text-start"><h5><b>Total: <c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></b></h5></div>
 			<div class="col-1 text-end">
 				<select class="form-select" aria-label="Default select example">
 				  <option selected>10</option>

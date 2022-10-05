@@ -86,6 +86,7 @@
 		}
 		table, td, th{
 			text-align: center;
+			width: 100%;
 		}
 		a {
 	   	color: #000000;
@@ -100,6 +101,9 @@
 		.overflow-x-auto table {
 			width: auto!important; 
 			white-space: nowrap;
+		}
+		.tdtd{
+			text-align: left !important;
 		}
 	</style>
 </head>
@@ -213,7 +217,7 @@
 	<!-- member List -->
 	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">
-			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
+			<div class="col-1 text-start"><h5><b>Total: <c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></b></h5></div>
 			<div class="col-1 text-end">
 				<select class="form-select" aria-label="Default select example">
 				  <option selected>10</option>
@@ -269,7 +273,7 @@
 						</td>
 						<td><c:out value="${list.id }"/></td>
 						<td><c:out value="${list.email }"/></td>
-						<td><c:out value="${list.title }"/></td>
+						<td class="tdtd"><c:out value="${list.title }"/></td>
 						<td><c:out value="${list.price }"/></td>
 						<td><c:out value="${list.priceDiscount }"/></td>
 						<td><c:out value="${list.couponDiscount }"/></td>

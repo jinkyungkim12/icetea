@@ -35,7 +35,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	public void totalInsert(Member dto) throws Exception {
-		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		insert(dto);
 		addInsert(dto);
 	}

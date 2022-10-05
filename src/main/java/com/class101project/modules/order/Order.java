@@ -12,7 +12,7 @@ public class Order {
 	private Integer pay;
 	private Integer member_seq;
 	private Integer classProduct_seq;
-	private Integer transport_seq;
+	private Integer tOrder;
 	private String orderDate;
 	private String email;
 	private String address;
@@ -126,11 +126,11 @@ public class Order {
 	public void setClassProduct_seq(Integer classProduct_seq) {
 		this.classProduct_seq = classProduct_seq;
 	}
-	public Integer getTransport_seq() {
-		return transport_seq;
+	public Integer gettOrder() {
+		return tOrder;
 	}
-	public void setTransport_seq(Integer transport_seq) {
-		this.transport_seq = transport_seq;
+	public void settOrder(Integer tOrder) {
+		this.tOrder = tOrder;
 	}
 	public String getOrderDate() {
 		return orderDate;

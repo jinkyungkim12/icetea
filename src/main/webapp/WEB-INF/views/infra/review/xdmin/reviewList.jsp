@@ -88,6 +88,9 @@
 	    a:focus, a:hover{
 	    	color: #F7670E;
 	    }
+	    .tdtd{
+			text-align: left !important;
+		}
 	</style>
 </head>
 <body>
@@ -196,7 +199,7 @@
 	
 	<div class="container-fluid" style="width: 80%">
 		<div class="row justify-content-between">
-			<div class="col-1 text-start"><h5><b>Total: </b></h5></div>
+			<div class="col-1 text-start"><h5><b>Total: </b><c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></h5></div>
 			<div class="col-1 text-end">
 				<select class="form-select" aria-label="Default select example">
 				  <option selected>10</option>
@@ -244,7 +247,7 @@
 						<td>
 							<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.id}"/></a>
 						</td>
-						<td><c:out value="${list.content }"/></td>
+						<td class="tdtd"><c:out value="${list.content }"/></td>
 						<td><c:out value="${list.classProduct_seq }"/></td>
 						<td>
 							<c:choose>
