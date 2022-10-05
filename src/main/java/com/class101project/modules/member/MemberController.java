@@ -257,4 +257,10 @@ public class MemberController {
 		
 		return "infra/member/xdmin/dmin_login";
 	}	
+	
+	@RequestMapping(value = "mainHome")
+	public String mainHome() throws Exception {
+		
+		return "infra/member/user/mainHome";
+	}
 }
