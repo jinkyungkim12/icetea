@@ -134,6 +134,7 @@
 	<!-- 회원등록 -->
 	<!-- <form name="form" method="post" action="/member/memberInst"> -->
 	<form  id="form" name="form" method="post" >
+	<input type="hidden" name="formNY" value="1">
 	<!-- *Vo.jsp s -->
 	<%@include file="memberVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->

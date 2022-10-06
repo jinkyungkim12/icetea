@@ -205,11 +205,34 @@ public class MemberController {
 	// 삭제
 	
 	@RequestMapping(value = "memberUele")
-	public String memberUele(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberUele(MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.uelete(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/member/memberList";
+		String returnString = "";
+		
+		if(vo.getFormNY() == 1) {
+			// form에서 삭제
+			service.uelete(dto); 
+			 redirectAttributes.addFlashAttribute("vo", vo);
+			 returnString = "redirect:/member/memberList";
+			
+		} else { //리스트에서 uelete
+			
+			for (MemberVo vItem : vo.getSeqVoList()) {
+				service.ueleteList(vItem.getSeq());
+				
+				System.out.println("line 223 :" + vo.getThisPage());
+				setSearchAndPaging(vo);
+				System.out.println("line 225 :" + vo.getThisPage());
+				if (vo.getTotalRows() > 0) {
+					List<Member> list = service.selectList(vo);
+					model.addAttribute("list", list);
+				}
+				
+				returnString = "infra/member/xdmin/memberList";
+			}
+		}
+		 
+		return returnString;
 	}
 	
 	@RequestMapping(value = "memberDele")
@@ -228,11 +251,11 @@ public class MemberController {
 //		return "infra/member/xdmin/memberForm";
 //	}
 	
-	@RequestMapping(value = "main_home")
-	public String main_home() throws Exception {
-		
-		return "infra/member/user/main_home";
-	}
+//	@RequestMapping(value = "main_home")
+//	public String main_home() throws Exception {
+//		
+//		return "infra/member/user/main_home";
+//	}
 	
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin() throws Exception {

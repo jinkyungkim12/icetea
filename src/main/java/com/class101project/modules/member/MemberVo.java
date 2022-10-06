@@ -1,5 +1,7 @@
 package com.class101project.modules.member;
 
+import java.util.List;
+
 import com.class101project.common.constants.Constants;
 
 public class MemberVo {
@@ -16,8 +18,30 @@ public class MemberVo {
 	 
 	 private String name;
 	 private String seq;
-	
 	 
+	 private Integer formNY;
+	 
+	// form / list 구분 
+	 public Integer getFormNY() {
+			return formNY;
+	}
+
+	public void setFormNY(Integer formNY) {
+		this.formNY = formNY;
+	}
+
+
+	// 리스트 체크박스 선택
+	 private List<MemberVo> seqVoList;
+
+	public List<MemberVo> getSeqVoList() {
+		return seqVoList;
+	}
+
+	public void setSeqVoList(List<MemberVo> seqVoList) {
+		this.seqVoList = seqVoList;
+	}
+
 	public Integer getShOption() {
 		return shOption;
 	}

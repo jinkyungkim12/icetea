@@ -60,6 +60,11 @@ public class MemberDao {
 		return sqlSession.update(namespace + ".uelete", dto);
 	}
 	
+	//list uelete
+	public int ueleteList(String seq) {
+		return sqlSession.update(namespace + ".ueleteList", seq);
+	}
+	
 	public int delete(MemberVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}

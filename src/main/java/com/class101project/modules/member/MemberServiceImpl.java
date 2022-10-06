@@ -71,10 +71,15 @@ public class MemberServiceImpl implements MemberService{
 	
 	// uelete, delete
 	@Override
-	public int uelete(Member dto) throws Exception{
+	public int uelete(Member dto) throws Exception{ 
 		return dao.uelete(dto);
 	}
 	
+	@Override
+	public int ueleteList(String seq) throws Exception {
+		return dao.ueleteList(seq);
+	}
+
 	@Override
 	public int delete(MemberVo vo) throws Exception{
 		return dao.delete(vo);

@@ -68,6 +68,7 @@
 		.bg-body {
 		    --bs-bg-opacity: 0.6;
 		    background-color: rgba(var(--bs-body-bg-rgb),var(--bs-bg-opacity))!important;
+		    --bs-body-bg-rgb: 0,0,0;
 		}
 	</style>
 
@@ -97,7 +98,7 @@
 			<div class="col-6">
 				<div class="shadow p-3 mb-5 bg-body rounded-4">
 					<div style="padding: 50px;">
-						<div class="text-center" style="color: black;"><h1><b>회원</b></h1></div>
+						<div class="text-center" style="color: white;"><h1><b>회원</b></h1></div>
 						
 						<!-- 이미지 -->
 						<div class="row justify-content-center" style="margin-top: 5rem;">
@@ -119,7 +120,7 @@
 			<div class="col-6">
 				<div class="shadow p-3 mb-5 bg-body rounded-4">
 					<div style="padding: 50px;">
-						<div class="text-center" style="color: black;"><h1><b>관리자</b></h1></div>
+						<div class="text-center" style="color: white;"><h1><b>관리자</b></h1></div>
 						
 						<!-- 이미지 -->
 						<div style="margin-top: 5rem;">

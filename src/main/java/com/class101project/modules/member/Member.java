@@ -31,6 +31,8 @@ public class Member {
 		private String addr3;
 		private String member_seq;
 		
+		
+		
 		public String getMember_seq() {
 			return member_seq;
 		}

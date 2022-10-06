@@ -274,10 +274,10 @@
 						<td><c:out value="${list.id }"/></td>
 						<td><c:out value="${list.email }"/></td>
 						<td class="tdtd"><c:out value="${list.title }"/></td>
-						<td><c:out value="${list.price }"/></td>
-						<td><c:out value="${list.priceDiscount }"/></td>
-						<td><c:out value="${list.couponDiscount }"/></td>
-						<td><c:out value="${list.finalPrice }"/></td>
+						<td><fmt:formatNumber type="number" value="${list.price}" pattern="#,###"/></td>
+					    <td><fmt:formatNumber type="number" value="${list.priceDiscount}" pattern="#,###"/></td>
+						<td><fmt:formatNumber type="number" value="${list.couponDiscount}" pattern="#,###"/></td>
+						<td><fmt:formatNumber type="number" value="${list.finalPrice}" pattern="#,###"/></td>
 						<td>
 							<c:forEach items="${listCodePay}" var="listPay" varStatus="statusPay">
 								<c:if test="${list.pay eq listPay.seq}"><c:out value="${listPay.codeNameKr }"/></c:if>
