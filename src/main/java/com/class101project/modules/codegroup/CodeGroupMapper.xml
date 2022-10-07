@@ -97,6 +97,13 @@
 			AND seq = #{seq}
 	</update>
 	
+	<update id="ueleteList">
+		UPDATE codeGroup
+		SET
+			cgDelNY = 1
+		WHERE 1=1 
+			AND seq = #{seq}
+	</update>
 	
 	<delete id="delete">
 		DELETE FROM codeGroup WHERE 1=1 AND seq = #{seq}

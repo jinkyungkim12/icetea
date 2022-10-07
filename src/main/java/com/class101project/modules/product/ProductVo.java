@@ -1,5 +1,7 @@
 package com.class101project.modules.product;
 
+import java.util.List;
+
 import com.class101project.common.constants.Constants;
 
 public class ProductVo {
@@ -224,5 +226,27 @@ public class ProductVo {
 		//		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 				
 			}
-	
+		
+		private Integer formNY;
+		
+		// form / list 구분 
+		 public Integer getFormNY() {
+				return formNY;
+		}
+
+		public void setFormNY(Integer formNY) {
+			this.formNY = formNY;
+		}
+
+
+		// 리스트 체크박스 선택
+		 private List<ProductVo> seqVoList;
+
+		public List<ProductVo> getSeqVoList() {
+			return seqVoList;
+		}
+
+		public void setSeqVoList(List<ProductVo> seqVoList) {
+			this.seqVoList = seqVoList;
+		}
 }

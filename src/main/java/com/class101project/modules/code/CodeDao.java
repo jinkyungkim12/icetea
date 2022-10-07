@@ -40,6 +40,10 @@ public class CodeDao {
 		return sqlSession.update(namespace + ".uelete", dto);
 	}
 	
+	public int ueleteList(String seq) {
+		return sqlSession.update(namespace + ".uelete", seq);
+	}
+	
 	public int delete(CodeVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}

@@ -124,6 +124,7 @@
 	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	<!-- <form method="post" name="form" action="/code/codeInst"> -->
 	<form id="form" name="form" method="post">
+	<input type="hidden" name="formNY" value="1">
 	<!-- *Vo.jsp s -->
 	<%@include file="codeVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->

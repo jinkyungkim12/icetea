@@ -1,5 +1,7 @@
 package com.class101project.modules.codegroup;
 
+import java.util.List;
+
 import com.class101project.common.constants.Constants;
 
 public class CodeGroupVo {
@@ -17,7 +19,6 @@ public class CodeGroupVo {
 	 private Integer codeGroupCode;
 
 	 private String seq;
-	 
 	 
 	 
 	public Integer getShCgOption() {
@@ -218,7 +219,29 @@ public class CodeGroupVo {
 				
 			}
 	
-	
+		// form, List 구분
+		
+		private Integer formNY;
+
+
+		public Integer getFormNY() {
+			return formNY;
+		}
+		public void setFormNY(Integer formNY) {
+			this.formNY = formNY;
+		}
+		
+		
+		// 리스트 체크박스 선택
+		 private List<CodeGroupVo> seqVoList;
+
+		public List<CodeGroupVo> getSeqVoList() {
+			return seqVoList;
+		}
+
+		public void setSeqVoList(List<CodeGroupVo> seqVoList) {
+			this.seqVoList = seqVoList;
+		}
 	
 	
 	

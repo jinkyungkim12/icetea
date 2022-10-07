@@ -69,11 +69,37 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupUele")
-	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeGroupUele(@ModelAttribute("vo") CodeGroupVo vo, CodeGroup dto,  Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.uelete(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/codeGroup/codeGroupList";
+		String returnString = "";
+		
+		if(vo.getFormNY() == 1) {
+			// form uelete
+			
+			service.uelete(dto);
+			redirectAttributes.addFlashAttribute("vo", vo);
+			return "redirect:/codeGroup/codeGroupList";
+
+		} else {
+			// list uelete
+			
+			for(CodeGroupVo vItem : vo.getSeqVoList()) {
+				
+				service.ueleteList(vItem.getSeq());
+				
+				setSearchAndPaging(vo);
+				
+				if(vo.getTotalRows() > 0) {
+					List<CodeGroup> list = service.selectList(vo);
+					model.addAttribute("list", list);
+				}
+
+				returnString = "infra/codegroup/xdmin/codeGroupList";
+			}
+			
+		}
+		
+		return returnString;
 	}
 	
 	@RequestMapping(value = "codeGroupDele")

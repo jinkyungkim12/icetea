@@ -39,6 +39,10 @@ public class ProductServiceImpl implements ProductService{
 		return dao.uelete(dto);
 	}
 	
+	@Override
+	public int ueleteList(String seq) throws Exception{
+		return dao.ueleteList(seq);
+	}
 	
 	@Override
 	public int delete(ProductVo vo) throws Exception{

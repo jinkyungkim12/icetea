@@ -46,6 +46,12 @@ public class CodeGroupDao {
 			return sqlSession.update(namespace + ".uelete", dto);
 		}
 		
+		//list uelete
+		public int ueleteList(String seq) {
+			return sqlSession.update(namespace + ".ueleteList", seq);
+		}
+		
+		
 		public int delete(CodeGroupVo vo) {
 			return sqlSession.delete(namespace + ".delete", vo);
 		}

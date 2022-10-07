@@ -10,6 +10,7 @@ public interface ProductService {
 	public Product selectOne(ProductVo vo) throws Exception;
 	public int update(Product dto) throws Exception;
 	public int uelete(Product dto) throws Exception;
+	public int ueleteList(String seq) throws Exception;
 	public int delete(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	

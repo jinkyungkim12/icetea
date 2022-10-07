@@ -155,6 +155,7 @@
 	
 	<form method="post" name="formList" id="formList">
 	<input type="hidden" name="seq">
+	<input type="hidden" name="formNY" value="0">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<div class="container-fluid p-4" style="width: 99%">
@@ -203,6 +204,7 @@
 			</div>
 		</div>
 	</div>
+	<div id="cb"></div>
 	</form>
 		
 		
@@ -264,7 +266,7 @@
 							</td>
 							<td><c:out value="${list.classDiv }"/></td>
 							<td class="tdtd"><c:out value="${list.title }"/></td>
-							<td><c:out value="${list.price }"/></td>
+							<td><fmt:formatNumber type="number" value="${list.price}" pattern="#,###"/></td>
 							<td><c:out value="${list.discountRate }"/></td>
 							<td><c:out value="${list.payMonth }"/></td>
 							<td><c:out value="${list.classAmount }"/></td>
@@ -305,7 +307,8 @@
 	<div class="container-fluid">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
-	     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
+	     		<!-- <button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button> -->
+	     		<button type="button" class="btn btn-dark" id="checkDel" style="height: 2.4rem;" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-circle-minus"></i></button>
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
@@ -319,7 +322,7 @@
 	<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
 	<!-- pagination e -->
 		
-	<!-- Modal -->
+	<!-- Delete Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -337,6 +340,25 @@
 	    </div>
 	  </div>
 	</div>
+	</div>
+	
+	<!-- Ulete Modal -->
+	<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel2">Class101</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        정말로 삭제하시겠습니까?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	        <button type="button" class="btn btn-dark" onclick='uelItem()'>삭제 </button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 		
 <!-- end	 -->
@@ -363,6 +385,42 @@
 		  const newRow = table.deleteRow(rownum);
 		}
 	</script>
+	<!-- 체크박스 삭제 -->
+	<script type="text/javascript">
+	
+			uelItem = function(){
+			
+			var txt = "";
+			var checkbox = $("input[name=check]:checked");
+			
+			var form = $("form[name=formList]");
+			
+			/* alert(checkbox.length);
+			return false; */
+			
+			checkbox.each(function(i) {
+				
+				var addtag = "";
+				
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();
+				
+				txt += td.eq(1).text() + "  ";
+				
+				addtag = '<input type="hidden" name="seqVoList['+i+'].seq" value="'+ td.eq(1).text() +'">'
+				  
+				$("#cb").append(addtag);
+				
+			});
+			
+			/* alert(txt);
+			return false; */
+			
+			form.attr("action", "/product/productUele" ).submit();
+			}
+		
+	</script>
+	
 	<script type="text/javascript">
 	
 		var goUrlList = "/product/productList"; 			/* #-> */

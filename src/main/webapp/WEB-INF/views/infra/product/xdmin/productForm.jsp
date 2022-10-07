@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
-
+	<script src="/resources/js/commonXdmin.js" crossorigin="anonymous"></script>
+	<script src="/resources/js/common.js" crossorigin="anonymous"></script>
 	<style type="text/css">
 		.container{
 			font-family: 'Happiness-Sans-Regular';	
@@ -68,6 +69,20 @@
 		}
 		.nav-link:focus, .nav-link:hover {
 		  color: #F7670E;
+		}
+		.input-file-button{
+		padding: 4px 25px;
+		background-color:#FF6600;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+		}
+		.addScroll{
+			overflow-y:auto;
+			height: 200px;
+			background-color:#E9ECEF;
+			padding-top:5px; 
+			padding-left:5px;
 		}
 	</style>
 </head>
@@ -132,6 +147,7 @@
 	
 	<!-- 회원등록 -->
 	<form id="form" name="form" method="post">
+	<input type="hidden" name="formNY" value="1">
 	<!-- *Vo.jsp s -->
 	<%@include file="productVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->
@@ -140,7 +156,7 @@
 		<div class="row gy-3" id="firstrow">
 			<div class="col-12">
 				<label class="form-label bb">대표 이미지(최소 3개 이상)</label>
-	   			<input type="file" class="form-control" id="inputGroupFile01" multiple="multiple">
+	   			<input type="file" class="form-control" id="img222" multiple="multiple" name="img222">
 			</div>
 			<div class="col-6">
 				<label class="form-label bb">seq</label>
@@ -242,6 +258,45 @@
 				<label class="form-label bb">키트 소개</label>
 	   			<input type="file" class="form-control" id="inputGroupFile01" multiple="multiple">
 			</div>
+			<div class="row mt-sm-4">
+		        <div class="col-sm-6 mt-3 mt-sm-0">
+		            <label for="ifmmUploadedImage" class="form-label input-file-button">이미지첨부</label>
+		 			<input class="form-control form-control-sm" id="ifmmUploadedImage" name="ifmmUploadedImage" type="file" multiple="multiple" style="display: none;" onChange="upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);">
+					<div class="addScroll">
+						<ul id="ulFile1" class="list-group">
+						</ul>
+					</div>
+		        </div>
+		        <div class="col-sm-6 mt-3 mt-sm-0">
+					<label for="ifmmUploadedFile" class="form-label input-file-button">파일첨부</label>
+					<input class="form-control form-control-sm" id="ifmmUploadedFile" name="ifmmUploadedFile" type="file" multiple="multiple" style="display: none;" onChange="upload('ifmmUploadedFile', 2, 0, 2, 0, 0, 2);" >
+					<div class="addScroll">
+						<ul id="ulFile2" class="list-group">
+						</ul>
+					</div>
+		        </div>
+		    </div>
+		
+		    <div class="row mt-sm-4">
+		        <div class="col-sm-6 mt-3 mt-sm-0">
+		            <label for="ifmmUploadedImage" class="form-label input-file-button">이미지첨부</label>
+		 			<input class="form-control form-control-sm" id="ifmmUploadedImage" name="ifmmUploadedImage" type="file" multiple="multiple" style="display: none;" onChange="upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);">
+		 			<div class="addScroll">
+						<div style="display: inline-block; height: 95px;">
+							<img src="/resources/common/image/default_111.jpg" class="rounded" width= "85px" height="85px">
+							<div style="position: relative; top:-85px; left:5px"><span style="color: red;">X</span></div>
+						</div>
+		 			</div>
+		        </div>
+		        <div class="col-sm-6 mt-3 mt-sm-0">
+					<label for="ifmmUploadedFile" class="form-label input-file-button">파일첨부</label>
+					<input class="form-control form-control-sm" id="ifmmUploadedFile" name="ifmmUploadedFile" type="file" multiple="multiple" style="display: none;" onChange="upload('ifmmUploadedFile', 2, 0, 2, 0, 0, 2);" >
+					<div class="addScroll">
+						<ul id="ulFile2" class="list-group">
+						</ul>
+					</div>
+		        </div>
+		    </div>    
 		</div>
 	</div>
 	
@@ -257,6 +312,7 @@
 		     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
 					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
+					<button type="button" class="btn btn-dark" id="test" onclick="validationInst()"><i class="fa-solid fa-bookmark"></i></button>
 		    	</div>
 		    </div>
 			
@@ -315,6 +371,58 @@
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
+		
+		 $("#test").on("click", function(){
+			 upload('img222', 2, 0, 2, 0, 0, 2);
+		 });
+		 
+		 /* validation = function() {
+			 
+			 var obj = document.getElementById("img222").files;
+			 
+			 alert(obj)
+			 alert(obj.length)
+			 alert(obj.ext)
+			 
+			 for (var i=0; i<obj.length; i++) {
+				 alert(obj[i].name + " : " + obj[i].size)
+			 }
+			 
+ 			 var obj2 = document.getElementById("img2").files;
+			 
+			 alert(obj2)
+			 alert(obj2.length)
+			 
+			 for (var i=0; i<obj2.length; i++) {
+				 alert(obj2[i].name + " : " + obj2[i].size)
+			 }
+			
+			return false;
+			
+		} */
+		 
+		 
+		 upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType){
+			 
+			 var totalFileSize = 0;
+			 var obj = $('#' + objName + "")[0].files;
+			 var fileCount = obj.length;
+			 
+			 allowedMaxTotalFileNumber =  allowedMaxTotalFileNumber == 0 ? 5 : allowedMaxTotalFileNumber;
+ 			 allowedEachFileSize = allowedEachFileSize == 0 ? 5*1024*1024 : allowedEachFileSize;
+			 allowedTotalFileSize = allowedTotalFileSize == 0 ? 25*1024*1024 : allowedTotalFileSize;
+			 if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) {return false; }
+			 alert(fileCount);
+			  for (var i = 0 ;  i < fileCount ; i ++) {
+				 if(checkUploadedExt($("#" + objName + "")[0].files[i].name, seq, allowedExtdiv) == false) {return false;}
+				 if(checkUploadedEachFileSize($("#" + objName + "")[0].files[i].name, seq, allowedEachFileSize) == false) {return false;}
+			 	 totalFileSize += $("#" + objName + "")[0].files[i].size;
+			 }
+		 }
+		
+		
+	</script>
+	<script type="text/javascript">
 	
 		var goUrlList = "/product/productList"; 		/* #-> */
 		var goUrlInst = "/product/productInst"; 		/* #-> */
@@ -328,12 +436,14 @@
 		var formVo = $("form[name=formVo]");
 		
 		
+		
 		$("#btnSave").on("click", function(){
-			if (seq.val() == "0" || seq.val() == ""){
+			
+		 	if (seq.val() == "0" || seq.val() == ""){
 		   		form.attr("action", goUrlInst).submit();
 		   	} else {
 		   		form.attr("action", goUrlUpdt).submit();
-		   	}
+		   	} 
 		}); 
 		
 		$("#btnList").on("click", function(){

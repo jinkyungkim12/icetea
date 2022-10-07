@@ -44,6 +44,10 @@ public class ProductDao {
 		return sqlSession.update(namespace + ".uelete", dto);
 	}
 	
+	public int ueleteList(String seq) {
+		return sqlSession.update(namespace + ".ueleteList", seq);
+	}
+	
 	public int delete(ProductVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}

@@ -83,11 +83,38 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeUele")
-	public String codeUele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeUele(@ModelAttribute("vo") CodeVo vo, Code dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.uelete(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/code/codeList";
+		String returnString = "";
+		
+		if(vo.getFormNY() == 1) { 
+			// form uelete
+			
+			service.uelete(dto);
+			redirectAttributes.addFlashAttribute("vo", vo);
+			return "redirect:/code/codeList";
+
+		} else {
+			// list uelete
+			
+			for(CodeVo vItem : vo.getSeqVoList()) {
+				
+				service.ueleteList(vItem.getSeq());
+				
+				setSearchAndPaging(vo);
+				
+				if(vo.getTotalRows() > 0) {
+					List<Code> list = service.selectList(vo);
+					model.addAttribute("list", list);
+				}
+
+				returnString = "infra/code/xdmin/codeList";
+			}
+			
+		}
+		
+		return returnString;
+		
 	}
 	
 	@RequestMapping(value = "codeDele")

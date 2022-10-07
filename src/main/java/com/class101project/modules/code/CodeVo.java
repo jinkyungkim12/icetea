@@ -1,5 +1,7 @@
 package com.class101project.modules.code;
 
+import java.util.List;
+
 import com.class101project.common.constants.Constants;
 
 public class CodeVo {
@@ -237,6 +239,34 @@ public class CodeVo {
 	//		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 			
 		}
+	
+	
+		// List, From 체크박스 삭제 및 구분
+		
+		
+		private Integer formNY;
+	
+	
+		public Integer getFormNY() {
+			return formNY;
+		}
+		public void setFormNY(Integer formNY) {
+			this.formNY = formNY;
+		}
+		
+		
+		// 리스트 체크박스 선택
+		 private List<CodeVo> seqVoList;
+	
+		public List<CodeVo> getSeqVoList() {
+			return seqVoList;
+		}
+	
+		public void setSeqVoList(List<CodeVo> seqVoList) {
+			this.seqVoList = seqVoList;
+		}
+
+	
 	
 	
 	

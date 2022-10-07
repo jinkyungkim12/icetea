@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/product/")
 public class ProductController {
@@ -69,11 +70,33 @@ public class ProductController {
 		}
 		
 		@RequestMapping(value = "productUele")
-		public String productUele(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+		public String productUele(@ModelAttribute("vo") ProductVo vo, Product dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 			
-			service.uelete(dto);
-			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/product/productList";
+			String returnString = "";
+			
+			if(vo.getFormNY() == 1) {
+				// form에서 삭제
+				service.uelete(dto);
+				redirectAttributes.addFlashAttribute("vo", vo);
+				return "redirect:/product/productList";
+				
+				
+			} else { //리스트에서 uelete
+				
+				for (ProductVo vItem : vo.getSeqVoList()) {
+					service.ueleteList(vItem.getSeq());
+					
+					setSearchAndPaging(vo);
+					if (vo.getTotalRows() > 0) {
+						List<Product> list = service.selectList(vo);
+						model.addAttribute("list", list);
+					}
+					
+					returnString = "infra/product/xdmin/productList";
+				}
+			}
+			 
+			return returnString;
 		}
 		
 		@RequestMapping(value = "productDele")

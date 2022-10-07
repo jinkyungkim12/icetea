@@ -122,6 +122,7 @@
 		</div>
 		<!-- <form name="form" method="post" action="/codeGroup/codeGroupInst"> -->
 		<form  id="form" name="form" method="post" >
+		<input type="hidden" name="formNY" value="1">
 		<!-- *Vo.jsp s -->
 		<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
 		<!-- *Vo.jsp e -->

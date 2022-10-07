@@ -328,7 +328,7 @@
 					<div class="row gy-3" id="firstrow">
 						<div class="col-6">
 							<label class="form-label">구분</label>
-				   			<select class="form-select" aria-label="Default select example" name="position">
+				   			<select class="form-select" aria-label="Default select example" name="position" disabled>
 							  <option selected>구분</option>
 							  <option value="22" <c:if test="${item.position eq 22 }"> selected</c:if>>수강생</option>
 							  <option value="23" <c:if test="${item.position eq 23 }"> selected</c:if>>크리에이터</option>
@@ -338,12 +338,12 @@
 						<div class="col-6"></div>
 						<div class="col-6">
 							<label class="form-label">이름</label>
-				   			<input type="text" class="form-control" value="<c:out value="${item.name}"/>" placeholder="이름" name ="name" id="name">
+				   			<input type="text" class="form-control" value="<c:out value="${item.name}"/>" placeholder="이름" name ="name" id="name" readonly>
 						</div>
 						<div class="col-6">
 							<label class="form-label">아이디</label>
 							<input type="hidden" id="idAllowedNY" name="idAllowedNY" value="0">
-				   			<input type="text" class="form-control"	value="<c:out value="${item.id}"/>" placeholder="아이디" name ="id" id="id">
+				   			<input type="text" class="form-control"	value="<c:out value="${item.id}"/>" placeholder="아이디" name ="id" id="id" readonly>
 				   			<div class="invalid-feedback" id="idFeedback"></div>
 						</div>
 						<div class="col-6">

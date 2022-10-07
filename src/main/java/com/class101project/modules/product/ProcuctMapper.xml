@@ -126,6 +126,14 @@
 			seq = #{seq}
 	</update>
 	
+	<update id="ueleteList">
+		UPDATE classProduct
+		SET
+			classDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
 	<delete id="delete">
 		DELETE FROM classProduct WHERE seq = #{seq}
 	</delete>

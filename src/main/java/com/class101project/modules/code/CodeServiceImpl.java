@@ -36,6 +36,10 @@ public class CodeServiceImpl implements CodeService{
 		return dao.uelete(dto);
 	}
 	
+	@Override
+	public int ueleteList(String seq) throws Exception{
+		return dao.ueleteList(seq);
+	}
 	
 	@Override
 	public int delete(CodeVo vo) throws Exception{

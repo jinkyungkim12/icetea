@@ -102,6 +102,14 @@
 			seq = #{seq}
 	</update>
 	
+	<update id="ueleteList">
+		UPDATE code
+		SET
+			codeDelNY = 1
+		WHERE
+			seq = #{seq}
+	</update>
+	
 	<delete id="delete">
 		DELETE FROM code WHERE seq = #{seq}
 	</delete>
