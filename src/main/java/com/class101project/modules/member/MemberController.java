@@ -205,7 +205,7 @@ public class MemberController {
 	// 삭제
 	
 	@RequestMapping(value = "memberUele")
-	public String memberUele(MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberUele(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
 		String returnString = "";
 		
@@ -220,9 +220,7 @@ public class MemberController {
 			for (MemberVo vItem : vo.getSeqVoList()) {
 				service.ueleteList(vItem.getSeq());
 				
-				System.out.println("line 223 :" + vo.getThisPage());
 				setSearchAndPaging(vo);
-				System.out.println("line 225 :" + vo.getThisPage());
 				if (vo.getTotalRows() > 0) {
 					List<Member> list = service.selectList(vo);
 					model.addAttribute("list", list);
