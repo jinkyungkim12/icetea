@@ -233,7 +233,7 @@
 					<div class="row text-end">
 						<div class="dropdown">
 							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img alt="..." src="../../resources/images/profile.png" class="avatar avatar-rounded-circle"> 
+								<img alt="..." src="${sessUserImage}" class="avatar avatar-rounded-circle"> 
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
 								<div class="container">

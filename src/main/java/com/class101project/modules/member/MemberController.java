@@ -62,11 +62,18 @@ public class MemberController {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		Member rtMember = service.selectOneLogin(dto);
 
+		//Member rtMemberImg = service.selectMemberImg(dto.setSeq(null));
+		dto.setPseq(rtMember.getSeq());
+		
+		Member rtMemberImg = service.selectMemberImg(dto);
+		System.out.println(rtMemberImg.getPath()+rtMemberImg.getUuidName());
+		
 		if (rtMember != null ) {
 			httpSession.setAttribute("sessSeq", rtMember.getSeq());
 			httpSession.setAttribute("sessId", rtMember.getId());
 			httpSession.setAttribute("sessName", rtMember.getName());
 			httpSession.setAttribute("sessEmail", rtMember.getEmail());
+			httpSession.setAttribute("sessUserImage", rtMemberImg.getPath()+rtMemberImg.getUuidName());
 			
 			returnMap.put("rt", "success");
 		} else {
@@ -296,11 +303,13 @@ public class MemberController {
 	}	
 	
 	@RequestMapping(value = "imgLoad")
-	public String imgLoad(Member dto) throws Exception {
+	public String imgLoad(Model model, Member dto) throws Exception {
 		
 		dto.setPseq("63");
 		
 		Member item = service.selectMemberImg(dto);
+		
+		model.addAttribute("item",item);
 		
 		return "infra/member/user/test";
 	}
