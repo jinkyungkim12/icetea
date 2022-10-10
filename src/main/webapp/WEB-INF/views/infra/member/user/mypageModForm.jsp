@@ -258,7 +258,7 @@
 		</div>
 	</div>
 	
-	<form  id="form" name="form" method="post" >
+	<form  id="form" name="form" method="post" enctype="multipart/form-data">
 	<!-- *Vo.jsp s -->
 	<%@include file="memberVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->	
@@ -315,7 +315,7 @@
 					<div class="row justify-content-center">
 						<div class="col-3 text-center">
 			    			<img id="preview-image" src="https://images.pexels.com/photos/2106037/pexels-photo-2106037.jpeg?auto=compress&cs=tinysrgb&w=1600" class="profile">
-							<input style="display: block; margin:auto;" type="file" id="input-image">
+							<input style="display: block; margin:auto;" type="file" id="input-image" name="postImage">
 						</div>
 					</div>
 				</div>

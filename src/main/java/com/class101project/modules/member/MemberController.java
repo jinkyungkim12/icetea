@@ -183,6 +183,9 @@ public class MemberController {
 		service.totalUpdate(dto);
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		System.out.println(dto.getPostImage().length);
+		
 		return "redirect:/member/mypageModForm";
 	}
 	
@@ -292,4 +295,13 @@ public class MemberController {
 		return "infra/member/xdmin/dmin_login";
 	}	
 	
+	@RequestMapping(value = "imgLoad")
+	public String imgLoad(Member dto) throws Exception {
+		
+		dto.setPseq("63");
+		
+		Member item = service.selectMemberImg(dto);
+		
+		return "infra/member/user/test";
+	}
 }

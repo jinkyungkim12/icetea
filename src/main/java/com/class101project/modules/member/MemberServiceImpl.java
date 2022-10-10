@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.class101project.common.util.UtilSecurity;
+import com.class101project.common.util.UtilUpload;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -45,6 +47,27 @@ public class MemberServiceImpl implements MemberService{
 	public void totalUpdate(Member dto) throws Exception {
 		mypageUpdate(dto);
 		addUpdate(dto);
+		
+		 int memberLastseq = dao.selectLastSeq();
+
+	        int j = 0;
+	        for(MultipartFile myFile : dto.getPostImage()) {
+
+	            if(!myFile.isEmpty()) {
+	                // postServiceImpl
+	                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	                UtilUpload.uploadPost(myFile, pathModule, dto);
+
+	                dto.setType("1");
+	                dto.setDefaultNY(j == 0 ? "1" : "0");
+	                dto.setSort(j+1+"");
+	                dto.setPseq(memberLastseq+"");
+
+	                dao.memberUploadInsert(dto);
+	                j++;
+	            }
+	        }
+
 	}
 	
 	public void totalUpdate2(Member dto) throws Exception {
@@ -116,5 +139,14 @@ public class MemberServiceImpl implements MemberService{
 	public Member selectOneLogin(Member dto) {
 		return dao.selectOneLogin(dto);
 	}
+	
+	// img upload
+
+	@Override
+	public Member selectMemberImg(Member dto) throws Exception {
+		
+		return dao.selectMemberImg(dto);
+	}
+	
 	
 }

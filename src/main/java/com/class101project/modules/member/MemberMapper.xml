@@ -104,6 +104,39 @@
 		</selectKey>
 	</insert>
 	
+	<!-- member profile uploaded -->
+	<insert id="memberUploadInsert">
+		INSERT INTO memberUploaded (
+		    type
+		    ,defaultNY
+		    ,sort
+		    ,originalName
+		    ,uuidName
+		    ,ext
+		    ,size
+		    ,uploadDelNY
+		    ,pseq
+		    ,regDate
+		    ,path
+		   )
+		   VALUES (
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{uploadDelNY}
+			,#{pseq}
+			,now()
+			,#{path}
+			)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<insert id="addressInsert">
 		INSERT INTO transport (
 			zipcode
@@ -133,7 +166,7 @@
 			,id = #{id}
 			,password = #{password}
 			,company = #{company}
-			,creatorNickname = #{creatorNickname}
+			,creatorNickname = #{creatorNickname} 
 			,dob = #{dob}
 			,gender = #{gender}
 			,telCompany = #{telCompany}
@@ -231,6 +264,14 @@
 			AND tOrder = 1
 	</select>
 	
+	<select id="selectLastSeq" resultType="Integer">
+		SELECT
+			seq
+			FROM member
+			ORDER BY seq DESC
+				LIMIT 1
+	</select>
+	
 	<select id="selectOneIdCheck" resultType="Integer">
 		SELECT 
 			COUNT(id) 
@@ -253,5 +294,14 @@
 			FROM member a 
 			WHERE a.id= #{id}
 			AND a.password = #{password}
+	</select>
+	
+	<select id="selectMemberImg" resultMap="resultMapObj">
+		SELECT
+		 * 
+		 FROM memberUploaded
+		 WHERE
+		 pseq = #{pseq}
+	
 	</select>
 </mapper>

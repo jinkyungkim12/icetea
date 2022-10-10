@@ -54,6 +54,14 @@ public class MemberDao {
 		return sqlSession.update(namespace + ".addressUpdate", dto);
 	}
 	
+	//image upload
+	public int selectLastSeq() {
+		return sqlSession.selectOne(namespace + ".selectLastSeq");
+	}
+	
+	public int memberUploadInsert(Member dto) {
+		return sqlSession.insert(namespace + ".memberUploadInsert", dto);
+	}
 	
 	// delete, uelete
 	public int uelete(Member dto) {
@@ -82,6 +90,11 @@ public class MemberDao {
 	// login
 	public Member selectOneLogin(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
+	}
+
+	public Member selectMemberImg(Member dto) {
+
+		return sqlSession.selectOne(namespace + ".selectMemberImg", dto);
 	}
 	
 }

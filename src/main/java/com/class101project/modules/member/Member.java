@@ -1,6 +1,8 @@
 package com.class101project.modules.member;
 
-public class Member {
+import com.class101project.common.base.Base;
+
+public class Member extends Base{
 
 		private String seq;
 		private String name;
@@ -26,7 +28,7 @@ public class Member {
 		/* address */
 		private String aSeq;
 		private String zipcode;
-		private String address;
+		private String address; 
 		private String addressDetail;
 		private String addr3;
 		private String member_seq;
