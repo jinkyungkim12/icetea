@@ -56,30 +56,31 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value = "loginProc")
-	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> loginProc(Member dto, MemberVo vo, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		Member rtMember = service.selectOneLogin(dto);
 
 		//Member rtMemberImg = service.selectMemberImg(dto.setSeq(null));
-		dto.setPseq(rtMember.getSeq());
+		vo.setSeq(rtMember.getSeq());
 		
-		Member rtMemberImg = service.selectMemberImg(dto);
-		System.out.println(rtMemberImg.getPath()+rtMemberImg.getUuidName());
+		Member rtMemberImg = service.selectMemberImg(vo);
+		
 		
 		if (rtMember != null ) {
 			httpSession.setAttribute("sessSeq", rtMember.getSeq());
 			httpSession.setAttribute("sessId", rtMember.getId());
 			httpSession.setAttribute("sessName", rtMember.getName());
 			httpSession.setAttribute("sessEmail", rtMember.getEmail());
-			httpSession.setAttribute("sessUserImage", rtMemberImg.getPath()+rtMemberImg.getUuidName());
+			if(rtMemberImg != null)
+				httpSession.setAttribute("sessUserImage", rtMemberImg.getPath()+rtMemberImg.getUuidName());
 			
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");
 		}
-
+		
 		return returnMap;
 	}
 	
@@ -165,6 +166,11 @@ public class MemberController {
 		httpSession.setAttribute("sessName", rtMember.getName());
 		httpSession.setAttribute("sessEmail", rtMember.getEmail());
 		
+		vo.setSeq(rtMember.getSeq());
+		Member rtMemberImg = service.selectMemberImg(vo);
+		
+		httpSession.setAttribute("sessUserImage", rtMemberImg.getPath()+rtMemberImg.getUuidName());
+		
 		return "infra/member/user/userComplete";
 	}
 	
@@ -174,7 +180,7 @@ public class MemberController {
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.totalUpdate2(dto);
+		service.totalUpdate(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/memberForm";
 	}
@@ -188,6 +194,7 @@ public class MemberController {
 		dto.setSeq(seq);
 		
 		service.totalUpdate(dto);
+		
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
@@ -205,8 +212,12 @@ public class MemberController {
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		Member item1 = service.selectOneAdd(vo);
-		model.addAttribute("item1", item1);
+		Member itemAdd = service.selectOneAdd(vo);
+		model.addAttribute("itemAdd", itemAdd);
+		
+		Member itemImage = service.selectMemberImg(vo);
+		
+		model.addAttribute("itemImage",itemImage);
 		
 		return "infra/member/user/mypageModForm";
 	}	
@@ -302,15 +313,21 @@ public class MemberController {
 		return "infra/member/xdmin/dmin_login";
 	}	
 	
-	@RequestMapping(value = "imgLoad")
-	public String imgLoad(Model model, Member dto) throws Exception {
+	@RequestMapping(value = "zzz")
+	public String zzz() throws Exception {
 		
-		dto.setPseq("63");
-		
-		Member item = service.selectMemberImg(dto);
-		
-		model.addAttribute("item",item);
-		
-		return "infra/member/user/test";
+		return "infra/member/user/userComplete";
 	}
+	
+//	@RequestMapping(value = "imgLoad")
+//	public String imgLoad(Model model, Member dto) throws Exception {
+//		
+//		dto.setPseq("seq");
+//		
+//		Member item3 = service.selectMemberImg(dto);
+//		
+//		model.addAttribute("item3",item3);
+//		
+//		return "infra/member/user/test";
+//	}
 }

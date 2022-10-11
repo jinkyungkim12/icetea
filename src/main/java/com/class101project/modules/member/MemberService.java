@@ -26,6 +26,6 @@ public interface MemberService {
 	
 	//img upload
 	
-	public Member selectMemberImg(Member dto) throws Exception;
- 	
+	public Member selectMemberImg(MemberVo vo) throws Exception;
+	public int memberUploadInsert(Member dto) throws Exception;
 }

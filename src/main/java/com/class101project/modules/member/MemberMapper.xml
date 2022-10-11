@@ -10,7 +10,7 @@
 	
 	<sql id ="selectCommon">
 		FROM member a
-		left join transport b on b.aSeq = a.seq
+		left join transport b on b.member_seq = a.seq
 		WHERE 1=1
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
@@ -152,7 +152,7 @@
 			,#{addr3}
 			,#{seq}
 		)
-		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
+		<selectKey resultType="String" keyProperty="member_seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -301,7 +301,7 @@
 		 * 
 		 FROM memberUploaded
 		 WHERE
-		 pseq = #{pseq}
+		 pseq = #{seq}
 	
 	</select>
 </mapper>

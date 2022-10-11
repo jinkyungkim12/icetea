@@ -176,7 +176,18 @@
 		.msg.error {
 			color: #dc3545;
 		}
-		
+		.profile{
+			width: 100px;
+			height: 100px;
+			border-radius: 100%;
+			overflow: hidden;
+			background-color: gray;
+		}
+		.profile_user{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	</style>
 </head>
 <body>
@@ -240,10 +251,19 @@
 
 	<!-- 회원가입 항목 -->
 
-	<form id="form" name="form" method="post">
+	<form id="form" name="form" method="post" enctype="multipart/form-data">
 	<!-- *Vo.jsp s -->
 	<%@include file="memberVo.jsp"%>
 	<!-- *Vo.jsp e -->
+		<div class="container text-center" style="margin-top: 2rem;">
+			<label class="form-label">프로필 사진</label>
+			<div class="row justify-content-center">
+				<div class="col-3 text-center">
+	    			<img id="preview-image" class="profile">
+					<input style="display: block; margin:auto;" type="file" id="input-image" name="postImage">
+				</div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="row gy-3" id="firstrow">
 				<div class="col-6 input-control">
@@ -630,6 +650,28 @@
 	         }
 	        	
 	     };	
+	</script>
+	<script type="text/javascript">
+		function readImage(input) {
+		    // 인풋 태그에 파일이 있는 경우
+		    if(input.files && input.files[0]) {
+		        // 이미지 파일인지 검사 (생략)
+		        // FileReader 인스턴스 생성
+		        const reader = new FileReader()
+		        // 이미지가 로드가 된 경우
+		        reader.onload = e => {
+		            const previewImage = document.getElementById("preview-image")
+		            previewImage.src = e.target.result
+		        }
+		        // reader가 이미지 읽도록 하기
+		        reader.readAsDataURL(input.files[0])
+		    }
+		}
+		// input file에 change 이벤트 부여
+		const inputImage = document.getElementById("input-image")
+		inputImage.addEventListener("change", e => {
+		    readImage(e.target)
+		})
 	</script>
 </body>
 </html>

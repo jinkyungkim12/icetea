@@ -91,6 +91,16 @@
 		a{
 			text-decoration: none;
 		}
+		.avatar-rounded-circle{
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+		}
+		#logoutButton{
+			width: 7rem;
+			background-color: #FF5600;
+			color: white;
+		}
 	</style>
 
 </head>
@@ -145,13 +155,13 @@
 					<div class="row text-end">
 						<div class="dropdown">
 							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img alt="..." src="../../resources/images/profile.png" class="avatar avatar-rounded-circle"> 
+								<img alt="..." src="../resources/images/profileimg.png" class="avatar avatar-rounded-circle"> 
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
 								<div class="container">
 									<div class="row">
 										<div class="col-4 text-center">
-											<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
+											<img alt="..." src="../resources/images/profileimg.png" class="avatar avatar-rounded-circle"> 
 										</div>
 										<div class="col-8 text-center" style="margin-top: 0.9rem;">
 											<h5><b><c:out value="${sessName}"/></b></h5>

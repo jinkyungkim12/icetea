@@ -179,6 +179,11 @@
 		.form-label{
 			font-weight: bold;
 		}
+		.avatar-rounded-circle{
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+		}
 	</style>
 
 </head>
@@ -233,13 +238,23 @@
 					<div class="row text-end">
 						<div class="dropdown">
 							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img alt="..." src="${sessUserImage}" class="avatar avatar-rounded-circle"> 
+								<img alt="..." src="
+								<c:choose>
+									<c:when test = "${itemImage ne null}">${sessUserImage}</c:when>
+									<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+								</c:choose>
+								" class="avatar avatar-rounded-circle"> 
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
 								<div class="container">
 									<div class="row">
 										<div class="col-4 text-center">
-											<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
+											<img alt="..." src="
+											<c:choose>
+												<c:when test = "${itemImage ne null}">${sessUserImage}</c:when>
+												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+											</c:choose> 
+											" class="avatar avatar-rounded-circle">
 										</div>
 										<div class="col-8 text-center" style="margin-top: 0.9rem;">
 											<h5><b><c:out value="${sessName}"/></b></h5>
@@ -314,8 +329,12 @@
 					<label class="form-label">프로필 사진</label>
 					<div class="row justify-content-center">
 						<div class="col-3 text-center">
-			    			<img id="preview-image" src="https://images.pexels.com/photos/2106037/pexels-photo-2106037.jpeg?auto=compress&cs=tinysrgb&w=1600" class="profile">
-							<input style="display: block; margin:auto;" type="file" id="input-image" name="postImage">
+			    			<img id="preview-image" src="
+							<c:choose>
+								<c:when test = "${itemImage ne null}">${sessUserImage}</c:when>
+								<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+							</c:choose>
+							" class="profile">
 						</div>
 					</div>
 				</div>
@@ -418,7 +437,7 @@
 							<div class="row"><label class="form-label">주소</label></div>
 							<div class="row input-group">
 								<div class="col-8">	
-					   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${item1.zipcode}"/>" placeholder="우편번호">
+					   				<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${itemAdd.zipcode}"/>" placeholder="우편번호">
 					   			</div>
 					   			<div class="col-4">
 					   				<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" style="height: 2.4rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -427,11 +446,11 @@
 				   			</div>
 						</div>
 						<div class="col-6"></div>
-						<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${item1.address}"/>" placeholder="주소" readonly></div>
+						<div class="col-6"><input type="text" class="form-control" id="address" name="address" value="<c:out value="${itemAdd.address}"/>" placeholder="주소" readonly></div>
 						<div class="col-6"></div>
-						<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item1.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
+						<div class="col-6"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${itemAdd.addressDetail}"/>" aria-label="addressDetail" placeholder="상세주소"></div>
 						<div class="col-6"></div>
-						<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item1.addr3}"/>" placeholder="참고사항"></div>
+						<div class="col-6"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${itemAdd.addr3}"/>" placeholder="참고사항"></div>
 						<div class="col-3">
 							<label class="form-label">모바일 수신동의</label>
 							<div class="row" style="margin-left: 10px;">
@@ -684,28 +703,6 @@
 				}
 			});
 		});
-	</script>
-	<script type="text/javascript">
-		function readImage(input) {
-		    // 인풋 태그에 파일이 있는 경우
-		    if(input.files && input.files[0]) {
-		        // 이미지 파일인지 검사 (생략)
-		        // FileReader 인스턴스 생성
-		        const reader = new FileReader()
-		        // 이미지가 로드가 된 경우
-		        reader.onload = e => {
-		            const previewImage = document.getElementById("preview-image")
-		            previewImage.src = e.target.result
-		        }
-		        // reader가 이미지 읽도록 하기
-		        reader.readAsDataURL(input.files[0])
-		    }
-		}
-		// input file에 change 이벤트 부여
-		const inputImage = document.getElementById("input-image")
-		inputImage.addEventListener("change", e => {
-		    readImage(e.target)
-		})
 	</script>
 </body>
 </html>

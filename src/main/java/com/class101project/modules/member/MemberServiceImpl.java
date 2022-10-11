@@ -36,41 +36,43 @@ public class MemberServiceImpl implements MemberService{
 		return dao.addInsert(dto);
 	}
 	
+	
 	public void totalInsert(Member dto) throws Exception {
 		insert(dto);
 		addInsert(dto);
+		memberUploadInsert(dto);
 	}
+	
+
+    // image insert
+	@Override
+    public int memberUploadInsert(Member dto) throws Exception {
+        String memberLastseq = dto.getSeq();
+
+            int j = 0;
+            for(MultipartFile myFile : dto.getPostImage()) {
+
+                if(!myFile.isEmpty()) {
+                    // postServiceImpl
+                    String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                    UtilUpload.uploadPost(myFile, pathModule, dto);
+
+                    dto.setType("1");
+                    dto.setDefaultNY(j == 0 ? "1" : "0");
+                    dto.setSort(j+1+"");
+                    dto.setPseq(memberLastseq);
+
+                    dao.memberUploadInsert(dto);
+                    j++;
+                }
+            }
+            
+			return 0;
+    }
 
 	
 	
-	// update
 	public void totalUpdate(Member dto) throws Exception {
-		mypageUpdate(dto);
-		addUpdate(dto);
-		
-		 int memberLastseq = dao.selectLastSeq();
-
-	        int j = 0;
-	        for(MultipartFile myFile : dto.getPostImage()) {
-
-	            if(!myFile.isEmpty()) {
-	                // postServiceImpl
-	                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-	                UtilUpload.uploadPost(myFile, pathModule, dto);
-
-	                dto.setType("1");
-	                dto.setDefaultNY(j == 0 ? "1" : "0");
-	                dto.setSort(j+1+"");
-	                dto.setPseq(memberLastseq+"");
-
-	                dao.memberUploadInsert(dto);
-	                j++;
-	            }
-	        }
-
-	}
-	
-	public void totalUpdate2(Member dto) throws Exception {
 		update(dto);
 		addUpdate(dto);
 	}
@@ -143,10 +145,10 @@ public class MemberServiceImpl implements MemberService{
 	// img upload
 
 	@Override
-	public Member selectMemberImg(Member dto) throws Exception {
+	public Member selectMemberImg(MemberVo vo) throws Exception {
 		
-		return dao.selectMemberImg(dto);
+		return dao.selectMemberImg(vo);
 	}
 	
-	
+
 }
