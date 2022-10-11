@@ -29,6 +29,22 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectListToday(vo);
 	}
 	
+	@Override
+	public List<Product> selectListMD(ProductVo vo) throws Exception {
+		return dao.selectListMD(vo);
+	}
+	
+	@Override
+	public List<Product> selectListDC(ProductVo vo) throws Exception {
+		return dao.selectListDC(vo);
+	}
+	
+	@Override
+	public List<Product> selectListOpen(ProductVo vo) throws Exception {
+		return dao.selectListOpen(vo);
+	}
+	
+	
 	
 	
 	@Override

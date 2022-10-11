@@ -7,6 +7,10 @@ public interface ProductService {
 	// public List<Product> selectList(ProductVo vo) throws Exception;
 	public List<Product> selectList(ProductVo vo) throws Exception;
 	public List<Product> selectListToday(ProductVo vo) throws Exception;
+	public List<Product> selectListMD(ProductVo vo) throws Exception;
+	public List<Product> selectListDC(ProductVo vo) throws Exception;
+	public List<Product> selectListOpen(ProductVo vo) throws Exception;
+	
 	
 	public int insert(Product dto) throws Exception;
 	public Product selectOne(ProductVo vo) throws Exception;

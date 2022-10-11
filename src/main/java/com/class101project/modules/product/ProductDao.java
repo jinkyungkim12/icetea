@@ -28,6 +28,21 @@ public class ProductDao {
 		return sqlSession.selectList(namespace + ".selectListToday", vo);
 	}
 	
+	public List<Product> selectListMD(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectListMD", vo);
+	}
+	
+	public List<Product> selectListDC(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectListDC", vo);
+	}
+	
+	public List<Product> selectListOpen(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectListOpen", vo);
+	}
+	
+	
+	
+	
 	public int insert(Product dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao insert: " + result);

@@ -38,11 +38,14 @@ public class HomeController {
 			List<Product> listToday = serviceProduct.selectListToday(vo);
 			model.addAttribute("listToday", listToday);
 			
-//			List<Product> listMD = serviceProduct.selectList2(vo);
-//			model.addAttribute("listMD", listMD);
-//			
-//			List<Product> listOpen = serviceProduct.selectList2(vo);
-//			model.addAttribute("listOpen", listOpen);
+			List<Product> listMD = serviceProduct.selectListMD(vo);
+			model.addAttribute("listMD", listMD);
+			
+			List<Product> listDC = serviceProduct.selectListDC(vo);
+			model.addAttribute("listDC", listDC);
+			
+			List<Product> listOpen = serviceProduct.selectListOpen(vo);
+			model.addAttribute("listOpen", listOpen);
 			
 //			Date date = new Date();
 //			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -52,9 +55,6 @@ public class HomeController {
 			return "/infra/product/user/home";
 		}
 		
-		private void setSearchAndPaging(ProductVo vo) {
-			
-		}
 
 		@RequestMapping(value = "/", method = RequestMethod.GET)
 		public String main_home(Locale locale, Model model){

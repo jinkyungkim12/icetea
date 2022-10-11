@@ -347,7 +347,7 @@
 			<div class="col-3">
 				<a class="nav-link" href=> 
 					<div class="card" style="width: 18rem;">
-					  <img src="" class="card-img-top" alt="...">
+					  <img src="../../resources/images/p4.png" class="card-img-top" alt="...">
 					  <div class="card-body" style="height: 12rem;">
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
 					    <hr>
@@ -370,135 +370,49 @@
 		<div><h2 id="subtitle">MD 추천 클래스</h2></div>
 		<br>
 		<div class="row">
+		<c:forEach items="${listMD}" var="listMD" varStatus="status">	
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
 				  <img src="../../resources/images/P2_1.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>근영쌤</b><br>[👍신규BEST] 영어 회화 1위 근영쌤의 '유창한 회화로 바로 뱉는 100% 진짜 단어 공부법'</p>
+				  <div class="card-body" style="height: 12rem;">
+				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[👍할인종료D-7] <c:out value="${listMD.title}"/></p>
 				    <hr>
-				    <span class="discount">20%</span>
-				    <span class="price">월 32,000원</span>
-				    <span class="month">(5개월)</span>
+				    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
+				    <span class="price">월 <fmt:formatNumber type="number" value="${listMD.price/5}" pattern="#,###"/>원</span>
+				    <span class="month">(<c:choose>
+											<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
+											<c:otherwise>12개월</c:otherwise>
+										</c:choose>)</span>
 				  </div>
 				</div>
 			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p2_2.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>길이 되는 사주, 도화도르</b><br>[👍할인종료D-1] 나와 모든 사람의 장점과 평생운을 볼 수 있는 [사주팔자 셀프 리딩] 클래스</p>
-				    <hr>
-				    <span class="discount">50%</span>
-				    <span class="price">월 40,000원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p2_3.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>친절한 미정</b><br>[⛱할인종료D-1] "친절한 AI" 마이크로소프트 AI MVP 개발자와 함께 인공지능 이해하기</p>
-				    <hr>
-				    <span class="discount">30%</span>
-				    <span class="price">월 42,000원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p2_4.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>리얼컨버세이션</b><br>[👍할인종료D-1] 애니메이션으로 저절로 배워지는 영어 회화 클래스<br><br></p>
-				    <hr>
-				    <span class="discount">20%</span>
-				    <span class="price">월 64,000원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
+		</c:forEach>
 		</div>
 	</div>
 	
-	<!-- 이벤트 -->
-	<div class="container" style="margin-top: 5rem;">
-		<div><h2 id="subtitle">진행중인 인기 이벤트</h2></div>
-		<div class="row" style="margin-top: 2rem;">
-			<div class="col-4">
-				<img src="../../resources/images/p3_1.png" class="card-img-top" alt="..."><br><br>
-				<a class="ccc" href="/product/productEvent"><span class="eventTitle">여름내내 시원하게! 3O만원 쿠폰팩 드립니다</span><br></a>
-				<span class="eventDday">D-13</span>
-				<span class="eventDate">7.18 (월) ~ 07.31 (일)</span>
-			</div>
-			<div class="col-4">
-				<img src="../../resources/images/p3_2.png" class="card-img-top" alt="..."><br><br>
-				<span class="eventTitle">카카오페이 농협카드로 결제하고 1만원 추가할인 받자!</span><br>
-				<span class="eventDday">D-13</span>
-				<span class="eventDate">7.15 (금) ~ 07.31 (일)</span>
-			</div>
-			<div class="col-4">
-				<img src="../../resources/images/p3_3.png" class="card-img-top" alt="..."><br><br>
-				<span class="eventTitle">[내일종료🔥] 최대 60% 창업∙부업 BEST</span><br>
-				<span class="eventDday">D-1</span>
-				<span class="eventDate">7.12 (화) ~ 07.19 (화)</span>
-			</div>
-		</div>
-	</div>
 	
 	<!-- 실시간 TOP10 클래스 -->
 	<div class="container" style="margin-top: 5rem;">
-		<div><h2 id="subtitle">실시간 TOP10 클래스</h2></div>
+		<div><h2 id="subtitle">할인 이벤트 클래스</h2></div>
 		<br>
 		<div class="row">
+		<c:forEach items="${listDC}" var="listDC" varStatus="status">
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
 				  <img src="../../resources/images/p4_1.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>주언규PD</b><br>[👍할인종료D-1] (2022년 전면개정판) 가장 빠르게 돈 버는 유튜브 채널 만드는 방법</p>
+				  <div class="card-body" style="height: 12rem;">
+				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
 				    <hr>
-				    <span class="discount">27%</span>
-				    <span class="price">월 24,916원</span>
-				    <span class="month">(12개월)</span>
+				    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
+				    <span class="price">월 <fmt:formatNumber type="number" value="${listDC.price/5}" pattern="#,###"/>원</span>
+				    <span class="month">(<c:choose>
+											<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
+											<c:otherwise>12개월</c:otherwise>
+										</c:choose>)</span>
 				  </div>
 				</div>
 			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p4_2.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>콕스</b><br>[👍할인종료D-1] 초보 그림러가 인기 작가가 되는 법, 콕스의 독학비법서</p>
-				    <hr>
-				    <span class="discount">30%</span>
-				    <span class="price">월 52,500원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p4_3.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>선한부자 오가닉</b><br>[👍할인종료D-1] 자동으로 매달 천만원씩 통장에 들어오는 "구글 온라인 자동화수익 만들기"</p>
-				    <hr>
-				    <span class="discount">31%</span>
-				    <span class="price">월 47,900원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p4_4.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>유랑</b><br>[💣24시간] 무명 이모티콘 작가가 인기 작가가 된 비결! 경쟁에서 살아남는 인기 이모티콘 만들기</p>
-				    <hr>
-				    <span class="discount">38%</span>
-				    <span class="price">월 39,200원</span>
-				    <span class="month">(5개월)</span>
-				  </div>
-				</div>
-			</div>	
+		</c:forEach>	
 		</div>
 	</div>
 	
@@ -508,50 +422,19 @@
 		<div><h5 id="subtitle2">오픈 예정인 클래스를 응원하면 얼리버드 오픈 시 알려드려요!</h5></div>
 		<br>
 		<div class="row">
+		<c:forEach items="${listOpen}" var="listOpen" varStatus="status">
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
 				  <img src="../../resources/images/p5_1.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>폴앤나나</b><br>작고 귀여운 내 책 출판, 텀블벅에서 밀리의 서재까지<br><br></p>
+				  <div class="card-body" style="height: 12rem;">
+				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listOpen.category}"/></b><br><c:out value="${listOpen.title}"/><br</p>
 				    <hr>
-				    <span class="eventDate">응원 마감까지 <b>3일 남음</b></span>
+				    <span class="eventDate">응원 마감까지 <b>7일 남음</b></span>
 				    <a type="button" class="btn btn-danger" href="#">응원하기</a>
 				  </div>
 				</div>
 			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p5_2.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>ofmydraw</b><br>오일파스텔로 나만의 색과 선을 담아내는 드로잉 클래스<br><br></p>
-				    <hr>
-				    <span class="eventDate">응원 마감까지 <b>6일 남음</b></span>
-				    <a type="button" class="btn btn-danger" href="#">응원하기</a>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p5_3.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>원스</b><br>나의 색감을 담아, 아이패드로 시작하는 인물 수채화<br><br></p>
-				    <hr>
-				    <span class="eventDate">응원 마감까지 <b>1일 남음</b></span>
-				    <a type="button" class="btn btn-danger" href="#">응원하기</a>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p5_4.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>임동현</b><br>단순한 시건으로 그려보자. 일러스트레이터 임동현의 아이패드 드로잉</p>
-				    <hr>
-				    <span class="eventDate">응원 마감까지 <b>6일 남음</b></span>
-				    <a type="button" class="btn btn-danger" href="#">응원하기</a>
-				  </div>
-				</div>
-			</div>	
+		</c:forEach>	
 		</div>
 	</div>
 	
@@ -605,6 +488,31 @@
 				  </div>
 				</div>
 			</div>	
+		</div>
+	</div>
+	
+	<!-- 이벤트 -->
+	<div class="container" style="margin-top: 5rem;">
+		<div><h2 id="subtitle">진행중인 인기 이벤트</h2></div>
+		<div class="row" style="margin-top: 2rem;">
+			<div class="col-4">
+				<img src="../../resources/images/p3_1.png" class="card-img-top" alt="..."><br><br>
+				<a class="ccc" href="/product/productEvent"><span class="eventTitle">여름내내 시원하게! 3O만원 쿠폰팩 드립니다</span><br></a>
+				<span class="eventDday">D-13</span>
+				<span class="eventDate">7.18 (월) ~ 07.31 (일)</span>
+			</div>
+			<div class="col-4">
+				<img src="../../resources/images/p3_2.png" class="card-img-top" alt="..."><br><br>
+				<span class="eventTitle">카카오페이 농협카드로 결제하고 1만원 추가할인 받자!</span><br>
+				<span class="eventDday">D-13</span>
+				<span class="eventDate">7.15 (금) ~ 07.31 (일)</span>
+			</div>
+			<div class="col-4">
+				<img src="../../resources/images/p3_3.png" class="card-img-top" alt="..."><br><br>
+				<span class="eventTitle">[내일종료🔥] 최대 60% 창업∙부업 BEST</span><br>
+				<span class="eventDday">D-1</span>
+				<span class="eventDate">7.12 (화) ~ 07.19 (화)</span>
+			</div>
 		</div>
 	</div>
 	
