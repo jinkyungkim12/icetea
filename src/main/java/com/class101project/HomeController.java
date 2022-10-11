@@ -1,38 +1,59 @@
 package com.class101project;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.class101project.modules.product.Product;
+import com.class101project.modules.product.ProductServiceImpl;
+import com.class101project.modules.product.ProductVo;
+
 @Controller
 public class HomeController {
+	
+		@Autowired
+		ProductServiceImpl serviceProduct;
 	
 		private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 		
 		/**
 		 * Simply selects the home view to render by returning its name.
 		 */
-		@RequestMapping(value = "/home", method = RequestMethod.GET)
-		public String home(Locale locale, Model model) {
+		@RequestMapping(value = "/home")
+		public String home(@ModelAttribute("vo") ProductVo vo, Locale locale, Model model) throws Exception{
+			
 			logger.info("Welcome home! The client locale is {}.", locale);
+
+			System.out.println("vo.getShValue(): " + vo.getShValue());
+			System.out.println("vo.getShOption(): " + vo.getShOption());
+			setSearchAndPaging(vo);
 			
-			Date date = new Date();
-			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			if (vo.getTotalRows() > 0) {
+			List<Product> list = serviceProduct.selectList(vo);
+			model.addAttribute("list", list);
+			}
 			
-			String formattedDate = dateFormat.format(date);
-			
-			model.addAttribute("serverTime", formattedDate );
+//			Date date = new Date();
+//			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//			String formattedDate = dateFormat.format(date);
+//			model.addAttribute("serverTime", formattedDate );
 			
 			return "/infra/product/user/home";
 		}
 		
+		private void setSearchAndPaging(ProductVo vo) {
+			// TODO Auto-generated method stub
+			
+		}
+
 		@RequestMapping(value = "/", method = RequestMethod.GET)
 		public String main_home(Locale locale, Model model){
 			
@@ -42,41 +63,6 @@ public class HomeController {
 		@RequestMapping(value = "/dmin_Home", method = RequestMethod.GET)
 		public String dmin_Home(Locale locale, Model model) {
 			return "/infra/member/xdmin/dmin_Home";
-		}
-		
-		@RequestMapping(value = "/a", method = RequestMethod.GET)
-		public String a(Locale locale, Model model) {
-			return "a";
-		}
-		
-		@RequestMapping(value = "/b", method = RequestMethod.GET)
-		public String b(Locale locale, Model model) {
-			return "b";
-		}
-		
-		@RequestMapping(value = "/c", method = RequestMethod.GET)
-		public String c(Locale locale, Model model) {
-			return "c";
-		}
-		
-		@RequestMapping(value = "/d", method = RequestMethod.GET)
-		public String d(Locale locale, Model model) {
-			return "d";
-		}
-		
-		@RequestMapping(value = "/e", method = RequestMethod.GET)
-		public String e(Locale locale, Model model) {
-			return "e";
-		}
-		
-		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
-		public String codeGroupList(Locale locale, Model model) {
-			return "codeGroupList";
-		}
-		
-		@RequestMapping(value = "/codeList", method = RequestMethod.GET)
-		public String codeList(Locale locale, Model model) {
-			return "codeList";
 		}
 		
 }

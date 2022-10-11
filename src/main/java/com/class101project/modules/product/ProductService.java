@@ -14,4 +14,8 @@ public interface ProductService {
 	public int delete(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	
+	// 이미지 업로드
+	
+	public Product selectProductImg(ProductVo vo) throws Exception;
+	public int productUploadInsert(Product dto) throws Exception;
 }

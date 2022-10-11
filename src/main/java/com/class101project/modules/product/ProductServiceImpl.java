@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.class101project.common.util.UtilUpload;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -62,4 +65,37 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectOneCount(vo);
 	}
 	
+	// 이미지 업로드
+	
+	@Override
+	public Product selectProductImg(ProductVo vo) throws Exception {
+		
+		return dao.selectProductImg(vo);
+	}
+	
+	 // image insert
+		@Override
+	    public int productUploadInsert(Product dto) throws Exception {
+	        String productLastseq = dto.getSeq();
+
+	            int j = 0;
+	            for(MultipartFile myFile : dto.getPostImage()) {
+
+	                if(!myFile.isEmpty()) {
+	                    // postServiceImpl
+	                    String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	                    UtilUpload.productUploadPost(myFile, pathModule, dto);
+
+	                    dto.setType("1");
+	                    dto.setDefaultNY(j == 0 ? "1" : "0");
+	                    dto.setSort(j+1+"");
+	                    dto.setPseq(productLastseq);
+
+	                    dao.productUploadInsert(dto);
+	                    j++;
+	                }
+	            }
+	            
+				return 0;
+	    }
 }

@@ -1,6 +1,8 @@
 package com.class101project.modules.product;
 
-public class Product {
+import com.class101project.common.base.Base;
+
+public class Product extends Base{
 
 	private String seq;
 	private String category;

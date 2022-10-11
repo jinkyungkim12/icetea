@@ -26,7 +26,7 @@ public class ProductController {
 		}
 		
 		@RequestMapping(value = "productList")
-		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
+		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception  {
 			
 			System.out.println("vo.getShValue(): " + vo.getShValue());
 			System.out.println("vo.getShOption(): " + vo.getShOption());

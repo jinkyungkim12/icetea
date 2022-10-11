@@ -97,6 +97,40 @@
 		</selectKey>
 	</insert>
 	
+	<!-- product img uploaded -->
+	<insert id="productUploadInsert">
+		INSERT INTO productUploaded (
+		    type
+		    ,defaultNY
+		    ,sort
+		    ,originalName
+		    ,uuidName
+		    ,ext
+		    ,size
+		    ,uploadDelNY
+		    ,pseq
+		    ,regDate
+		    ,path
+		   )
+		   VALUES (
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{uploadDelNY}
+			,#{pseq}
+			,now()
+			,#{path}
+			)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	
 	<update id="update">
 		UPDATE classProduct
 		SET
@@ -144,6 +178,15 @@
 			FROM classProduct a
 			WHERE 1=1
 			AND seq = #{seq}
+	</select>
+	
+	<select id="selectProductImg" resultMap="resultMapObj">
+		SELECT
+		 * 
+		 FROM productUploaded
+		 WHERE
+		 pseq = #{seq}
+	
 	</select>
 		
 </mapper>
