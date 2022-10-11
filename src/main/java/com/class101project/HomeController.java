@@ -50,7 +50,6 @@ public class HomeController {
 		}
 		
 		private void setSearchAndPaging(ProductVo vo) {
-			// TODO Auto-generated method stub
 			
 		}
 

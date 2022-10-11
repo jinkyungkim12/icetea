@@ -313,11 +313,6 @@ public class MemberController {
 		return "infra/member/xdmin/dmin_login";
 	}	
 	
-	@RequestMapping(value = "zzz")
-	public String zzz() throws Exception {
-		
-		return "infra/member/user/userComplete";
-	}
 	
 //	@RequestMapping(value = "imgLoad")
 //	public String imgLoad(Model model, Member dto) throws Exception {
