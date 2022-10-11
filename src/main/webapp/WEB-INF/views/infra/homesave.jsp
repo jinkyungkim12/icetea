@@ -362,6 +362,51 @@
 				</a>
 			</div>	
 		</c:forEach>	
+			
+			
+			
+			<!-- <div class="col-3">
+				<a class="nav-link" href="/product/productView_second"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="../../resources/images/p2.png" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <p class="card-text"><b>토익독학길잡이</b><br>[💣24시간] 국내 1위 토익 유튜버의 '해석을 위한 문법'<br><br></p>
+					    <hr>
+					    <span class="discount">20%</span>
+					    <span class="price">월 40,000원</span>
+					    <span class="month">(5개월)</span>
+					  </div>
+					</div>
+				</a>
+			</div>	
+			<div class="col-3">
+				<a class="nav-link" href="/product/productView_third"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="../../resources/images/p3.png" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <p class="card-text"><b>아로스</b><br>[💣24시간] [2022년 New 노하우] 하루 1시간 월 100만원, 애드센스 블로그로 만드는 법!</p>
+					    <hr>
+					    <span class="discount">30%</span>
+					    <span class="price">월 42,000원</span>
+					    <span class="month">(5개월)</span>
+					  </div>
+					</div>
+				</a>
+			</div>	
+			<div class="col-3">
+				<a class="nav-link" href="/product/productView_forth"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="../../resources/images/p4.png" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <p class="card-text"><b>banzisu</b><br>[💣24시간] 일상에 따뜻한 숨결을 불어넣어요, 반지수와 함께하는 아이패드 드로잉</p>
+					    <hr>
+					    <span class="discount">40%</span>
+					    <span class="price">월 36,000원</span>
+					    <span class="month">(5개월)</span>
+					  </div>
+					</div>
+				</a>
+			</div> -->	
 		</div>
 	</div>
 	

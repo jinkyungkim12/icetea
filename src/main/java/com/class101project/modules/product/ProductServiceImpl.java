@@ -25,6 +25,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	public List<Product> selectListToday(ProductVo vo) throws Exception {
+		return dao.selectListToday(vo);
+	}
+	
+	
+	
+	@Override
 	public int insert(Product dto) throws Exception{
 		int result = dao.insert(dto);
 		System.out.println("service result: " + result);

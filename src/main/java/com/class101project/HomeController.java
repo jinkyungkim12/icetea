@@ -34,12 +34,15 @@ public class HomeController {
 
 			System.out.println("vo.getShValue(): " + vo.getShValue());
 			System.out.println("vo.getShOption(): " + vo.getShOption());
-			setSearchAndPaging(vo);
 			
-			if (vo.getTotalRows() > 0) {
-			List<Product> list = serviceProduct.selectList(vo);
-			model.addAttribute("list", list);
-			}
+			List<Product> listToday = serviceProduct.selectListToday(vo);
+			model.addAttribute("listToday", listToday);
+			
+//			List<Product> listMD = serviceProduct.selectList2(vo);
+//			model.addAttribute("listMD", listMD);
+//			
+//			List<Product> listOpen = serviceProduct.selectList2(vo);
+//			model.addAttribute("listOpen", listOpen);
 			
 //			Date date = new Date();
 //			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
