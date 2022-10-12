@@ -48,6 +48,7 @@
 			<exclude-mapping path="/member/checkId" />
 			<exclude-mapping path="/member/main_home" />
 			<exclude-mapping path="/" />
+			<exclude-mapping path="/product/productBestList" />
 			<beans:bean id="checkLoginSessionInterception" class="com.class101project.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

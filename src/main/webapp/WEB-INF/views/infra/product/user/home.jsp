@@ -375,7 +375,7 @@
 				<div class="card" style="width: 18rem;">
 				  <img src="../../resources/images/P2_1.png" class="card-img-top" alt="...">
 				  <div class="card-body" style="height: 12rem;">
-				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[👍할인종료D-7] <c:out value="${listMD.title}"/></p>
+				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
 				    <hr>
 				    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
 				    <span class="price">월 <fmt:formatNumber type="number" value="${listMD.price/5}" pattern="#,###"/>원</span>
@@ -430,7 +430,6 @@
 				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listOpen.category}"/></b><br><c:out value="${listOpen.title}"/><br</p>
 				    <hr>
 				    <span class="eventDate">응원 마감까지 <b>7일 남음</b></span>
-				    <a type="button" class="btn btn-danger" href="#">응원하기</a>
 				  </div>
 				</div>
 			</div>	

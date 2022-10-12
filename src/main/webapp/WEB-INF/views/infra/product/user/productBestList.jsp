@@ -279,7 +279,7 @@
 	<!-- 배너 -->
 	<div class="container" id="bbb">
 		<br><br><br>
-		<div class="text-white" style="margin-left: 2rem;"><h1><b>카테고리별 주간 BEST</b></h1></div>
+		<div class="text-white" style="margin-left: 2rem;"><h1><b>카테고리별 BEST</b></h1></div>
 		<div class="text-white" style="margin-left: 2rem;"><h5>지금 가장 인기있는 클래스 보기</h5></div>
 	</div>
 

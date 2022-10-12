@@ -91,6 +91,14 @@
 	    .tdtd{
 			text-align: left !important;
 		}
+		.overflow-x-auto {
+			overflow-x: auto;
+		}
+				
+		.overflow-x-auto table {
+			width: auto!important; 
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>

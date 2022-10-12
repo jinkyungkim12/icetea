@@ -89,6 +89,14 @@
 	    a:focus, a:hover{
 	    	color: #F7670E;
 	    }
+	    .overflow-x-auto {
+			overflow-x: auto;
+		}
+				
+		.overflow-x-auto table {
+			width: auto!important; 
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>
