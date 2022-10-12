@@ -13,11 +13,15 @@ public interface ProductService {
 	
 	
 	public int insert(Product dto) throws Exception;
-	public Product selectOne(ProductVo vo) throws Exception;
 	public int update(Product dto) throws Exception;
 	public int uelete(Product dto) throws Exception;
 	public int ueleteList(String seq) throws Exception;
 	public int delete(ProductVo vo) throws Exception;
+	
+	
+	// selectOne
+	public Product selectOne(ProductVo vo) throws Exception;
+	public Product selectOneToday(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	
 	// 이미지 업로드

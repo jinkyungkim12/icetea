@@ -344,7 +344,7 @@
 		<div class="row">
 		<c:forEach items="${listToday}" var="listToday" varStatus="status">	
 			<div class="col-3">
-				<a class="nav-link" href=> 
+				<a class="nav-link"  href="javascript:goForm('${listToday.seq }')"> 
 					<div class="card" style="width: 18rem;">
 					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
 					  <div class="card-body" style="height: 12rem;">
@@ -658,6 +658,7 @@
 	</script>
 	<script type="text/javascript">
 		var goUrlList = "/home";
+		var goUrlForm = "/product/productView"
 			
 		var form = $("form[name=formList]");
 		var seq = $("input:hidden[name=seq]");
@@ -666,6 +667,11 @@
 			if(validationList() == false) return false;
 			form.attr("action", goUrlList).submit();
 		});
+		
+		goForm = function(pseq) {
+	    	seq.val(pseq);
+			form.attr("action", goUrlForm).submit();
+		}
 	</script>
 </body>
 </html>

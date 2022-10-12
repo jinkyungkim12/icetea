@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.class101project.modules.member.Member;
-import com.class101project.modules.member.MemberVo;
-
-
 @Controller
 @RequestMapping(value = "/product/")
 public class ProductController {
@@ -27,6 +23,8 @@ public class ProductController {
 			
 			vo.setParamsPaging(service.selectOneCount(vo));
 		}
+		
+		// product List 
 		
 		@RequestMapping(value = "productList")
 		public String productList(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception  {
@@ -44,6 +42,10 @@ public class ProductController {
 			return "infra/product/xdmin/productList";
 		}
 			
+		
+		
+		// product Form
+		
 		@RequestMapping(value = "productForm")
 		public String productForm(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception {
 			
@@ -52,6 +54,24 @@ public class ProductController {
 			model.addAttribute("item", result);
 			return "infra/product/xdmin/productForm";
 		}
+		
+		// productView
+		
+		@RequestMapping(value = "productView")
+		public String productView(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception{
+			
+			System.out.println("vo.getSeq(): " + vo.getSeq());
+			
+			Product result = service.selectOne(vo);
+			model.addAttribute("item", result);
+			
+			Product itemImage = service.selectOneToday(vo);
+			model.addAttribute("itemImage",itemImage);
+			
+			return "/infra/product/user/productView";
+		}
+	
+		
 		
 		@RequestMapping(value = "productInst")
 		public String productInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
@@ -72,6 +92,9 @@ public class ProductController {
 			redirectAttributes.addFlashAttribute("vo", vo);
 			return "redirect:/product/productForm";
 		}
+		
+		
+		
 		
 		@RequestMapping(value = "productUele")
 		public String productUele(@ModelAttribute("vo") ProductVo vo, Product dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
@@ -112,7 +135,6 @@ public class ProductController {
 		}
 		
 		
-	
 		@RequestMapping(value = "productView_first", method = RequestMethod.GET)
 		public String productView_first(Locale locale, Model model) {
 			return "/infra/product/user/productView_first";

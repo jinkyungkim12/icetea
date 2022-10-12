@@ -75,6 +75,10 @@ public class ProductServiceImpl implements ProductService{
 		return dao.delete(vo);
 	}
 	
+	
+	
+	// selectOne
+	
 	@Override
 	public Product selectOne(ProductVo vo) throws Exception{
 		Product result = dao.selectOne(vo);
@@ -87,6 +91,14 @@ public class ProductServiceImpl implements ProductService{
 		
 		return dao.selectOneCount(vo);
 	}
+	
+	@Override
+	public Product selectOneToday(ProductVo vo) throws Exception {
+		
+		return dao.selectOneToday(vo);
+	}
+	
+	
 	
 	// 이미지 업로드
 	

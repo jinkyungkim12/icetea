@@ -176,10 +176,12 @@
 			<div class="col-6">
 				<label class="form-label bb">구분</label>
 	   			<select class="form-select col-2" aria-label="Default select example" name="classDiv">
-				  <option value="" selected>구분</option>
+				  <option value="" <c:if test="${empty item.classDiv}"> selected</c:if>>구분</option>
 				  <option value="25" <c:if test="${item.classDiv eq 25 }"> selected</c:if>>오늘의 특가! TIME DEAL</option>
 				  <option value="26" <c:if test="${item.classDiv eq 26 }"> selected</c:if>>MD 추천 클래스</option>
 				  <option value="27" <c:if test="${item.classDiv eq 27 }"> selected</c:if>>오픈 예정 클래스</option>
+				  <option value="31" <c:if test="${item.classDiv eq 31 }"> selected</c:if>>할인 이벤트 클래스</option>
+				  
 				</select>
 			</div>
 			<div class="col-12">
@@ -241,21 +243,7 @@
 	   			</div>
 			</div>
 			<div class="col-12">
-				<label class="form-label bb">강의 소개</label>
-				<br><label class="form-label"><small>강의 한줄 소개</small></label>
-		   		<input type="text" class="form-control" value="<c:out value="${item.classInfo}"/>" name="classInfo" placeholder="ex) 초급자분들을 위한 oo클래스입니다."> 
-			</div>
-			<div class="col-12">
-				<label class="form-label"><small>강의정보 첨부파일</small></label>
-	   			<input type="file" class="form-control" id="inputGroupFile01" multiple="multiple">
-			</div>
-			<div class="col-12">
-				<label class="form-label bb">커리큘럼</label>
-				<textarea class="form-control" placeholder="커리큘럼 형식에 맞게 작성해주시기 바랍니다." style="height: 150px"></textarea>
-				<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> WELCOME, OUTRO를 포함해서 작성해주시기 바랍니다.</small>
-			</div>
-			<div class="col-12">
-				<label class="form-label bb">키트 소개</label>
+				<label class="form-label"><small>강의 상세 정보 첨부파일</small></label>
 	   			<input type="file" class="form-control" id="inputGroupFile01" multiple="multiple">
 			</div>
 		</div>

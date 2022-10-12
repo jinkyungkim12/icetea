@@ -67,6 +67,7 @@
 		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 25 
+		AND b.defaultNY = 1
 	</select>
 	
 	<select id="selectListMD" resultMap="resultMapObj">
@@ -78,6 +79,7 @@
 		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 26
+		AND b.defaultNY = 1
 	</select>
 	
 	<select id="selectListDC" resultMap="resultMapObj">
@@ -89,6 +91,7 @@
 		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 31
+		AND b.defaultNY = 1
 	</select>
 	
 	<select id="selectListOpen" resultMap="resultMapObj">
@@ -100,6 +103,7 @@
 		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 27
+		AND b.defaultNY = 1
 	</select>
 	
 	
@@ -231,6 +235,18 @@
 			a.*
 			FROM classProduct a
 			WHERE 1=1
+			AND seq = #{seq}
+	</select>
+	
+	<select id="selectOneToday" resultMap="resultMapObj">
+		SELECT
+			a.*
+			,b.*
+			FROM classProduct a
+			LEFT JOIN productUploaded b
+			ON a.seq = b.pseq
+			WHERE 1=1
+			AND a.classDiv = 25
 			AND seq = #{seq}
 	</select>
 	
