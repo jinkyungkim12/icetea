@@ -93,7 +93,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public Product selectOneToday(ProductVo vo) throws Exception {
+	public List<Product> selectOneToday(ProductVo vo) throws Exception {
 		
 		return dao.selectOneToday(vo);
 	}

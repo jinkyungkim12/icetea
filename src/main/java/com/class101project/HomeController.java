@@ -37,7 +37,6 @@ public class HomeController {
 			
 			List<Product> listToday = serviceProduct.selectListToday(vo);
 			model.addAttribute("listToday", listToday);
-			System.out.println("skdjakfjklajfklafj: " + listToday.size());
 			
 			List<Product> listMD = serviceProduct.selectListMD(vo);
 			model.addAttribute("listMD", listMD);

@@ -353,16 +353,17 @@
 	</div>
 	
 	<!-- 상세 메인 이미지 -->
+	<form id="form" name="form" method="post" enctype="multipart/form-data">
 	
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
-				
+		
 		<!-- 	top image 2ea -->	
 			<div class="col">
-				<img src="${itemImage.path}${itemImage.uuidName}" width="691px" height="500px">
+				<img src="${itemImage[1].path}${itemImage[1].uuidName}" width="691px" height="500px">
 			</div>
 			<div class="col">
-				<div><img src="${itemImage.path}${itemImage.uuidName}" width="550px" height="500px"></div>
+				<div><img src="${itemImage[2].path}${itemImage[2].uuidName}" width="550px" height="500px"></div>
 			</div>
 		</div>
 	</div>
@@ -493,7 +494,7 @@
 				
 				<!-- 상품 상세 정보 image-->
 				<div id="IF">
-					<img src="${itemImage.path}${itemImage.uuidName}">
+					<img src="${itemImage[3].path}${itemImage[3].uuidName}">
 				</div>
 				
 				<!-- 환불정책 -->
@@ -571,7 +572,7 @@
 			</div>		
 		</div>
 	</div>
-	
+	</form>
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -614,6 +615,17 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		var goUrlList = "/product/productList"; 		/* #-> */
+		
+		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+	</script>
 	<script type="text/javascript">
 	const myModal = document.getElementById('myModal')
 	const myInput = document.getElementById('myInput')
@@ -643,6 +655,28 @@
 	        $('#back-to-top').tooltip('show');
 
 	    });
+	</script>
+	<script type="text/javascript">
+		$("#logoutButton").on("click", function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/member/memberLoginResult";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
 	</script> 
 </body>
 </html>

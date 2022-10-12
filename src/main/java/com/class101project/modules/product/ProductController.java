@@ -65,7 +65,7 @@ public class ProductController {
 			Product result = service.selectOne(vo);
 			model.addAttribute("item", result);
 			
-			Product itemImage = service.selectOneToday(vo);
+			List<Product> itemImage = service.selectOneToday(vo);
 			model.addAttribute("itemImage",itemImage);
 			
 			return "/infra/product/user/productView";

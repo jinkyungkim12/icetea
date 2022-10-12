@@ -88,10 +88,8 @@ public class ProductDao {
 		return result;
 	}
 	
-	public Product selectOneToday(ProductVo vo) {
-		Product result = sqlSession.selectOne(namespace + ".selectOneToday", vo);
-		System.out.println("dao result: " + result);
-		return result;
+	public List<Product> selectOneToday(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectOneToday", vo);
 	}
 
 	

@@ -230,6 +230,8 @@
 		DELETE FROM classProduct WHERE seq = #{seq}
 	</delete>
 	
+	
+	<!-- selectOne -->
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.*
@@ -247,7 +249,8 @@
 			ON a.seq = b.pseq
 			WHERE 1=1
 			AND a.classDiv = 25
-			AND seq = #{seq}
+			AND a.seq = #{seq}
+			order by b.sort
 	</select>
 	
 	<!-- image -->

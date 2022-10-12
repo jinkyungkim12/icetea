@@ -21,7 +21,7 @@ public interface ProductService {
 	
 	// selectOne
 	public Product selectOne(ProductVo vo) throws Exception;
-	public Product selectOneToday(ProductVo vo) throws Exception;
+	public List<Product> selectOneToday(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	
 	// 이미지 업로드
