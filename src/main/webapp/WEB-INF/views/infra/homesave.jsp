@@ -806,5 +806,60 @@
 			form.attr("action", goUrlList).submit();
 		});
 	</script>
+	
+	<!-- productFrom validation image 
+	
+	<script type="text/javascript">
+		
+		 $("#test").on("click", function(){
+			 upload('img222', 2, 0, 2, 0, 0, 2);
+		 });
+		 
+		 /* validation = function() {
+			 
+			 var obj = document.getElementById("img222").files;
+			 
+			 alert(obj)
+			 alert(obj.length)
+			 alert(obj.ext)
+			 
+			 for (var i=0; i<obj.length; i++) {
+				 alert(obj[i].name + " : " + obj[i].size)
+			 }
+			 
+ 			 var obj2 = document.getElementById("img2").files;
+			 
+			 alert(obj2)
+			 alert(obj2.length)
+			 
+			 for (var i=0; i<obj2.length; i++) {
+				 alert(obj2[i].name + " : " + obj2[i].size)
+			 }
+			
+			return false;
+			
+		} */
+		 
+		 
+		 upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType){
+			 
+			 var totalFileSize = 0;
+			 var obj = $('#' + objName + "")[0].files;
+			 var fileCount = obj.length;
+			 
+			 allowedMaxTotalFileNumber =  allowedMaxTotalFileNumber == 0 ? 5 : allowedMaxTotalFileNumber;
+ 			 allowedEachFileSize = allowedEachFileSize == 0 ? 5*1024*1024 : allowedEachFileSize;
+			 allowedTotalFileSize = allowedTotalFileSize == 0 ? 25*1024*1024 : allowedTotalFileSize;
+			 if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) {return false; }
+			 alert(fileCount);
+			  for (var i = 0 ;  i < fileCount ; i ++) {
+				 if(checkUploadedExt($("#" + objName + "")[0].files[i].name, seq, allowedExtdiv) == false) {return false;}
+				 if(checkUploadedEachFileSize($("#" + objName + "")[0].files[i].name, seq, allowedEachFileSize) == false) {return false;}
+			 	 totalFileSize += $("#" + objName + "")[0].files[i].size;
+			 }
+		 }
+		
+		
+	</script> -->
 </body>
 </html>

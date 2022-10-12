@@ -97,28 +97,28 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	 // image insert
-		@Override
-	    public int productUploadInsert(Product dto) throws Exception {
-	        String productLastseq = dto.getSeq();
+	@Override
+    public int productUploadInsert(Product dto) throws Exception {
+        String productLastseq = dto.getSeq();
 
-	            int j = 0;
-	            for(MultipartFile myFile : dto.getPostImage()) {
+            int j = 0;
+            for(MultipartFile myFile : dto.getPostImage()) {
 
-	                if(!myFile.isEmpty()) {
-	                    // postServiceImpl
-	                    String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-	                    UtilUpload.productUploadPost(myFile, pathModule, dto);
+                if(!myFile.isEmpty()) {
+                    // postServiceImpl
+                    String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                    UtilUpload.productUploadPost(myFile, pathModule, dto);
 
-	                    dto.setType("1");
-	                    dto.setDefaultNY(j == 0 ? "1" : "0");
-	                    dto.setSort(j+1+"");
-	                    dto.setPseq(productLastseq);
+                    dto.setType("1");
+                    dto.setDefaultNY(j == 0 ? "1" : "0");
+                    dto.setSort(j+1+"");
+                    dto.setPseq(productLastseq);
 
-	                    dao.productUploadInsert(dto);
-	                    j++;
-	                }
-	            }
-	            
-				return 0;
-	    }
+                    dao.productUploadInsert(dto);
+                    j++;
+                }
+            }
+            
+			return 0;
+    }
 }

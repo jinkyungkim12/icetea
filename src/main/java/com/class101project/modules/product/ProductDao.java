@@ -73,6 +73,8 @@ public class ProductDao {
 	
 	public int selectOneCount(ProductVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
+	
+	
 	// 이미지 업로드 상품
 	public Product selectProductImg(ProductVo vo) {
 		return sqlSession.selectOne(namespace + ".selectProductImg", vo);
@@ -81,4 +83,10 @@ public class ProductDao {
 	public int productUploadInsert(Product dto) {
 		return sqlSession.insert(namespace + ".productUploadInsert", dto);
 	}
+			
+	public int selectLastSeq() {
+		return sqlSession.selectOne(namespace + ".selectLastSeq");
+	}
+			
+			
 }

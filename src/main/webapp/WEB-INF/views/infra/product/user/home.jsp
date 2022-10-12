@@ -171,7 +171,7 @@
 		
 <!-- NAV bar	 -->
 
-	<form method="post" name="formList" id="formList">
+	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
 	<input type="hidden" name="seq">
 	<div class="container" style="margin-top: 3rem;"> 
 		<div class="row">
@@ -257,7 +257,6 @@
 					</div>	
 				</div>
 			</c:if>
-			
 		</div>
 	</div>
 	</form>
@@ -347,7 +346,7 @@
 			<div class="col-3">
 				<a class="nav-link" href=> 
 					<div class="card" style="width: 18rem;">
-					  <img src="../../resources/images/p4.png" class="card-img-top" alt="...">
+					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
 					  <div class="card-body" style="height: 12rem;">
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
 					    <hr>
@@ -373,7 +372,7 @@
 		<c:forEach items="${listMD}" var="listMD" varStatus="status">	
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/P2_1.png" class="card-img-top" alt="...">
+				  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
 				  <div class="card-body" style="height: 12rem;">
 				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
 				    <hr>
@@ -399,7 +398,7 @@
 		<c:forEach items="${listDC}" var="listDC" varStatus="status">
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p4_1.png" class="card-img-top" alt="...">
+				  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
 				  <div class="card-body" style="height: 12rem;">
 				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
 				    <hr>
@@ -425,7 +424,7 @@
 		<c:forEach items="${listOpen}" var="listOpen" varStatus="status">
 			<div class="col-3">
 				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p5_1.png" class="card-img-top" alt="...">
+				  <img src="${listOpen.path}${listOpen.uuidName}" class="card-img-top" alt="...">
 				  <div class="card-body" style="height: 12rem;">
 				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listOpen.category}"/></b><br><c:out value="${listOpen.title}"/><br</p>
 				    <hr>
@@ -438,7 +437,7 @@
 	</div>
 	
 	<!-- 최근 업데이트 클래스 -->
-	<div class="container" style="margin-top: 5rem;">
+	<!-- <div class="container" style="margin-top: 5rem;">
 		<div><h2 id="subtitle">최근업데이트 클래스</h2></div>
 		<div><h5 id="subtitle2">크리에이터가 최근 활동한 클래스예요.</h5></div>
 		<br>
@@ -488,7 +487,7 @@
 				</div>
 			</div>	
 		</div>
-	</div>
+	</div> -->
 	
 	<!-- 이벤트 -->
 	<div class="container" style="margin-top: 5rem;">

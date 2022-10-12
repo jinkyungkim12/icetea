@@ -31,6 +31,8 @@
 		</choose>
 	</sql>
 	
+	<!-- select list -->
+	
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT
@@ -54,111 +56,62 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	
 	<!-- main home product List -->
 	<select id="selectListToday" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-			a.seq
-			,a.classDelNY
-			,a.category
-			,a.classDiv
-			,a.title
-			,a.price
-			,a.discountRate
-			,a.payMonth
-			,a.classAmount
-			,a.dateNY
-			,a.subtitleNY
-			,a.kitNY
-			,a.classInfo
-			,a.curriculum
-			,a.classReg
-			,a.classMod
+			a.*
+			,b.*
 		FROM classProduct a
+		LEFT JOIN productUploaded b
+		ON a.seq = b.pseq
 		WHERE 1=1
-		AND a.classDiv = 25
-		<include refid="Base.selectListLowerForMysql" />
+		AND a.classDiv = 25 
 	</select>
 	
 	<select id="selectListMD" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-			a.seq
-			,a.classDelNY
-			,a.category
-			,a.classDiv
-			,a.title
-			,a.price
-			,a.discountRate
-			,a.payMonth
-			,a.classAmount
-			,a.dateNY
-			,a.subtitleNY
-			,a.kitNY
-			,a.classInfo
-			,a.curriculum
-			,a.classReg
-			,a.classMod
+			a.*
+			,b.*
 		FROM classProduct a
+		LEFT JOIN productUploaded b
+		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 26
-		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
 	<select id="selectListDC" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-			a.seq
-			,a.classDelNY
-			,a.category
-			,a.classDiv
-			,a.title
-			,a.price
-			,a.discountRate
-			,a.payMonth
-			,a.classAmount
-			,a.dateNY
-			,a.subtitleNY
-			,a.kitNY
-			,a.classInfo
-			,a.curriculum
-			,a.classReg
-			,a.classMod
+			a.*
+			,b.*
 		FROM classProduct a
+		LEFT JOIN productUploaded b
+		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 31
-		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
 	<select id="selectListOpen" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-			a.seq
-			,a.classDelNY
-			,a.category
-			,a.classDiv
-			,a.title
-			,a.price
-			,a.discountRate
-			,a.payMonth
-			,a.classAmount
-			,a.dateNY
-			,a.subtitleNY
-			,a.kitNY
-			,a.classInfo
-			,a.curriculum
-			,a.classReg
-			,a.classMod
+			a.*
+			,b.*
 		FROM classProduct a
+		LEFT JOIN productUploaded b
+		ON a.seq = b.pseq
 		WHERE 1=1
 		AND a.classDiv = 27
-		<include refid="Base.selectListLowerForMysql" />
 	</select>
+	
+	
+	<!-- selctOneCount -->
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
+	
+	
+	<!-- insert -->
 
 	<insert id="insert">
 		INSERT INTO classProduct(
@@ -281,6 +234,7 @@
 			AND seq = #{seq}
 	</select>
 	
+	<!-- image -->
 	<select id="selectProductImg" resultMap="resultMapObj">
 		SELECT
 		 * 
@@ -288,6 +242,14 @@
 		 WHERE
 		 pseq = #{seq}
 	
+	</select>
+	
+	<select id="selectLastSeq" resultType="Integer">
+		SELECT
+			seq
+			FROM classProduct
+			ORDER BY seq DESC
+				LIMIT 1
 	</select>
 		
 </mapper>

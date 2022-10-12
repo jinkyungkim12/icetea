@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.class101project.modules.member.Member;
+import com.class101project.modules.member.MemberVo;
+
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -54,6 +57,7 @@ public class ProductController {
 		public String productInst(ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
 			
 			service.insert(dto);
+			service.productUploadInsert(dto);
 			
 			vo.setSeq(dto.getSeq());
 			redirectAttributes.addFlashAttribute("vo", vo);
@@ -106,7 +110,8 @@ public class ProductController {
 			redirectAttributes.addFlashAttribute("vo", vo);
 			return "redirect:/product/productList";
 		}
-	
+		
+		
 	
 		@RequestMapping(value = "productView_first", method = RequestMethod.GET)
 		public String productView_first(Locale locale, Model model) {
@@ -137,6 +142,17 @@ public class ProductController {
 		public String productEvent(Locale locale, Model model) {
 			return "/infra/product/user/productEvent";
 		}
-					
+			
+//		@RequestMapping(value = "imgLoad")
+//		public String imgLoad(Model model, Product dto) throws Exception {
+//			
+//			dto.setPseq("seq");
+//			
+//			Product item = service.productUploadInsert(dto);
+//			
+//			model.addAttribute("item",item);
+//			
+//			return "infra/product/xdmin/productFrom";
+//		}
 				
 }

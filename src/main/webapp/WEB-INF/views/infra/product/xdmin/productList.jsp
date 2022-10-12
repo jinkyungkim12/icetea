@@ -80,6 +80,11 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
+		.table {
+			overflow-x: auto;
+			width: auto!important; 
+			white-space: nowrap;
+		}
    		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 		  color: #ffffff;
 		  background-color: #f87320;
@@ -98,14 +103,6 @@
 		}
 		.tdtd{
 			text-align: left !important;
-		}
-		.overflow-x-auto {
-			overflow-x: auto;
-		}
-				
-		.overflow-x-auto table {
-			width: auto!important; 
-			white-space: nowrap;
 		}
 	</style>
 </head>
