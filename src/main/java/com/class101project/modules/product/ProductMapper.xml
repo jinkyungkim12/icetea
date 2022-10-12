@@ -68,6 +68,11 @@
 		WHERE 1=1
 		AND a.classDiv = 25 
 		AND b.defaultNY = 1
+		
+			<choose>
+				<when test="shOption == 1">AND a.category LIKE CONCAT('%', #{shValue},'%')</when>
+				<when test="shOption == 2">AND a.title LIKE CONCAT('%', #{shValue},'%')</when>
+			</choose>
 	</select>
 	
 	<select id="selectListMD" resultMap="resultMapObj">
@@ -80,6 +85,12 @@
 		WHERE 1=1
 		AND a.classDiv = 26
 		AND b.defaultNY = 1
+		
+			<choose>
+				<when test="shOption == 1">AND a.category LIKE CONCAT('%', #{shValue},'%')</when>
+				<when test="shOption == 2">AND a.title LIKE CONCAT('%', #{shValue},'%')</when>
+			</choose>
+			
 	</select>
 	
 	<select id="selectListDC" resultMap="resultMapObj">
@@ -92,20 +103,13 @@
 		WHERE 1=1
 		AND a.classDiv = 31
 		AND b.defaultNY = 1
+		
+			<choose>
+				<when test="shOption == 1">AND a.category LIKE CONCAT('%', #{shValue},'%')</when>
+				<when test="shOption == 2">AND a.title LIKE CONCAT('%', #{shValue},'%')</when>
+			</choose>
+			
 	</select>
-	
-	<select id="selectListOpen" resultMap="resultMapObj">
-		SELECT
-			a.*
-			,b.*
-		FROM classProduct a
-		LEFT JOIN productUploaded b
-		ON a.seq = b.pseq
-		WHERE 1=1
-		AND a.classDiv = 27
-		AND b.defaultNY = 1
-	</select>
-	
 	
 	<!-- selctOneCount -->
 	
@@ -240,7 +244,9 @@
 			AND seq = #{seq}
 	</select>
 	
-	<select id="selectOneToday" resultMap="resultMapObj">
+	
+	<!-- 상세 불러오기 -->
+	<select id="selectContent" resultMap="resultMapObj">
 		SELECT
 			a.*
 			,b.*
@@ -248,7 +254,6 @@
 			LEFT JOIN productUploaded b
 			ON a.seq = b.pseq
 			WHERE 1=1
-			AND a.classDiv = 25
 			AND a.seq = #{seq}
 			order by b.sort
 	</select>

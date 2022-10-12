@@ -39,13 +39,14 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectListDC(vo);
 	}
 	
+	// 상세 이미지 리스트
+	
 	@Override
-	public List<Product> selectListOpen(ProductVo vo) throws Exception {
-		return dao.selectListOpen(vo);
+	public List<Product> selectContent(ProductVo vo) throws Exception {
+		
+		return dao.selectContent(vo);
 	}
-	
-	
-	
+
 	
 	@Override
 	public int insert(Product dto) throws Exception{
@@ -91,13 +92,6 @@ public class ProductServiceImpl implements ProductService{
 		
 		return dao.selectOneCount(vo);
 	}
-	
-	@Override
-	public List<Product> selectOneToday(ProductVo vo) throws Exception {
-		
-		return dao.selectOneToday(vo);
-	}
-	
 	
 	
 	// 이미지 업로드

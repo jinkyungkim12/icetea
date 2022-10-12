@@ -38,10 +38,10 @@ public class ProductDao {
 		return sqlSession.selectList(namespace + ".selectListDC", vo);
 	}
 	
-	public List<Product> selectListOpen(ProductVo vo) {
-		return sqlSession.selectList(namespace + ".selectListOpen", vo);
+	// 상세 이미지 리스트
+	public List<Product> selectContent(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectContent", vo);
 	}
-	
 	
 	
 	// insert
@@ -88,9 +88,6 @@ public class ProductDao {
 		return result;
 	}
 	
-	public List<Product> selectOneToday(ProductVo vo) {
-		return sqlSession.selectList(namespace + ".selectOneToday", vo);
-	}
 
 	
 	// 이미지 업로드 상품
@@ -101,7 +98,6 @@ public class ProductDao {
 	public int selectLastSeq() {
 		return sqlSession.selectOne(namespace + ".selectLastSeq");
 	}
-			
 			
 			
 }

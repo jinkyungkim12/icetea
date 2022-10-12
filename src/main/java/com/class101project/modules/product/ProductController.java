@@ -65,8 +65,10 @@ public class ProductController {
 			Product result = service.selectOne(vo);
 			model.addAttribute("item", result);
 			
-			List<Product> itemImage = service.selectOneToday(vo);
-			model.addAttribute("itemImage",itemImage);
+			// 상세 이미지
+			List<Product> listContent = service.selectContent(vo);
+			model.addAttribute("listContent",listContent);
+			
 			
 			return "/infra/product/user/productView";
 		}

@@ -44,9 +44,6 @@ public class HomeController {
 			List<Product> listDC = serviceProduct.selectListDC(vo);
 			model.addAttribute("listDC", listDC);
 			
-			List<Product> listOpen = serviceProduct.selectListOpen(vo);
-			model.addAttribute("listOpen", listOpen);
-			
 //			Date date = new Date();
 //			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 //			String formattedDate = dateFormat.format(date);

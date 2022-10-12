@@ -360,10 +360,10 @@
 		
 		<!-- 	top image 2ea -->	
 			<div class="col">
-				<img src="${itemImage[1].path}${itemImage[1].uuidName}" width="691px" height="500px">
+				<img src="${listContent[1].path}${listContent[1].uuidName}" width="691px" height="500px">
 			</div>
 			<div class="col">
-				<div><img src="${itemImage[2].path}${itemImage[2].uuidName}" width="550px" height="500px"></div>
+				<div><img src="${listContent[2].path}${listContent[2].uuidName}" width="550px" height="500px"></div>
 			</div>
 		</div>
 	</div>
@@ -392,8 +392,7 @@
 							</div>
 						</nav>	
 					</div>
-				</div>
-				
+				</div> 
 				
 				<!-- 쿠폰이미지 -->
 				<div class="row">
@@ -493,8 +492,8 @@
 				
 				
 				<!-- 상품 상세 정보 image-->
-				<div id="IF">
-					<img src="${itemImage[3].path}${itemImage[3].uuidName}">
+				<div id="IF" style="margin-top: 3rem;">
+					<img src="${listContent[3].path}${listContent[3].uuidName}" style="width: 870px;">
 				</div>
 				
 				<!-- 환불정책 -->
@@ -536,8 +535,8 @@
 			<div class="col-4" style="margin-top: 2rem;">
 				<div class="sticky-top">
 					<div class="shadow p-3 mb-5 bg-body rounded">
-						<div id="orderTop"> 유랑 </div>
-						<div id="classTitle">무명 이모티콘 작가가 인기 작가가 된 비결! 경쟁에서 살아남는 인기 이모티콘 만들기</div>
+						<div id="orderTop"><c:out value="${item.category}"/></div>
+						<div id="classTitle"><c:out value="${item.title}"/></div>
 						<div>
 							<a type="button" href="#" role="button" class="btn btn-light" id="buttonTop1">선물하기</a>
 							<a type="button" href="#" role="button" class="btn btn-light" id="buttonTop2">바로수강가능</a>
@@ -545,11 +544,11 @@
 						<div class="text-end" id="coupon">쿠폰 적용 시, 5개월 할부</div>
 						<div class="row justify-content-between">
 							<div class="col" id="couponDC">쿠폰 할인가</div>
-							<div class="col text-end" id="Price">40% 월 36,000원</div>
+							<div class="col text-end" id="Price"><c:out value="${item.discountRate}"/>% 월 <fmt:formatNumber type="number" value="${item.price/5}" pattern="#,###"/>원</div>
 						</div>
 						<div class="row justify-content-between" id="totalDC">
 							<div class="col">총 할인액</div>
-							<div class="col text-end">- 120,000원</div>
+							<div class="col text-end">- <fmt:formatNumber type="number" value="${item.price*((item.discountRate)*0.01)}" pattern="#,###"/>원</div>
 						</div>
 						<div class="row" id="bbb">
 							<div class="col-6"><i class="fa-brands fa-youtube"></i> 콘텐츠 이용권</div>
@@ -573,7 +572,7 @@
 		</div>
 	</div>
 	</form>
-	
+	 
 	<!-- 끝 -->
 	<div class="container">
 		<div class="row" style="margin-top: 5rem;">

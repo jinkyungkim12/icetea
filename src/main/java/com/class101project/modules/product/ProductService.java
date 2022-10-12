@@ -9,8 +9,9 @@ public interface ProductService {
 	public List<Product> selectListToday(ProductVo vo) throws Exception;
 	public List<Product> selectListMD(ProductVo vo) throws Exception;
 	public List<Product> selectListDC(ProductVo vo) throws Exception;
-	public List<Product> selectListOpen(ProductVo vo) throws Exception;
 	
+	// 상세 이미지 리스트
+	public List<Product> selectContent(ProductVo vo) throws Exception;
 	
 	public int insert(Product dto) throws Exception;
 	public int update(Product dto) throws Exception;
@@ -21,7 +22,6 @@ public interface ProductService {
 	
 	// selectOne
 	public Product selectOne(ProductVo vo) throws Exception;
-	public List<Product> selectOneToday(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	
 	// 이미지 업로드

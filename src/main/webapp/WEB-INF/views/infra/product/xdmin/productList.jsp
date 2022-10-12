@@ -201,7 +201,7 @@
 				</select>
 			</div>
 			<div class="col-4">
-				<input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
+				<input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력하세요." aria-label="Recipient's username with two button addons">
 			</div>
 			<div class="col-2">
 			 	<button class="btn btn-outline-dark" style="height: 2.4rem;" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>

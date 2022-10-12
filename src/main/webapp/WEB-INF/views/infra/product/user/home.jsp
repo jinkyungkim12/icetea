@@ -200,7 +200,7 @@
 						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
 						  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
 						</select>
-				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
+				        <input class="form-control me-2" type="search" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
 				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
 			        </div>
 				    </div>
@@ -351,7 +351,7 @@
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
 					    <hr>
 					    <span class="discount"><c:out value="${listToday.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${listToday.price/5}" pattern="#,###"/>원</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
 					    <span class="month">(<c:choose>
 												<c:when test="${listToday.payMonth eq 16}">5개월</c:when>
 												<c:otherwise>12개월</c:otherwise>
@@ -371,19 +371,21 @@
 		<div class="row">
 		<c:forEach items="${listMD}" var="listMD" varStatus="status">	
 			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
-				  <div class="card-body" style="height: 12rem;">
-				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
-				    <hr>
-				    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
-				    <span class="price">월 <fmt:formatNumber type="number" value="${listMD.price/5}" pattern="#,###"/>원</span>
-				    <span class="month">(<c:choose>
-											<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
-											<c:otherwise>12개월</c:otherwise>
-										</c:choose>)</span>
-				  </div>
-				</div>
+				<a class="nav-link"  href="javascript:goForm('${listMD.seq }')"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
+					  <div class="card-body" style="height: 12rem;">
+					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
+					    <hr>
+					    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="month">(<c:choose>
+												<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
+												<c:otherwise>12개월</c:otherwise>
+											</c:choose>)</span>
+					  </div>
+					</div>
+				</a>
 			</div>	
 		</c:forEach>
 		</div>
@@ -397,97 +399,26 @@
 		<div class="row">
 		<c:forEach items="${listDC}" var="listDC" varStatus="status">
 			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
-				  <div class="card-body" style="height: 12rem;">
-				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
-				    <hr>
-				    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
-				    <span class="price">월 <fmt:formatNumber type="number" value="${listDC.price/5}" pattern="#,###"/>원</span>
-				    <span class="month">(<c:choose>
-											<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
-											<c:otherwise>12개월</c:otherwise>
-										</c:choose>)</span>
-				  </div>
-				</div>
+				<a class="nav-link"  href="javascript:goForm('${listDC.seq }')"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
+					  <div class="card-body" style="height: 12rem;">
+					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
+					    <hr>
+					    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="month">(<c:choose>
+												<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
+												<c:otherwise>12개월</c:otherwise>
+											</c:choose>)</span>
+					  </div>
+					</div>
+				</a>
 			</div>	
 		</c:forEach>	
 		</div>
 	</div>
 	
-	<!-- 오픈 예정 클래스 -->
-	<div class="container" style="margin-top: 5rem;">
-		<div><h2 id="subtitle">오픈 예정 클래스</h2></div>
-		<div><h5 id="subtitle2">오픈 예정인 클래스를 응원하면 얼리버드 오픈 시 알려드려요!</h5></div>
-		<br>
-		<div class="row">
-		<c:forEach items="${listOpen}" var="listOpen" varStatus="status">
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="${listOpen.path}${listOpen.uuidName}" class="card-img-top" alt="...">
-				  <div class="card-body" style="height: 12rem;">
-				    <p class="card-text" style="height: 6rem;"><b><c:out value="${listOpen.category}"/></b><br><c:out value="${listOpen.title}"/><br</p>
-				    <hr>
-				    <span class="eventDate">응원 마감까지 <b>7일 남음</b></span>
-				  </div>
-				</div>
-			</div>	
-		</c:forEach>	
-		</div>
-	</div>
-	
-	<!-- 최근 업데이트 클래스 -->
-	<!-- <div class="container" style="margin-top: 5rem;">
-		<div><h2 id="subtitle">최근업데이트 클래스</h2></div>
-		<div><h5 id="subtitle2">크리에이터가 최근 활동한 클래스예요.</h5></div>
-		<br>
-		<div class="row">
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p6_1.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>그래픽디자인・제이슨</b><br>[🔥오늘할인끝] 제이슨과 함께, 포토샵으로 만드는 나만의 판타지 세상</p>
-				    <hr>
-					<span class="eventDate">미션 답변 작성</span>
-					<span class="eventDday">22분전</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p6_2.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>특별활동・오안쌤</b><br>[🔥오늘할인끝] [1차 마감] 수학 문제집 큐레이터 오안쌤의 맘 편한 "유아 수학 로드맵"</p>
-				    <hr>
-				    <span class="eventDate">미션 답변 작성</span>
-					<span class="eventDday">25분전</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p6_3.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>비건・채소・하루비건</b><br>[🔥오늘할인끝] 비건도 치즈와 크림을 즐길 수 있어요. '하루비건'의 일상 비건 요리</p>
-				    <hr>
-				    <span class="eventDate">미션 답변 작성</span>
-					<span class="eventDday">28분전</span>
-				  </div>
-				</div>
-			</div>	
-			<div class="col-3">
-				<div class="card" style="width: 18rem;">
-				  <img src="../../resources/images/p6_4.png" class="card-img-top" alt="...">
-				  <div class="card-body">
-				    <p class="card-text"><b>캘리그라피・캘리스마인드(캘마)</b><br>[🔥오늘할인끝] 아이패드로 영문 레터링 해볼래?<br><br></p>
-				    <hr>
-				    <span class="eventDate">미션 답변 작성</span>
-					<span class="eventDday">21분전</span>
-				  </div>
-				</div>
-			</div>	
-		</div>
-	</div> -->
 	
 	<!-- 이벤트 -->
 	<div class="container" style="margin-top: 5rem;">
