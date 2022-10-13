@@ -99,4 +99,9 @@ public class OrderController {
 		return "/infra/order/user/orderRegFormOther";
 	}
 	
+	@RequestMapping(value = "orderRegForm", method = RequestMethod.GET)
+	public String orderRegForm(Locale locale, Model model) {
+		return "/infra/order/user/orderRegForm";
+	}
+	
 }

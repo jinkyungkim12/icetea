@@ -338,7 +338,7 @@
 			<div class="col-3">
 				<a class="nav-link"  href="javascript:goForm('${listToday.seq }')"> 
 					<div class="card" style="width: 18rem;">
-					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
+					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="..." style="height: 212.5px;">
 					  <div class="card-body" style="height: 12rem;">
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
 					    <hr>
@@ -365,7 +365,7 @@
 			<div class="col-3">
 				<a class="nav-link"  href="javascript:goForm('${listMD.seq }')"> 
 					<div class="card" style="width: 18rem;">
-					  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
+					  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="..." style="height: 381.6px;">
 					  <div class="card-body" style="height: 12rem;">
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
 					    <hr>

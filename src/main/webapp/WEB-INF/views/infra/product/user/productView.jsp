@@ -610,7 +610,7 @@
 	<script type="text/javascript">
 	
 		var goUrlList = "/product/productList"; 		/* #-> */
-		
+		var goUrlOrder = "/order/OrderRegForm"
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");

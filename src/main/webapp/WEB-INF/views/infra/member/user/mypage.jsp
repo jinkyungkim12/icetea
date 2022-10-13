@@ -296,10 +296,6 @@
 				  <li class="nav-item" role="presentation">
 				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">주문 목록</button>
 				  </li>
-				  &emsp;
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">주문 상세</button>
-				  </li>
 				</ul>
 				<div class="tab-content" id="myTabContent">
 				  
@@ -355,42 +351,12 @@
 						<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 50일 남음</span></div>
 						<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 10일 남음</span></div>
 					</div>
-					<div style="margin-top: 2rem;"><h5><b>내가 본 상품</b></h5></div>
-					<div class="row">
-						<div class="col-4">
-							<div class="card" style="width: 17rem;">
-							  <img src="../../resources/images/p2.png" class="card-img-top" alt="...">
-							  <div class="card-body">
-							    <p class="card-text"><b>토익독학길잡이</b><br>[💣24시간] 국내 1위 토익 유튜버의 '해석을 위한 문법'<br><br></p>
-							    <hr>
-							    <span class="discount">46%</span>
-							    <span class="price">월 24,200원</span>
-							    <span class="month">(5개월)</span>
-							  </div>
-							</div>
-						</div>	
-						<div class="col-4">
-							<div class="card" style="width: 17rem;">
-							  <img src="../../resources/images/p3.png" class="card-img-top" alt="...">
-							  <div class="card-body">
-							    <p class="card-text"><b>아로스</b><br>[💣24시간] [2022년 New 노하우] 하루 1시간 월 100만원, 애드센스 블로그로 만드는 법!</p>
-							    <hr>
-							    <span class="discount">33%</span>
-							    <span class="price">월 45,800원</span>
-							    <span class="month">(5개월)</span>
-							  </div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b><i class="fa-solid fa-ticket"></i> 수강권 코드 등록하기</b></a>
-					</div>	
 				  </div>
 				 
 				<!-- 두 번째 탭 -->	
 				  
 				  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-				  	<div class="row justify-content-between" style="margin-top: 2rem;">
+				  	<div class="row justify-content-between" style="margin-top: 1rem;">
 					<div class="col-2"><span>2022.07.22</span></div>
 					<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
@@ -405,9 +371,6 @@
 							<div><span>20주 수강권</span></div>
 						</div>
 					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b><i class="fa-solid fa-ticket"></i> 지금 바로 수강하기</b></a>
-					</div>
 					<hr>
 					<div style="margin-top: 1rem; color: #A9A9A9;"><h5><i class="fa-solid fa-truck"></i> 배송이 완료되었습니다.</h5></div>
 					<div class="row" style="margin-top: 1rem;">
@@ -430,7 +393,7 @@
 							<div style="margin-top: 3rem; color: #A9A9A9;"><span>수량 1개</span></div>
 						</div>
 					</div>
-					<div class="row justify-content-between" style="margin-top: 2rem;">
+					<div class="row justify-content-between" style="margin-top: 3rem;">
 						<div class="col-2"><span>2022.05.17</span></div>
 						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
@@ -445,10 +408,7 @@
 							<div><span>20주 수강권</span></div>
 						</div>
 					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b><i class="fa-solid fa-ticket"></i> 지금 바로 수강하기</b></a>
-					</div>
-					<div class="row justify-content-between" style="margin-top: 2rem;">
+					<div class="row justify-content-between" style="margin-top: 3rem;">
 						<div class="col-2"><span>2022.01.01</span></div>
 						<div class="col-2 text-end"><span><a class="nav-link" type="button" href="#" style="color: #FF5600">주문 상세 보기</a></span></div>
 					</div>
@@ -463,151 +423,6 @@
 							<div><span>1년 수강권</span></div>
 						</div>
 					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b><i class="fa-solid fa-ticket"></i> 지금 바로 수강하기</b></a>
-					</div>
-				  </div>
-				  
-				  <!-- 세 번째 -->
-				  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-				  	<div style="margin-top: 3rem;"><h4><b>2022.07.22 주문 상세 내역</b></h4></div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>배송 완료</b></h4></div>
-					<div style="margin-top: 2rem;"><span>결제수단</span></div>
-					<hr>
-					<div id="gray">
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>총 상품금액</span></div>
-							<div class="col-2 text-end"><span>1,300,000원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>상품 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 220,000원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>쿠폰 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 40,000원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>배송비</span></div>
-							<div class="col-2 text-end"><span> 0원</span></div>
-						</div>
-					</div>
-					<hr style="margin-top: 1rem;">
-					<div class="row justify-content-between" style="margin-top: 1rem;">
-						<div class="col-2" id="finalPrice"><h5><b>총 결제 금액</b></h5></div>
-						<div class="col-2 text-end" id="finalPrice"><span><h5><b>1,040,000원</b></h5></span></div>
-					</div>
-					<div class="row justify-content-between">
-						<div class="col-3"><span>카카오 페이 결제 금액</span></div>
-						<div class="col-2 text-end" id="finalPrice"><span>1,040,000원</span></div>
-					</div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>구매 물품</b></h4></div>	
-					<div class="row">
-						<div class="col-3">
-							<img src="https://cdn.class101.net/images/27b658a7-53e1-47ca-a1bd-6c9bb5f7f93b/2048xauto.webp" width="200px" height="140px">
-						</div>
-						<div class="col-9">
-							<div><h5>[유랑] 무명 이모티콘 작가가 인기 작가가 된 비결! 경쟁에서 살아...</h5></div>
-							<div><span>20주 수강권</span></div>
-						</div>
-					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b>환불하기</b></a>
-					</div>
-					<div style="margin-top: 3rem;"><h4><b>2022.05.17 주문 상세 내역</b></h4></div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>배송 완료</b></h4></div>
-					<div style="margin-top: 2rem;"><span>결제수단</span></div>
-					<hr>
-					<div id="gray">
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>총 상품금액</span></div>
-							<div class="col-2 text-end"><span>187,500원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>상품 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 37.500원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>쿠폰 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 0원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>배송비</span></div>
-							<div class="col-2 text-end"><span> 0원</span></div>
-						</div>
-					</div>
-					<hr style="margin-top: 1rem;">
-					<div class="row justify-content-between" style="margin-top: 1rem;">
-						<div class="col-2" id="finalPrice"><h5><b>총 결제 금액</b></h5></div>
-						<div class="col-2 text-end" id="finalPrice"><span><h5><b>150,000원</b></h5></span></div>
-					</div>
-					<div class="row justify-content-between">
-						<div class="col-3"><span>카카오 페이 결제 금액</span></div>
-						<div class="col-2 text-end" id="finalPrice"><span>150,000원</span></div>
-					</div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>구매 물품</b></h4></div>	
-					<div class="row">
-						<div class="col-3">
-							<img src="https://cdn.class101.net/images/dfd02760-c3e2-4ea7-8eb1-a93cf10fa746/375xauto.webp" width="200px" height="140px">
-						</div>
-						<div class="col-9">
-							<div><h5>[드로우 앤드류] 인스타그램으로 세상에 나의 가치를 알려보자. 인스타...</h5></div>
-							<div><span>20주 수강권</span></div>
-						</div>
-					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b>환불하기</b></a>
-					</div>
-					<div style="margin-top: 3rem;"><h4><b>2022.01.01 주문 상세 내역</b></h4></div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>배송 완료</b></h4></div>
-					<div style="margin-top: 2rem;"><span>결제수단</span></div>
-					<hr>
-					<div id="gray">
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>총 상품금액</span></div>
-							<div class="col-2 text-end"><span>375,000원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>상품 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 112,500원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>쿠폰 할인 금액</span></div>
-							<div class="col-2 text-end"><span> - 0원</span></div>
-						</div>
-						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10"><span>배송비</span></div>
-							<div class="col-2 text-end"><span> 0원</span></div>
-						</div>
-					</div>
-					<hr style="margin-top: 1rem;">
-					<div class="row justify-content-between" style="margin-top: 1rem;">
-						<div class="col-2" id="finalPrice"><h5><b>총 결제 금액</b></h5></div>
-						<div class="col-2 text-end" id="finalPrice"><span><h5><b>262,500</b></h5></span></div>
-					</div>
-					<div class="row justify-content-between">
-						<div class="col-3"><span>카카오 페이 결제 금액</span></div>
-						<div class="col-2 text-end" id="finalPrice"><span>262,500원</span></div>
-					</div>
-					<hr class="hrstyle">
-					<div style="margin-top: 2rem;"><h4><b>구매 물품</b></h4></div>	
-					<div class="row">
-						<div class="col-3">
-							<img src="https://cdn.class101.net/images/cb2119ec-b977-49e3-a1a4-b674081ed809/750xauto.webp" width="200px" height="140px">
-						</div>
-						<div class="col-9">
-							<div><h5>[콕스] 초보 그림러가 인기 작가가 되는 법, 콕스의 독학비법서</h5></div>
-							<div><span>1년 수강권</span></div>
-						</div>
-					</div>	
-					<div>
-						<a type="button" class="btn btn-light" id="button1"><b>환불하기</b></a>
-					</div>
 				  </div>
 				</div>
 			</div>	
