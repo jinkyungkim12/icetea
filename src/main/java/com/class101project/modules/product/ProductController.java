@@ -41,7 +41,27 @@ public class ProductController {
 			
 			return "infra/product/xdmin/productList";
 		}
+		
+		// product Search
+		
+		@RequestMapping(value = "productSearch")
+		public String productSearch(@ModelAttribute("vo") ProductVo vo, Model model) throws Exception  {
 			
+			System.out.println("vo.getShValue(): " + vo.getShValue());
+			System.out.println("vo.getShOption(): " + vo.getShOption());
+			
+			List<Product> listToday = service.selectListToday(vo);
+			model.addAttribute("listToday", listToday);
+			
+			List<Product> listMD = service.selectListMD(vo);
+			model.addAttribute("listMD", listMD);
+			
+			List<Product> listDC = service.selectListDC(vo);
+			model.addAttribute("listDC", listDC);
+			
+			
+			return "infra/product/user/productSearch";
+		}
 		
 		
 		// product Form

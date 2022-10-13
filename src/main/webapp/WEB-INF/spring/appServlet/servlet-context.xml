@@ -49,6 +49,8 @@
 			<exclude-mapping path="/member/main_home" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/product/productBestList" />
+			<exclude-mapping path="/product/productView" />
+			<exclude-mapping path="/product/productSearch" />
 			<beans:bean id="checkLoginSessionInterception" class="com.class101project.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

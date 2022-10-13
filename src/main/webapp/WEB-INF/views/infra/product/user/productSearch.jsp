@@ -11,7 +11,6 @@
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
-
 	<style type="text/css">
 		#ListClass{
 			color: red;
@@ -250,6 +249,9 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		.card-body{
+			background-color: white;
+		}
 	</style>
 </head>
 <body>
@@ -257,6 +259,8 @@
 <!-- start -->
 	
 	<!-- NAV bar	 -->
+	<form method="post" name="form" id="form" enctype="multipart/form-data">
+	<input type="hidden" name="seq">
 	<div class="container" style="margin-top: 3rem;"> 
 		<div class="row">
 			<div class="col-8">
@@ -284,7 +288,7 @@
 						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
 						  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
 						</select>
-				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
+				        <input class="form-control me-2" type="search" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
 				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
 			        </div>
 				    </div>
@@ -343,227 +347,134 @@
 			</c:if>
 		</div>
 	</div>
+	</form>
 	
-	<!-- 상세 메인 이미지 -->
-	<form id="form" name="form" method="post" enctype="multipart/form-data">
+	<!-- 상단메뉴 -->
+	
+	<nav class="navbar navbar-expand-lg bg-white">
+	  <div class="container" id="aaa">
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	      	 <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            전체 카테고리
+	          </a>
+	          <ul class="dropdown-menu">
+	            <li><a class="dropdown-item" href="/product/productBestList">창업/부업</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">투자</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">직무교육</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">미술</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">사진/영상</a></li>
+	            <li><a class="dropdown-item" href="/product/productBestList">요리</a></li>
+	          </ul>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">이벤트</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">바로 수강</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">신규 클래스</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">오픈 예정</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">시그니처</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">키즈</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">원포인트 클래스</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>	
+	 
+	 
+	 <!-- 오늘의 특가 -->
 	
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
-		
-		<!-- 	top image 2ea -->	
-			<div class="col">
-				<img src="${listContent[1].path}${listContent[1].uuidName}" width="691px" height="500px">
-			</div>
-			<div class="col">
-				<div><img src="${listContent[2].path}${listContent[2].uuidName}" width="550px" height="500px"></div>
-			</div>
+		<c:forEach items="${listToday}" var="listToday" varStatus="status">	
+			<div class="col-3">
+				<a class="nav-link"  href="javascript:goForm('${listToday.seq }')"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
+					  <div class="card-body" style="height: 12rem;">
+					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
+					    <hr>
+					    <span class="discount"><c:out value="${listToday.discountRate}"/>%</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="month">(<c:choose>
+												<c:when test="${listToday.payMonth eq 16}">5개월</c:when>
+												<c:otherwise>12개월</c:otherwise>
+											</c:choose>)</span>
+					  </div>
+					</div>
+				</a>
+			</div>	
+		</c:forEach>	
 		</div>
-	</div>
 	
-	<!-- 페이지 -->
-	<div class="container">
+	<!-- MD 추천 클래스 -->
+		<br>
 		<div class="row">
-			<div class="col-8">
-				
-				<!-- 목차 -->
-				<div class="sticky-top">
-					<div class="row fw-semibold" id="aaa">
-						<nav class="navbar navbar-expand-lg bg-white">
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-							          <a class="nav-link aaa" aria-current="page" href="#RV" id="review">후기</a>
-							        </li>
-							        <li class="nav-item">
-							          <a class="nav-link aaa" aria-current="page" href="#IF" id="classinfo">클래스 소개</a>
-							        </li>
-							        <li class="nav-item">
-							          <a class="nav-link aaa" aria-current="page" href="#RF" id="refund">환불정책</a>
-							        </li>
-								</ul>
-							</div>
-						</nav>	
+		<c:forEach items="${listMD}" var="listMD" varStatus="status" >	
+			<div class="col-3">
+				<a class="nav-link"  href="javascript:goForm('${listMD.seq }')"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
+					  <div class="card-body" style="height: 12rem;">
+					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
+					    <hr>
+					    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="month">(<c:choose>
+												<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
+												<c:otherwise>12개월</c:otherwise>
+											</c:choose>)</span>
+					  </div>
 					</div>
-				</div> 
-				
-				<!-- 쿠폰이미지 -->
-				<div class="row">
-					<img src="../../resources/images/banner.png">
-				</div> 
-				
-				
-				<!-- 클래스 정보 -->
-				<div class="row" style="margin-top: 5rem;">
-					<div><span class="class1" id="classinfo">클래스 정보</span></div>
-				</div>
-				<div class="row" style="margin-top: 2rem;">
-					<div class="col-4"><span class="class2"><b>클래스 분량</b> 12개 챕터, 44개 세부강의</span></div>
-					<div class="col-3"><span class="class2"><b>수강 가능일</b> 바로 수강 가능</span></div>
-					<div class="col-3"><span class="class2"><b>자막 포함 여부</b> 포함</span></div>
-					<div class="col-2"><span></span></div>
-				</div>
-				
-				
-				
-				 
-				<!-- 후기 -->
-				<div id="RV">
-					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
-					<div class="text-end"><a type="button" href="/review/reviewForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
-					<div class="row">
-						<div class="col-3" id="star1">												
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>&emsp;
-						</div>
-						<div class="col-3" id="star2">
-							<b>4.9</b>&emsp;<span>총 8개</span>
-						</div>
+				</a>
+			</div>	
+		</c:forEach>
+		</div>
+	
+	
+	<!-- 실시간 TOP10 클래스 -->
+		<br>
+		<div class="row">
+		<c:forEach items="${listDC}" var="listDC" varStatus="status">
+			<div class="col-3">
+				<a class="nav-link"  href="javascript:goForm('${listDC.seq }')"> 
+					<div class="card" style="width: 18rem;">
+					  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
+					  <div class="card-body" style="height: 12rem;">
+					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
+					    <hr>
+					    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="month">(<c:choose>
+												<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
+												<c:otherwise>12개월</c:otherwise>
+											</c:choose>)</span>
+					  </div>
 					</div>
-					<div class="row">
-						<div class="col-6">
-							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> yeriel</span></div>
-							<div class="row">
-								<div class="col-4">
-									<div class="reviewStar">
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>&emsp;
-									</div>
-								</div>
-								<div class="col-8">
-									<span class="reviewDate">1월 02일 10:05:01&emsp;<b>20% 수강 후 작성</b></span>
-								</div>
-							</div>
-							<div class="reviewContent">
-								<span>
-									유랑 작가님 수업 처음 듣는데 매우 재밌습니다! 이모티콘 만드
-									<br>는 법을 디테일있게 알려주셔서 너무 좋습니다!
-									<br>아이패드 고물될 뻔했는데, 다행히 요즘 아주 유용하게
-									<br>사용하고 있습니다!
-								</span>
-							</div>
-							<div style="margin-top: 3rem;"><i class="fa-solid fa-heart"></i> 5</div>
-						</div>
-						<div class="col-6">
-							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> chacha</span></div>
-							<div class="row">
-								<div class="col-4">
-									<div class="reviewStar">
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>&emsp;
-									</div>
-								</div>
-								<div class="col-8">
-									<span class="reviewDate">4월 9일 20:50:12&emsp;<b>100% 수강 후 작성</b></span>
-								</div>
-							</div>
-							<div class="reviewContent">
-								<span>
-									해볼까 말까 꽤 오랜시간을 고민했는데 고민한 시간이 아까울
-									<br>만큼 재미있는 수업이었어요. 정말 세세한 부분까지 알려주시
-									<br>고 제공해주시는 자료들도 많이 유용해요. 
-									<br>팁도 알려주셔서 나중에 혼자 공부할 때도 유익할 것 같아요.
-									<br>고민하시는 분들이 계시다면 추천드리고 ... 
-								</span>
-							</div>
-							<div style="margin-top: 1.5rem;"><i class="fa-solid fa-heart"></i> 12</div>
-						</div>
-					</div> 
-					<div class="row justify-content-center">
-						<a type="button" href="#" role="button" class="btn btn-light" id="reviewButton">6개의 후기 더 보기</a>
-					</div>
-				</div>
-				
-				
-				<!-- 상품 상세 정보 image-->
-				<div id="IF" style="margin-top: 3rem;">
-					<img src="${listContent[3].path}${listContent[3].uuidName}" style="width: 870px;">
-				</div>
-				
-				<!-- 환불정책 -->
-				<div id="RF">
-					<div class="content1" style="margin-top: 5rem;"><h4><b>환불정책</b></h4></div>
-					<div class="content1" style="margin-top: 1.5rem;">
-						<div class="card">
-						  <div class="card-body">
-						    <span>환불 정책에 따라 구매일로부터 90일까지 환불 요청이 가능하며, <b>7일 까지</b> 전액 환불이 가능합니다.</span>
-						    <div class="bd-example" style="margin-top: 1.5rem;">
-							  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModalLg">환불 정책</button>
-							</div>
-							<div class="modal fade" id="exampleModalLg" tabindex="-1" aria-labelledby="exampleModalLgLabel" aria-hidden="true">
-							  <div class="modal-dialog modal-lg">
-							    <div class="modal-content">
-							      <div class="modal-header">							      
-							        <h5 class="modal-title h4" id="exampleModalLgLabel">환불정책</h5>
-							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							      </div>
-							      <div class="modal-body text-center">
-							        <img src="../../resources/images/refund.png">
-							      </div>
-							      <div class="modal-body text-center">
-							        <img src="../../resources/images/refund2.png">
-							      </div>
-							       <div class="modal-footer">
-								       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-								   </div>
-							    </div>
-							  </div>
-							</div>
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<!-- 구매창 -->
-			<div class="col-4" style="margin-top: 2rem;">
-				<div class="sticky-top">
-					<div class="shadow p-3 mb-5 bg-body rounded">
-						<div id="orderTop"><c:out value="${item.category}"/></div>
-						<div id="classTitle"><c:out value="${item.title}"/></div>
-						<div>
-							<a type="button" href="#" role="button" class="btn btn-light" id="buttonTop1">선물하기</a>
-							<a type="button" href="#" role="button" class="btn btn-light" id="buttonTop2">바로수강가능</a>
-						</div>
-						<div class="text-end" id="coupon">쿠폰 적용 시, 5개월 할부</div>
-						<div class="row justify-content-between">
-							<div class="col" id="couponDC">쿠폰 할인가</div>
-							<div class="col text-end" id="Price"><c:out value="${item.discountRate}"/>% 월 <fmt:formatNumber type="number" value="${(item.price*((100-item.discountRate)*0.01))/5}" pattern="#,###"/>원</div>
-						</div>
-						<div class="row justify-content-between" id="totalDC">
-							<div class="col">총 할인액</div>
-							<div class="col text-end">- <fmt:formatNumber type="number" value="${item.price*((item.discountRate)*0.01)}" pattern="#,###"/>원</div>
-						</div>
-						<div class="row" id="bbb">
-							<div class="col-6"><i class="fa-brands fa-youtube"></i> 콘텐츠 이용권</div>
-							<div class="col-6"><i class="fa-solid fa-gifts"></i> 준비물 키트</div>
-						</div>
-						<div class="row" id="ccc">
-							<div class="col-6"><i class="fa-solid fa-user"></i> 초급자 대상</div>
-							<div class="col-6"><i class="fa-solid fa-thumbs-up"></i> 강의 만족도 99%</div>
-						</div>
-						<div class="text-center" id="ddd">
-							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-heart"></i> 11701</a>
-							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-arrow-up-from-bracket"></i> 공유하기</a>
-							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-gift"></i> 선물하기</a>
-						</div>
-						<div class="row justify-content-center">
-							<a type="button" href="/order/orderRegFormOption" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
-						</div>	
-					</div>
-				</div>	
-			</div>		
+				</a>
+			</div>	
+		</c:forEach>	
 		</div>
 	</div>
-	</form>
 	 
 	<!-- 끝 -->
 	<div class="container">
@@ -602,20 +513,37 @@
 	</div>
 	<br>
 	<br>	
-
+ 
 <!-- end	 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-		var goUrlList = "/product/productList"; 		/* #-> */
+		var goUrlForm = "/product/productView"
+		var goUrlSearch = "/product/productSearch"; 		/* #-> */
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		$("#btnSearch").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlSearch).submit();
+		});
+		
+		goForm = function(pseq) {
+	    	seq.val(pseq);
+			form.attr("action", goUrlForm).submit();
+		}
 		
 	</script>
+	
+	
 	<script type="text/javascript">
 	 $(document).ready(function () {
 	        $(window).scroll(function () {
@@ -630,7 +558,7 @@
 	            $('#back-to-top').tooltip('hide');
 	            $('body,html').animate({
 	                scrollTop: 0
-	            }, 100);
+	            }, 800);
 	            return false;
 	        });
 

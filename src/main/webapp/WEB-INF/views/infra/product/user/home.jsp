@@ -9,20 +9,12 @@
 <head>
 	<title>Class101</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
-    <!-- user css -->
-    <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -351,7 +343,7 @@
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
 					    <hr>
 					    <span class="discount"><c:out value="${listToday.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((100-listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
 					    <span class="month">(<c:choose>
 												<c:when test="${listToday.payMonth eq 16}">5개월</c:when>
 												<c:otherwise>12개월</c:otherwise>
@@ -378,7 +370,7 @@
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
 					    <hr>
 					    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((100-listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
 					    <span class="month">(<c:choose>
 												<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
 												<c:otherwise>12개월</c:otherwise>
@@ -406,7 +398,7 @@
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
 					    <hr>
 					    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+					    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((100-listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
 					    <span class="month">(<c:choose>
 												<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
 												<c:otherwise>12개월</c:otherwise>
@@ -450,25 +442,25 @@
 		<div><h2 id="subtitle">인기 카테고리</h2></div>
 		<div class="row text-center" style="margin-top: 3rem;">
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">크리에이티브</span><br>
 					<span class="eventTitle">디지털 드로잉</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">크리에이티브</span><br>
 					<span class="eventTitle">공예</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">크리에이티브</span><br>
 					<span class="eventTitle">드로잉</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">수익 창출</span><br>
 					<span class="eventTitle">창업 · 부업</span>
 				</a>
@@ -476,25 +468,25 @@
 		</div>
 		<div class="row text-center" style="margin-top: 3rem;">
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">크리에이티브</span><br>
 					<span class="eventTitle">베이킹 · 디저트</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">커리어</span><br>
 					<span class="eventTitle">디자인</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">크리에이티브</span><br>
 					<span class="eventTitle">운동</span>
 				</a>
 			</div>
 			<div class="col-3">
-				<a type="button" href="#" role="button" class="btn btn-light btn-lg" style="width: 15rem;">
+				<a type="button" class="btn btn-light btn-lg" style="width: 15rem;">
 					<span class="eventDate">내게 맞는</span><br>
 					<span class="eventTitle">클래스 추천 받기</span>
 				</a>
@@ -588,15 +580,14 @@
 	    });
 	</script>
 	<script type="text/javascript">
-		var goUrlList = "/home";
 		var goUrlForm = "/product/productView"
+		var goUrlSearch = "/product/productSearch"
 			
 		var form = $("form[name=formList]");
 		var seq = $("input:hidden[name=seq]");
 		
 		$("#btnSearch").on("click", function(){
-			if(validationList() == false) return false;
-			form.attr("action", goUrlList).submit();
+			form.attr("action", goUrlSearch).submit();
 		});
 		
 		goForm = function(pseq) {
