@@ -70,6 +70,12 @@ public class OrderController {
 		
 	}
 	
+	@RequestMapping(value = "orderRegForm", method = RequestMethod.GET)
+	public String orderRegForm(Locale locale, Model model) {
+		return "/infra/order/user/orderRegForm";
+	}
+	
+	
 	@RequestMapping(value = "orderUpdt")
 	public String orderUpdt(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -77,11 +83,6 @@ public class OrderController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/order/orderForm";
-	}
-	
-	@RequestMapping(value = "orderRegFormOption", method = RequestMethod.GET)
-	public String orderRegFormOption(Locale locale, Model model) {
-		return "/infra/order/user/orderRegFormOption";
 	}
 	
 	@RequestMapping(value = "orderViewForm", method = RequestMethod.GET)
@@ -99,9 +100,5 @@ public class OrderController {
 		return "/infra/order/user/orderRegFormOther";
 	}
 	
-	@RequestMapping(value = "orderRegForm", method = RequestMethod.GET)
-	public String orderRegForm(Locale locale, Model model) {
-		return "/infra/order/user/orderRegForm";
-	}
 	
 }

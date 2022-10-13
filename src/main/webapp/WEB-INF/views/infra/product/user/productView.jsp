@@ -556,7 +556,7 @@
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-gift"></i> 선물하기</a>
 						</div>
 						<div class="row justify-content-center">
-							<a type="button" href="/order/orderRegFormOption" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
+							<a type="button" href="/order/orderRegForm" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
 						</div>	
 					</div>
 				</div>	
