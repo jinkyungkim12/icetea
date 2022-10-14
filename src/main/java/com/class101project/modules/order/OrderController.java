@@ -40,7 +40,7 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "orderForm")
-	public String orderRegForm(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception {
+	public String orderForm(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		Order item = service.selectOne(vo);
@@ -50,6 +50,22 @@ public class OrderController {
 		return "/infra/order/xdmin/orderForm";
 	}
 	
+	
+	@RequestMapping(value = "orderRegForm") 
+	public String orderRegForm(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception{
+		
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		
+		Order item = service.selectOneOrder(vo);
+		model.addAttribute("item", item);
+		
+		
+		Order itemImg = service.selectProductImg(vo);
+		model.addAttribute("itemImg" + itemImg);
+		
+		return "/infra/order/user/orderRegForm";
+	}
+
 	
 	@RequestMapping(value = "orderInst")
 	public String orderInst(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
@@ -70,10 +86,20 @@ public class OrderController {
 		
 	}
 	
-	@RequestMapping(value = "orderRegForm", method = RequestMethod.GET)
-	public String orderRegForm(Locale locale, Model model) {
-		return "/infra/order/user/orderRegForm";
+	
+	@RequestMapping(value = "orderUserInst")
+	public String orderUserInst(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.orderUserInst(dto);
+		
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "/infra/order/user/orderView";
+		
 	}
+	
+	
 	
 	
 	@RequestMapping(value = "orderUpdt")
@@ -84,6 +110,9 @@ public class OrderController {
 		
 		return "redirect:/order/orderForm";
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "orderViewForm", method = RequestMethod.GET)
 	public String orderViewForm(Locale locale, Model model) {

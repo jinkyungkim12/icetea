@@ -1,6 +1,8 @@
 package com.class101project.modules.order;
 
-public class Order {
+import com.class101project.common.base.Base;
+
+public class Order extends Base{
 
 	private String seq;
 	private String name;
@@ -23,7 +25,14 @@ public class Order {
 	private String phone;
 	private Integer request;
 	private String title;
+	private String category;
 	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getTitle() {
 		return title;
 	}

@@ -26,20 +26,38 @@ public class OrderDao {
 		return result;
 	}
 	
-	public Order selectOne(OrderVo vo) {
-		Order result = sqlSession.selectOne(namespace + ".selectOne", vo);
-		System.out.println("dao result: " + result);
+	public int orderUserInst(Order dto) {
+		int result = sqlSession.insert(namespace + ".orderUserInst", dto);
 		return result;
 	}
 	
 	public int update(Order dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
+
+	
+	// selectOne
+	public Order selectOne(OrderVo vo) {
+		Order result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result: " + result);
+		return result;
+	}
+	
+	public Order selectOneOrder(OrderVo vo) {
+		Order result = sqlSession.selectOne(namespace + ".selectOneOrder", vo);
+		System.out.println("dao result: " + result);
+		return result;
+	}
 	
 	public int selectOneCount(OrderVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
-//	for cache
+	//	for cache
 	public List<Order> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
 
+	// 이미지 업로드 상품
+	public Order selectProductImg(OrderVo vo) {
+		return sqlSession.selectOne(namespace + ".selectProductImg", vo);
+	}
+	
 	
 }

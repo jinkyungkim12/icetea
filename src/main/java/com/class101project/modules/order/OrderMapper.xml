@@ -101,6 +101,32 @@
 		</selectKey>
 	</insert>
 	
+	<insert id="orderUserInst">
+		INSERT INTO classOrder a(
+			,a.request
+			,a.price
+			,a.priceDiscount
+			,a.couponDiscount
+			,a.finalPrice
+			,a.pay
+			,a.orderDate
+		)
+		VALUES (
+			,#{a.request}
+			,#{a.price}
+			,#{a.priceDiscount}
+			,#{a.couponDiscount}
+			,#{a.finalPrice}
+			,#{a.pay}
+			,now()
+		)
+			from classOrder a 
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	
 	<update id="update">
 		UPDATE classOrder
 		SET
@@ -124,18 +150,9 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			b.name
-			,b.phone
-			,c.zipcode
-			,c.address
-			,c.addressDetail
-			,c.addr3
-			,a.request
-			,a.price
-			,a.priceDiscount
-			,a.couponDiscount
-			,a.finalPrice
-			,a.pay
+			a.*
+			,b.*
+			,c.*
 			from classOrder a 
 			left join member b on b.seq = a.member_seq
 			left join transport c on a.member_seq = c.member_seq AND c.tOrder = 1
@@ -144,4 +161,27 @@
 				AND a.seq = #{seq}
 	</select>
 	
+	<select id="selectOneOrder" resultMap="resultMapObj">
+		SELECT
+			a.*
+			,b.*
+			,c.*
+			,d.*
+			from classOrder a 
+			left join member b on b.seq = a.member_seq
+			left join transport c on a.member_seq = c.member_seq AND c.tOrder = 1
+			left join classProduct d on d.seq = a.classProduct_seq
+			WHERE 1=1
+				AND a.seq = #{seq}
+	</select>
+	
+	<!-- image -->
+	<select id="selectProductImg" resultMap="resultMapObj">
+		SELECT
+		 * 
+		 FROM productUploaded
+		 WHERE
+		 pseq = #{seq}
+		
+	</select>
 </mapper>

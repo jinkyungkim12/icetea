@@ -216,7 +216,6 @@ public class MemberController {
 		model.addAttribute("itemAdd", itemAdd);
 		
 		Member itemImage = service.selectMemberImg(vo);
-		
 		model.addAttribute("itemImage",itemImage);
 		
 		return "infra/member/user/mypageModForm";

@@ -132,7 +132,7 @@
 			background-color: #EFEFEF;
 			margin-top: 1.5rem;
 		}
-		#button3{
+		#btnOrder{
 			width: 350px;
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
@@ -346,7 +346,7 @@
 	
 	<!-- 상세 메인 이미지 -->
 	<form id="form" name="form" method="post" enctype="multipart/form-data">
-	
+	<%@include file="productVo.jsp"%>	
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
 		
@@ -397,9 +397,21 @@
 					<div><span class="class1" id="classinfo">클래스 정보</span></div>
 				</div>
 				<div class="row" style="margin-top: 2rem;">
-					<div class="col-4"><span class="class2"><b>클래스 분량</b> 12개 챕터, 44개 세부강의</span></div>
-					<div class="col-3"><span class="class2"><b>수강 가능일</b> 바로 수강 가능</span></div>
-					<div class="col-3"><span class="class2"><b>자막 포함 여부</b> 포함</span></div>
+					<div class="col-4"><span class="class2"><b>클래스 분량</b>&nbsp;<c:out value="${item.classAmount}"/></span></div>
+					<div class="col-3"><span class="class2"><b>수강 가능일</b>
+											<c:choose>
+												<c:when test = "${item.dateNY eq 1}">&nbsp;가능</c:when>
+												<c:otherwise>불가능</c:otherwise>
+											</c:choose>
+									   </span>
+					</div>
+					<div class="col-3"><span class="class2"><b>자막 포함 여부</b> 
+										    <c:choose>
+												<c:when test = "${item.subtitleNY eq 1}">&nbsp;가능</c:when>
+												<c:otherwise>불가능</c:otherwise>
+											</c:choose>
+									   </span>
+					</div>
 					<div class="col-2"><span></span></div>
 				</div>
 				
@@ -556,7 +568,7 @@
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-gift"></i> 선물하기</a>
 						</div>
 						<div class="row justify-content-center">
-							<a type="button" href="/order/orderRegForm" role="button" class="btn btn-danger" id="button3">구매하기 <i class="fa-solid fa-cart-shopping"></i></a>
+							<button type="button" role="button" class="btn btn-danger" id="btnOrder">구매하기 <i class="fa-solid fa-cart-shopping"></i></button>
 						</div>	
 					</div>
 				</div>	
@@ -608,12 +620,16 @@
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	
-		var goUrlList = "/product/productList"; 		/* #-> */
-		var goUrlOrder = "/order/OrderRegForm"
-		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		var goUrlForm = "/order/orderRegForm"
 		
 		var form = $("form[name=form]");
+		var seq = $("input:hidden[name=seq]");			/* #-> */
+		
+		$("#btnOrder").on("click", function(){
+			seq.val(seq);
+			form.attr("action", goUrlForm).submit();
+		}); 
 		
 	</script>
 	<script type="text/javascript">

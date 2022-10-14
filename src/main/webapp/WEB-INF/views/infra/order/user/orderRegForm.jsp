@@ -68,12 +68,6 @@
 		#zipcode{
 			width: 215px;
 		}
-		.input{
-			width: 900px;
-		}
-		.bsbs{
-			width: 900px !important;
-		}
 		#finalPrice{
 			color: red;
 		}
@@ -83,12 +77,19 @@
 		#DCcoupon{
 			color: red;
 		}
-		#btnSave{
-			width: 500px;
+		#btnOrder{
+			width: 300px;
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
 			font-style: normal;
 			background-color: #FF5600;
+			margin-top: 2rem;
+		}
+		#btnCancle{
+			width: 300px;
+			height: 40px;
+			font-family: 'Happiness-Sans-Regular';
+			font-style: normal;
 			margin-top: 2rem;
 		}
 		.endTitle{
@@ -144,9 +145,6 @@
 <!-- start -->
 	
 	<!-- NAV bar	 -->
-
-	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
-	<input type="hidden" name="seq">
 	<div class="container" style="margin-top: 3rem;"> 
 		<div class="row">
 			<div class="col-8">
@@ -174,7 +172,7 @@
 						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
 						  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
 						</select>
-				        <input class="form-control me-2" type="search" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
+				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
 				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
 			        </div>
 				    </div>
@@ -233,7 +231,6 @@
 			</c:if>
 		</div>
 	</div>
-	</form>
 	
 	<!-- content -->
 	<!-- <form name="form" method="post" action="/member/memberInst"> -->
@@ -245,40 +242,30 @@
 		<div class="row" style="margin-top: 5rem;"><h2><b>결제하기</b></h2></div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>주문 정보</b></h4></div>
-		<div class="row" style="margin-top: 0.5rem;"><span>유랑 온라인 수강권 (20주)</span></div>
-		<div><img src="https://cdn.class101.net/images/27b658a7-53e1-47ca-a1bd-6c9bb5f7f93b/2048xauto.webp" width="150px" height="120px"></div>
-		<div class="row" style="margin-top: 3rem;"><h4><b>선택한 구성품</b></h4></div>
-		<div class="row" style="margin-top: 1rem;">
-			<div class="col-3">
-				<img src="https://cdn.class101.net/images/ff11d001-ede0-4559-8231-51ed204106b7/2048xauto.webp" width="148px" height="148px">
-			</div>
-			<div class="col-9">
-				<div style="margin-top: 1rem;"><h5><b>iPad (구버전)</b></h5></div>
-				<div>옵션: PRO 11형 (3세대)/ 128GB/ 스페이스그레이/ Wi-Fi</div>
-				<div style="margin-top: 3rem;">수량 1개</div>
-			</div>
-		</div>	
-		<div class="row" style="margin-top: 1rem;">
-			<div class="col-3">
-				<img src="https://cdn.class101.net/images/89a3f6c0-9ccb-4234-83c3-81b8162bc638/2048xauto.webp" width="148px" height="148px">
-			</div>
-			<div class="col-9">
-				<div style="margin-top: 1rem;"><h5><b>애플펜슬</b></h5></div>
-				<div>옵션: 애플펜슬 2세대</div>
-				<div style="margin-top: 3rem;">수량 1개</div>
-			</div>
+		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.category}"/></span></div>
+		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.title}"/></span></div>
+		<div class="row" style="margin-top: 0.5rem;">
+			<img scr= >
 		</div>
 		<br>	
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" name="name" id="name" placeholder="이름"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" id="name"></div>
 	   		<div style="margin-top: 0.5rem;"><span class="down">배송시 수령인  확인을 위해 실명을 입력해 주세요.</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
+			<label class="form-label"><b>아이디</b></label>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.id}"/>" id="id" readonly></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>휴대폰 번호</b></label>
-	   		<div class="input"><input type="text" class="form-control" name="phone" value="<c:out value="${item.phone}"/>" id="phone" placeholder="01000000000"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.phone}"/>" id="phone"></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<label class="form-label"><b>이메일 주소</b></label>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.email}"/>" id="email"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송주소</b></label>
@@ -296,12 +283,12 @@
 			<div class="input"><input type="text" class="form-control" id="address" placeholder="주소"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addressDetail" placeholder="상세 주소"></div>
+			<div class="input"><input type="text" class="form-control" id="addressDetail" id="addressDetail" placeholder="상세 주소"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="input"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
 		</div>
-		<div class="row bsbs" style="margin-top: 1rem;">
+		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
    			<select class="form-select" aria-label="Default select example" name="request">
 			  <option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
@@ -328,7 +315,7 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>총 상품금액</b></span></div>
-			<div class="col-2 text-end"><span><b><c:out value="${item.price}"/>원</b></span></div>
+			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${item.price}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>배송비</b></span></div>
@@ -336,17 +323,16 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-2 text-end"><span> - <c:out value="${item.priceDiscount}"/>원</span></div>
+			<div class="col-2 text-end" name="priceDiscount"><span> - <fmt:formatNumber type="number" value="${item.priceDiscount}" pattern="#,###"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-2 text-end" id="DCcoupon"><span> - <c:out value="${item.couponDiscount}"/>원</span></div>
+			<div class="col-2 text-end" id="DCcoupon" name="couponDiscount"><span> - <fmt:formatNumber type="number" value="${item.couponDiscount}" pattern="#,###"/>원</span></div>
 		</div>
-		<div class="row justify-content-end" style="margin-top: 1rem;">5개월 할부 시 월 208,000원</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><h5><b>최종 가격</b></h5></div>
 			<div class="col-8" id="mip">무이자 할부 가능</div>
-			<div class="col-2 text-end" id="finalPrice"><span><h5><b><c:out value="${item.finalPrice}"/>원</b></h5></span></div>
+			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${item.finalPrice}" pattern="#,###"/>원</b></h5></span></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
@@ -361,16 +347,17 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<a type="button" href="/order/orderViewForm" role="button" class="btn btn-danger" id="btnSave">결제 하기</a>
+			<div class="col-6 text-end"><button type="button" role="button" class="btn btn-danger" id="btnOrder">결제 하기</button></div>
+			<div class="col-6 text-start"><button type="button" role="button" class="btn btn-dark" id="btnCancle">취소 하기</button></div>
 		</div>	
 	</div>
 	</form>
 	
-	  <form name="formVo" id="formVo" method="post">
-	  <!-- *Vo.jsp s -->
-	  <%@include file="orderVo.jsp"%>		<!-- #-> -->
-	  <!-- *Vo.jsp e -->
-	  </form>	
+	<form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="orderVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
+	</form>	
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -437,9 +424,8 @@
 	</script>
 	<script type="text/javascript">
 	
-		var goUrlList = "/order/orderList"; 			/* #-> */
-		var goUrlInst = "/order/orderInst"; 			/* #-> */
-		var goUrlUpdt = "/order/orderUpdt";			/* #-> */
+		var goUrlList = "/product/productView"; 			
+		var goUrlInst = "/order/orderUserInst"; 			
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
@@ -447,21 +433,11 @@
 		var formVo = $("form[name=formVo]");
 		
 		
-		$("#btnSave").on("click", function(){
-	
-			if (seq.val() == "0" || seq.val() == ""){
-		   		// insert
-		   		// if (validationInst() == false) return false;
-		   		form.attr("action", goUrlInst).submit();
-		   	} else {
-		   		// update
-		   		/* keyName.val(atob(keyName.val())); */
-		   		// if (validationUpdt() == false) return false;
-		   		form.attr("action", goUrlUpdt).submit();
-		   	}
+		$("#"btnOrder").on("click", function(){
+		   form.attr("action", goUrlInst).submit();
 		}); 
 		
-		$("#btnList").on("click", function(){
+		$("#btnCancle").on("click", function(){
 			formVo.attr("action", goUrlList).submit();
 		});
 		
