@@ -92,14 +92,6 @@
 	    a:focus, a:hover{
 	    	color: #F7670E;
 	    }
-	    .overflow-x-auto {
-			overflow-x: auto;
-		}
-				
-		.overflow-x-auto table {
-			width: auto!important; 
-			white-space: nowrap;
-		}
 	</style>
 </head>
 <body>
@@ -192,7 +184,7 @@
 				<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 			</div>
 		</div>
-		<div class="row justify-content-end" style="margin-top: 1rem;">
+		<div class="row justify-content-end" style="margin-top: 1rem; width: 90%;">
 			<div class="col-2">
 				<select id="shPosition" name="shPosition" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shPosition}">selected </c:if>>직책</option>
@@ -236,7 +228,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 90%; margin-top: 0.5rem;">
+	<div class="container-fluid text-center overflow-x-auto" style="width: 90%; margin-top: 0.5rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">

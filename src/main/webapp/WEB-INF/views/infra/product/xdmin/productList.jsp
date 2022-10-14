@@ -9,20 +9,11 @@
 <head>
 	<title>Product List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
-    <!-- user css -->
-    <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -80,18 +71,6 @@
     		--bs-pagination-active-bg: #FCC4A3;
     		--bs-pagination-active-border-color: #FCC4A3;
 		}
-		.table {
-			overflow-x: auto;
-			width: auto!important; 
-			white-space: nowrap;
-		}
-   		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-		  color: #ffffff;
-		  background-color: #f87320;
-		}
-		.nav-link:focus, .nav-link:hover {
-		  color: #F7670E;
-		}
 		a {
 	   	color: #000000;
 	    }
@@ -100,6 +79,14 @@
 	    }
 	    table, td, th{
 			text-align: center;
+		}
+		.overflow-x-auto {
+			overflow-x: auto;
+		}
+				
+		.overflow-x-auto table {
+			width: auto!important; 
+			white-space: nowrap;
 		}
 		.tdtd{
 			text-align: left !important;
@@ -164,7 +151,7 @@
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<div class="container-fluid p-4" style="width: 99%">
-	<div class="container-fluid" style="margin-top: 3rem;">
+	<div class="container-fluid" style="margin-top: 3rem; width: 99%;">
 		<div class="text-center"><h1><b>클래스관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 3rem;">
 			<div class="col-2">
@@ -189,7 +176,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid p-4">
+	<div class="container-fluid p-4" style="width: 99%;">
 		<div class="row justify-content-end">
 			<div class="col-2">
 				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
@@ -215,7 +202,7 @@
 		
 	<!--class List -->
 	
-	<div class="container-fluid">
+	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">
 			<div class="col-1 text-start"><h5><b>Total: <c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></b></h5></div>
 			<div class="col-1 text-end">
@@ -229,7 +216,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="margin-top: 0.5rem;">
+	<div class="container-fluid text-center overflow-x-auto" style="margin-top: 0.5rem; width: 99%;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
@@ -309,7 +296,7 @@
 		</table>
 	</div>
 		
-	<div class="container-fluid">
+	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
 	     		<!-- <button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button> -->
@@ -369,8 +356,6 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
-	<!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script> -->
 	<script type="text/javascript">
 		function selectAll(selectAll)  {
 		  const checkboxes 
@@ -379,15 +364,6 @@
 		  checkboxes.forEach((checkbox) => {
 		    checkbox.checked = selectAll.checked;
 		  })
-		}
-	</script>
-	<script type="text/javascript">
-		function deleteRow(rownum) {
-		  // table element 찾기
-		  const table = document.getElementById('minus');
-		  
-		  // 행(Row) 삭제
-		  const newRow = table.deleteRow(rownum);
 		}
 	</script>
 	<!-- 체크박스 삭제 -->
