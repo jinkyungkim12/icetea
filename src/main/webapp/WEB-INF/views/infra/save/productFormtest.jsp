@@ -149,7 +149,7 @@
 	<form id="form" name="form" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="formNY" value="1">
 	<!-- *Vo.jsp s -->
-	<%@include file="productVo.jsp"%>		<!-- #-> -->
+	<%-- <%@include file="productVo.jsp"%>	 --%>	<!-- #-> -->
 	<!-- *Vo.jsp e -->
 	<!-- <form method="post" name="form" action="/product/productInst"> -->
 	<div class="container">
@@ -323,7 +323,7 @@
    
    <form name="formVo" id="formVo" method="post">
 	<!-- *Vo.jsp s -->
-	<%@include file="productVo.jsp"%>		<!-- #-> -->
+<%-- 	<%@include file="productVo.jsp"%>	 --%>	<!-- #-> -->
 	<!-- *Vo.jsp e -->
 	</form>
 
