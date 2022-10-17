@@ -340,7 +340,7 @@
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
 			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="<fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
+			<div class="col-1 text-start"><span><b>원</b></span></div> 
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
