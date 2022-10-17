@@ -179,58 +179,10 @@
 			 </nav>  
 		</div>
 			
-		<c:choose>
-			<c:when test="${empty sessSeq }">
-				<div class="col">
-					<ul class="nav justify-content-end" id="leftList">
-						<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="#">크리에이터 지원</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">기업교육</a></li>
-						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
-					</ul>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<div class="col">
-					<div class="row text-end">
-						<div class="dropdown">
-							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img alt="..." src="
-								<c:choose>
-									<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
-									<c:otherwise>../resources/images/profileimg.png</c:otherwise>
-								</c:choose>
-								" class="avatar avatar-rounded-circle">  
-							</a>
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-								<div class="container">
-									<div class="row">
-										<div class="col-4 text-center">
-											<img alt="..." src="
-											<c:choose>
-												<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
-												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
-											</c:choose>
-											" class="avatar avatar-rounded-circle"> 
-										</div>
-										<div class="col-8 text-center" style="margin-top: 0.9rem;">
-											<h5><b><c:out value="${sessName}"/></b></h5>
-										</div>
-									</div>
-									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
-									<hr class="dropdown-divider">
-									<div class="row justify-content-center"><button type="button" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</button></div>
-								</div>
-							</div>
-						</div>
-					</div>	
-				</div>
-			</c:otherwise>
-		</c:choose>
 	 	
 			
 			<!-- 로그인 전	 -->
-			<%-- <c:if test="${sessSeq eq null}">
+			<c:if test="${sessSeq eq null}">
 				<div class="col">
 					<ul class="nav justify-content-end" id="leftList">
 						<li class="nav-item"><a class="nav-link" aria-current="page"
@@ -239,10 +191,10 @@
 						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
 					</ul>
 				</div>
-			</c:if> --%>
+			</c:if>
 			
 			<!-- 로그인 후 -->
-			<%-- <c:if test="${sessSeq ne null}">
+			<c:if test="${sessSeq ne null}">
 				<div class="col">
 					<div class="row text-end">
 						<div class="dropdown">
@@ -277,7 +229,7 @@
 						</div>
 					</div>	
 				</div>
-			</c:if> --%>
+			</c:if>
 			
 		</div>
 	</div>
@@ -404,9 +356,10 @@
 	</div>
 	</form>
 	
-	<%-- <form name="formVo" id="formVo" method="post">
-	<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
-	</form>	 --%>
+	<form name="formVo" id="formVo" method="post">
+		<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
+		<input type="hidden" name="mSeq" value="${sessSeq}"/>  
+	</form>	
 	
 	<!-- 끝 -->
 	<div class="container">
