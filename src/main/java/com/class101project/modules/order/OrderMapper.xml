@@ -110,6 +110,7 @@
 			,a.finalPrice
 			,a.pay
 			,a.orderDate
+			,a.delNY
 		)
 		VALUES (
 			,#{a.request}
@@ -119,6 +120,7 @@
 			,#{a.finalPrice}
 			,#{a.pay}
 			,now()
+			,0
 		)
 			from classOrder a 
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">

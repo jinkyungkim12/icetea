@@ -327,20 +327,37 @@
 			<div class="col-9 text-end"><input type="text" class="form-control" name="priceDiscount" value="<fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
+		
+		
+		
+		
+		
+		
+		
 		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="couponDiscount" value="<fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
+			<div class="col-10"><span><b>총 상품금액</b></span></div>
+			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2" id="finalPrice"><h5><b>최종 가격</b></h5></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="<fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
+			<div class="col-10"><span><b>배송비</b></span></div>
+			<div class="col-2 text-end"><span><b>무료</b></span></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<div class="col-10"><span><b>상품 할인 금액</b></span></div>
+			<div class="col-2 text-end" name="priceDiscount"><span> - <fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>원</span></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
+			<div class="col-2 text-end" id="DCcoupon" name="couponDiscount"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<div class="col-10" id="finalPrice"><h5><b>최종 가격</b></h5></div>
+			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>원</b></h5></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="<fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
+			<div class="col-8" id="mip"><small>무이자 5개월 할부</small></div>
+			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><b><fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
