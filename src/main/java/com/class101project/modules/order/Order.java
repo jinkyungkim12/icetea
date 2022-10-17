@@ -26,7 +26,28 @@ public class Order extends Base{
 	private Integer request;
 	private String title;
 	private String category;
+	private Integer	coupon;
+	private Integer discountRate;
+	private Integer payMonth;
 	
+	public Integer getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(Integer discountRate) {
+		this.discountRate = discountRate;
+	}
+	public Integer getPayMonth() {
+		return payMonth;
+	}
+	public void setPayMonth(Integer payMonth) {
+		this.payMonth = payMonth;
+	}
+	public Integer getCoupon() {
+		return coupon;
+	}
+	public void setCoupon(Integer coupon) {
+		this.coupon = coupon;
+	}
 	public String getCategory() {
 		return category;
 	}

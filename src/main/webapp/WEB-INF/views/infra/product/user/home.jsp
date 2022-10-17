@@ -237,7 +237,7 @@
 											" class="avatar avatar-rounded-circle"> 
 										</div>
 										<div class="col-8 text-center" style="margin-top: 0.9rem;">
-											<h5><b><c:out value="${sessName}"/></b></h5>
+											<h5><b><c:out value="${sessName}"/>${sessSeq }</b></h5>
 										</div>
 									</div>
 									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 

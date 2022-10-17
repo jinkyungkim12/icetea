@@ -165,23 +165,21 @@
 		SELECT
 			a.*
 			,b.*
-			,c.*
-			,d.*
-			from classOrder a 
-			left join member b on b.seq = a.member_seq
-			left join transport c on a.member_seq = c.member_seq AND c.tOrder = 1
-			left join classProduct d on d.seq = a.classProduct_seq
+			from member a  
+			left join transport b on b.member_seq = a.seq AND b.tOrder = 1
 			WHERE 1=1
-				AND a.seq = #{seq}
+			AND a.seq = #{mSeq}
 	</select>
 	
 	<!-- image -->
 	<select id="selectProductImg" resultMap="resultMapObj">
 		SELECT
-		 * 
-		 FROM productUploaded
+		 a.*
+         ,b.*
+		 FROM productUploaded a
+         left join classProduct b on b.seq = a.pseq
 		 WHERE
-		 pseq = #{seq}
-		
+		 a.pseq = #{seq}
+		 AND a.sort = 1
 	</select>
 </mapper>

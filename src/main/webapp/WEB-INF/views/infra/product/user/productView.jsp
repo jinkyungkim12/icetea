@@ -329,7 +329,7 @@
 											" class="avatar avatar-rounded-circle"> 
 										</div>
 										<div class="col-8 text-center" style="margin-top: 0.9rem;">
-											<h5><b><c:out value="${sessName}"/></b></h5>
+											<h5><b><c:out value="${sessName}"/>${sessSeq }</b></h5>
 										</div>
 									</div>
 									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
@@ -346,7 +346,8 @@
 	
 	<!-- 상세 메인 이미지 -->
 	<form id="form" name="form" method="post" enctype="multipart/form-data">
-	<%@include file="productVo.jsp"%>	
+	<input type="hidden" name="seq" value="${vo.seq}"> 
+	<input type="hidden" name="mSeq" value="${sessSeq}"> 
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
 		
@@ -627,7 +628,6 @@
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		$("#btnOrder").on("click", function(){
-			seq.val(seq);
 			form.attr("action", goUrlForm).submit();
 		}); 
 		

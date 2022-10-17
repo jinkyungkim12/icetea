@@ -59,9 +59,8 @@ public class OrderController {
 		Order item = service.selectOneOrder(vo);
 		model.addAttribute("item", item);
 		
-		
 		Order itemImg = service.selectProductImg(vo);
-		model.addAttribute("itemImg" + itemImg);
+		model.addAttribute("itemImg", itemImg);
 		
 		return "/infra/order/user/orderRegForm";
 	}

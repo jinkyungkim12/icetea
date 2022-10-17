@@ -175,13 +175,12 @@
 				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
 				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
 			        </div>
-				    </div>
-				 </nav>  
-			</div>
-	 	
+			    </div>
+			 </nav>  
+		</div>
 			
-			<!-- 로그인 전	 -->
-			<c:if test="${sessSeq eq null}">
+		<c:choose>
+			<c:when test="${empty sessSeq }">
 				<div class="col">
 					<ul class="nav justify-content-end" id="leftList">
 						<li class="nav-item"><a class="nav-link" aria-current="page"
@@ -190,10 +189,8 @@
 						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
 					</ul>
 				</div>
-			</c:if>
-			
-			<!-- 로그인 후 -->
-			<c:if test="${sessSeq ne null}">
+			</c:when>
+			<c:otherwise>
 				<div class="col">
 					<div class="row text-end">
 						<div class="dropdown">
@@ -228,28 +225,78 @@
 						</div>
 					</div>	
 				</div>
-			</c:if>
+			</c:otherwise>
+		</c:choose>
+	 	
+			
+			<!-- 로그인 전	 -->
+			<%-- <c:if test="${sessSeq eq null}">
+				<div class="col">
+					<ul class="nav justify-content-end" id="leftList">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="#">크리에이터 지원</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">기업교육</a></li>
+						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
+					</ul>
+				</div>
+			</c:if> --%>
+			
+			<!-- 로그인 후 -->
+			<%-- <c:if test="${sessSeq ne null}">
+				<div class="col">
+					<div class="row text-end">
+						<div class="dropdown">
+							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img alt="..." src="
+								<c:choose>
+									<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
+									<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+								</c:choose>
+								" class="avatar avatar-rounded-circle">  
+							</a>
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+								<div class="container">
+									<div class="row">
+										<div class="col-4 text-center">
+											<img alt="..." src="
+											<c:choose>
+												<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
+												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+											</c:choose>
+											" class="avatar avatar-rounded-circle"> 
+										</div>
+										<div class="col-8 text-center" style="margin-top: 0.9rem;">
+											<h5><b><c:out value="${sessName}"/></b></h5>
+										</div>
+									</div>
+									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+									<hr class="dropdown-divider">
+									<div class="row justify-content-center"><button type="button" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</button></div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</c:if> --%>
+			
 		</div>
 	</div>
 	
 	<!-- content -->
 	<!-- <form name="form" method="post" action="/member/memberInst"> -->
 	<form  id="form" name="form" method="post" >
-	<!-- *Vo.jsp s -->
-	<%@include file="orderVo.jsp"%>		<!-- #-> -->
-	<!-- *Vo.jsp e -->
+	<input type="hidden" name="seq" value="${vo.seq}"/>  
+	<input type="hidden" name="mSeq" value="${sessSeq}"/>  
 	<div class="container" id="containerFont">
 		<div class="row" style="margin-top: 5rem;"><h2><b>결제하기</b></h2></div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>주문 정보</b></h4></div>
-		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.category}"/></span></div>
-		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.title}"/></span></div>
-		<div class="row" style="margin-top: 0.5rem;">
-			<img scr= >
-		</div>
+		<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
+		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
+		<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
 		<br>	
 		<hr class="hrstyle">
-		<div class="row" style="margin-top: 3rem;"><h4><b>배송 정보</b></h4></div>
+		<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
 	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" id="name"></div>
@@ -271,7 +318,7 @@
 			<label class="form-label"><b>배송주소</b></label>
 	   		<div class="row input-group">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" id="zipcode" placeholder="우편번호" style="width: 100%;">
+		   			<input type="text" class="form-control" id="zipcode" value="<c:out value="${item.zipcode}"/>" placeholder="우편번호" style="width: 100%;">
 		   		</div>
 		   		<div class="col-3">
 		   			<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
@@ -280,18 +327,18 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="address" placeholder="주소"></div>
+			<div class="input"><input type="text" class="form-control" id="address" value="<c:out value="${item.address}"/>" placeholder="주소"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addressDetail" id="addressDetail" placeholder="상세 주소"></div>
+			<div class="input"><input type="text" class="form-control" id="addressDetail" value="<c:out value="${item.addressDetail}"/>" id="addressDetail" placeholder="상세 주소"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addr3" placeholder="참고사항"></div>
+			<div class="input"><input type="text" class="form-control" id="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
    			<select class="form-select" aria-label="Default select example" name="request">
-			  <option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
+   			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
 			  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>
 			  <option value="9" <c:if test="${item.request eq 9 }"> selected</c:if>>문 앞에 놔두고 가주세요</option>
 			  <option value="10" <c:if test="${item.request eq 10 }"> selected</c:if>>배송 전 연락바랍니다</option>
@@ -303,7 +350,7 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="${item.couponDiscount}원" name="couponDiscount" placeholder="">
+		   			<input type="text" class="form-control" value="${item.coupon}원" placeholder="">
 		   		</div>
 		   		<div class="col-3">
 		   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
@@ -315,7 +362,7 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>총 상품금액</b></span></div>
-			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${item.price}" pattern="#,###"/>원</b></span></div>
+			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>배송비</b></span></div>
@@ -323,26 +370,30 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-2 text-end" name="priceDiscount"><span> - <fmt:formatNumber type="number" value="${item.priceDiscount}" pattern="#,###"/>원</span></div>
+			<div class="col-2 text-end" name="priceDiscount"><span> - <fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-2 text-end" id="DCcoupon" name="couponDiscount"><span> - <fmt:formatNumber type="number" value="${item.couponDiscount}" pattern="#,###"/>원</span></div>
+			<div class="col-2 text-end" id="DCcoupon" name="couponDiscount"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2" id="finalPrice"><h5><b>최종 가격</b></h5></div>
-			<div class="col-8" id="mip">무이자 할부 가능</div>
-			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${item.finalPrice}" pattern="#,###"/>원</b></h5></span></div>
+			<div class="col-10" id="finalPrice"><h5><b>최종 가격</b></h5></div>
+			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>원</b></h5></span></div>
+		</div>
+		<div class="row" style="margin-top: 1rem;">
+			<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
+			<div class="col-8" id="mip"><small>무이자 5개월 할부</small></div>
+			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><b><fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
 		<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${item.pay eq 6 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${itemImg.pay eq 6 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay1">카카오페이</label>
 			</div>
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${item.pay eq 7 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${itemImg.pay eq 7 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>
@@ -353,11 +404,9 @@
 	</div>
 	</form>
 	
-	<form name="formVo" id="formVo" method="post">
-	<!-- *Vo.jsp s -->
-	<%@include file="orderVo.jsp"%>		<!-- #-> -->
-	<!-- *Vo.jsp e -->
-	</form>	
+	<%-- <form name="formVo" id="formVo" method="post">
+	<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
+	</form>	 --%>
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -433,7 +482,7 @@
 		var formVo = $("form[name=formVo]");
 		
 		
-		$("#"btnOrder").on("click", function(){
+		$("#btnOrder").on("click", function(){
 		   form.attr("action", goUrlInst).submit();
 		}); 
 		
@@ -444,6 +493,12 @@
 	</script>
 	<script>
 		$("#clear").on("click", function() {
+			
+			alert($("input[name=seq]").val());
+			alert($("input[name=mSeq]").val());
+			
+			
+			return false;
 			$("#zipcode").val('');
 			$("#address").val('');
 			$("#addressDetail").val('');

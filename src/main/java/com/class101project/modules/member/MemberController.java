@@ -69,6 +69,7 @@ public class MemberController {
 		
 		
 		if (rtMember != null ) {
+			httpSession.setMaxInactiveInterval(60 * 120);
 			httpSession.setAttribute("sessSeq", rtMember.getSeq());
 			httpSession.setAttribute("sessId", rtMember.getId());
 			httpSession.setAttribute("sessName", rtMember.getName());
@@ -86,6 +87,7 @@ public class MemberController {
 	
 	
 	// 로그아웃
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "logoutProc")

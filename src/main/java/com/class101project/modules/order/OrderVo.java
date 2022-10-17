@@ -13,6 +13,24 @@ public class OrderVo {
 	private Integer shOptionDate;
 	
 	private String seq;
+	private String pseq;
+	private String mSeq;
+
+	public String getmSeq() {
+		return mSeq;
+	}
+
+	public void setmSeq(String mSeq) {
+		this.mSeq = mSeq;
+	}
+
+	public String getPseq() {
+		return pseq;
+	}
+
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
+	}
 
 	public Integer getShOption() {
 		return shOption;
