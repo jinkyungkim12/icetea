@@ -19,8 +19,8 @@ public class UtilUpload {
 		String pathModule = className;
 		String nowString = UtilDateTime.nowString();
 		String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-//		String path = "D://factory/ws_sts_4151/icetea/src/main/webapp/resources/uploaded" + "/" + pathModule + "/" + pathDate + "/";
-		String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" + pathDate + "/";
+		String path = "D://factory/ws_sts_4151/icetea/src/main/webapp/resources/uploaded" + "/" + pathModule + "/" + pathDate + "/";
+//		String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" + pathDate + "/";
 		String pathForView = "/resources/uploaded/" + pathModule + "/" + pathDate + "/";
 		
 		createPath(path);
