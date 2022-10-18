@@ -91,6 +91,7 @@ public class OrderController {
 		
 		service.orderUserInst(dto);
 		
+		System.out.println("dto.getMember_seq() : " + dto.getMember_seq());
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		

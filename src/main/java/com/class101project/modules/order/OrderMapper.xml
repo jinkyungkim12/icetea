@@ -102,29 +102,32 @@
 	</insert>
 	
 	<insert id="orderUserInst">
-		INSERT INTO classOrder a(
-			,a.request
-			,a.price
-			,a.priceDiscount
-			,a.couponDiscount
-			,a.finalPrice
-			,a.pay
-			,a.orderDate
-			,a.delNY
-			,a.tOrder
+		INSERT INTO classOrder(
+			request
+			,price
+			,priceDiscount
+			,couponDiscount
+			,finalPrice
+			,pay
+			,orderDate
+			,delNY
+			,tOrder
+			,classProduct_seq
+			,member_seq
 		)
 		VALUES (
-			,#{a.request}
-			,#{a.price}
-			,#{a.priceDiscount}
-			,#{a.couponDiscount}
-			,#{a.finalPrice}
-			,#{a.pay}
+			#{request}
+			,#{price}
+			,#{priceDiscount}
+			,#{couponDiscount}
+			,#{finalPrice}
+			,#{pay}
 			,now()
 			,0
 			,1
+			,#{classProduct_seq}
+			,#{member_seq}
 		)
-			from classOrder a 
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>

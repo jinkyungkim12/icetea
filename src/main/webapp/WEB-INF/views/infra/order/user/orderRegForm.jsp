@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
 <jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
 <html>
 <head>
@@ -302,7 +301,7 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="${item.coupon}원" placeholder="">
+		   			<input type="text" class="form-control" value="${item.coupon}" placeholder="">
 		   		</div>
 		   		<div class="col-3">
 		   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
@@ -314,7 +313,7 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2"><span><b>총 상품금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="price" value="<fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>"></div>
+			<div class="col-9 text-end"><input type="text" class="form-control" name="price" value="${itemImg.price}"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
@@ -323,23 +322,29 @@
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
+			<c:set var="varpriceDiscount" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}"/>
+			<fmt:parseNumber value="${varpriceDiscount}" type="number" var="numpriceDiscount" integerOnly="true"/>
 			<div class="col-2"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="priceDiscount" value="<fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>"></div>
+			<div class="col-9 text-end"><input type="text" class="form-control" name="priceDiscount" value="${numpriceDiscount }"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="couponDiscount" value="<fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>"></div>
+			<div class="col-9 text-end"><input type="text" class="form-control" name="couponDiscount" value="${item.coupon}"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><h5><b>최종 가격</b></h5></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="<fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>"></div>
+			<c:set var="varfinalPrice" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" />
+			<fmt:parseNumber value="${varfinalPrice}" type="number" var="numfinalPrice" integerOnly="true"/>
+			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="${numfinalPrice }"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" name="finalPrice" value="<fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>"></div>
+			<c:set var="varfinalPrice5" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" />
+			<fmt:parseNumber value="${varfinalPrice5}" type="number" var="numfinalPrice5" integerOnly="true"/>
+			<div class="col-9 text-end"><input type="text" class="form-control" style="color: red;" value="${numfinalPrice5}"></div>
 			<div class="col-1 text-start"><span><b>원</b></span></div> 
 		</div>
 		<hr class="hrstyle">
@@ -354,17 +359,16 @@
 			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>
+		<input type="hidden" name="delNY" value="0"/>
+		<input type="hidden" name="tOrder" value="1"/>
+		<input type="hidden" name="classProduct_seq" value="${vo.seq}"/> 
+		<input type="hidden" name="member_seq" value="${sessSeq}"/> 
 		<div class="row justify-content-center">
 			<div class="col-6 text-end"><button type="button" role="button" class="btn btn-danger" id="btnOrder">결제 하기</button></div>
 			<div class="col-6 text-start"><button type="button" role="button" class="btn btn-dark" id="btnCancle">취소 하기</button></div>
 		</div>	
 	</div>
 	</form>
-	
-	<form name="formVo" id="formVo" method="post">
-		<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
-		<input type="hidden" name="mSeq" value="${sessSeq}"/>  
-	</form>	
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -437,7 +441,6 @@
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
-		var formVo = $("form[name=formVo]");
 		
 		
 		$("#btnOrder").on("click", function(){
@@ -445,7 +448,7 @@
 		}); 
 		
 		$("#btnCancle").on("click", function(){
-			formVo.attr("action", goUrlList).submit();
+			form.attr("action", goUrlList).submit();
 		});
 		
 	</script>

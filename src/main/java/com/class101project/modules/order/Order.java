@@ -29,74 +29,8 @@ public class Order extends Base{
 	private Integer	coupon;
 	private Integer discountRate;
 	private Integer payMonth;
-
 	
-	public Integer getDiscountRate() {
-		return discountRate;
-	}
-	public void setDiscountRate(Integer discountRate) {
-		this.discountRate = discountRate;
-	}
-	public Integer getPayMonth() {
-		return payMonth;
-	}
-	public void setPayMonth(Integer payMonth) {
-		this.payMonth = payMonth;
-	}
-	public Integer getCoupon() {
-		return coupon;
-	}
-	public void setCoupon(Integer coupon) {
-		this.coupon = coupon;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public Integer getRequest() {
-		return request;
-	}
-	public void setRequest(Integer request) {
-		this.request = request;
-	}
-	public String getAddressDetail() {
-		return addressDetail;
-	}
-	public void setAddressDetail(String addressDetail) {
-		this.addressDetail = addressDetail;
-	}
-	public String getAddr3() {
-		return addr3;
-	}
-	public void setAddr3(String addr3) {
-		this.addr3 = addr3;
-	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public Integer getDelNY() {
-		return delNY;
-	}
-	public void setDelNY(Integer delNY) {
-		this.delNY = delNY;
-	}
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -181,6 +115,71 @@ public class Order extends Base{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	public Integer getDelNY() {
+		return delNY;
+	}
+	public void setDelNY(Integer delNY) {
+		this.delNY = delNY;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public Integer getRequest() {
+		return request;
+	}
+	public void setRequest(Integer request) {
+		this.request = request;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public Integer getCoupon() {
+		return coupon;
+	}
+	public void setCoupon(Integer coupon) {
+		this.coupon = coupon;
+	}
+	public Integer getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(Integer discountRate) {
+		this.discountRate = discountRate;
+	}
+	public Integer getPayMonth() {
+		return payMonth;
+	}
+	public void setPayMonth(Integer payMonth) {
+		this.payMonth = payMonth;
+	}
 	
 }

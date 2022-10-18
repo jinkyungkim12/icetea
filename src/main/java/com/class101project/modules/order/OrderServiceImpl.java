@@ -20,8 +20,8 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Override
 	public int orderUserInst(Order dto) throws Exception{
-		int result = dao.orderUserInst(dto);
-		return result;
+		
+		return dao.orderUserInst(dto);
 	}
 	
 	@Override
