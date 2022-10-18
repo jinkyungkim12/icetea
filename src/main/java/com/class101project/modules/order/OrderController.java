@@ -87,13 +87,19 @@ public class OrderController {
 	
 	
 	@RequestMapping(value = "orderUserInst")
-	public String orderUserInst(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String orderUserInst(@ModelAttribute("vo") OrderVo vo, Order dto, Model model) throws Exception {
 		
 		service.orderUserInst(dto);
 		
 		System.out.println("dto.getMember_seq() : " + dto.getMember_seq());
 		vo.setSeq(dto.getSeq());
-		redirectAttributes.addFlashAttribute("vo", vo);
+
+		Order item = service.selectOneOrder(vo);
+		model.addAttribute("item", item);
+		
+		Order itemImg = service.selectProductImg(vo);
+		model.addAttribute("itemImg", itemImg);
+		
 		
 		return "/infra/order/user/orderView";
 		
@@ -124,8 +130,25 @@ public class OrderController {
 		
 		Order itemImg = service.selectProductImg(vo);
 		model.addAttribute("itemImg", itemImg);
+		
 		return "/infra/order/user/orderView";
 	}
+	
+	
+	@RequestMapping(value = "mypageOrder")
+	public String mypageOrder(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+		
+		vo.setSeq(dto.getSeq());
+		
+		Order item = service.selectOneOrder(vo);
+		model.addAttribute("item", item);
+		
+		Order itemImg = service.selectProductImg(vo);
+		model.addAttribute("itemImg", itemImg);
+		
+		return "/infra/member/user/mypageOrderView";
+	}
+	
 	
 	@RequestMapping(value = "orderViewFormOther", method = RequestMethod.GET)
 	public String orderViewFormOther(Locale locale, Model model) {

@@ -300,11 +300,11 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
 		<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${item.pay eq 6 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="6" <c:if test="${item.pay eq 6 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay1">카카오페이</label>
 			</div>
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${item.pay eq 7 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="7" <c:if test="${item.pay eq 7 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>

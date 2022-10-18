@@ -155,21 +155,12 @@
 			height: 50px;
 			border-radius: 100%;
 		}
-		#BtnOrder{
-			margin-top: 3rem;
-			background: #E6E6E6;
-			width: 500px;
-		}
 	</style>
 
 </head>
 <body>
 
 <!-- start -->
-<form  id="form" name="form" method="post" >
-<!-- *Vo.jsp s -->
-<%@include file="memberVo.jsp"%>		<!-- #-> -->
-<!-- *Vo.jsp e -->
 <!-- NAV bar	 -->
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
@@ -249,6 +240,7 @@
 					</div>	
 				</div>
 			</c:if>
+				
 		</div>
 	</div>
 	
@@ -291,61 +283,21 @@
 
 			<!-- 오른쪽 -->
 			<div class="col-8">
-			  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-			  	<div style="margin-top: 3rem;"><h5><b>내 스토어 상품</b></h5></div>
-				<div class="row">
-					<div class="col-4">
-						<img src="https://cdn.class101.net/images/dfd02760-c3e2-4ea7-8eb1-a93cf10fa746/375xauto.webp" width="260" height="200">
-					</div>
-					<div class="col-4">
-						<img src="https://cdn.class101.net/images/cb2119ec-b977-49e3-a1a4-b674081ed809/750xauto.webp" width="260" height="200">
-					</div>
-					<div class="col-4">
-						<img src="../../resources/images/mypage3.png" width="260" height="200">
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>인스타그램으로 세상에 나의 가치를 알려<br>보자. 인스타그램 퍼스널 브랜딩</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>초보 그림러가 인기 작가가 되는 법, 콕스<br>의 독학비법서</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>무명 이모티콘 작가가 인기 작가가 된 비<br>결!경쟁에서 살아남는 인기 이모티콘 만들기</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>50% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>75% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>90% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 20일 남음</span></div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 50일 남음</span></div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 10일 남음</span></div>
-				</div>
-				<div class="row justify-content-center"><div class="col-6 text-center"><button type="button" id="BtnOrder" class="btn btn-light"><b>주문내역 보러가기</b></button></div></div>
-			  </div>
+			  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
+			  	<form  id="form" name="form" method="post" >
+				<input type="hidden" name="seq" value="${vo.seq}"/>  
+				<input type="hidden" name="mSeq" value="${sessSeq}"/>
+				<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
+				<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
+				<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
+				<br>
+				</form>  
+			  		
 			</div>
+		</div>
 		</div>	
 	</div>
-</div>
+	</div>
 	
 	
 	<!-- 끝 -->
@@ -388,7 +340,6 @@
 	<script type="text/javascript">
 		
 		var goUrlForm = "/member/mypageModForm";
-		var goUrlOrder = "/order/mypageOrder"
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -397,10 +348,6 @@
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
-		}
-		
-		$(#BtnOrder).on("click", function(){
-			form.attr("action", goUrlOrder).submit();
 		}
 		
 	</script>

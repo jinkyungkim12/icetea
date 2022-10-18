@@ -77,19 +77,12 @@
 		#DCcoupon{
 			color: red;
 		}
-		#btnOrder{
-			width: 300px;
+		#btnComplete{
+			width: 500px;
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
 			font-style: normal;
 			background-color: #FF5600;
-			margin-top: 2rem;
-		}
-		#btnCancle{
-			width: 300px;
-			height: 40px;
-			font-family: 'Happiness-Sans-Regular';
-			font-style: normal;
 			margin-top: 2rem;
 		}
 		.endTitle{
@@ -344,15 +337,10 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-6 text-end"><button type="button" role="button" class="btn btn-danger" id="btnComplete">완료 하기</button></div>
+			<div class="col-6 text-center"><button type="button" role="button" class="btn btn-danger" id="btnComplete">완료 하기</button></div>
 		</div>	
 	</div>
 	</form>
-	
-	<form name="formVo" id="formVo" method="post">
-		<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
-		<input type="hidden" name="mSeq" value="${sessSeq}"/>  
-	</form>	
 	
 	<!-- 끝 -->
 	<div class="container">
@@ -424,10 +412,9 @@
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
-		var formVo = $("form[name=formVo]");
 		
 		$("#btnComplete").on("click", function(){
-			formVo.attr("action", goUrlList).submit();
+			form.attr("action", goUrlList).submit();
 		});
 		
 	</script>

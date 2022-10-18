@@ -184,7 +184,7 @@
 				<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 			</div>
 		</div>
-		<div class="row justify-content-end" style="margin-top: 1rem; width: 90%;">
+		<div class="row justify-content-end" style="margin-top: 1rem;">
 			<div class="col-2">
 				<select id="shPosition" name="shPosition" class="form-select" aria-label="Default select example">
 				   <option value="" <c:if test="${empty vo.shPosition}">selected </c:if>>직책</option>
