@@ -29,6 +29,7 @@ public class Order extends Base{
 	private Integer	coupon;
 	private Integer discountRate;
 	private Integer payMonth;
+
 	
 	public Integer getDiscountRate() {
 		return discountRate;
