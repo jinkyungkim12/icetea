@@ -251,7 +251,7 @@
 		<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>받으시는 분</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" id="name"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" id="name" readonly></div>
 	   		<div style="margin-top: 0.5rem;"><span class="down">배송시 수령인  확인을 위해 실명을 입력해 주세요.</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
@@ -260,36 +260,30 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>휴대폰 번호</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.phone}"/>" id="phone"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.phone}"/>" id="phone" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>이메일 주소</b></label>
-	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.email}"/>" id="email"></div>
+	   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.email}"/>" id="email" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송주소</b></label>
 	   		<div class="row input-group">
-		   		<div class="col-9">
-		   			<input type="text" class="form-control" id="zipcode" value="<c:out value="${item.zipcode}"/>" placeholder="우편번호" style="width: 100%;">
-		   		</div>
-		   		<div class="col-3">
-		   			<button type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
-		   			<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
-				</div>
+		   		<input type="text" class="form-control" id="zipcode" value="<c:out value="${item.zipcode}"/>" placeholder="우편번호" style="width: 100%;" readonly>
 			</div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="address" value="<c:out value="${item.address}"/>" placeholder="주소"></div>
+			<div class="input"><input type="text" class="form-control" id="address" value="<c:out value="${item.address}"/>" placeholder="주소" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addressDetail" value="<c:out value="${item.addressDetail}"/>" id="addressDetail" placeholder="상세 주소"></div>
+			<div class="input"><input type="text" class="form-control" id="addressDetail" value="<c:out value="${item.addressDetail}"/>" id="addressDetail" placeholder="상세 주소" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
-			<div class="input"><input type="text" class="form-control" id="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
+			<div class="input"><input type="text" class="form-control" id="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항" readonly></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-   			<select class="form-select" aria-label="Default select example" name="request">
+   			<select class="form-select" aria-label="Default select example" readonly>
    			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
 			  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>
 			  <option value="9" <c:if test="${item.request eq 9 }"> selected</c:if>>문 앞에 놔두고 가주세요</option>
@@ -302,7 +296,7 @@
 			<label class="form-label"><b>쿠폰</b></label>
 	   		<div class="row">
 		   		<div class="col-9">
-		   			<input type="text" class="form-control" value="${item.coupon}원" placeholder="">
+		   			<input type="text" class="form-control" value="${item.coupon}원" readonly>
 		   		</div>
 		   		<div class="col-3">
 		   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
@@ -314,7 +308,7 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>총 상품금액</b></span></div>
-			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>원</b></span></div>
+			<div class="col-2 text-end"><span><b><fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>배송비</b></span></div>
@@ -322,36 +316,35 @@
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-2 text-end" name="priceDiscount"><span> - <fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>원</span></div>
+			<div class="col-2 text-end"><span> - <fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-			<div class="col-2 text-end" id="DCcoupon" name="couponDiscount"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
+			<div class="col-2 text-end" id="DCcoupon"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10" id="finalPrice"><h5><b>최종 가격</b></h5></div>
-			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>원</b></h5></span></div>
+			<div class="col-2 text-end" id="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon)}" pattern="#,###"/>원</b></h5></span></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
 			<div class="col-8" id="mip"><small>무이자 5개월 할부</small></div>
-			<div class="col-2 text-end" id="finalPrice" name="finalPrice"><span><b><fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>원</b></span></div>
+			<div class="col-2 text-end" id="finalPrice"><span><b><fmt:formatNumber type="number" value="${((itemImg.price)-((itemImg.price)*((itemImg.discountRate)*0.01))-(item.coupon))/5}" pattern="#,###"/>원</b></span></div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
 		<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${itemImg.pay eq 6 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" id="pay1" value="1" <c:if test="${itemImg.pay eq 6 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay1">카카오페이</label>
 			</div>
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${itemImg.pay eq 7 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" id="pay2" value="1" <c:if test="${itemImg.pay eq 7 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-6 text-end"><button type="button" role="button" class="btn btn-danger" id="btnOrder">결제 하기</button></div>
-			<div class="col-6 text-start"><button type="button" role="button" class="btn btn-dark" id="btnCancle">취소 하기</button></div>
+			<div class="col-6 text-end"><button type="button" role="button" class="btn btn-danger" id="btnComplete">완료 하기</button></div>
 		</div>	
 	</div>
 	</form>
@@ -426,20 +419,14 @@
 	</script>
 	<script type="text/javascript">
 	
-		var goUrlList = "/product/productView"; 			
-		var goUrlInst = "/order/orderUserInst"; 			
+		var goUrlList = "/home"; 			
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		var form = $("form[name=form]");
 		var formVo = $("form[name=formVo]");
 		
-		
-		$("#btnOrder").on("click", function(){
-		   form.attr("action", goUrlInst).submit();
-		}); 
-		
-		$("#btnCancle").on("click", function(){
+		$("#btnComplete").on("click", function(){
 			formVo.attr("action", goUrlList).submit();
 		});
 		

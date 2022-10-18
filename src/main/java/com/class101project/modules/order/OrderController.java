@@ -74,7 +74,7 @@ public class OrderController {
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/order/orderRegForm";
+		return "redirect:/order/orderForm";
 		
 //		if(Constants.INSERT_AFTER_TYPE == 1) {
 //			return "redirect:/code/codeForm";
@@ -114,9 +114,17 @@ public class OrderController {
 	
 	
 	
-	@RequestMapping(value = "orderViewForm", method = RequestMethod.GET)
-	public String orderViewForm(Locale locale, Model model) {
-		return "/infra/order/user/orderViewForm";
+	@RequestMapping(value = "orderView")
+	public String orderViewForm(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+		
+		vo.setSeq(dto.getSeq());
+		
+		Order item = service.selectOneOrder(vo);
+		model.addAttribute("item", item);
+		
+		Order itemImg = service.selectProductImg(vo);
+		model.addAttribute("itemImg", itemImg);
+		return "/infra/order/user/orderView";
 	}
 	
 	@RequestMapping(value = "orderViewFormOther", method = RequestMethod.GET)
