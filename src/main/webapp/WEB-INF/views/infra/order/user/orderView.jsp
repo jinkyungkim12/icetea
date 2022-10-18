@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+
 <jsp:useBean id="CodeServiceImpl" class="com.class101project.modules.code.CodeServiceImpl"/>
 <html>
 <head>
@@ -312,28 +312,6 @@
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
-		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2"><span><b>총 상품금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="price" value="<fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
-		</div>
-		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2"><span><b>배송비</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" value="0"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
-		</div>
-		<div class="row" style="margin-top: 1rem;">
-			<div class="col-2"><span><b>상품 할인 금액</b></span></div>
-			<div class="col-9 text-end"><input type="text" class="form-control" name="priceDiscount" value="<fmt:formatNumber type="number" value="${(itemImg.price)*((itemImg.discountRate)*0.01)}" pattern="#,###"/>"></div>
-			<div class="col-1 text-start"><span><b>원</b></span></div>
-		</div>
-		
-		
-		
-		
-		
-		
-		
 		<div class="row" style="margin-top: 1rem;">
 			<div class="col-10"><span><b>총 상품금액</b></span></div>
 			<div class="col-2 text-end" name="price"><span><b><fmt:formatNumber type="number" value="${itemImg.price}" pattern="#,###"/>원</b></span></div>
