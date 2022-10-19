@@ -3,6 +3,8 @@ package com.class101project.modules.order;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -132,12 +134,13 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "mypageOrderList")
-	public String mypageOrderList(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+	public String mypageOrderList(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model, HttpSession httpSession) throws Exception{
 		
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+//		System.out.println("vo.getShValue(): " + dto.getmSeq());
+//		System.out.println("vo.getShValue(): " + vo.getShValue());
+//		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
-		vo.setSeq(dto.getSeq());
+		httpSession.setAttribute("sessSeq", vo.getmSeq());
 		
 		List<Order> listOrder = service.selectListOrder(vo);
 		model.addAttribute("listOrder", listOrder);

@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="true" %>
 
 <html>
 <head>
@@ -155,6 +154,10 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		#btnView{
+			background-color: white;
+			border: none;
+		}
 	</style>
 
 </head>
@@ -208,18 +211,26 @@
 
 			<!-- 오른쪽 -->
 			<div class="col-8">
-				<form  id="form" name="form" method="post" >
+			
+				<form  id="form" name="form" method="post">
 				<input type="hidden" name="mSeq" value="${sessSeq}"/>
+				<div style="margin-top: 3rem;"><h3><b>주문 내역보기</b></h3></div>
 				<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
-				  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
-				  	<div class="row">
-				  		<div class="col-4" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${listOrder.path}${listOrder.uuidName}"></div>
-				  		<div class="col-8">
-				  			<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${listOrder.category}"/>]</b></h5></div>
-							<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${listOrder.title}"/></span></div>
-				  		</div>
-				  	</div>
-					<br>
+					<div class="row justify-content-between" style="margin-top: 2rem;">
+					<div class="col-4"><span>${listOrder.orderDate}</span></div>
+					<div class="col-2 text-end"><span><button id="btnView" type="button" style="color: #FF5600">주문 상세 보기</button></span></div>
+					</div>
+					<hr>
+					<div class="row" style="margin-top: 2rem;"><h5><b>주문 내역</b></h5></div>
+					<div class="row">
+						<div class="col-3">
+							<img src="${listOrder.path}${listOrder.uuidName}" style="width: 200px; height: 140px;">
+						</div>
+						<div class="col-9">
+							<div><h5><b>[<c:out value="${listOrder.category}"/>]</b> <c:out value="${listOrder.title}"/></h5></div>
+							<div><span>20주 수강권</span></div>
+						</div>
+					</div>
 				</c:forEach>
 				</form>	
 			</div>
@@ -240,7 +251,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		
+		/* alert($("input[name=mSeq]").val());	 */
+	
 		var goUrlForm = "/member/mypageModForm";
+		var goUrlList = "/order/mypageOrderList";
+		var goUrlView = "/order/mypageOrderView"
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -250,6 +265,16 @@
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+
+		goList = function(keyValue){
+			$("input:hidden[name=mSeq]").val(keyValue);
+			form.attr("action", goUrlList).submit();
+		}
+		
+		$("#btnView").on("click", function(mSeq){
+			seq.val(mSeq);
+			form.attr("action", goUrlView).submit();
+		});
 		
 	</script>
 	<script type="text/javascript">

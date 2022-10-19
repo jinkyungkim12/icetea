@@ -343,7 +343,13 @@
 					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 50일 남음</span></div>
 					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 10일 남음</span></div>
 				</div>
-				<div class="row justify-content-center"><div class="col-6 text-center"><a type="button" id="BtnOrder" class="btn btn-light" href="/order/mypageOrderList"><b>주문내역 보러가기</b></a></div></div>
+				<div class="row justify-content-center">
+					<div class="col-6 text-center">
+						<butto type="button" id="BtnOrder" class="btn btn-light">
+							<b>주문내역 보러가기</b>
+						</button>
+					</div>
+				</div>
 			  </div>
 			</div>
 		</div>	
@@ -391,15 +397,20 @@
 	<script type="text/javascript">
 		
 		var goUrlForm = "/member/mypageModForm";
+		var goUrlList = "/order/mypageOrderList";
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
+		var mSeq = $("input[name=mSeq]").val();
 		
 		goForm = function(keyValue) {
-	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+		
+		$("#BtnOrder").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		})
 		
 	</script>
 	<script type="text/javascript">
