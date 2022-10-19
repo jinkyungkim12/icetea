@@ -19,6 +19,7 @@ public class OrderDao {
 	private static String namespace = "com.class101project.modules.order.OrderMapper";
 	
 	public List<Order> selectList(OrderVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	public List<Order> selectListOrder(OrderVo vo){ return sqlSession.selectList(namespace + ".selectListOrder", vo); }
 	
 	public int insert(Order dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);

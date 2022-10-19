@@ -163,7 +163,10 @@
 <!-- start -->
 <!-- NAV bar	 -->
 	<!-- loginNY s -->
+	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
+	<input type="hidden" name="seq">
 	<%@include file="../../../common/xdmin/includeV1/loginNY.jsp"%>
+	</form>
 	<!-- loginNY e -->
 	
 	<!-- 상단 -->
@@ -206,14 +209,19 @@
 			<!-- 오른쪽 -->
 			<div class="col-8">
 				<form  id="form" name="form" method="post" >
-				<input type="hidden" name="seq" value="${vo.seq}"/>  
 				<input type="hidden" name="mSeq" value="${sessSeq}"/>
+				<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
 				  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
-					<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
-					<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
-					<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
-				<br>
-				</form>  
+				  	<div class="row">
+				  		<div class="col-4" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${listOrder.path}${listOrder.uuidName}"></div>
+				  		<div class="col-8">
+				  			<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${listOrder.category}"/>]</b></h5></div>
+							<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${listOrder.title}"/></span></div>
+				  		</div>
+				  	</div>
+					<br>
+				</c:forEach>
+				</form>	
 			</div>
 		</div>
 		</div>	
@@ -225,7 +233,7 @@
 	<!-- loginNY s -->
 	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
 	<!-- loginNY e -->
-	</form>	
+	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>

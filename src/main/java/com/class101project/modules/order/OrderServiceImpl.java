@@ -16,6 +16,11 @@ public class OrderServiceImpl implements OrderService{
 		return dao.selectList(vo);
 	}
 	
+	@Override
+	public List<Order> selectListOrder(OrderVo vo) throws Exception {
+		return dao.selectListOrder(vo);
+	}
+	
 	
 	
 	@Override

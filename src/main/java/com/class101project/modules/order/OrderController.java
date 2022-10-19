@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.class101project.modules.product.Product;
+
 @Controller
 @RequestMapping(value = "/order/")
 public class OrderController {
@@ -134,13 +136,13 @@ public class OrderController {
 	@RequestMapping(value = "mypageOrderList")
 	public String mypageOrderList(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
 		
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getShOption(): " + vo.getShOption());
+		
 		vo.setSeq(dto.getSeq());
 		
-		Order item = service.selectOneOrder(vo);
-		model.addAttribute("item", item);
-		
-		Order itemImg = service.selectProductImg(vo);
-		model.addAttribute("itemImg", itemImg);
+		List<Order> listOrder = service.selectListOrder(vo);
+		model.addAttribute("listOrder", listOrder);
 		
 		return "/infra/member/user/mypageOrderList";
 	}

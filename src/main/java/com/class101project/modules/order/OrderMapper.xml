@@ -189,4 +189,21 @@
 		 a.pseq = #{seq}
 		 AND a.sort = 1
 	</select>
+	
+	<!-- selectList -->
+	<select id="selectListOrder" resultMap="resultMapObj">
+		SELECT
+			 a.*
+	         ,b.*
+             ,c.*
+             ,d.*
+			 FROM classOrder a
+	         left join productUploaded b on b.pseq = a.classProduct_seq
+             left join classProduct c on c.seq = a.classProduct_seq
+             left join member d on d.seq = a.member_seq
+			 WHERE
+			 b.sort = 1
+             AND a.member_seq = #{mSeq}
+	</select>
+	
 </mapper>

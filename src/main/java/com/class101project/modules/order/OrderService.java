@@ -6,6 +6,7 @@ public interface OrderService {
 
 	
 	public List<Order> selectList(OrderVo vo) throws Exception;
+	public List<Order> selectListOrder(OrderVo vo) throws Exception;
 	
 	public int insert(Order dto) throws Exception;
 	public int orderUserInst(Order dto) throws Exception;
