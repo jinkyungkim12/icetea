@@ -106,8 +106,6 @@ public class OrderController {
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "orderUpdt")
 	public String orderUpdt(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -117,22 +115,6 @@ public class OrderController {
 		return "redirect:/order/orderForm";
 	}
 	
-	
-	
-	
-	@RequestMapping(value = "orderView")
-	public String orderViewForm(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
-		
-		vo.setSeq(dto.getSeq());
-		
-		Order item = service.selectOneOrder(vo);
-		model.addAttribute("item", item);
-		
-		Order itemImg = service.selectProductImg(vo);
-		model.addAttribute("itemImg", itemImg);
-		
-		return "/infra/order/user/orderView";
-	}
 	
 	
 	@RequestMapping(value = "mypageOrderView")
@@ -167,11 +149,6 @@ public class OrderController {
 	@RequestMapping(value = "orderComplete", method = RequestMethod.GET)
 	public String orderViewFormOther(Locale locale, Model model) {
 		return "/infra/order/user/orderComplete";
-	}
-	
-	@RequestMapping(value = "orderRegFormOther", method = RequestMethod.GET)
-	public String orderRegFormOther(Locale locale, Model model) {
-		return "/infra/order/user/orderRegFormOther";
 	}
 	
 	

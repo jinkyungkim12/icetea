@@ -162,87 +162,9 @@
 
 <!-- start -->
 <!-- NAV bar	 -->
-	<div class="container" style="margin-top: 3rem;">
-		<div class="row">
-			<div class="col-8">
-				<nav class="navbar navbar-expand-lg bg-white">
-				  <div class="container-fluid">
-				    <a class="navbar-brand" href="/home">
-      					<img src="../../resources/images/logo.png" alt="">
-				    </a>
-				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				      <span class="navbar-toggler-icon"></span>
-				    </button>
-				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				        <li class="nav-item" id="">
-				          <a class="nav-link" href="#" id="ListClass"><b>클래스</b></a>
-				        </li> 
-				        <li class="nav-item">
-				          <a class="nav-link" href="#" id="ListStore"><b>스토어</b></a>
-				        </li>
-				      </ul>
-				    </div>
-				      <form class="d-flex" role="search">
-				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 400px;">
-				        <button class="btn btn-outline-dark" type="submit">Search</button>
-				      </form>
-				    </div>
-				 </nav>  
-			</div>
-
-			<!-- 로그인 전	 -->
-			<c:if test="${sessSeq eq null}">
-				<div class="col">
-					<ul class="nav justify-content-end" id="leftList">
-						<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="#">크리에이터 지원</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">기업교육</a></li>
-						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
-					</ul>
-				</div>
-			</c:if>
-			
-			<!-- 로그인 후 -->
-			<c:if test="${sessSeq ne null}">
-				<div class="col">
-					<div class="row text-end">
-						<div class="dropdown">
-							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img alt="..." src="
-								<c:choose>
-									<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
-									<c:otherwise>../resources/images/profileimg.png</c:otherwise>
-								</c:choose>
-								" class="avatar avatar-rounded-circle">
-							</a>
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-								<div class="container">
-									<div class="row">
-										<div class="col-4 text-center">
-											<img alt="..." src="
-											<c:choose>
-												<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
-												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
-											</c:choose>
-											" class="avatar avatar-rounded-circle">
-										</div>
-										<div class="col-8 text-center" style="margin-top: 0.9rem;">
-											<h5><b><c:out value="${sessName}"/></b></h5>
-										</div>
-									</div>
-									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
-									<hr class="dropdown-divider">
-									<div class="row justify-content-center"><button type="button" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</button></div>
-								</div>
-							</div>
-						</div>
-					</div>	
-				</div>
-			</c:if>
-				
-		</div>
-	</div>
+	<!-- loginNY s -->
+	<%@include file="../../../common/xdmin/includeV1/loginNY.jsp"%>
+	<!-- loginNY e -->
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
@@ -283,16 +205,15 @@
 
 			<!-- 오른쪽 -->
 			<div class="col-8">
-			  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
-			  	<form  id="form" name="form" method="post" >
+				<form  id="form" name="form" method="post" >
 				<input type="hidden" name="seq" value="${vo.seq}"/>  
 				<input type="hidden" name="mSeq" value="${sessSeq}"/>
-				<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
-				<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
-				<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
+				  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
+					<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
+					<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
+					<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
 				<br>
 				</form>  
-			  		
 			</div>
 		</div>
 		</div>	
@@ -301,37 +222,9 @@
 	
 	
 	<!-- 끝 -->
-	<div class="container">
-		<div class="row" style="margin-top: 5rem;">
-			<div class="col-4">
-				<div><img src="../../resources/images/classLogo.png" alt="" width="300" height="121"></div>
-				<div><span id="endContent1">클래스 101은 모든 사람이 사랑하는 일을 하며<br>살 수 있도록 세상을 바꾸고자 합니다.</span></div>
-				<br>
-				<br>
-				<div><span id="endContent1"><small>KR</small>&nbsp;한국어</span></div>
-			</div>
-			<div class="col-2">
-				<div class="endTitle">클래스 101</div>
-				<div class="endContent2">홈</div>
-				<div class="endContent2">기업교육</div>
-				<div class="endContent2">채용</div>
-				<div class="endContent2">도움말</div>
-			</div>
-			<div class="col-2">
-				<div class="endTitle">크리에이터</div>
-				<div class="endContent2">크리에이터 센터</div>
-				<div class="endContent2">정규 클래스 지원하기</div>
-				<div class="endContent2">도움말</div>
-			</div>
-			<div class="col-4">
-				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
-				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
+	<!-- loginNY s -->
+	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
+	<!-- loginNY e -->
 	</form>	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

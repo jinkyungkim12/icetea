@@ -160,6 +160,9 @@
 			background: #E6E6E6;
 			width: 500px;
 		}
+		a {
+    		color: #141619;
+    	}
 	</style>
 
 </head>
@@ -276,7 +279,7 @@
 				<div style="margin-top: 2rem;">내 캐시</div>
 				<div style="margin-top: 1rem;">내 포인트</div>
 				<div style="margin-top: 1rem;">내 쿠폰</div>
-				<div style="margin-top: 1rem;">주문 내역</div>
+				<div style="margin-top: 1rem;"><a href="#">주문 내역</a></div>
 				<div style="margin-top: 1rem;">후기</div>
 				<div style="margin-top: 3rem;"></div>
 				<div><h5><b>맴버쉽</b></h5></div>
@@ -340,7 +343,7 @@
 					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 50일 남음</span></div>
 					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 10일 남음</span></div>
 				</div>
-				<div class="row justify-content-center"><div class="col-6 text-center"><button type="button" id="BtnOrder" class="btn btn-light"><b>주문내역 보러가기</b></button></div></div>
+				<div class="row justify-content-center"><div class="col-6 text-center"><a type="button" id="BtnOrder" class="btn btn-light" href="/order/mypageOrderList"><b>주문내역 보러가기</b></a></div></div>
 			  </div>
 			</div>
 		</div>	
@@ -388,7 +391,6 @@
 	<script type="text/javascript">
 		
 		var goUrlForm = "/member/mypageModForm";
-		var goUrlOrder = "/order/mypageOrder"
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -397,10 +399,6 @@
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
-		}
-		
-		$(#BtnOrder).on("click", function(){
-			form.attr("action", goUrlOrder).submit();
 		}
 		
 	</script>
