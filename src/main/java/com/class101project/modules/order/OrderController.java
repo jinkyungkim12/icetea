@@ -101,7 +101,7 @@ public class OrderController {
 		model.addAttribute("itemImg", itemImg);
 		
 		
-		return "/infra/order/user/orderView";
+		return "/infra/order/user/orderComplete";
 		
 	}
 	
@@ -135,8 +135,8 @@ public class OrderController {
 	}
 	
 	
-	@RequestMapping(value = "mypageOrder")
-	public String mypageOrder(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+	@RequestMapping(value = "mypageOrderView")
+	public String mypageOrderView(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
 		
 		vo.setSeq(dto.getSeq());
 		
@@ -149,10 +149,24 @@ public class OrderController {
 		return "/infra/member/user/mypageOrderView";
 	}
 	
+	@RequestMapping(value = "mypageOrderList")
+	public String mypageOrderList(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+		
+		vo.setSeq(dto.getSeq());
+		
+		Order item = service.selectOneOrder(vo);
+		model.addAttribute("item", item);
+		
+		Order itemImg = service.selectProductImg(vo);
+		model.addAttribute("itemImg", itemImg);
+		
+		return "/infra/member/user/mypageOrderList";
+	}
 	
-	@RequestMapping(value = "orderViewFormOther", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "orderComplete", method = RequestMethod.GET)
 	public String orderViewFormOther(Locale locale, Model model) {
-		return "/infra/order/user/orderViewFormOther";
+		return "/infra/order/user/orderComplete";
 	}
 	
 	@RequestMapping(value = "orderRegFormOther", method = RequestMethod.GET)
