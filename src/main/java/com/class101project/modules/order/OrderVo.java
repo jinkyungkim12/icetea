@@ -16,6 +16,15 @@ public class OrderVo {
 	private String pseq;
 	private String mSeq;
 	private Integer member_seq;
+	private String pdSeq;
+	
+	public String getPdSeq() {
+		return pdSeq;
+	}
+
+	public void setPdSeq(String pdSeq) {
+		this.pdSeq = pdSeq;
+	}
 
 	public Integer getMember_seq() {
 		return member_seq;

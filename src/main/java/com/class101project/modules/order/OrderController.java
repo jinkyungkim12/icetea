@@ -93,7 +93,7 @@ public class OrderController {
 		
 		service.orderUserInst(dto);
 		
-		System.out.println("dto.getMember_seq() : " + dto.getMember_seq());
+		System.out.println("dto.getMember_seq() : " + dto.getmSeq());
 		vo.setSeq(dto.getSeq());
 
 		Order item = service.selectOneOrder(vo);
@@ -120,15 +120,13 @@ public class OrderController {
 	
 	
 	@RequestMapping(value = "mypageOrderView")
-	public String mypageOrderView(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model) throws Exception{
+	public String mypageOrderView(@ModelAttribute("vo") OrderVo vo, Order dto,  Model model, HttpSession httpSession) throws Exception{
 		
 		vo.setSeq(dto.getSeq());
+		httpSession.setAttribute("sessSeq", vo.getmSeq());
 		
-		Order item = service.selectOneOrder(vo);
+		Order item = service.selectOneView(vo);
 		model.addAttribute("item", item);
-		
-		Order itemImg = service.selectProductImg(vo);
-		model.addAttribute("itemImg", itemImg);
 		
 		return "/infra/member/user/mypageOrderView";
 	}
@@ -139,11 +137,13 @@ public class OrderController {
 //		System.out.println("vo.getShValue(): " + dto.getmSeq());
 //		System.out.println("vo.getShValue(): " + vo.getShValue());
 //		System.out.println("vo.getShOption(): " + vo.getShOption());
-		
 		httpSession.setAttribute("sessSeq", vo.getmSeq());
 		
 		List<Order> listOrder = service.selectListOrder(vo);
 		model.addAttribute("listOrder", listOrder);
+
+		System.out.println("vo.getSeq : " + vo.getPdSeq());
+		System.out.println("dto.getSeq : " + dto.getPdSeq());
 		
 		return "/infra/member/user/mypageOrderList";
 	}

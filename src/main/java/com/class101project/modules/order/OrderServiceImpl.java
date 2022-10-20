@@ -55,6 +55,11 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	@Override
+	public Order selectOneView(OrderVo vo) throws Exception{
+		return dao.selectOneView(vo);
+	}
+	
+	@Override
 	public Order selectProductImg(OrderVo vo) throws Exception{
 		return dao.selectProductImg(vo);
 	}

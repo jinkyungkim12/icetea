@@ -60,7 +60,17 @@
 	<select id="selectListToday" resultMap="resultMapObj">
 		SELECT
 			a.*
-			,b.*
+			,b.type
+			,b.defaultNY
+			,b.sort
+			,b.originalName
+			,b.uuidName
+			,b.ext
+			,b.size
+			,b.uploadDelNY
+			,b.pseq
+			,b.regDate
+			,b.path
 		FROM classProduct a
 		LEFT JOIN productUploaded b
 		ON a.seq = b.pseq
@@ -77,7 +87,17 @@
 	<select id="selectListMD" resultMap="resultMapObj">
 		SELECT
 			a.*
-			,b.*
+			,b.type
+			,b.defaultNY
+			,b.sort
+			,b.originalName
+			,b.uuidName
+			,b.ext
+			,b.size
+			,b.uploadDelNY
+			,b.pseq
+			,b.regDate
+			,b.path
 		FROM classProduct a
 		LEFT JOIN productUploaded b
 		ON a.seq = b.pseq
@@ -95,7 +115,17 @@
 	<select id="selectListDC" resultMap="resultMapObj">
 		SELECT
 			a.*
-			,b.*
+			,b.type
+			,b.defaultNY
+			,b.sort
+			,b.originalName
+			,b.uuidName
+			,b.ext
+			,b.size
+			,b.uploadDelNY
+			,b.pseq
+			,b.regDate
+			,b.path
 		FROM classProduct a
 		LEFT JOIN productUploaded b
 		ON a.seq = b.pseq

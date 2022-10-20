@@ -400,8 +400,11 @@
 		var goUrlList = "/order/mypageOrderList";
 	
 		var form = $("form[name=form]");
-		var seq = $("input:hidden[name=seq]");
+		var seq = $("input[name=seq]").val();
 		var mSeq = $("input[name=mSeq]").val();
+		
+	/* 	alert(seq);
+		alert(mSeq); */
 		
 		goForm = function(keyValue) {
 	    	seq.val(keyValue);

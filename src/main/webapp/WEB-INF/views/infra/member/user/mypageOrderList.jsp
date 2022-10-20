@@ -129,7 +129,7 @@
 			background-color: #F5F5F5;
 		} 
 		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-		    color: black;
+		    color: gray;
 		    background-color: var(--bs-nav-tabs-link-active-bg);
 		    border-color: var(--bs-nav-tabs-link-active-border-color);
 		}
@@ -139,7 +139,7 @@
 		    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
 		    font-size: var(--bs-nav-link-font-size);
 		    font-weight: var(--bs-nav-link-font-weight);
-		    color: gray;
+		    color: black;
 		    text-decoration: none;
 		    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 		}
@@ -158,6 +158,9 @@
 			background-color: white;
 			border: none;
 		}
+		.nav-link:hover{
+			color: gray !important;
+		}
 	</style>
 
 </head>
@@ -167,7 +170,6 @@
 <!-- NAV bar	 -->
 	<!-- loginNY s -->
 	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
-	<input type="hidden" name="seq">
 	<%@include file="../../../common/xdmin/includeV1/loginNY.jsp"%>
 	</form>
 	<!-- loginNY e -->
@@ -213,25 +215,29 @@
 			<div class="col-8">
 			
 				<form  id="form" name="form" method="post">
-				<input type="hidden" name="mSeq" value="${sessSeq}"/>
-				<div style="margin-top: 3rem;"><h3><b>주문 내역보기</b></h3></div>
-				<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
-					<div class="row justify-content-between" style="margin-top: 2rem;">
-					<div class="col-4"><span>${listOrder.orderDate}</span></div>
-					<div class="col-2 text-end"><span><button id="btnView" type="button" style="color: #FF5600">주문 상세 보기</button></span></div>
-					</div>
-					<hr>
-					<div class="row" style="margin-top: 2rem;"><h5><b>주문 내역</b></h5></div>
-					<div class="row">
-						<div class="col-3">
-							<img src="${listOrder.path}${listOrder.uuidName}" style="width: 200px; height: 140px;">
-						</div>
-						<div class="col-9">
-							<div><h5><b>[<c:out value="${listOrder.category}"/>]</b> <c:out value="${listOrder.title}"/></h5></div>
-							<div><span>20주 수강권</span></div>
-						</div>
-					</div>
-				</c:forEach>
+					<input type="hidden" name="mSeq" value="${sessSeq}"/>
+					<input type="hidden" name="vSeq" value="${vo.seq}"/>
+					<div style="margin-top: 3rem;"><h3><b>주문 내역보기</b></h3></div>
+					<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
+						<input type="hidden" name="seq" value="${listOrder.seq }">
+						<a class="nav-link" href="javascript:goView('${sessSeq }', '${listOrder.seq }')"> 
+							<div class="row justify-content-between" style="margin-top: 2rem;">
+							<div class="col-4"><span>${listOrder.orderDate}</span></div>
+							<div class="col-3 text-end"><span><button id="btnView" type="button" style="color: #FF5600">주문 상세 보기</button></span></div>
+							</div>
+							<hr>
+							<div class="row" style="margin-top: 2rem;"><h5><b>주문 내역</b></h5></div>
+							<div class="row">
+								<div class="col-3">
+									<img src="${listOrder.path}${listOrder.uuidName}" style="width: 200px; height: 140px;">
+								</div>
+								<div class="col-9">
+									<div><h5><b>[<c:out value="${listOrder.category}"/>]</b> <c:out value="${listOrder.title}"/></h5></div>
+									<div><span>20주 수강권</span></div>
+								</div>
+							</div>
+						</a>
+					</c:forEach>
 				</form>	
 			</div>
 		</div>
@@ -252,6 +258,10 @@
 	<script type="text/javascript">
 		
 		/* alert($("input[name=mSeq]").val());	 */
+		
+		/* alert($("input[name=seq]").val())
+		alert($("input[name=mSeq]").val())
+		alert($("input[name=vSeq]").val()) */
 	
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlList = "/order/mypageOrderList";
@@ -271,10 +281,11 @@
 			form.attr("action", goUrlList).submit();
 		}
 		
-		$("#btnView").on("click", function(mSeq){
-			seq.val(mSeq);
+		goView = function(keyValue1, keyValue2){
+			$("input:hidden[name=mSeq]").val(keyValue1);
+			$("input:hidden[name=seq]").val(keyValue2);
 			form.attr("action", goUrlView).submit();
-		});
+		}
 		
 	</script>
 	<script type="text/javascript">

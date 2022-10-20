@@ -155,6 +155,19 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		#btnMypage{
+			width: 400px;
+			height: 40px;
+			font-family: 'Happiness-Sans-Regular';
+			font-style: normal;
+			background-color: #FF5600;
+			margin-top: 2rem;
+			border: none;
+		}
+		.form-check-input:checked {
+		    background-color: #FF5600;
+		    border-color: #FF5600;
+		}
 	</style>
 
 </head>
@@ -284,15 +297,125 @@
 			<!-- 오른쪽 -->
 			<div class="col-8">
 			  	<div style="margin-top: 3rem;"><h5><b>주문 내역보기</b></h5></div>
-			  	<form  id="form" name="form" method="post" >
-				<input type="hidden" name="seq" value="${vo.seq}"/>  
-				<input type="hidden" name="mSeq" value="${sessSeq}"/>
-				<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
-				<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
-				<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
-				<br>
-				</form>  
-			  		
+				  	<form  id="form" name="form" method="post">
+					<input type="hidden" name="seq" value="${vo.seq}"> 
+					<input type="hidden" name="mSeq" value="${sessSeq}"> 
+						<div class="container" id="containerFont">
+						<div class="row" style="margin-top: 3rem;"><h4><b>주문 정보</b></h4></div>
+						<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${item.category}"/>]</b></h5></div>
+						<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.title}"/></span></div>
+						<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${item.path}${item.uuidName}"></div>
+						<br>	
+						<hr class="hrstyle">
+						<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>받으시는 분</b></label>
+					   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.name}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>아이디</b></label>
+					   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.id}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>휴대폰 번호</b></label>
+					   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.phone}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>이메일 주소</b></label>
+					   		<div class="input"><input type="text" class="form-control" value="<c:out value="${item.email}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>배송주소</b></label>
+					   		<div class="row input-group">
+					   			<label class="form-label"><b><small>우편번호</small></b></label>
+						   		<div class="input col-8"><input type="text" class="form-control" value="<c:out value="${item.zipcode}"/>" readonly></div>
+						   		<div class="input col-4">
+				   				<button type="button" class="btn btn-outline-dark" style="height: 2.4rem;">우편번호 검색</button>
+				   				<button class="btn btn-outline-dark" type="button" id="clear" style="height: 2.4rem;"><i class="fa-solid fa-rotate-left"></i></button>
+			   				</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b><small>주소</small></b></label>
+							<div class="input"><input type="text" class="form-control" value="<c:out value="${item.address}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b><small>상세주소</small></b></label>
+							<div class="input"><input type="text" class="form-control" value="<c:out value="${item.addressDetail}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b><small>참고사항</small></b></label>
+							<div class="input"><input type="text" class="form-control" value="<c:out value="${item.addr3}"/>" readonly></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>배송 요청 사항</b></label>
+				   			<div class="input">
+					   			<select class="form-select" aria-label="Default select example" readonly>
+					   			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
+								  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>
+								  <option value="9" <c:if test="${item.request eq 9 }"> selected</c:if>>문 앞에 놔두고 가주세요</option>
+								  <option value="10" <c:if test="${item.request eq 10 }"> selected</c:if>>배송 전 연락바랍니다</option>
+							  	</select>
+						  	</div>
+						</div>
+						<hr class="hrstyle">
+						<div class="row" style="margin-top: 3rem;"><h4><b>쿠폰</b></h4></div>
+						<div class="row" style="margin-top: 1rem;">
+							<label class="form-label"><b>쿠폰</b></label>
+					   		<div class="row">
+						   		<div class="col-9">
+						   			<input type="text" class="form-control" value="${item.coupon}원" readonly>
+						   		</div>
+						   		<div class="col-3">
+						   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
+								</div>
+							</div>
+							<!-- <div style="margin-top: 0.5rem;"><span class="down">적용 쿠폰 <7월 로그인 기념 쿠폰 > 4만원 바로수강 클래스 할인</span></div> -->
+						</div>
+						<hr class="hrstyle">
+						<div class="row" style="margin-top: 3rem;"><h4><b>결제 금액</b></h4></div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-10"><span><b>총 상품금액</b></span></div>
+							<div class="col-2 text-end"><span><b><fmt:formatNumber type="number" value="${item.price}" pattern="#,###"/>원</b></span></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-10"><span><b>배송비</b></span></div>
+							<div class="col-2 text-end"><span><b>무료</b></span></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-10"><span><b>상품 할인 금액</b></span></div>
+							<div class="col-2 text-end"><span> - <fmt:formatNumber type="number" value="${(item.priceDiscount)}" pattern="#,###"/>원</span></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
+							<div class="col-2 text-end" id="DCcoupon"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-10" id="finalPrice"><h5><b>최종 가격</b></h5></div>
+							<div class="col-2 text-end" id="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(item.finalPrice)}" pattern="#,###"/>원</b></h5></span></div>
+						</div>
+						<div class="row" style="margin-top: 1rem;">
+							<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
+							<div class="col-8" id="mip"><small>무이자 5개월 할부</small></div>
+							<div class="col-2 text-end" id="finalPrice"><span><b><fmt:formatNumber type="number" value="${((item.finalPrice)/5)}" pattern="#,###"/>원</b></span></div>
+						</div>
+						<hr class="hrstyle">
+						<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
+						<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
+							<div class="col-2 form-check">
+							  <input class="form-check-input" type="radio" value="6" name="pay" <c:if test="${item.pay eq 6 }"> checked</c:if>>
+							  <label class="form-check-label" for="pay1">카카오페이</label>
+							</div>
+							<div class="col-2 form-check">
+							  <input class="form-check-input" type="radio" value="7" name="pay" <c:if test="${item.pay eq 7 }"> checked</c:if>>
+							  <label class="form-check-label" for="pay2">무통장 입금</label>
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-6 text-center"><button type="button" class="btn btn-danger" id="btnMypage">마이페이지로 돌아가기</button></div>
+						</div>	
+					</div>
+				</form>
 			</div>
 		</div>
 		</div>	
@@ -337,9 +460,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+
 		var goUrlForm = "/member/mypageModForm";
+		var goUrlMypage = "/member/mypage"
+		var goUrlView = "/order/mypageOrderView"
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -350,8 +477,20 @@
 			form.attr("action", goUrlForm).submit();
 		}
 		
+		
+		goView = function(keyValue){
+			$("input:hidden[name=mSeq]").val(keyValue);
+			form.attr("action", goUrlView).submit();
+		}
+		
+		
 	</script>
 	<script type="text/javascript">
+		$("#btnMypage").on("click", function(){
+			form.attr("action", goUrlMypage).submit();
+		});
+
+		
 		$("#logoutButton").on("click", function(){
 			
 			$.ajax({

@@ -12,8 +12,6 @@ public class Order extends Base{
 	private Integer couponDiscount;
 	private Integer finalPrice;
 	private Integer pay;
-	private Integer member_seq;
-	private Integer classProduct_seq;
 	private Integer tOrder;
 	private String orderDate;
 	private String email;
@@ -29,7 +27,8 @@ public class Order extends Base{
 	private Integer	coupon;
 	private Integer discountRate;
 	private Integer payMonth;
-	
+	private String mSeq;
+	private String pdSeq;
 	
 	public String getSeq() {
 		return seq;
@@ -78,18 +77,6 @@ public class Order extends Base{
 	}
 	public void setPay(Integer pay) {
 		this.pay = pay;
-	}
-	public Integer getMember_seq() {
-		return member_seq;
-	}
-	public void setMember_seq(Integer member_seq) {
-		this.member_seq = member_seq;
-	}
-	public Integer getClassProduct_seq() {
-		return classProduct_seq;
-	}
-	public void setClassProduct_seq(Integer classProduct_seq) {
-		this.classProduct_seq = classProduct_seq;
 	}
 	public Integer gettOrder() {
 		return tOrder;
@@ -181,5 +168,16 @@ public class Order extends Base{
 	public void setPayMonth(Integer payMonth) {
 		this.payMonth = payMonth;
 	}
-	
+	public String getmSeq() {
+		return mSeq;
+	}
+	public void setmSeq(String mSeq) {
+		this.mSeq = mSeq;
+	}
+	public String getPdSeq() {
+		return pdSeq;
+	}
+	public void setPdSeq(String pdSeq) {
+		this.pdSeq = pdSeq;
+	}
 }
