@@ -177,17 +177,16 @@
 			WHERE 1=1
 			AND a.seq = #{mSeq}
 	</select>
-	
 	<select id="selectOneView" resultMap="resultMapObj">
 		SELECT
 			 a.*
 	         ,b.type
-			,b.sort
-			,b.originalName
-			,b.uuidName
-			,b.ext
-			,b.pseq
-			,b.path
+			 ,b.sort
+			 ,b.originalName
+			 ,b.uuidName
+			 ,b.ext
+			 ,b.pseq
+			 ,b.path
              ,c.category
              ,c.title
              ,d.name
@@ -206,6 +205,22 @@
 		 WHERE
 		 b.sort = 1
             AND a.member_seq = #{mSeq}
+            AND a.seq = #{seq}
+	</select>
+	
+	<select id="selectOrderComplete" resultMap="resultMapObj">
+		SELECT
+			 a.*
+             ,c.category
+             ,c.title
+             ,d.name
+             ,d.phone
+             ,d.email
+		 FROM classOrder a
+            left join classProduct c on c.seq = a.classProduct_seq
+            left join member d on d.seq = a.member_seq
+		 WHERE
+            a.member_seq = #{mSeq}
             AND a.seq = #{seq}
 	</select>
 	
@@ -228,12 +243,12 @@
 			 ,a.classProduct_seq as pdSeq
 			 ,a.member_seq as mSeq
 	         ,b.type
-			,b.sort
-			,b.originalName
-			,b.uuidName
-			,b.ext
-			,b.pseq
-			,b.path
+			 ,b.sort
+			 ,b.originalName
+			 ,b.uuidName
+			 ,b.ext
+			 ,b.pseq
+			 ,b.path
              ,c.category
              ,c.title
 			 FROM classOrder a

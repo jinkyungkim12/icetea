@@ -102,11 +102,13 @@ public class OrderController {
 		Order itemImg = service.selectProductImg(vo);
 		model.addAttribute("itemImg", itemImg);
 		
+		Order itemC = service.selectOrderComplete(vo);
+		model.addAttribute("itemC", itemC);
 		
 		return "/infra/order/user/orderComplete";
 		
 	}
-	
+
 	
 	@RequestMapping(value = "orderUpdt")
 	public String orderUpdt(OrderVo vo, Order dto, RedirectAttributes redirectAttributes) throws Exception {
@@ -149,10 +151,6 @@ public class OrderController {
 	}
 	
 	
-	@RequestMapping(value = "orderComplete", method = RequestMethod.GET)
-	public String orderViewFormOther(Locale locale, Model model) {
-		return "/infra/order/user/orderComplete";
-	}
 	
 	
 }

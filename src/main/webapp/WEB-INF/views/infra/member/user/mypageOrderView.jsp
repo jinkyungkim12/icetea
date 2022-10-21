@@ -168,6 +168,12 @@
 		    background-color: #FF5600;
 		    border-color: #FF5600;
 		}
+		.finalPrice{
+			color: red;
+		}
+		.linkk{
+			width: 70px;
+		}
 	</style>
 
 </head>
@@ -364,7 +370,7 @@
 							<label class="form-label"><b>쿠폰</b></label>
 					   		<div class="row">
 						   		<div class="col-9">
-						   			<input type="text" class="form-control" value="${item.coupon}원" readonly>
+						   			<input type="text" class="form-control" value="${item.couponDiscount}원" readonly>
 						   		</div>
 						   		<div class="col-3">
 						   			<a type="button" href="#" role="button" class="btn btn-dark" style="width: 215px;">쿠폰 변경</a>
@@ -388,16 +394,16 @@
 						</div>
 						<div class="row" style="margin-top: 1rem;">
 							<div class="col-10"><span><b>쿠폰 할인 금액</b></span></div>
-							<div class="col-2 text-end" id="DCcoupon"><span> - <fmt:formatNumber type="number" value="${item.coupon}" pattern="#,###"/>원</span></div>
+							<div class="col-2 text-end" id="DCcoupon"><span> - <fmt:formatNumber type="number" value="${item.couponDiscount}" pattern="#,###"/>원</span></div>
 						</div>
 						<div class="row" style="margin-top: 1rem;">
-							<div class="col-10" id="finalPrice"><h5><b>최종 가격</b></h5></div>
-							<div class="col-2 text-end" id="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(item.finalPrice)}" pattern="#,###"/>원</b></h5></span></div>
+							<div class="col-10 finalPrice" id="finalPrice"><h5><b>최종 가격</b></h5></div>
+							<div class="col-2 text-end finalPrice" id="finalPrice"><span><h5><b><fmt:formatNumber type="number" value="${(item.finalPrice)}" pattern="#,###"/>원</b></h5></span></div>
 						</div>
 						<div class="row" style="margin-top: 1rem;">
-							<div class="col-2" id="finalPrice"><span><b>월 할부 금액</b></span></div>
+							<div class="col-2 finalPrice" id="finalPrice"><span><b>월 할부 금액</b></span></div>
 							<div class="col-8" id="mip"><small>무이자 5개월 할부</small></div>
-							<div class="col-2 text-end" id="finalPrice"><span><b><fmt:formatNumber type="number" value="${((item.finalPrice)/5)}" pattern="#,###"/>원</b></span></div>
+							<div class="col-2 text-end finalPrice" id="finalPrice"><span><b><fmt:formatNumber type="number" value="${((item.finalPrice)/5)}" pattern="#,###"/>원</b></span></div>
 						</div>
 						<hr class="hrstyle">
 						<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>

@@ -29,7 +29,22 @@ public class Order extends Base{
 	private Integer payMonth;
 	private String mSeq;
 	private String pdSeq;
+	private Integer classProduct_seq;
+	private Integer member_seq;
 	
+	
+	public Integer getClassProduct_seq() {
+		return classProduct_seq;
+	}
+	public void setClassProduct_seq(Integer classProduct_seq) {
+		this.classProduct_seq = classProduct_seq;
+	}
+	public Integer getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(Integer member_seq) {
+		this.member_seq = member_seq;
+	}
 	public String getSeq() {
 		return seq;
 	}

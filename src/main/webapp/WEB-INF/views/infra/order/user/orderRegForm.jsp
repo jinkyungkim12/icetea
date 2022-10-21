@@ -246,6 +246,7 @@
 		<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${itemImg.category}"/>]</b></h5></div>
 		<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${itemImg.title}"/></span></div>
 		<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${itemImg.path}${itemImg.uuidName}"></div>
+		<br>
 		<br>	
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
@@ -352,11 +353,11 @@
 		<div class="row" style="margin-top: 3rem;"><h4><b>결제 방식</b></h4></div>
 		<div class="row" style="margin-top: 1rem; margin-left: 3rem;">
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="1" <c:if test="${itemImg.pay eq 6 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay1" value="6" <c:if test="${itemImg.pay eq 6 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay1">카카오페이</label>
 			</div>
 			<div class="col-2 form-check" name="pay">
-			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="1" <c:if test="${itemImg.pay eq 7 }"> checked</c:if>>
+			  <input class="form-check-input" type="radio" name="pay" id="pay2" value="7" <c:if test="${itemImg.pay eq 7 }"> checked</c:if>>
 			  <label class="form-check-label" for="pay2">무통장 입금</label>
 			</div>
 		</div>

@@ -54,7 +54,6 @@
 		}
 		.container{
 			font-family: 'Happiness-Sans-Regular';
-			margin-top: 5rem;
 		}
 		.hrstyle{
 			border: 0;
@@ -237,18 +236,34 @@
 	</div>
 	
 	<!-- content -->
-	<form id="form" name="form" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="seq" value="<c:out value="${vo.seq}"/>"/> 
-	<input type="hidden" name="mseq" value="${sessSeq}"/> 
-	<div class="container">
+	<form  id="form" name="form" method="post">
+	<input type="hidden" name="seq" value="${vo.seq}"> 
+	<input type="hidden" name="mSeq" value="${sessSeq}"> 
+	<div class="container" style="margin-top: 3rem;">
 		<div class="row justify-content-center">
-			<div class="card text-center" style="width: 75%;border-left-width: 0px;padding-left: 0px;padding-right: 0px;border-right-width: 0px;">
-			  <div class="card-header" style="height: 3rem; width: 100%">
+			<div class="card" style="padding-right: 0px; padding-left: 0px;">
+			  <div class="card-header text-center" style="width: 100%;">
 			  	<h5><b>구매 완료</b></h5>
 			  </div>
 			  <div class="card-body">
-			    <h3 class="card-title" style="margin-top: 3rem;"><b>클래스 구매가 정상적으로 완료되었습니다.</b></h3>
-			    <p style="margin-top: 1rem;">자세한 클래스 구매 내역 확인은 <b>마이페이지 주문 내역</b>에서 확인하실 수 있습니다.</p>
+			    <h3 class="card-title text-center" style="margin-top: 3rem;"><b>클래스 구매가 정상적으로 완료되었습니다.</b></h3>
+			    <p class="text-center" style="margin-top: 1rem;">자세한 클래스 구매 내역 확인은 <b>마이페이지 주문 내역</b>에서 확인하실 수 있습니다.</p>
+			    <div class="container" style="width: 80%; text-align: center;">
+			    <div class="row">
+			    	<div class="col-12" style="background: black; color: white; height: 30px;"><b>주문내역</b></div>
+			    	<div class="col-4" style="margin-top: 0.5rem;"><b>구매자</b></div>
+			    	<div class="col-8"><c:out value="${sessName}"/></div>
+			    	<hr style="margin-top: 0.5rem;">
+			    	<div class="col-4"><b>주문날짜</b></div>
+			    	<div class="col-8"><c:out value="${itemC.orderDate}"/></div>
+			    	<hr style="margin-top: 0.8rem;">
+			    	<div class="col-4"><b>구매상품</b></div>
+			    	<div class="col-8"><b>[<c:out value="${itemC.category}"/>]</b>&nbsp;<c:out value="${itemC.title}"/></div>
+			    	<hr style="margin-top: 0.8rem;">
+			    	<div class="col-4"><b>구매금액</b></div>
+			    	<div class="col-8" style="color: red"><b><fmt:formatNumber type="number" value="${(itemC.finalPrice)/5}" pattern="#,###"/>원/&nbsp;월</b></div>
+			    </div>
+			    </div>
 			    <div class="row justify-content-center" style="margin-top: 2rem;">
 			    	<div class="col-4 text-center"><button type="button" role="button" class="btn btn-danger" id="btnMypage">구매 내역 확인하기</button></div>
 					<div class="col-4 text-center"><button type="button" role="button" class="btn btn-dark" id="btnShopping">쇼핑 계속 하기</button></div>
@@ -327,6 +342,7 @@
 	
 		var goUrlList = "/home";
 		var goUrlMypage = "/member/mypage"
+		var goUrlView = "/order/orderComplete"
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
@@ -339,6 +355,12 @@
 		$("#btnShopping").on("click", function(){
 			form.attr("action", goUrlList).submit();
 		});
+		
+		goView = function(keyValue1, keyValue2){
+			$("input:hidden[name=mSeq]").val(keyValue1);
+			$("input:hidden[name=seq]").val(keyValue2);
+			form.attr("action", goUrlView).submit();
+		}
 		
 	</script>
 	<script>

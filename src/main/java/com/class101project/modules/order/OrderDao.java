@@ -56,6 +56,11 @@ public class OrderDao {
 		return result;
 	}
 	
+	public Order selectOrderComplete(OrderVo vo) {
+		Order result = sqlSession.selectOne(namespace + ".selectOrderComplete", vo);
+		System.out.println("dao result: " + result);
+		return result;
+	}
 	
 	public int selectOneCount(OrderVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	

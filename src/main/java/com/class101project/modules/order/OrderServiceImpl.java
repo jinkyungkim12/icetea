@@ -64,6 +64,10 @@ public class OrderServiceImpl implements OrderService{
 		return dao.selectProductImg(vo);
 	}
 	
+	@Override
+	public Order selectOrderComplete(OrderVo vo) throws Exception{
+		return dao.selectOrderComplete(vo);
+	}
 	
 	@Override
 	public int selectOneCount(OrderVo vo) throws Exception {
