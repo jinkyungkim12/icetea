@@ -421,8 +421,9 @@
 				 
 				<!-- 후기 -->
 				<div id="RV">
+					<!-- list 처리 할 곳 -->
 					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
-					<div class="text-end"><a type="button" href="/review/reviewForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
+					<div class="text-end"><a type="button" href="/review/reviewUserForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
 					<div class="row">
 						<div class="col-3" id="star1">												
 							<i class="fa-solid fa-star"></i>

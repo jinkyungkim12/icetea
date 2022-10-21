@@ -54,6 +54,20 @@ public class ReviewController {
 			
 			return "/infra/review/xdmin/reviewForm";
 		}
+		
+		@RequestMapping(value = "reviewUserForm")
+		public String reviewUserForm(@ModelAttribute("vo") ReviewVo vo, Model model) throws Exception{
+			
+			System.out.println("vo.getSeq(): " + vo.getSeq());
+			
+			Review result = service.selectOne(vo);
+			model.addAttribute("item", result);
+			
+			Review item1 = service.memberSelectOne(vo);
+			model.addAttribute("item1", item1);
+			
+			return "/infra/review/user/reviewForm";
+		}
 	
 	// 등록 
 	

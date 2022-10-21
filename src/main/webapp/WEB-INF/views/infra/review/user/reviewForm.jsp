@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Class101</title>
@@ -134,6 +133,10 @@
 		.dropdown-menu{
 			--bs-dropdown-link-active-bg: #FCC4A3;
 		}
+		.form-check-input:checked {
+		    background-color: #FF5600;
+		    border-color: #FF5600;
+		}
 		.review{
 			width: 40%;
 			font-family: 'Happiness-Sans-Regular';
@@ -168,7 +171,14 @@
 		.star-rating label:hover ~ label {
 		  color:#fc0;
 		}
-		
+		.nav-link{
+			color: black;
+		}
+		.avatar-rounded-circle{
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+		}
 	</style>
 </head>
 <body>
@@ -176,7 +186,7 @@
 <!-- start -->
 	
 	<!-- NAV bar	 -->
-	<div class="container" style="margin-top: 3rem;">
+	<div class="container" style="margin-top: 3rem;"> 
 		<div class="row">
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
@@ -197,37 +207,70 @@
 				        </li>
 				      </ul>
 				    </div>
-				      <form class="d-flex" role="search">
-				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 400px;">
-				        <button class="btn btn-outline-dark" type="submit">Search</button>
-				      </form>
-				    </div>
-				 </nav>  
-			</div>
-			<div class="col">
-				<div class="row text-end">
-					<div class="dropdown">
-						<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
-						</a>
-						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-							<div class="container">
-								<div class="row">
-									<div class="col-4 text-center">
-										<img alt="..." src="../../resources/images/profile.png" class="avatar avatar- rounded-circle"> 
+				    <div class="row">
+						<select id="shOption" name="shOption" class="form-select" aria-label="Default select example" style="width: 150px;">
+						  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
+						  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
+						</select>
+				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
+				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
+			        </div>
+			    </div>
+			 </nav>  
+		</div>
+			
+	 	
+			
+			<!-- 로그인 전	 -->
+			<c:if test="${sessSeq eq null}">
+				<div class="col">
+					<ul class="nav justify-content-end" id="leftList">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="#">크리에이터 지원</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">기업교육</a></li>
+						<li class="nav-item"><a class="nav-link" href="/member/memberLogin">로그인</a></li>
+					</ul>
+				</div>
+			</c:if>
+			
+			<!-- 로그인 후 -->
+			<c:if test="${sessSeq ne null}">
+				<div class="col">
+					<div class="row text-end">
+						<div class="dropdown">
+							<a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img alt="..." src="
+								<c:choose>
+									<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
+									<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+								</c:choose>
+								" class="avatar avatar-rounded-circle">  
+							</a>
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+								<div class="container">
+									<div class="row">
+										<div class="col-4 text-center">
+											<img alt="..." src="
+											<c:choose>
+												<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
+												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
+											</c:choose>
+											" class="avatar avatar-rounded-circle"> 
+										</div>
+										<div class="col-8 text-center" style="margin-top: 0.9rem;">
+											<h5><b><c:out value="${sessName}"/></b></h5>
+										</div>
 									</div>
-									<div class="col-8 text-center" style="margin-top: 0.9rem;">
-										<h5><b>김진경</b></h5>
-									</div>
+									<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
+									<hr class="dropdown-divider">
+									<div class="row justify-content-center"><button type="button" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</button></div>
 								</div>
-								<a href="/member/mypage" class="dropdown-item text-center" style="color: #FF5600">마이페이지 <i class="fa-solid fa-angle-right"></i></a> 
-								<hr class="dropdown-divider">
-								<div class="row justify-content-center"><a type="button" href="/member/memberLogin" class="btn btn-light rounded rounded-pill" id="logoutButton">Logout</a></div>
 							</div>
 						</div>
-					</div>
-				</div>	
-			</div>	
+					</div>	
+				</div>
+			</c:if>
 		</div>
 	</div>
 	
@@ -307,15 +350,15 @@
                     <div class="rating-form">
                     
                     	<div class="star-rating justify-content-center">
-						  <input type="radio" id="5-stars" name="rating" value="5" />
+						  <input type="radio" id="5-stars" name="rating" value="15" />
 						  <label for="5-stars" class="star">&#9733;</label>
-						  <input type="radio" id="4-stars" name="rating" value="4" />
+						  <input type="radio" id="4-stars" name="rating" value="14" />
 						  <label for="4-stars" class="star">&#9733;</label>
-						  <input type="radio" id="3-stars" name="rating" value="3" />
+						  <input type="radio" id="3-stars" name="rating" value="13" />
 						  <label for="3-stars" class="star">&#9733;</label>
-						  <input type="radio" id="2-stars" name="rating" value="2" />
+						  <input type="radio" id="2-stars" name="rating" value="12" />
 						  <label for="2-stars" class="star">&#9733;</label>
-						  <input type="radio" id="1-star" name="rating" value="1" />
+						  <input type="radio" id="1-star" name="rating" value="11" />
 						  <label for="1-star" class="star">&#9733;</label>
 						</div>
 
@@ -326,8 +369,8 @@
 
                     <!-- Name -->
                     <div class="form-group">
-                      <label class="visually-hidden" for="reviewName">이름:</label>
-                      <input class="form-control form-control-sm" id="reviewName" type="text" placeholder="이름을 작성해주세요." required="">
+                      <label class="visually-hidden" for="reviewName">id:</label>
+                      <input class="form-control form-control-sm" id="reviewName" type="text" placeholder="id를 작성해주세요." required="">
                     </div>
 
                   </div>
@@ -367,7 +410,7 @@
 						</div>
 					</div>
 					<div class="col-8 text-end">
-						<span class="reviewDate">2월 17일 12:01:50&emsp;<b>62% 수강 후 작성</b></span>
+						<span class="reviewDate">2월 17일 12:01:50</span>
 					</div>
 				</div>
 			<div class="reviewContent">
@@ -395,7 +438,7 @@
 						</div>
 					</div>
 					<div class="col-8 text-end">
-						<span class="reviewDate">4월 9일 20:50:12&emsp;<b>100% 수강 후 작성</b></span>
+						<span class="reviewDate">4월 9일 20:50:12</span>
 					</div>
 				<div class="reviewContent">
 					<span>
