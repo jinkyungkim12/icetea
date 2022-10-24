@@ -31,10 +31,11 @@ public class ReviewController {
 			System.out.println("vo.getShValue(): " + vo.getShValue());
 			System.out.println("vo.getShOption(): " + vo.getShOption());
 			System.out.println("vo.getShdelNY(): " + vo.getShdelNY());
+			System.out.println("vo.getSeq(): " + vo.getSeq());
 			setSearchAndPaging(vo);
 			
 			if (vo.getTotalRows() > 0) {
-			List<Review> list = service.selectList(vo);
+			List<Review> list = service.selectListxdmin(vo);
 			model.addAttribute("list", list);
 			}
 			

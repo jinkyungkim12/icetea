@@ -155,7 +155,7 @@
 	
 	<!-- 검색조건 -->
 	<form method="post" name="formList" id="formList">
-	<input type="hidden" name="seq">
+	<input type="hidden" name="seq" value="${vo.seq}">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 	<div class="container-fluid" style="width: 80%; margin-top: 2rem;">
@@ -201,7 +201,7 @@
 			</div>
 		</div>
 	</div>
-		
+	</form>	
 		
 	<!-- review List -->
 	
@@ -219,7 +219,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 80%; margin-top: 1rem;">
+	<div class="container-fluid text-center overflow-x-auto" style="width: 80%; margin-top: 1rem;">
 		<table class="table table-hover" id="minus">
 			<thead>
 				<tr class="table-dark text-white">
@@ -229,9 +229,11 @@
 					<th scope="col" >NO</th>
 					<!-- <th scope="col">이름</th> -->
 					<th scope="col">아이디</th>
-					<th scope="col">내용</th>
 					<th scope="col">강의번호</th>
+					<th scope="col">카테고리</th>
+					<th scope="col">내용</th>
 					<th scope="col">삭제여부</th>
+					<th scope="col">order</th>
 					<th scope="col">등록일</th>
 					<th scope="col">수정일</th>
 				</tr>
@@ -255,14 +257,16 @@
 						<td>
 							<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.id}"/></a>
 						</td>
-						<td class="tdtd"><c:out value="${list.content }"/></td>
 						<td><c:out value="${list.classProduct_seq }"/></td>
+						<td class="tdtd"><c:out value="${list.category }"/></td>
+						<td class="tdtd"><c:out value="${list.content }"/></td>
 						<td>
 							<c:choose>
 								<c:when test="${list.reviewDelNY eq 0}">N</c:when>
 								<c:otherwise>Y</c:otherwise>
 							</c:choose>
 						</td>
+						<td><c:out value="${list.order }"/></td>
 						<td><c:out value="${list.reviewRegDate }"/></td>
 						<td><c:out value="${list.reviewModDate }"/></td>
 					</tr>

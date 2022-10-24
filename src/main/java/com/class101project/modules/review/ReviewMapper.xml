@@ -109,11 +109,20 @@
 	
 	<!-- xdmin -->
 	<select id="selectListxdmin" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
 		SELECT	
-			a.*
-			FROM review a
-			WHERE 1=1
-			AND a.seq = #{seq}
+			a.seq
+			,a.id
+			,a.classProduct_seq
+			,b.category
+			,a.preferenceStar
+			,a.content
+			,a.reviewRegDate
+			,a.reviewModDate
+			,a.reviewDelNY
+			,a.order
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
 </mapper>
