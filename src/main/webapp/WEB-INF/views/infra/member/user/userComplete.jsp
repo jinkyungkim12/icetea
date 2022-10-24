@@ -184,7 +184,7 @@
 			<p id="aaa">클래스 101에<br> 가입해 주셔서 감사합니다!</p>		
 		</div>
 		<div class="row text-center">
-			<p id="bbb">신규회원 총 32만원 쿠폰팩 증정</p>		
+			<p id="bbb">신규회원 가입축하 10000원 쿠폰 증정</p>		
 		</div>
 		<div class="row justify-content-center">
 			<img src="../../resources/images/coupon.png" alt="" id="ccc">
