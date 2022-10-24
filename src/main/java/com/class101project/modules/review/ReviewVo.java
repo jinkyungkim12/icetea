@@ -15,6 +15,25 @@ public class ReviewVo {
 	 private Integer shOptionDate;
 	 
 	 private String seq;
+	 private String member_seq;
+	 private String classProduct_seq;
+	 
+
+	public String getMember_seq() {
+		return member_seq;
+	}
+
+	public void setMember_seq(String member_seq) {
+		this.member_seq = member_seq;
+	}
+
+	public String getClassProduct_seq() {
+		return classProduct_seq;
+	}
+
+	public void setClassProduct_seq(String classProduct_seq) {
+		this.classProduct_seq = classProduct_seq;
+	}
 
 	public Integer getShOption() {
 		return shOption;

@@ -16,7 +16,15 @@ public class Review extends Base{
 	private Integer reviewDelNY;
 	private String name;
 	private Integer	member_seq;
+	private String order;
 	
+	
+	public String getOrder() {
+		return order;
+	}
+	public void setOrder(String order) {
+		this.order = order;
+	}
 	public Integer getMember_seq() {
 		return member_seq;
 	}

@@ -72,7 +72,7 @@ public class ReviewController {
 			vo.setSeq(dto.getSeq());
 			redirectAttributes.addFlashAttribute("vo", vo);
 			
-			return "redirect:/review/reviewUserForm";
+			return "redirect:/review/reviewForm";
 		}
 //	
 //		@RequestMapping(value = "reviewUpdt")

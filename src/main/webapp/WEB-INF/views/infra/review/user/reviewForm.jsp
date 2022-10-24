@@ -279,7 +279,9 @@
 	
 	<!-- review -->
 	<form  id="form" name="form" method="post">
-		<input type="hidden" name="seq" value="${vo.seq}"/>   
+		<input type="hidden" name="seq" value="${vo.seq}"/> 
+		<input type="hidden" name="classProduct_seq" value="${vo.seq}"/> 
+		<input type="hidden" name="member_seq" value="${sessSeq}"/>   
 		<div class="container review">
 			<div class="row text-center" style="margin-top: 2rem;">
 				<h3><b>Review</b></h3>
@@ -370,7 +372,7 @@
 	                    <!-- Name -->
 	                    <div class="form-group">
 	                      <label class="visually-hidden" for="reviewName">id:</label>
-	                      <input class="form-control form-control-sm" id="reviewName" name="id" type="text" placeholder="id를 작성해주세요." required="">
+	                      <input class="form-control form-control-sm" id="reviewName" name="id" type="text" value="${sessId}" required="">
 	                    </div>
 	
 	                  </div>
@@ -426,7 +428,7 @@
 								</div>
 							</div>
 							<div class="col-8 text-end">
-								<span class="reviewDate"><c:out value="${list.reviewRegDate}"/> &emsp;<b><c:out value="${list.classProgressRate}"/>% 수강 완료</b></span>
+								<span class="reviewDate"><c:out value="${list.reviewRegDate}"/></span>
 							</div>
 						</div>
 						<div class="reviewContent">
@@ -436,10 +438,10 @@
 						</div>
 						<div class="row justify-content-between" style="margin-top: 1rem;">
 							<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
-							<div class="col-11 text-end">
+							<!-- <div class="col-11 text-end">
 								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
 								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 	           		</c:forEach>

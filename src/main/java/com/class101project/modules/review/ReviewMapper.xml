@@ -35,14 +35,16 @@
 	<insert id="insert">
 		INSERT INTO review(
 		      id
-		      ,preferenceStar
+		      ,classProduct_seq
+		      ,member_seq
 		      ,content
 		      ,reviewDelNY
 		      ,reviewRegDate
 		)
 		VALUES (
 			  #{id}
-		      ,#{preferenceStar}
+			  ,#{classProduct_seq}
+			  ,#{member_seq}
 		      ,#{content}
 		      ,0
 		      ,now()
@@ -111,7 +113,7 @@
 			a.*
 			FROM review a
 			WHERE 1=1
-			and a.seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 </mapper>
