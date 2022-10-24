@@ -289,13 +289,15 @@
 			<div class="input"><input type="text" class="form-control" id="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
 		</div>
 		<div class="row" style="margin-top: 1rem;">
+			<div class="input">
 			<label class="form-label"><b>배송 요청 사항</b></label>
-   			<select class="form-select" aria-label="Default select example" name="request">
-   			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
-			  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>
-			  <option value="9" <c:if test="${item.request eq 9 }"> selected</c:if>>문 앞에 놔두고 가주세요</option>
-			  <option value="10" <c:if test="${item.request eq 10 }"> selected</c:if>>배송 전 연락바랍니다</option>
-		  	</select>
+	   			<select class="form-select" aria-label="Default select example" name="request">
+	   			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
+				  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>
+				  <option value="9" <c:if test="${item.request eq 9 }"> selected</c:if>>문 앞에 놔두고 가주세요</option>
+				  <option value="10" <c:if test="${item.request eq 10 }"> selected</c:if>>배송 전 연락바랍니다</option>
+			  	</select>
+		  	</div>
 		</div>
 		<hr class="hrstyle">
 		<div class="row" style="margin-top: 3rem;"><h4><b>쿠폰/캐시</b></h4></div>

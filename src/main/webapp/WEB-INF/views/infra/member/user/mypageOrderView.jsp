@@ -354,8 +354,8 @@
 							<div class="input"><input type="text" class="form-control" value="<c:out value="${item.addr3}"/>" readonly></div>
 						</div>
 						<div class="row" style="margin-top: 1rem;">
-							<label class="form-label"><b>배송 요청 사항</b></label>
 				   			<div class="input">
+							<label class="form-label"><b>배송 요청 사항</b></label>
 					   			<select class="form-select" aria-label="Default select example" readonly>
 					   			<option value="" <c:if test="${empty item.request}"> selected</c:if>>구분</option>
 								  <option value="8" <c:if test="${item.request eq 8 }"> selected</c:if>>none</option>

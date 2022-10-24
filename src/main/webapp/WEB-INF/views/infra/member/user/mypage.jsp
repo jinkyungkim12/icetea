@@ -279,7 +279,7 @@
 				<div style="margin-top: 2rem;">내 캐시</div>
 				<div style="margin-top: 1rem;">내 포인트</div>
 				<div style="margin-top: 1rem;">내 쿠폰</div>
-				<div style="margin-top: 1rem;"><a href="/order/mypageOrderList">주문 내역</a></div>
+				<div style="margin-top: 1rem;">주문 내역</div>
 				<div style="margin-top: 1rem;">후기</div>
 				<div style="margin-top: 3rem;"></div>
 				<div><h5><b>맴버쉽</b></h5></div>
