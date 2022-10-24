@@ -19,6 +19,7 @@ public class ReviewDao {
 	private static String namespace = "com.class101project.modules.review.ReviewMapper";
 	
 	public List<Review> selectList(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	public List<Review> selectListView(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectListView", vo); }
 	public List<Review> selectListxdmin(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectListxdmin", vo); }
 	
 	

@@ -47,7 +47,14 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectContent(vo);
 	}
 
+	// Review SelectList
 	
+	@Override
+	public List<Product> selectListRV(ProductVo vo) throws Exception {
+		
+		return dao.selectListRV(vo);
+	}
+
 	@Override
 	public int insert(Product dto) throws Exception{
 		int result = dao.insert(dto);

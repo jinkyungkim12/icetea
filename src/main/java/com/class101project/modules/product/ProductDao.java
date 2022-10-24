@@ -43,6 +43,11 @@ public class ProductDao {
 		return sqlSession.selectList(namespace + ".selectContent", vo);
 	}
 	
+	// review SelectList
+	public List<Product> selectListRV(ProductVo vo) {
+		return sqlSession.selectList(namespace + ".selectListRV", vo);
+	}
+	
 	
 	// insert
 	public int insert(Product dto) {

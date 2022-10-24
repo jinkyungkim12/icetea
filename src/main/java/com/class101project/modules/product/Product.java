@@ -134,4 +134,61 @@ public class Product extends Base{
 		this.classDelNY = classDelNY;
 	}
 	
+	
+//	Review List
+	
+	private Integer classProduct_seq;
+	private Integer member_seq;
+	private Integer preferenceStar;
+	private String id;
+	private String content;
+	private String reviewRegDate;
+	private Integer reviewLike;
+
+
+	public Integer getClassProduct_seq() {
+		return classProduct_seq;
+	}
+	public void setClassProduct_seq(Integer classProduct_seq) {
+		this.classProduct_seq = classProduct_seq;
+	}
+	public Integer getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(Integer member_seq) {
+		this.member_seq = member_seq;
+	}
+	public Integer getPreferenceStar() {
+		return preferenceStar;
+	}
+	public void setPreferenceStar(Integer preferenceStar) {
+		this.preferenceStar = preferenceStar;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getReviewRegDate() {
+		return reviewRegDate;
+	}
+	public void setReviewRegDate(String reviewRegDate) {
+		this.reviewRegDate = reviewRegDate;
+	}
+	public Integer getReviewLike() {
+		return reviewLike;
+	}
+	public void setReviewLike(Integer reviewLike) {
+		this.reviewLike = reviewLike;
+	}
+	
+	
+	
 }

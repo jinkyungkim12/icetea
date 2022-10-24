@@ -13,6 +13,9 @@ public interface ProductService {
 	// 상세 이미지 리스트
 	public List<Product> selectContent(ProductVo vo) throws Exception;
 	
+	// Review SelectList
+	public List<Product> selectListRV(ProductVo vo) throws Exception;
+	
 	public int insert(Product dto) throws Exception;
 	public int update(Product dto) throws Exception;
 	public int uelete(Product dto) throws Exception;

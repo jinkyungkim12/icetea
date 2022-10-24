@@ -17,6 +17,11 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
+	public List<Review> selectListView(ReviewVo vo) throws Exception {
+		return dao.selectListView(vo);
+	}
+	
+	@Override
 	public List<Review> selectListxdmin(ReviewVo vo) throws Exception {
 		return dao.selectListxdmin(vo);
 	}

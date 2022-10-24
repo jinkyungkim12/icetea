@@ -140,6 +140,28 @@
 			
 	</select>
 	
+	<!-- Review List in productView -->
+	<select id="selectListRV" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.classProduct_seq
+			,a.member_seq
+			,a.preferenceStar
+			,a.id
+			,a.content
+			,a.reviewRegDate
+			,a.reviewLike
+            ,c.uuidName
+			,c.ext
+			,c.pseq
+			,c.path
+			FROM review a
+            left join memberUploaded c on c.pseq = a.member_seq
+			WHERE 1=1
+			AND a.classProduct_seq = #{seq}
+			AND a.order in (1,2)
+	</select>
+	
 	<!-- selctOneCount -->
 	
 	<select id="selectOneCount" resultType="Integer">

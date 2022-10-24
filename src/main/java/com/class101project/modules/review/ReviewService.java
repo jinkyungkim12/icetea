@@ -5,6 +5,7 @@ import java.util.List;
 public interface ReviewService {
 
 	public List<Review> selectList(ReviewVo vo) throws Exception;
+	public List<Review> selectListView(ReviewVo vo) throws Exception;
 	public List<Review> selectListxdmin(ReviewVo vo) throws Exception;
 	public int insert(Review dto) throws Exception;
 	

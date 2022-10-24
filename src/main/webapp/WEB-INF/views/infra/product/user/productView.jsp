@@ -167,7 +167,7 @@
 			font-style: normal;
 		}
 		#reviewID{
-			font-size: 25px;
+			font-size: 22px;
 			font-family: 'Happiness-Sans-Bold';
 			font-style: normal;
 			color: #5A5757;
@@ -252,6 +252,11 @@
 		}
 		.heart{
 			margin-top: 2rem;
+		}
+		.avatar-review{
+			width: 35px;
+			height: 35px;
+			border-radius: 100%;
 		}
 	</style>
 </head>
@@ -401,15 +406,15 @@
 					<div><span class="class1" id="classinfo">클래스 정보</span></div>
 				</div>
 				<div class="row" style="margin-top: 2rem;">
-					<div class="col-4"><span class="class2"><b>클래스 분량</b>&nbsp;<c:out value="${item.classAmount}"/></span></div>
-					<div class="col-3"><span class="class2"><b>수강 가능일</b>
+					<div class="col-5"><span class="class2"><b>클래스 분량: </b>&nbsp;<c:out value="${item.classAmount}"/></span></div>
+					<div class="col-3"><span class="class2"><b>수강 가능일: </b>
 											<c:choose>
 												<c:when test = "${item.dateNY eq 1}">&nbsp;가능</c:when>
 												<c:otherwise>불가능</c:otherwise>
 											</c:choose>
 									   </span>
 					</div>
-					<div class="col-3"><span class="class2"><b>자막 포함 여부</b> 
+					<div class="col-3"><span class="class2"><b>자막 포함 여부: </b> 
 										    <c:choose>
 												<c:when test = "${item.subtitleNY eq 1}">&nbsp;가능</c:when>
 												<c:otherwise>불가능</c:otherwise>
@@ -425,7 +430,7 @@
 				<!-- 후기 -->
 				<div id="RV">
 					<!-- list 처리 할 곳 -->
-					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
+					<div id="reviewHead" class="mb-3"><h5>실제 수강생 후기</h5></div>
 					<!-- <div class="row">
 						<div class="col-3" id="star1">												
 							<i class="fa-solid fa-star"></i>
@@ -439,52 +444,52 @@
 						</div>
 					</div> -->
 					<div class="row">
-						<div class="col-6">
-							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> yeriel</span></div>
-							<div class="row">
-								<div class="col-4">
-									<div class="reviewStar">
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>&emsp;
+					<c:choose>
+						<c:when test="${fn:length(listRV) eq 0 }">
+			               <div class="text-center"><h5><b>이 클래스에 대한 리뷰가 존재하지 않습니다.</b></h5></div>
+			           </c:when>
+			            <c:otherwise>
+	           				<c:forEach items="${listRV }" var="listRV" varStatus="status">
+								<div class="col-6">
+									<div class="row mb-2" id="reviewID">
+										<div class="col-1">
+											<c:choose>
+												<c:when test="${listRV.pseq eq null }">
+													<img alt="" src="../resources/images/profileimg.png" class="avatar avatar-review">
+												</c:when>
+												<c:otherwise>
+													<img alt="" src="${listRV.path}${listRV.uuidName}" class="avatar avatar-review">
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<div class="col-11 px-4 text-start" id="reviewID">
+											<span><c:out value="${listRV.id}"/></span>
+										</div>
 									</div>
-								</div>
-								<div class="col-8 text-end">
-									<span class="reviewDate">1월 02일 10:05:01</span>
-								</div>
-							</div>
-							<div class="reviewContent">
-								<span>
-									유랑 작가님 수업 처음 듣는데 매우 재밌습니다! 이모티콘 만드는 법을 디테일있게 알려주셔서 너무 좋습니다! 아이패드 고물될 뻔했는데, 다행히 요즘 아주 유용하게 사용하고 있습니다!
-								</span>
-							</div>
-							<div class="heart"><i class="fa-solid fa-heart"></i> 5</div>
-						</div>
-						<div class="col-6">
-							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> chacha</span></div>
-							<div class="row">
-								<div class="col-4">
-									<div class="reviewStar">
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>
-										<i class="fa-solid fa-star"></i>&emsp;
+									<div class="row mb-2">
+										<div class="col-4">
+											<div class="reviewStar">
+												<i class="fa-solid fa-star"></i>
+												<i class="fa-solid fa-star"></i>
+												<i class="fa-solid fa-star"></i>
+												<i class="fa-solid fa-star"></i>
+												<i class="fa-solid fa-star"></i>&emsp;
+											</div>
+										</div>
+										<div class="col-8 text-end">
+											<span class="reviewDate"><c:out value="${listRV.reviewRegDate}"/></span>
+										</div>
 									</div>
+									<div class="reviewContent">
+										<span>
+											<c:out value="${listRV.content}"/> 
+										</span>
+									</div>
+									<div class="heart"><i class="fa-solid fa-heart"></i> 5</div>
 								</div>
-								<div class="col-8 text-end">
-									<span class="reviewDate">4월 9일 20:50:12</span>
-								</div>
-							</div>
-							<div class="reviewContent">
-								<span>
-									해볼까 말까 꽤 오랜시간을 고민했는데 고민한 시간이 아까울만큼 재미있는 수업이었어요. 정말 세세한 부분까지 알려주시고 제공해주시는 자료들도 많이 유용해요. 팁도 알려주셔서 나중에 혼자 공부할 때도 유익할 것 같아요. 고민하시는 분들이 계시다면 추천드리고 ... 
-								</span>
-							</div>
-							<div class="heart"><i class="fa-solid fa-heart"></i> 12</div>
-						</div>
+							</c:forEach>
+			           </c:otherwise>
+					</c:choose>	
 					</div> 
 					<div class="row justify-content-center">
 						<button type="button" role="button" class="btn btn-dark" id="reviewButton"><b>후기 작성하러 가기</b></button>

@@ -89,6 +89,10 @@ public class ProductController {
 			List<Product> listContent = service.selectContent(vo);
 			model.addAttribute("listContent",listContent);
 			
+			// Review SelectList
+			List<Product> listRV = service.selectListRV(vo);
+			model.addAttribute("listRV",listRV);
+			
 			return "/infra/product/user/productView";
 		}
 	
