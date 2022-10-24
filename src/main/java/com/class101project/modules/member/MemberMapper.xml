@@ -75,6 +75,7 @@
 			,regDatetime
 			,company
 			,creatorNickname
+			,coupon
 		)
 		VALUES (
 			#{name}
@@ -96,6 +97,7 @@
 			,now()
 			,#{company}
 			,#{creatorNickname}
+			,10000
 		)
 		
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
@@ -143,6 +145,7 @@
 			,addressDetail
 			,addr3
 			,member_seq
+			,tOrder
 		)
 		VALUES (
 			#{zipcode}
@@ -150,6 +153,7 @@
 			,#{addressDetail}
 			,#{addr3}
 			,#{seq}
+			,1
 		)
 		<selectKey resultType="String" keyProperty="member_seq" order="AFTER">
 			SELECT last_insert_id()

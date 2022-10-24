@@ -24,6 +24,7 @@ public class Member extends Base{
 		private String regDatetime;
 		private String company;
 		private String creatorNickname;
+		private Integer coupon;
 		
 		/* address */
 		private String aSeq;
@@ -32,9 +33,21 @@ public class Member extends Base{
 		private String addressDetail;
 		private String addr3;
 		private String member_seq;
+		private Integer tOrder;
 		
 		
-		
+		public Integer getCoupon() {
+			return coupon;
+		}
+		public void setCoupon(Integer coupon) {
+			this.coupon = coupon;
+		}
+		public Integer gettOrder() {
+			return tOrder;
+		}
+		public void settOrder(Integer tOrder) {
+			this.tOrder = tOrder;
+		}
 		public String getMember_seq() {
 			return member_seq;
 		}
