@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.class101project.modules.product.Product;
+
 @Controller
 @RequestMapping(value = "/review/")
 public class ReviewController {
@@ -41,32 +43,25 @@ public class ReviewController {
 			return "/infra/review/xdmin/reviewList";
 		}
 	
+//		@RequestMapping(value = "reviewForm")
+//		public String reviewForm(@ModelAttribute("vo") ReviewVo vo, Model model) throws Exception{
+//			
+//			System.out.println("vo.getSeq(): " + vo.getSeq());
+//			
+//			
+//			
+//			return "/infra/review/xdmin/reviewForm";
+//		}
+		
 		@RequestMapping(value = "reviewForm")
 		public String reviewForm(@ModelAttribute("vo") ReviewVo vo, Model model) throws Exception{
 			
 			System.out.println("vo.getSeq(): " + vo.getSeq());
 			
-			Review result = service.selectOne(vo);
-			model.addAttribute("item", result);
+			List<Review> list = service.selectList(vo);
+			model.addAttribute("list", list);
 			
-			Review item1 = service.memberSelectOne(vo);
-			model.addAttribute("item1", item1);
-			
-			return "/infra/review/xdmin/reviewForm";
-		}
-		
-		@RequestMapping(value = "reviewUserForm")
-		public String reviewUserForm(@ModelAttribute("vo") ReviewVo vo, Model model) throws Exception{
-			
-			System.out.println("vo.getSeq(): " + vo.getSeq());
-			
-			Review result = service.selectOne(vo);
-			model.addAttribute("item", result);
-			
-			Review item1 = service.memberSelectOne(vo);
-			model.addAttribute("item1", item1);
-			
-			return "/infra/review/user/reviewForm";
+			return "infra/review/user/reviewForm";
 		}
 	
 	// 등록 
@@ -74,37 +69,37 @@ public class ReviewController {
 		@RequestMapping(value = "reviewInst")
 		public String reviewInst(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
 			
-			service.totalInsert(dto);
+			service.insert(dto);
 			
 			vo.setSeq(dto.getSeq());
 			redirectAttributes.addFlashAttribute("vo", vo);
 			
-			return "redirect:/review/reivewForm";
+			return "redirect:/review/reviewUserForm";
 		}
-	
-		@RequestMapping(value = "reviewUpdt")
-		public String reviewUpdt(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
-			
-			service.totalUpdate(dto);
-			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/review/reivewForm";
-		}
-	
+//	
+//		@RequestMapping(value = "reviewUpdt")
+//		public String reviewUpdt(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
+//			
+//			service.totalUpdate(dto);
+//			redirectAttributes.addFlashAttribute("vo", vo);
+//			return "redirect:/review/reivewForm";
+//		}
+//	
 	// 삭제
 		
-		@RequestMapping(value = "reviewUele")
-		public String reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
-			
-			service.uelete(dto);
-			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/review/reviewList";
-		}
-		
-		@RequestMapping(value = "reviewDele")
-		public String reviewDele(ReviewVo vo, RedirectAttributes redirectAttributes) throws Exception {
-			
-			service.delete(vo);
-			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/review/reviewList";
-		}
+//		@RequestMapping(value = "reviewUele")
+//		public String reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
+//			
+//			service.uelete(dto);
+//			redirectAttributes.addFlashAttribute("vo", vo);
+//			return "redirect:/review/reviewList";
+//		}
+//		
+//		@RequestMapping(value = "reviewDele")
+//		public String reviewDele(ReviewVo vo, RedirectAttributes redirectAttributes) throws Exception {
+//			
+//			service.delete(vo);
+//			redirectAttributes.addFlashAttribute("vo", vo);
+//			return "redirect:/review/reviewList";
+//		}
 }

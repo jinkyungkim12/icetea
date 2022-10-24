@@ -13,7 +13,42 @@ public class Review {
 	private Integer reviewLike;
 	private Integer reviewDelNY;
 	private String name;
+	private Integer	member_seq;
+	private Integer pseq;
+	private String uuidName;
+	private String ext;
+	private String path;
 	
+	public Integer getPseq() {
+		return pseq;
+	}
+	public void setPseq(Integer pseq) {
+		this.pseq = pseq;
+	}
+	public String getUuidName() {
+		return uuidName;
+	}
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	public Integer getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(Integer member_seq) {
+		this.member_seq = member_seq;
+	}
 	public String getSeq() {
 		return seq;
 	}

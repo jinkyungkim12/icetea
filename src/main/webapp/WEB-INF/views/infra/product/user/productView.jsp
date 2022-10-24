@@ -192,7 +192,6 @@
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
 			font-style: normal;
-			background-color: #EFEFEF;
 			margin-top: 3rem;
 		}
 		.productView{
@@ -427,7 +426,6 @@
 				<div id="RV">
 					<!-- list 처리 할 곳 -->
 					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
-					<div class="text-end"><a type="button" href="/review/reviewUserForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
 					<!-- <div class="row">
 						<div class="col-3" id="star1">												
 							<i class="fa-solid fa-star"></i>
@@ -488,9 +486,9 @@
 							<div class="heart"><i class="fa-solid fa-heart"></i> 12</div>
 						</div>
 					</div> 
-					<!-- <div class="row justify-content-center">
-						<a type="button" href="#" role="button" class="btn btn-light" id="reviewButton">6개의 후기 더 보기</a>
-					</div> -->
+					<div class="row justify-content-center">
+						<button type="button" role="button" class="btn btn-dark" id="reviewButton"><b>후기 작성하러 가기</b></button>
+					</div>
 				</div>
 				
 				
@@ -621,12 +619,17 @@
 	<script type="text/javascript">
 		
 		var goUrlForm = "/order/orderRegForm"
+		var goUrlReview = "/review/reviewForm"
 		
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
 		$("#btnOrder").on("click", function(){
 			form.attr("action", goUrlForm).submit();
+		}); 
+		
+		$("#reviewButton").on("click", function(){
+			form.attr("action", goUrlReview).submit();
 		}); 
 		
 	</script>

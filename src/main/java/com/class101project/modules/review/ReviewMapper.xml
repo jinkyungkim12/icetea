@@ -27,23 +27,6 @@
 		</choose>
 	</sql>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
-		SELECT 
-			   a.seq
-		      ,a.id
-		      ,a.preferenceStar
-		      ,a.content
-		      ,a.classProgressRate
-		      ,a.reviewLike
-		      ,a.reviewDelNY
-		      ,a.reviewRegDate
-		      ,a.reviewModDate
-		      ,a.classProduct_seq
-		<include refid="selectCommon" />
-		<include refid="Base.selectListLowerForMysql" />
-	</select>
-	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
@@ -54,8 +37,6 @@
 		      id
 		      ,preferenceStar
 		      ,content
-		      ,classProgressRate
-		      ,reviewLike
 		      ,reviewDelNY
 		      ,reviewRegDate
 		)
@@ -63,8 +44,6 @@
 			  #{id}
 		      ,#{preferenceStar}
 		      ,#{content}
-		      ,#{classProgressRate}
-		      ,#{reviewLike}
 		      ,0
 		      ,now()
 		)
@@ -74,21 +53,8 @@
 		</selectKey>
 	</insert>
 	
-	<insert id="memberInsert">
-		INSERT INTO member (
-			name
-			,id
-		)
-		VALUES (
-			#{name}
-			,#{id}
-		)
-		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<update id="update">
+
+	<!-- <update id="update">
 		UPDATE review
 		SET
 			id = #{id}
@@ -122,21 +88,30 @@
 	<delete id="delete">
 		DELETE FROM review WHERE seq = #{seq}
 	</delete>
-
-	<select id="selectOne" resultMap="resultMapObj">
+ -->
+	
+	<!-- selectList -->
+	<!-- user -->
+	<select id="selectList" resultMap="resultMapObj">
 		SELECT
+			a.*
+            ,c.uuidName
+			,c.ext
+			,c.pseq
+			,c.path
+			FROM review a
+            left join memberUploaded c on c.pseq = a.member_seq
+			WHERE 1=1
+			AND a.classProduct_seq = #{seq}
+	</select>
+	
+	<!-- xdmin -->
+	<select id="selectListxdmin" resultMap="resultMapObj">
+		SELECT	
 			a.*
 			FROM review a
 			WHERE 1=1
-			AND a.seq = #{seq}
-	</select>
-	
-	<select id="memberSelectOne" resultMap="resultMapObj">
-		SELECT
-			a.*
-			FROM member a
-			WHERE 1=1
-			AND seq = #{seq}
+			and a.seq = #{seq}
 	</select>
 	
 </mapper>

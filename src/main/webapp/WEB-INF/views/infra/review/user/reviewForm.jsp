@@ -179,6 +179,11 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		.avatar-review{
+			width: 35px;
+			height: 35px;
+			border-radius: 100%;
+		}
 	</style>
 </head>
 <body>
@@ -275,130 +280,138 @@
 	</div>
 	
 	<!-- review -->
-	
-	<div class="container review">
-		<div class="row text-center" style="margin-top: 2rem;"><h3><b>Review</b></h3></div>
-		<div class="row justify-content-center" style="margin-top: 5rem;">
-			<div class="col-3">
-				<div class="reviewStar">
-					<i class="fa-solid fa-star"></i>
-					<i class="fa-solid fa-star"></i>
-					<i class="fa-solid fa-star"></i>
-					<i class="fa-solid fa-star"></i>
-					<i class="fa-solid fa-star"></i>&emsp;
+	<form  id="form" name="form" method="post">
+	<input type="hidden" name="classProduct_seq" value="${vo.seq}"/>   
+		<div class="container review">
+			<div class="row text-center" style="margin-top: 2rem;"><h3><b>Review</b></h3></div>
+			<div class="row justify-content-center" style="margin-top: 5rem;">
+				<div class="col-3">
+					<div class="reviewStar">
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>&emsp;
+					</div>
 				</div>
+				<div class="col-1"><h4><b>4.9</b></h4></div>
+				<div class="col-2" style="color: gray;"><span>총 8개</span></div>
 			</div>
-			<div class="col-1"><h4><b>4.9</b></h4></div>
-			<div class="col-2" style="color: gray;"><span>총 8개</span></div>
-		</div>
-		 <!-- Header -->
-            <div class="row align-items-center">
-              <div class="col-12 col-md-auto">
-
-                <!-- Dropdown -->
-                <div class="dropdown mb-4 mb-md-0">
-
-                  <!-- Toggle -->
-                  <a class="dropdown-toggle text-reset" data-bs-toggle="dropdown" href="#">
-                    <strong>Sort by: 최신순</strong>
-                  </a>
-
-                  <!-- Menu -->
-                  <div class="dropdown-menu mt-3">
-                    <a class="dropdown-item" href="#!">최신순</a>
-                    <a class="dropdown-item" href="#!">오래된순</a>
-                  </div>
-
-                </div>
-
-              </div>
-              <div class="col-12 col-md text-md-center">
-
-                <!-- Rating -->
-                <div class="rating text-dark h6 mb-4 mb-md-0" data-value="4">
-                </div>
-
-
-              </div>
-              <div class="col-12 col-md-auto">
-
-                <!-- Button -->
-                <a class="btn btn-dark collapsed" data-bs-toggle="collapse" href="#reviewForm" aria-expanded="false">
-                  후기 작성하기
-                </a>
-
-              </div>
-            </div>
-
-            <!-- New Review -->
-            <div class="collapse" id="reviewForm" style="">
-
-              <!-- Divider -->
-              <hr class="my-8">
-
-              <!-- Form -->
-              <form>
-                <div class="row">
-                  <div class="col-12 mb-6">
-
-                    <!-- Text -->
-                    <p class="mb-1 fs-xs">
-                      별점:
-                    </p>
-
-                    <!-- Rating form -->
-                    <div class="rating-form">
-                    
-                    	<div class="star-rating justify-content-center">
-						  <input type="radio" id="5-stars" name="rating" value="15" />
-						  <label for="5-stars" class="star">&#9733;</label>
-						  <input type="radio" id="4-stars" name="rating" value="14" />
-						  <label for="4-stars" class="star">&#9733;</label>
-						  <input type="radio" id="3-stars" name="rating" value="13" />
-						  <label for="3-stars" class="star">&#9733;</label>
-						  <input type="radio" id="2-stars" name="rating" value="12" />
-						  <label for="2-stars" class="star">&#9733;</label>
-						  <input type="radio" id="1-star" name="rating" value="11" />
-						  <label for="1-star" class="star">&#9733;</label>
-						</div>
-
-                    </div>
-
-                  </div>
-                  <div class="col-12" style="margin-top: 1rem;">
-
-                    <!-- Name -->
-                    <div class="form-group">
-                      <label class="visually-hidden" for="reviewName">id:</label>
-                      <input class="form-control form-control-sm" id="reviewName" type="text" placeholder="id를 작성해주세요." required="">
-                    </div>
-
-                  </div>
-                  <div class="col-12" style="margin-top: 1.5rem;">
-
-                    <!-- Review -->
-                    <div class="form-group">
-                      <label class="visually-hidden" for="reviewText">후기</label>
-                      <textarea class="form-control form-control-sm" id="reviewText" rows="5" placeholder="후기를 작성해주세요." required=""></textarea>
-                    </div>
-
-                  </div>
-                  <div class="col-12 text-center" style="margin-top: 3rem;">
-
-                    <!-- Button -->
-                    <a class="btn btn-outline-dark" type="button" href="#">후기 등록하기</a>
-
-                  </div>
-                </div>
-              </form>
-            </div>
-       </div>
-            
-            
-            
-       <div class="container review2" style="margin-top: 2rem;">
-           <div class="row">
-				<div class="col-12" id="reviewID"><span><i class="fa-solid fa-circle-user"></i> yeriel</span></div>
+			 <!-- Header -->
+	            <div class="row align-items-center">
+	              <div class="col-12 col-md-auto">
+	
+	                <!-- Dropdown -->
+	                <div class="dropdown mb-4 mb-md-0">
+	
+	                  <!-- Toggle -->
+	                  <a class="dropdown-toggle text-reset" data-bs-toggle="dropdown" href="#">
+	                    <strong>Sort by: 최신순</strong>
+	                  </a>
+	
+	                  <!-- Menu -->
+	                  <div class="dropdown-menu mt-3">
+	                    <a class="dropdown-item" href="#!">최신순</a>
+	                    <a class="dropdown-item" href="#!">오래된순</a>
+	                  </div>
+	
+	                </div>
+	
+	              </div>
+	              <div class="col-12 col-md text-md-center">
+	
+	                <!-- Rating -->
+	                <div class="rating text-dark h6 mb-4 mb-md-0" data-value="4">
+	                </div>
+	
+	
+	              </div>
+	              <div class="col-12 col-md-auto">
+	
+	                <!-- Button -->
+	                <a class="btn btn-dark collapsed" data-bs-toggle="collapse" href="#reviewForm" aria-expanded="false">
+	                  후기 작성하기
+	                </a>
+	
+	              </div>
+	            </div>
+	
+	            <!-- New Review -->
+	            <div class="collapse" id="reviewForm" style="">
+	
+	              <!-- Divider -->
+	              <hr class="my-8">
+	
+	              <!-- Form -->
+	                <div class="row">
+	                  <div class="col-12 mb-6">
+	
+	                    <!-- Text -->
+	                    <p class="mb-1 fs-xs">
+	                      별점:
+	                    </p>
+	
+	                    <!-- Rating form -->
+	                    <div class="rating-form">
+	                    
+	                    	<div class="star-rating justify-content-center">
+							  <input type="radio" id="5-stars" name="preferenceStar" value="15" />
+							  <label for="5-stars" class="star">&#9733;</label>
+							  <input type="radio" id="4-stars" name="preferenceStar" value="14" />
+							  <label for="4-stars" class="star">&#9733;</label>
+							  <input type="radio" id="3-stars" name="preferenceStar" value="13" />
+							  <label for="3-stars" class="star">&#9733;</label>
+							  <input type="radio" id="2-stars" name="preferenceStar" value="12" />
+							  <label for="2-stars" class="star">&#9733;</label>
+							  <input type="radio" id="1-star" name="preferenceStar" value="11" />
+							  <label for="1-star" class="star">&#9733;</label>
+							</div>
+	
+	                    </div>
+	
+	                  </div>
+	                  <div class="col-12" style="margin-top: 1rem;">
+	
+	                    <!-- Name -->
+	                    <div class="form-group">
+	                      <label class="visually-hidden" for="reviewName">id:</label>
+	                      <input class="form-control form-control-sm" id="reviewName" name="id" type="text" placeholder="id를 작성해주세요." required="">
+	                    </div>
+	
+	                  </div>
+	                  <div class="col-12" style="margin-top: 1.5rem;">
+	
+	                    <!-- Review -->
+	                    <div class="form-group">
+	                      <label class="visually-hidden" for="reviewText">후기</label>
+	                      <textarea class="form-control form-control-sm" id="reviewText" name="content" rows="5" placeholder="후기를 작성해주세요." required=""></textarea>
+	                    </div>
+	
+	                  </div>
+	                  <div class="col-12 text-center" style="margin-top: 3rem;">
+	
+	                    <!-- Button -->
+	                    <button class="btn btn-outline-dark" type="button" id="BtnReviewReg">후기 등록하기</button>
+	
+	                  </div>
+	                </div>
+	            </div>
+	       </div>
+	      </form>      
+	 
+	       <div class="container review2" style="margin-top: 2rem;">
+	           <div class="row">
+	         		<div class="col-1">
+	         			<img alt="..." src="
+							<c:choose>
+								<c:when test = "${list.pseq eq null}">../resources/images/profileimg.png</c:when>
+								<c:otherwise>${list.path}${list.uuidName}</c:otherwise>
+							</c:choose>
+							" class="avatar avatar-review">
+					</div>
+					<div class="col-11 text-start" id="reviewID">
+						<span><c:out value="${list.id}"/></span>
+					</div>
 				<div class="row justify-content-between">
 					<div class="col-4 text-start">
 						<div class="reviewStar2">
@@ -410,54 +423,23 @@
 						</div>
 					</div>
 					<div class="col-8 text-end">
-						<span class="reviewDate">2월 17일 12:01:50</span>
+						<span class="reviewDate"><c:out value="${list.reviewRegDate}"/> &emsp;<b><c:out value="${list.classProgressRate}"/>% 수강 완료</b></span>
 					</div>
 				</div>
-			<div class="reviewContent">
-				<span>
-					유랑작가님 수업 듣고 이모티콘 2개 승인받앗어요ㅜㅜ 너무 감사합니다. 아이디어 기획하는 부분이  
-					<br>저에게 많이 도움됐어요ㅜ 작가님 너무 감사합니다. 
-				</span>
-			</div>
-			<div class="row justify-content-between" style="margin-top: 1rem;">
+				<div class="reviewContent">
+					<span>
+						<c:out value="${list.content}"/> 
+					</span>
+				</div>
+				<div class="row justify-content-between" style="margin-top: 1rem;">
 					<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
 					<div class="col-11 text-end">
-						<a type="button"  href="/review/reviewModForm" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></a>
+						<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
 						<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
 					</div>
 				</div>
-			<div class="row justify-content-between" style="margin-top: 3rem;">
-				<div class="col-12" id="reviewID"><span><i class="fa-solid fa-circle-user"></i> chacha</span></div>
-					<div class="col-4 text-start">
-						<div class="reviewStar2">
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>&emsp;
-						</div>
-					</div>
-					<div class="col-8 text-end">
-						<span class="reviewDate">4월 9일 20:50:12</span>
-					</div>
-				<div class="reviewContent">
-					<span>
-						해볼까 말까 꽤 오랜시간을 고민했는데 고민한 시간이 아까울만큼 재미있는 수업이었어요. 정말 세세 
-						<br>한 부분까지 알려주시고 제공해주시는 자료들도 많이 유용해요. 팁도 알려주셔서 나중에 혼자 공부할 
-						<br>때도 유익할 것 같아요. 고민하시는 분들이 계시다면 추천드리고 싶습니다.
-					</span>
-				</div>
-			</div>
-			<div class="row justify-content-between" style="margin-top: 1rem;">
-				<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
-				<div class="col-11 text-end">
-					<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
-					<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
-				</div>
 			</div>
 		</div>
-	</div>
-	
 	<!-- footer -->
 	<div class="container">
 		<div class="row" style="margin-top: 5rem;">
@@ -499,5 +481,24 @@
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+			
+		var goUrlList = "/review/reviewUserForm";
+		var goUrlInst = "/review/reviewInst";	
+		
+		var form = $("form[name=form]");
+		var seq = $("input:hidden[name=seq]");
+		
+		goList = function(keyValue){
+			$("input:hidden[name=mSeq]").val(keyValue);
+			form.attr("action", goUrlList).submit();
+		}
+		
+		$("#BtnReviewReg").on("click", function(){
+			form.attr("action", goUrlInst).submit();
+		});
+		
+	</script>
 </body>
 </html>
