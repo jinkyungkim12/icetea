@@ -1,6 +1,8 @@
 package com.class101project.modules.review;
 
-public class Review {
+import com.class101project.common.base.Base;
+
+public class Review extends Base{
 
 	private String seq;
 	private String classProduct_seq;
@@ -14,35 +16,7 @@ public class Review {
 	private Integer reviewDelNY;
 	private String name;
 	private Integer	member_seq;
-	private Integer pseq;
-	private String uuidName;
-	private String ext;
-	private String path;
 	
-	public Integer getPseq() {
-		return pseq;
-	}
-	public void setPseq(Integer pseq) {
-		this.pseq = pseq;
-	}
-	public String getUuidName() {
-		return uuidName;
-	}
-	public void setUuidName(String uuidName) {
-		this.uuidName = uuidName;
-	}
-	public String getExt() {
-		return ext;
-	}
-	public void setExt(String ext) {
-		this.ext = ext;
-	}
-	public String getPath() {
-		return path;
-	}
-	public void setPath(String path) {
-		this.path = path;
-	}
 	public Integer getMember_seq() {
 		return member_seq;
 	}

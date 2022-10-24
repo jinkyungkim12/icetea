@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/477/477796.png">
-<style type="text/css">
+	<style type="text/css">
 		#ListClass{
 			color: red;
 			font-family: 'Happiness-Sans-Bold';
@@ -195,37 +195,35 @@
 		<div class="row">
 			<div class="col-8">
 				<nav class="navbar navbar-expand-lg bg-white">
-				  <div class="container-fluid">
-				    <a class="navbar-brand" href="/home">
-      					<img src="../../resources/images/logo.png" alt="">
-				    </a>
-				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				      <span class="navbar-toggler-icon"></span>
-				    </button>
-				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				        <li class="nav-item" id="">
-				          <a class="nav-link" href="#" id="ListClass"><b>클래스</b></a>
-				        </li>
-				        <li class="nav-item">
-				          <a class="nav-link" href="#" id="ListStore"><b>스토어</b></a>
-				        </li>
-				      </ul>
-				    </div>
-				    <div class="row">
-						<select id="shOption" name="shOption" class="form-select" aria-label="Default select example" style="width: 150px;">
-						  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
-						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
-						  <option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
-						</select>
-				        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
-				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
-			        </div>
-			    </div>
-			 </nav>  
-		</div>
-			
-	 	
+				  	<div class="container-fluid">
+				    	<a class="navbar-brand" href="/home">
+							<img src="../../resources/images/logo.png" alt="">
+						</a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item" id="">
+									<a class="nav-link" href="#" id="ListClass"><b>클래스</b></a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#" id="ListStore"><b>스토어</b></a>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<select id="shOption" name="shOption" class="form-select" aria-label="Default select example" style="width: 150px;">
+								<option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
+								<option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
+								<option value="2" <c:if test="${vo.shOption eq 2}">selected </c:if>>강의제목</option>
+							</select>
+							<input class="form-control me-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
+							<button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
+						</div>
+			    	</div>
+			 	</nav>  
+			</div>
 			
 			<!-- 로그인 전	 -->
 			<c:if test="${sessSeq eq null}">
@@ -281,9 +279,11 @@
 	
 	<!-- review -->
 	<form  id="form" name="form" method="post">
-	<input type="hidden" name="classProduct_seq" value="${vo.seq}"/>   
+		<input type="hidden" name="seq" value="${vo.seq}"/>   
 		<div class="container review">
-			<div class="row text-center" style="margin-top: 2rem;"><h3><b>Review</b></h3></div>
+			<div class="row text-center" style="margin-top: 2rem;">
+				<h3><b>Review</b></h3>
+			</div>
 			<div class="row justify-content-center" style="margin-top: 5rem;">
 				<div class="col-3">
 					<div class="reviewStar">
@@ -297,26 +297,21 @@
 				<div class="col-1"><h4><b>4.9</b></h4></div>
 				<div class="col-2" style="color: gray;"><span>총 8개</span></div>
 			</div>
-			 <!-- Header -->
+			 	<!-- Header -->
 	            <div class="row align-items-center">
-	              <div class="col-12 col-md-auto">
-	
-	                <!-- Dropdown -->
-	                <div class="dropdown mb-4 mb-md-0">
-	
-	                  <!-- Toggle -->
-	                  <a class="dropdown-toggle text-reset" data-bs-toggle="dropdown" href="#">
-	                    <strong>Sort by: 최신순</strong>
-	                  </a>
-	
-	                  <!-- Menu -->
-	                  <div class="dropdown-menu mt-3">
-	                    <a class="dropdown-item" href="#!">최신순</a>
-	                    <a class="dropdown-item" href="#!">오래된순</a>
-	                  </div>
-	
-	                </div>
-	
+	            	<div class="col-12 col-md-auto">
+	                	<!-- Dropdown -->
+	                	<div class="dropdown mb-4 mb-md-0">
+							<!-- Toggle -->
+							<a class="dropdown-toggle text-reset" data-bs-toggle="dropdown" href="#">
+								<strong>Sort by: 최신순</strong>
+							</a>
+							<!-- Menu -->
+							<div class="dropdown-menu mt-3">
+								<a class="dropdown-item" href="#!">최신순</a>
+								<a class="dropdown-item" href="#!">오래된순</a>
+							</div>
+	                	</div>
 	              </div>
 	              <div class="col-12 col-md text-md-center">
 	
@@ -391,55 +386,67 @@
 	                  <div class="col-12 text-center" style="margin-top: 3rem;">
 	
 	                    <!-- Button -->
-	                    <button class="btn btn-outline-dark" type="button" id="BtnReviewReg">후기 등록하기</button>
+	                    <button class="btn btn-outline-dark mb-5" type="button" id="BtnReviewReg">후기 등록하기</button>
 	
 	                  </div>
 	                </div>
 	            </div>
 	       </div>
-	      </form>      
-	 
+	      </form>
+	            
 	       <div class="container review2" style="margin-top: 2rem;">
-	           <div class="row">
-	         		<div class="col-1">
-	         			<img alt="..." src="
-							<c:choose>
-								<c:when test = "${list.pseq eq null}">../resources/images/profileimg.png</c:when>
-								<c:otherwise>${list.path}${list.uuidName}</c:otherwise>
-							</c:choose>
-							" class="avatar avatar-review">
-					</div>
-					<div class="col-11 text-start" id="reviewID">
-						<span><c:out value="${list.id}"/></span>
-					</div>
-				<div class="row justify-content-between">
-					<div class="col-4 text-start">
-						<div class="reviewStar2">
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>&emsp;
+	       <c:choose>
+	           <c:when test="${fn:length(list) eq 0 }">
+	               <div class="text-center"><h5><b>이 클래스에 대한 리뷰가 존재하지 않습니다.</b></h5></div>
+	           </c:when>
+	           <c:otherwise>
+	           		<c:forEach items="${list }" var="list" varStatus="status">
+			           <div class="row mb-5">
+			         		<div class="col-1">
+									<c:choose>
+										<c:when test="${list.pseq eq null }">
+											<img alt="" src="../resources/images/profileimg.png" class="avatar avatar-review">
+										</c:when>
+										<c:otherwise>
+											<img alt="" src="${list.path}${list.uuidName}" class="avatar avatar-review">
+										</c:otherwise>
+									</c:choose>
+							</div>
+							<div class="col-11 text-start" id="reviewID">
+								<span><c:out value="${list.id}"/></span>
+							</div>
+						<div class="row justify-content-between">
+							<div class="col-4 text-start">
+								<div class="reviewStar2">
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>&emsp;
+								</div>
+							</div>
+							<div class="col-8 text-end">
+								<span class="reviewDate"><c:out value="${list.reviewRegDate}"/> &emsp;<b><c:out value="${list.classProgressRate}"/>% 수강 완료</b></span>
+							</div>
+						</div>
+						<div class="reviewContent">
+							<span>
+								<c:out value="${list.content}"/> 
+							</span>
+						</div>
+						<div class="row justify-content-between" style="margin-top: 1rem;">
+							<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
+							<div class="col-11 text-end">
+								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
+								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
+							</div>
 						</div>
 					</div>
-					<div class="col-8 text-end">
-						<span class="reviewDate"><c:out value="${list.reviewRegDate}"/> &emsp;<b><c:out value="${list.classProgressRate}"/>% 수강 완료</b></span>
-					</div>
-				</div>
-				<div class="reviewContent">
-					<span>
-						<c:out value="${list.content}"/> 
-					</span>
-				</div>
-				<div class="row justify-content-between" style="margin-top: 1rem;">
-					<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
-					<div class="col-11 text-end">
-						<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
-						<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
-					</div>
-				</div>
-			</div>
+	           		</c:forEach>
+	           </c:otherwise>
+	       </c:choose>
 		</div>
+		
 	<!-- footer -->
 	<div class="container">
 		<div class="row" style="margin-top: 5rem;">
