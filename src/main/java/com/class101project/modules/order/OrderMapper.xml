@@ -242,6 +242,7 @@
 			 a.seq
 			 ,a.classProduct_seq as pdSeq
 			 ,a.member_seq as mSeq
+			 ,a.orderDate
 	         ,b.type
 			 ,b.sort
 			 ,b.originalName

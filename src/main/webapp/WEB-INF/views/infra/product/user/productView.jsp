@@ -185,6 +185,7 @@
 		.reviewContent{
 			font-family: 'Happiness-Sans-Regular';
 			font-style: normal;
+			height: 7rem;
 		}
 		#reviewButton{
 			width: 500px;
@@ -249,6 +250,9 @@
 			width: 50px;
 			height: 50px;
 			border-radius: 100%;
+		}
+		.heart{
+			margin-top: 2rem;
 		}
 	</style>
 </head>
@@ -424,7 +428,7 @@
 					<!-- list 처리 할 곳 -->
 					<div id="reviewHead"><h5>실제 수강생 후기</h5></div>
 					<div class="text-end"><a type="button" href="/review/reviewUserForm" role="button" class="btn btn-outline-dark">후기 작성하기</a></div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-3" id="star1">												
 							<i class="fa-solid fa-star"></i>
 							<i class="fa-solid fa-star"></i>
@@ -435,7 +439,7 @@
 						<div class="col-3" id="star2">
 							<b>4.9</b>&emsp;<span>총 8개</span>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
 						<div class="col-6">
 							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> yeriel</span></div>
@@ -449,19 +453,16 @@
 										<i class="fa-solid fa-star"></i>&emsp;
 									</div>
 								</div>
-								<div class="col-8">
-									<span class="reviewDate">1월 02일 10:05:01&emsp;<b>20% 수강 후 작성</b></span>
+								<div class="col-8 text-end">
+									<span class="reviewDate">1월 02일 10:05:01</span>
 								</div>
 							</div>
 							<div class="reviewContent">
 								<span>
-									유랑 작가님 수업 처음 듣는데 매우 재밌습니다! 이모티콘 만드
-									<br>는 법을 디테일있게 알려주셔서 너무 좋습니다!
-									<br>아이패드 고물될 뻔했는데, 다행히 요즘 아주 유용하게
-									<br>사용하고 있습니다!
+									유랑 작가님 수업 처음 듣는데 매우 재밌습니다! 이모티콘 만드는 법을 디테일있게 알려주셔서 너무 좋습니다! 아이패드 고물될 뻔했는데, 다행히 요즘 아주 유용하게 사용하고 있습니다!
 								</span>
 							</div>
-							<div style="margin-top: 3rem;"><i class="fa-solid fa-heart"></i> 5</div>
+							<div class="heart"><i class="fa-solid fa-heart"></i> 5</div>
 						</div>
 						<div class="col-6">
 							<div id="reviewID"><span><i class="fa-solid fa-circle-user"></i> chacha</span></div>
@@ -475,25 +476,21 @@
 										<i class="fa-solid fa-star"></i>&emsp;
 									</div>
 								</div>
-								<div class="col-8">
-									<span class="reviewDate">4월 9일 20:50:12&emsp;<b>100% 수강 후 작성</b></span>
+								<div class="col-8 text-end">
+									<span class="reviewDate">4월 9일 20:50:12</span>
 								</div>
 							</div>
 							<div class="reviewContent">
 								<span>
-									해볼까 말까 꽤 오랜시간을 고민했는데 고민한 시간이 아까울
-									<br>만큼 재미있는 수업이었어요. 정말 세세한 부분까지 알려주시
-									<br>고 제공해주시는 자료들도 많이 유용해요. 
-									<br>팁도 알려주셔서 나중에 혼자 공부할 때도 유익할 것 같아요.
-									<br>고민하시는 분들이 계시다면 추천드리고 ... 
+									해볼까 말까 꽤 오랜시간을 고민했는데 고민한 시간이 아까울만큼 재미있는 수업이었어요. 정말 세세한 부분까지 알려주시고 제공해주시는 자료들도 많이 유용해요. 팁도 알려주셔서 나중에 혼자 공부할 때도 유익할 것 같아요. 고민하시는 분들이 계시다면 추천드리고 ... 
 								</span>
 							</div>
-							<div style="margin-top: 1.5rem;"><i class="fa-solid fa-heart"></i> 12</div>
+							<div class="heart"><i class="fa-solid fa-heart"></i> 12</div>
 						</div>
 					</div> 
-					<div class="row justify-content-center">
+					<!-- <div class="row justify-content-center">
 						<a type="button" href="#" role="button" class="btn btn-light" id="reviewButton">6개의 후기 더 보기</a>
-					</div>
+					</div> -->
 				</div>
 				
 				
@@ -564,11 +561,11 @@
 							<div class="col-6"><i class="fa-solid fa-user"></i> 초급자 대상</div>
 							<div class="col-6"><i class="fa-solid fa-thumbs-up"></i> 강의 만족도 99%</div>
 						</div>
-						<div class="text-center" id="ddd">
+						<!-- <div class="text-center" id="ddd">
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-heart"></i> 11701</a>
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-arrow-up-from-bracket"></i> 공유하기</a>
 							<a type="button" href="#" role="button" class="btn btn-light"><i class="fa-solid fa-gift"></i> 선물하기</a>
-						</div>
+						</div> -->
 						<div class="row justify-content-center">
 							<button type="button" role="button" class="btn btn-danger" id="btnOrder">구매하기 <i class="fa-solid fa-cart-shopping"></i></button>
 						</div>	

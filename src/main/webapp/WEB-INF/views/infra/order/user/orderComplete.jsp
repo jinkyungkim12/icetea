@@ -139,6 +139,14 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		.titleOrder{
+			height: 45px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-bottom-width: 5px;
+			background: black; 
+			color: white; 
+		}
 	</style>
 </head>
 <body>
@@ -250,9 +258,9 @@
 			    <p class="text-center" style="margin-top: 1rem;">자세한 클래스 구매 내역 확인은 <b>마이페이지 주문 내역</b>에서 확인하실 수 있습니다.</p>
 			    <div class="container" style="width: 80%; text-align: center;">
 			    <div class="row">
-			    	<div class="col-12" style="background: black; color: white; height: 30px;"><b>주문내역</b></div>
+			    	<div class="col-12 titleOrder"><b>주문내역</b></div>
 			    	<div class="col-4" style="margin-top: 0.5rem;"><b>구매자</b></div>
-			    	<div class="col-8"><c:out value="${sessName}"/></div>
+			    	<div class="col-8" style="padding-top: 9px;"><c:out value="${sessName}"/></div>
 			    	<hr style="margin-top: 0.5rem;">
 			    	<div class="col-4"><b>주문날짜</b></div>
 			    	<div class="col-8"><c:out value="${itemC.orderDate}"/></div>
