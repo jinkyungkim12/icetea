@@ -171,7 +171,6 @@
 <!-- start -->
 <form  id="form" name="form" method="post" >
 <!-- *Vo.jsp s -->
-<%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
 <!-- NAV bar	 -->
 	<div class="container" style="margin-top: 3rem;">

@@ -179,7 +179,6 @@
 	<!-- <form name="form" method="post" action="/member/memberInst"> -->
 	<form  id="form" name="form" method="post" >
 	<!-- *Vo.jsp s -->
-	<%@include file="orderVo.jsp"%>		<!-- #-> -->
 	<!-- *Vo.jsp e -->
 	<div class="container" id="containerFont">
 		<div class="row" style="margin-top: 5rem;"><h2><b>2022.07.22 결제 내역</b></h2></div>
@@ -278,7 +277,6 @@
 	
 	  <form name="formVo" id="formVo" method="post">
 	  <!-- *Vo.jsp s -->
-	  <%@include file="orderVo.jsp"%>		<!-- #-> -->
 	  <!-- *Vo.jsp e -->
 	  </form>	
 	
