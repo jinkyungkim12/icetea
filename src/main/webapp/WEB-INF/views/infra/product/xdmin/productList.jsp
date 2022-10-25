@@ -80,15 +80,14 @@
 	    table, td, th{
 			text-align: center;
 		}
-		.overflow-x-auto {
-			overflow-x: auto;
-		}
-				
-		.overflow-x-auto table {
-			width: auto!important; 
-			white-space: nowrap;
-		}
 		.tdtd{
+			text-align: left !important;
+		}
+		.cont{
+			width:500px; 
+			white-space:nowrap; 
+			overflow:hidden; 
+			text-overflow:ellipsis;
 			text-align: left !important;
 		}
 	</style>
@@ -257,7 +256,7 @@
 								<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.category}"/></a>
 							</td>
 							<td><c:out value="${list.classDiv }"/></td>
-							<td class="tdtd"><c:out value="${list.title }"/></td>
+							<td><div class="cont"><c:out value="${list.title }"/></div></td>
 							<td><fmt:formatNumber type="number" value="${list.price}" pattern="#,###"/></td>
 							<td><c:out value="${list.discountRate }"/></td>
 							<td><c:out value="${list.payMonth }"/></td>

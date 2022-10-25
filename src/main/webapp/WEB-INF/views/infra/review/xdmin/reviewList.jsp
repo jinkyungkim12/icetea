@@ -91,13 +91,12 @@
 	    .tdtd{
 			text-align: left !important;
 		}
-		.overflow-x-auto {
-			overflow-x: auto;
-		}
-				
-		.overflow-x-auto table {
-			width: auto!important; 
-			white-space: nowrap;
+		.cont{
+			width:850px; 
+			white-space:nowrap; 
+			overflow:hidden; 
+			text-overflow:ellipsis;
+			text-align: left !important;
 		}
 	</style>
 </head>
@@ -219,8 +218,8 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center overflow-x-auto" style="width: 80%; margin-top: 1rem;">
-		<table class="table table-hover" id="minus">
+	<div class="container-fluid text-center" style="width: 80%; margin-top: 1rem;">
+		<table class="table table-hover" id="minus" style="width: 100%">
 			<thead>
 				<tr class="table-dark text-white">
 					<th scope="col" >
@@ -258,7 +257,7 @@
 						</td>
 						<td><c:out value="${list.classProduct_seq }"/></td>
 						<td class="tdtd"><c:out value="${list.category }"/></td>
-						<td class="tdtd"><c:out value="${list.content }"/></td>
+						<td><div class="cont"><c:out value="${list.content }"/></div></td>
 						<td>
 							<c:choose>
 								<c:when test="${list.reviewDelNY eq 0}">N</c:when>
