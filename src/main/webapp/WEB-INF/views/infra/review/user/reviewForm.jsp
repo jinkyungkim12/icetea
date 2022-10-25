@@ -352,15 +352,16 @@
 	                    <div class="rating-form">
 	                    
 	                    	<div class="star-rating justify-content-center">
-							  <input type="radio" id="5-stars" name="preferenceStar" value="15" />
+	                    	  <input type="hidden" name="preferenceStar" id="preferenceStar">
+							  <input type="radio" id="5-stars" name="startPoint" onclick="countingStar(5)" /> 
 							  <label for="5-stars" class="star">&#9733;</label>
-							  <input type="radio" id="4-stars" name="preferenceStar" value="14" />
+							  <input type="radio" id="4-stars" name="startPoint" onclick="countingStar(4)" />
 							  <label for="4-stars" class="star">&#9733;</label>
-							  <input type="radio" id="3-stars" name="preferenceStar" value="13" />
+							  <input type="radio" id="3-stars" name="startPoint" onclick="countingStar(3)" />
 							  <label for="3-stars" class="star">&#9733;</label>
-							  <input type="radio" id="2-stars" name="preferenceStar" value="12" />
+							  <input type="radio" id="2-stars" name="startPoint" onclick="countingStar(2)" />
 							  <label for="2-stars" class="star">&#9733;</label>
-							  <input type="radio" id="1-star" name="preferenceStar" value="11" />
+							  <input type="radio" id="1-star"  name="startPoint" onclick="countingStar(1)" />
 							  <label for="1-star" class="star">&#9733;</label>
 							</div>
 	
@@ -508,6 +509,11 @@
 			form.attr("action", goUrlInst).submit();
 		});
 		
+		
+		countingStar = function(key){
+			
+			$("#preferenceStar").val(key)
+		}
 	</script>
 </body>
 </html>

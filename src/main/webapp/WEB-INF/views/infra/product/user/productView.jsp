@@ -469,11 +469,9 @@
 									<div class="row mb-2">
 										<div class="col-4">
 											<div class="reviewStar">
-												<i class="fa-solid fa-star"></i>
-												<i class="fa-solid fa-star"></i>
-												<i class="fa-solid fa-star"></i>
-												<i class="fa-solid fa-star"></i>
-												<i class="fa-solid fa-star"></i>&emsp;
+												<c:forEach begin="1" end="${listRV.preferenceStar}" varStatus="status">
+													<i class="fa-solid fa-star"></i>  
+												</c:forEach>
 											</div>
 										</div>
 										<div class="col-8 text-end">

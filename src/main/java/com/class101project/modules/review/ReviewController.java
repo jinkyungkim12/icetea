@@ -56,6 +56,7 @@ public class ReviewController {
 		public String reviewForm(@ModelAttribute("vo") ReviewVo vo, Model model) throws Exception{
 			
 			System.out.println("vo.getSeq(): " + vo.getSeq());
+			vo.setClassProduct_seq(vo.getSeq());
 			
 			List<Review> list = service.selectList(vo);
 			model.addAttribute("list", list);

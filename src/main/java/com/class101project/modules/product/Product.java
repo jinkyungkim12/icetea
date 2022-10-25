@@ -22,6 +22,7 @@ public class Product extends Base{
 	private String classReg;
 	private String classMod;
 	private Integer classDelNY;
+	private Integer preferencestar;
 	
 	
 	public String getSeq() {
@@ -187,6 +188,12 @@ public class Product extends Base{
 	}
 	public void setReviewLike(Integer reviewLike) {
 		this.reviewLike = reviewLike;
+	}
+	public Integer getPreferencestar() {
+		return preferencestar;
+	}
+	public void setPreferencestar(Integer preferencestar) {
+		this.preferencestar = preferencestar;
 	}
 	
 	

@@ -40,6 +40,7 @@
 		      ,content
 		      ,reviewDelNY
 		      ,reviewRegDate
+		      ,preferenceStar
 		)
 		VALUES (
 			  #{id}
@@ -48,11 +49,8 @@
 		      ,#{content}
 		      ,0
 		      ,now()
+		      ,#{preferenceStar} 
 		)
-		
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
 	</insert>
 	
 
@@ -104,7 +102,7 @@
 			FROM review a
             left join memberUploaded c on c.pseq = a.member_seq
 			WHERE 1=1
-			AND a.classProduct_seq = #{seq}
+			AND a.classProduct_seq = #{classProduct_seq}
 	</select>
 	
 	<!-- xdmin -->

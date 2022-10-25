@@ -159,7 +159,8 @@
             left join memberUploaded c on c.pseq = a.member_seq
 			WHERE 1=1
 			AND a.classProduct_seq = #{seq}
-			AND a.order in (1,2)
+			ORDER BY a.preferenceStar DESC
+            LIMIT 2
 	</select>
 	
 	<!-- selctOneCount -->
