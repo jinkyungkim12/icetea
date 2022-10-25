@@ -93,6 +93,10 @@ public class ProductController {
 			List<Product> listRV = service.selectListRV(vo);
 			model.addAttribute("listRV",listRV);
 			
+			// review AVG value
+			Product itemAVG = service.selectAvgReview(vo);
+			model.addAttribute("itemAVG", itemAVG);
+			
 			return "/infra/product/user/productView";
 		}
 	

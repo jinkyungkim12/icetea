@@ -289,31 +289,28 @@
 			<div class="row justify-content-center" style="margin-top: 5rem;">
 				<div class="col-3">
 					<div class="reviewStar">
-						<i class="fa-solid fa-star"></i>
-						<i class="fa-solid fa-star"></i>
-						<i class="fa-solid fa-star"></i>
-						<i class="fa-solid fa-star"></i>
-						<i class="fa-solid fa-star"></i>&emsp;
+						<fmt:parseNumber integerOnly="true" value="${item.avgStar}" var="avgStar"/>
+						<c:forEach begin="1" end="${avgStar}" varStatus="status">
+							<i class="fa-solid fa-star"></i>  
+						</c:forEach>
 					</div>
 				</div>
-				<div class="col-1"><h4><b>4.9</b></h4></div>
-				<div class="col-2" style="color: gray;"><span>총 8개</span></div>
+				<div class="col-1"><h4><b><c:out value="${item.avgStar}"/></b></h4></div>
+				<div class="col-2" style="color: gray;"><h5 style="margin-bottom: 0px; margin-top: 3px;">총 <c:out value="${fn:length(list)}"/>개</h5></div>
 			</div>
 			 	<!-- Header -->
 	            <div class="row align-items-center">
 	            	<div class="col-12 col-md-auto">
 	                	<!-- Dropdown -->
-	                	<div class="dropdown mb-4 mb-md-0">
-							<!-- Toggle -->
+	                	<!-- <div class="dropdown mb-4 mb-md-0">
 							<a class="dropdown-toggle text-reset" data-bs-toggle="dropdown" href="#">
 								<strong>Sort by: 최신순</strong>
 							</a>
-							<!-- Menu -->
 							<div class="dropdown-menu mt-3">
 								<a class="dropdown-item" href="#!">최신순</a>
 								<a class="dropdown-item" href="#!">오래된순</a>
 							</div>
-	                	</div>
+	                	</div> -->
 	              </div>
 	              <div class="col-12 col-md text-md-center">
 	
@@ -323,7 +320,7 @@
 	
 	
 	              </div>
-	              <div class="col-12 col-md-auto">
+	              <div class="col-12 col-md-auto mt-5">
 	
 	                <!-- Button -->
 	                <a class="btn btn-dark collapsed" data-bs-toggle="collapse" href="#reviewForm" aria-expanded="false">
@@ -397,7 +394,7 @@
 	       </div>
 	      </form>
 	            
-	       <div class="container review2" style="margin-top: 2rem;">
+	       <div class="container review" style="margin-top: 2rem;">
 	       <c:choose>
 	           <c:when test="${fn:length(list) eq 0 }">
 	               <div class="text-center"><h5><b>이 클래스에 대한 리뷰가 존재하지 않습니다.</b></h5></div>
@@ -421,12 +418,17 @@
 						<div class="row justify-content-between">
 							<div class="col-4 text-start">
 								<div class="reviewStar2">
+									<c:forEach begin="1" end="${list.preferenceStar}" varStatus="status">
+										<i class="fa-solid fa-star"></i>  
+									</c:forEach>
+								</div>
+								<!-- <div class="reviewStar2">
 									<i class="fa-solid fa-star"></i>
 									<i class="fa-solid fa-star"></i>
 									<i class="fa-solid fa-star"></i>
 									<i class="fa-solid fa-star"></i>
 									<i class="fa-solid fa-star"></i>&emsp;
-								</div>
+								</div> -->
 							</div>
 							<div class="col-8 text-end">
 								<span class="reviewDate"><c:out value="${list.reviewRegDate}"/></span>
@@ -437,17 +439,22 @@
 								<c:out value="${list.content}"/> 
 							</span>
 						</div>
-						<div class="row justify-content-between" style="margin-top: 1rem;">
+						<!-- <div class="row justify-content-between" style="margin-top: 1rem;">
 							<div class="col-1 text-start"><i class="fa-solid fa-heart"></i> 5</div>
-							<!-- <div class="col-11 text-end">
+							<div class="col-11 text-end">
 								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-pen"></i></button>
 								<button type="button" href="#" role="button" class="btn btn-outline-dark btn-small"><i class="fa-solid fa-floppy-disk"></i></button>
-							</div> -->
-						</div>
+							</div>
+						</div> -->
 					</div>
 	           		</c:forEach>
 	           </c:otherwise>
 	       </c:choose>
+	       	<div class="row justify-content-center">
+				<div class="col text-center">
+					<button type="button" class="btn btn-dark mt-2 mb-2" id="BtnBack" style="width: 450px;">상품페이지로 돌아가기</button>
+				</div>
+			</div>
 		</div>
 		
 	<!-- footer -->
@@ -494,8 +501,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 			
-		var goUrlList = "/review/reviewUserForm";
-		var goUrlInst = "/review/reviewInst";	
+		var goUrlList = "/review/reviewForm";
+		var goUrlInst = "/review/reviewInst";
+		var goUrlView = "/product/productView";
 		
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -509,11 +517,36 @@
 			form.attr("action", goUrlInst).submit();
 		});
 		
-		
 		countingStar = function(key){
-			
 			$("#preferenceStar").val(key)
 		}
+		
+		$("#BtnBack").on("click", function(){
+			form.attr("action", goUrlView).submit();
+		});
+		
 	</script>
+	<script type="text/javascript">
+		$("#logoutButton").on("click", function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/member/memberLoginResult";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+	</script> 
 </body>
 </html>

@@ -27,6 +27,9 @@ public interface ProductService {
 	public Product selectOne(ProductVo vo) throws Exception;
 	public int selectOneCount(ProductVo vo) throws Exception;
 	
+	// selectOne ReviewAvg
+	public Product selectAvgReview(ProductVo vo) throws Exception;
+	
 	// 이미지 업로드
 	
 	public Product selectProductImg(ProductVo vo) throws Exception;

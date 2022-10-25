@@ -116,11 +116,17 @@
 			,a.preferenceStar
 			,a.content
 			,a.reviewRegDate
-			,a.reviewModDate
+			,a.reviewModDate 
 			,a.reviewDelNY
-			,a.order
 		<include refid="selectCommon" />
 		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<!-- select Avg -->
+	<select id="selectAvgReview" resultMap="resultMapObj">
+		SELECT 
+			round(avg(preferenceStar),1) as avgStar 
+			FROM review
 	</select>
 	
 </mapper>

@@ -100,6 +100,11 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectOneCount(vo);
 	}
 	
+	// ReviewAvg SelectOne
+	@Override
+	public Product selectAvgReview(ProductVo vo) throws Exception{
+		return dao.selectAvgReview(vo);
+	}
 	
 	// 이미지 업로드
 	

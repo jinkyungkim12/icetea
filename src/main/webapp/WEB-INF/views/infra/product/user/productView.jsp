@@ -192,7 +192,6 @@
 			height: 40px;
 			font-family: 'Happiness-Sans-Regular';
 			font-style: normal;
-			margin-top: 3rem;
 		}
 		.productView{
 			font-family: 'Happiness-Sans-Regular';
@@ -431,18 +430,18 @@
 				<div id="RV">
 					<!-- list 처리 할 곳 -->
 					<div id="reviewHead" class="mb-3"><h5>실제 수강생 후기</h5></div>
-					<!-- <div class="row">
-						<div class="col-3" id="star1">												
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>&emsp;
+					<div class="row justify-content-center mt-5 mb-5">
+						<div class="col-3">
+						<div class="reviewStar" id="star1">
+							<fmt:parseNumber integerOnly="true" value="${itemAVG.avgStar}" var="avgStar"/>
+							<c:forEach begin="1" end="${avgStar}" varStatus="status">
+								<i class="fa-solid fa-star"></i>  
+							</c:forEach>
 						</div>
-						<div class="col-3" id="star2">
-							<b>4.9</b>&emsp;<span>총 8개</span>
 						</div>
-					</div> -->
+						<div class="col-1"><h4><b><c:out value="${itemAVG.avgStar}"/></b></h4></div>
+						<div class="col-2" style="color: gray;"><h5 style="margin-bottom: 0px; margin-top: 3px;"><b>총 <c:out value="${fn:length(listRV)}"/>개</b></h5></div>
+					</div>
 					<div class="row">
 					<c:choose>
 						<c:when test="${fn:length(listRV) eq 0 }">
@@ -483,7 +482,6 @@
 											<c:out value="${listRV.content}"/> 
 										</span>
 									</div>
-									<div class="heart"><i class="fa-solid fa-heart"></i> 5</div>
 								</div>
 							</c:forEach>
 			           </c:otherwise>

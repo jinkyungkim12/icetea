@@ -61,6 +61,9 @@ public class ReviewController {
 			List<Review> list = service.selectList(vo);
 			model.addAttribute("list", list);
 			
+			Review item = service.selectAvgReview(vo);
+			model.addAttribute("item", item);
+			
 			return "infra/review/user/reviewForm";
 		}
 	

@@ -52,4 +52,9 @@ public class ReviewDao {
 		public int selectOneCount(ReviewVo vo) {
 			return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 		}
+		
+		// ReviewStar Avg
+		public Review selectAvgReview(ReviewVo vo) {
+			return sqlSession.selectOne(namespace + ".selectAvgReview", vo);
+		}
 }

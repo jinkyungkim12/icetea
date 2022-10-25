@@ -233,9 +233,8 @@
 					<th scope="col">카테고리</th>
 					<th scope="col">내용</th>
 					<th scope="col">삭제여부</th>
-					<th scope="col">order</th>
 					<th scope="col">등록일</th>
-					<th scope="col">수정일</th>
+					<!-- <th scope="col">수정일</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -253,9 +252,9 @@
 							<input class="check" type="checkbox" name="check">
 						</td>
 						<th scope="row"><c:out value="${list.seq }"/></th>
-						<%-- <td><c:out value="${list.name }"/></td> --%>
 						<td>
-							<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.id}"/></a>
+							<%-- <a href="javascript:goForm(<c:out value="${list.seq }"/>)"></a> --%>
+							<c:out value="${list.id}"/>
 						</td>
 						<td><c:out value="${list.classProduct_seq }"/></td>
 						<td class="tdtd"><c:out value="${list.category }"/></td>
@@ -266,9 +265,8 @@
 								<c:otherwise>Y</c:otherwise>
 							</c:choose>
 						</td>
-						<td><c:out value="${list.order }"/></td>
 						<td><c:out value="${list.reviewRegDate }"/></td>
-						<td><c:out value="${list.reviewModDate }"/></td>
+						<%-- <td><c:out value="${list.reviewModDate }"/></td> --%>
 					</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -357,12 +355,14 @@
 	</script>
 	<script type="text/javascript">
 	
-		var goUrlList = "/review/reviewList"; 			/* #-> */
-		var goUrlInst = "/review/reviewInst"; 			/* #-> */
-		var goUrlUpdt = "/review/reviewUpdt";				/* #-> */
-		var goUrlUele = "/review/reviewUele";				/* #-> */
-		var goUrlDele = "/review/reviewDele";				/* #-> */
-		var goUrlForm = "/review/reviewForm";
+		var goUrlList = "/review/reviewList";
+		var goUrlUele = "/review/reviewUele";
+		var goUrlDele = "/review/reviewDele";
+		
+		
+		/* var goUrlForm = "/review/reviewForm";
+		var goUrlInst = "/review/reviewInst";
+		var goUrlUpdt = "/review/reviewUpdt"; */
 		
 		var form = $("form[name=formList]");
 		

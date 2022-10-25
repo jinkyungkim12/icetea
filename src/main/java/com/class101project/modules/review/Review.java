@@ -18,6 +18,7 @@ public class Review extends Base{
 	private Integer	member_seq;
 	private String order;
 	private String category;
+	private String avgStar;
 	
 	
 	public String getCategory() {
@@ -104,5 +105,13 @@ public class Review extends Base{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getAvgStar() {
+		return avgStar;
+	}
+	public void setAvgStar(String avgStar) {
+		this.avgStar = avgStar;
+	}
+	
+	
 	
 }

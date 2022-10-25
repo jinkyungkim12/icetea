@@ -40,6 +40,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public int selectOneCount(ReviewVo vo) throws Exception {
 		return dao.selectOneCount(vo);
 	}
+	
+	// review Avg 
+	@Override
+	public Review selectAvgReview(ReviewVo vo) throws Exception {
+		return dao.selectAvgReview(vo);
+	}
 
 	// update
 
