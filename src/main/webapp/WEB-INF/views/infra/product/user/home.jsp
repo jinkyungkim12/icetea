@@ -274,7 +274,7 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
 	        </li>
-	        <li class="nav-item">
+	        <!-- <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
 	        </li>
 	        <li class="nav-item">
@@ -297,7 +297,7 @@
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">원포인트 클래스</a>
-	        </li>
+	        </li> -->
 	      </ul>
 	    </div>
 	  </div>

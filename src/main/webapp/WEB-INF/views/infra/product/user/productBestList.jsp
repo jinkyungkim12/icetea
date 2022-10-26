@@ -163,6 +163,11 @@
 		.dropdown-menu{
 			--bs-dropdown-link-active-bg: #FCC4A3;
 		}
+		.avatar-rounded-circle{
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+		}
 	</style>
 </head>
 <body>
@@ -281,7 +286,7 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
 	        </li>
-	        <li class="nav-item">
+	       <!--  <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
 	        </li>
 	        <li class="nav-item">
@@ -304,7 +309,7 @@
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">원포인트 클래스</a>
-	        </li>
+	        </li> -->
 	      </ul>
 	    </div>
 	  </div>

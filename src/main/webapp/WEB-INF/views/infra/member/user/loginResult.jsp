@@ -141,7 +141,7 @@
 						<i class="fa-solid fa-n"></i> 네이버로 시작하기
 					</a>
 				</div>
-				<div class="row">
+				<!-- <div class="row">
 					<a type="button" class="btn btn-light" href="#" id="other" style="background-color: #1877F2;">
 						<i class="fa-brands fa-facebook-square"></i> 페이스북으로 시작하기
 					</a>
@@ -150,7 +150,7 @@
 					<a type="button" class="btn btn-light" href="#" id="other" style="background-color: #EA4335;">
 						<i class="fa-solid fa-g"></i> 구글로 시작하기
 					</a>
-				</div>
+				</div> -->
 			</div>	
 		</div>
 		<div class="col-7">

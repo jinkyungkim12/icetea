@@ -242,10 +242,10 @@
 					</div>
 	   			</div>
 			</div>
-			<div class="col-12">
+			<!-- <div class="col-12">
 				<label class="form-label"><small>강의 상세 정보 첨부파일</small></label>
 	   			<input type="file" class="form-control" id="inputGroupFile01" multiple="multiple">
-			</div>
+			</div> -->
 		</div>
 	</div>
 	

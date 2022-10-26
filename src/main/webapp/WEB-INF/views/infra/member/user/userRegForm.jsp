@@ -261,6 +261,7 @@
 				<div class="col-3 text-center">
 	    			<img id="preview-image" class="profile">
 					<input style="display: block; margin:auto;" type="file" id="input-image" name="postImage">
+					<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 프로필 이미지는 수정이 불가능하오니 <br>신중하게 선택하시길 바랍니다.</small>
 				</div>
 			</div>
 		</div>
