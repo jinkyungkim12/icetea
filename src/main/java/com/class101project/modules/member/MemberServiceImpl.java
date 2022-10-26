@@ -77,6 +77,11 @@ public class MemberServiceImpl implements MemberService{
 		addUpdate(dto);
 	}
 	
+	public void totalUpdate2(Member dto) throws Exception {
+		mypageUpdate(dto);
+		addUpdate(dto);
+	}
+	
 	@Override
 	public int update(Member dto) throws Exception{
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));

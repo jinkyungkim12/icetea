@@ -48,7 +48,6 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	// Review SelectList
-	
 	@Override
 	public List<Product> selectListRV(ProductVo vo) throws Exception {
 		
@@ -100,12 +99,6 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectOneCount(vo);
 	}
 	
-	// ReviewAvg SelectOne
-	@Override
-	public Product selectAvgReview(ProductVo vo) throws Exception{
-		return dao.selectAvgReview(vo);
-	}
-	
 	// 이미지 업로드
 	
 	@Override
@@ -139,4 +132,10 @@ public class ProductServiceImpl implements ProductService{
             
 			return 0;
     }
+
+	@Override
+	public Product selectAvgReview(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

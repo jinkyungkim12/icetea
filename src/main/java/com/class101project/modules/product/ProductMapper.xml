@@ -170,15 +170,6 @@
 		<include refid="selectCommon" />
 	</select>
 	
-	
-	<!-- Review AVG SelectOne -->
-	<select id="selectAvgReview" resultMap="resultMapObj">
-		SELECT 
-			round(avg(preferenceStar),1) as avgStar 
-			FROM review
-	</select>
-	
-	
 	<!-- insert -->
 
 	<insert id="insert">

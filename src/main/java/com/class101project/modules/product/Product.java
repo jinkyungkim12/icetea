@@ -144,7 +144,6 @@ public class Product extends Base{
 	private String content;
 	private String reviewRegDate;
 	private Integer reviewLike;
-	private String avgStar;
 
 
 	public Integer getClassProduct_seq() {
@@ -195,13 +194,5 @@ public class Product extends Base{
 	public void setPreferencestar(Integer preferencestar) {
 		this.preferencestar = preferencestar;
 	}
-	public String getAvgStar() {
-		return avgStar;
-	}
-	public void setAvgStar(String avgStar) {
-		this.avgStar = avgStar;
-	}
-	
-	
 	
 }

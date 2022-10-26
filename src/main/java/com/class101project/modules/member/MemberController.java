@@ -195,12 +195,10 @@ public class MemberController {
 		
 		dto.setSeq(seq);
 		
-		service.totalUpdate(dto);
+		service.totalUpdate2(dto);
 		
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
-		System.out.println(dto.getPostImage().length);
 		
 		return "redirect:/member/mypageModForm";
 	}

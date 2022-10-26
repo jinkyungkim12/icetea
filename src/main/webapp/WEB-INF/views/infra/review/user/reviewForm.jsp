@@ -397,7 +397,7 @@
 	       <div class="container review" style="margin-top: 2rem;">
 	       <c:choose>
 	           <c:when test="${fn:length(list) eq 0 }">
-	               <div class="text-center"><h5><b>이 클래스에 대한 리뷰가 존재하지 않습니다.</b></h5></div>
+	               <div class="text-center mb-5"><h5><b>이 클래스에 대한 리뷰가 존재하지 않습니다.😢</b></h5></div>
 	           </c:when>
 	           <c:otherwise>
 	           		<c:forEach items="${list }" var="list" varStatus="status">

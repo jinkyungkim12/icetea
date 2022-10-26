@@ -310,8 +310,7 @@
 						<div class="row" style="margin-top: 3rem;"><h4><b>주문 정보</b></h4></div>
 						<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${item.category}"/>]</b></h5></div>
 						<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.title}"/></span></div>
-						<div class="row" style="margin-top: 0.5rem; width: 150px; height: 100px;"><img src="${item.path}${item.uuidName}"></div>
-						<br>	
+						<div class="row" style="margin-top: 0.5rem;"><img src="${item.path}${item.uuidName}" style="width: 150px; height: 100px;"></div>
 						<hr class="hrstyle">
 						<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
 						<div class="row" style="margin-top: 1rem;">

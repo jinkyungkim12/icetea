@@ -127,6 +127,8 @@
 		SELECT 
 			round(avg(preferenceStar),1) as avgStar 
 			FROM review
+			WHERE 1=1
+			AND classProduct_seq = #{classProduct_seq}
 	</select>
 	
 </mapper>

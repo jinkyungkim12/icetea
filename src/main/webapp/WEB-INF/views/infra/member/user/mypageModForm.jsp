@@ -518,9 +518,7 @@
 				</div>
 				<div class="container" id="aaa">
 					<div class="row justify-content-center">
-					<button type="button" class="btn" id="Modification">수정하기</button>&emsp;<button type="button" class="btn btn-dark" id="Cancel">최소하기</button>
-						<!-- <div class="col-6 text-center"><button type="button" class="btn" id="Modification">수정하기</button></div>
-						<div class="col-6 text-center"><button type="button" class="btn btn-dark" id="Cancel">최소하기</button></div> -->
+						<button type="button" class="btn" id="Modification">수정하기</button>&emsp;<button type="button" class="btn btn-dark" id="Cancel">최소하기</button>
 					</div>
 				</div>
 				<br>

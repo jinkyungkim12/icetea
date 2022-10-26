@@ -16,8 +16,6 @@ public class ProductVo {
 	
 	private String seq;
 	private String classProduct_seq;
-	private String avgStar;
-	
 	
 	public String getClassProduct_seq() {
 		return classProduct_seq;
@@ -82,15 +80,6 @@ public class ProductVo {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-		
-	public String getAvgStar() {
-			return avgStar;
-		}
-
-	public void setAvgStar(String avgStar) {
-		this.avgStar = avgStar;
-	}
-
 
 
 	//	paging

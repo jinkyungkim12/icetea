@@ -92,11 +92,6 @@ public class ProductDao {
 		System.out.println("dao result: " + result);
 		return result;
 	}
-	
-	// reviewAvg
-	public Product selectAvgReview(ProductVo vo) {
-		return sqlSession.selectOne(namespace + ".selectAvgReview", vo);
-	}
 
 	
 	// 이미지 업로드 상품
