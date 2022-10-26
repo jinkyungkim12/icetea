@@ -12,7 +12,7 @@
 	
 	<sql id ="selectCommon">
 		FROM classProduct a
-		WHERE 1=1
+		ORDER BY a.seq DESC
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.classDelNY = #{shDelNY}</if>
 		<!-- <if test="shValue != null"></if> -->

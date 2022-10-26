@@ -12,8 +12,8 @@
 	 
 	<sql id ="selectCommon">
 	 	FROM codeGroup a
-		WHERE 1=1
-		
+		ORDER BY a.seq DESC
+				
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.cgDelNY = #{shDelNY}</if>
 		<if test="shCgValue != null"></if>
 		

@@ -282,8 +282,8 @@
 	    	</div>
 	    	<div class="col-2 text-end">
 	     		<!-- <a type="button" class="btn btn-dark" href="/reivew/reviewForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a> -->
-	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">등록하기<i class="fa-solid fa-file-arrow-up"></i></button>
-				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
+	     		<!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">등록하기<i class="fa-solid fa-file-arrow-up"></i></button> -->
+				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 	    	</div>
 	    </div>	
    </div>
