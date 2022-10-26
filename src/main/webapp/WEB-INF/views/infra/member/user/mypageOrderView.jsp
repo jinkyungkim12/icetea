@@ -306,11 +306,13 @@
 				  	<form  id="form" name="form" method="post">
 					<input type="hidden" name="seq" value="${vo.seq}"> 
 					<input type="hidden" name="mSeq" value="${sessSeq}"> 
+					<input type="hidden" name="classProduct_seq" value="${item.classProduct_seq}"> 
 						<div class="container" id="containerFont">
 						<div class="row" style="margin-top: 3rem;"><h4><b>주문 정보</b></h4></div>
 						<div class="row" style="margin-top: 0.5rem;"><h5><b>[<c:out value="${item.category}"/>]</b></h5></div>
 						<div class="row" style="margin-top: 0.5rem;"><span><c:out value="${item.title}"/></span></div>
 						<div class="row" style="margin-top: 0.5rem;"><img src="${item.path}${item.uuidName}" style="width: 150px; height: 100px;"></div>
+						<%-- <div class="row" style="margin-top: 0.5rem;"><a href="javascript:goProduct('${sessSeq }', '${item.classProduct_seq }')"><img src="${item.path}${item.uuidName}" style="width: 150px; height: 100px;"></a></div> --%>
 						<hr class="hrstyle">
 						<div class="row" style="margin-top: 2rem;"><h4><b>배송 정보</b></h4></div>
 						<div class="row" style="margin-top: 1rem;">
@@ -472,6 +474,7 @@
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlMypage = "/member/mypage"
 		var goUrlView = "/order/mypageOrderView"
+		var goUrlProduct="/product/productView"
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -488,6 +491,11 @@
 			form.attr("action", goUrlView).submit();
 		}
 		
+		goProduct = function(keyValue1, keyValue2) {
+			$("input:hidden[name=mSeq]").val(keyValue1);
+			$("input:hidden[name=classProduct_seq]").val(keyValue2);
+			form.attr("action", goUrlProduct).submit();
+		}
 		
 	</script>
 	<script type="text/javascript">

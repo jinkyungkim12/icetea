@@ -257,8 +257,8 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')"><c:out value="${sessName}"/></a></b></h3></div>
-		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6><c:out value="${sessEmail}"/></h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')" style="width: 100px;"><c:out value="${sessName}"/></a></b></h3></div>
+		<div><a type="button" href="/member/mypageModForm" class="nav-link" style="width: 100px;"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">

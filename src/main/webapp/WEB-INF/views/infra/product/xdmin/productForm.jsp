@@ -261,7 +261,7 @@
 		     		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color: white;"><i class="fa-solid fa-x"></i></button>
 					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
 					<button type="button" class="btn btn-success" id="btnSave"><i class="fa-solid fa-bookmark"></i></button>
-					<button type="button" class="btn btn-dark" id="test" onclick="validationInst()"><i class="fa-solid fa-bookmark"></i></button>
+					<!-- <button type="button" class="btn btn-dark" id="test" onclick="validationInst()"><i class="fa-solid fa-bookmark"></i></button> -->
 		    	</div>
 		    </div>
 			

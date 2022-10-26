@@ -392,7 +392,7 @@
 		<c:forEach items="${listDC}" var="listDC" varStatus="status">
 			<div class="col-3">
 				<a class="nav-link"  href="javascript:goForm('${listDC.seq }')"> 
-					<div class="card" style="width: 18rem;">
+					<div class="card mb-3" style="width: 18rem;">
 					  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
 					  <div class="card-body" style="height: 12rem;">
 					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>

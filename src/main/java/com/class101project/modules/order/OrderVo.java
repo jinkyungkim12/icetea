@@ -17,7 +17,16 @@ public class OrderVo {
 	private String mSeq;
 	private Integer member_seq;
 	private String pdSeq;
+	private String classProduct_seq;
 	
+	public String getClassProduct_seq() {
+		return classProduct_seq;
+	}
+
+	public void setClassProduct_seq(String classProduct_seq) {
+		this.classProduct_seq = classProduct_seq;
+	}
+
 	public String getPdSeq() {
 		return pdSeq;
 	}
