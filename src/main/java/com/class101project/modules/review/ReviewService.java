@@ -11,6 +11,9 @@ public interface ReviewService {
 	// 관리자 리스트
 	public List<Review> selectListxdmin(ReviewVo vo) throws Exception;
 	
+	// 마이 리뷰 리스트
+	public List<Review> selectListMyReview(ReviewVo vo) throws Exception;
+	
 	// 리뷰 폼 insert
 	public int insert(Review dto) throws Exception;
 	

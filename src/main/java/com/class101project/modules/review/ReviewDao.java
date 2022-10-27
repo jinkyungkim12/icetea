@@ -22,6 +22,9 @@ public class ReviewDao {
 	public List<Review> selectListView(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectListView", vo); }
 	public List<Review> selectListxdmin(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectListxdmin", vo); }
 	
+	// my review
+	public List<Review> selectListMyReview(ReviewVo vo){ return sqlSession.selectList(namespace + ".selectListMyReview", vo); }
+	
 	
 	// insert
 		public int insert(Review dto) {

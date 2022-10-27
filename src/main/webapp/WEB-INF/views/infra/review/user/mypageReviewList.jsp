@@ -129,7 +129,7 @@
 			background-color: #F5F5F5;
 		} 
 		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-		    color: black;
+		    color: gray;
 		    background-color: var(--bs-nav-tabs-link-active-bg);
 		    border-color: var(--bs-nav-tabs-link-active-border-color);
 		}
@@ -139,7 +139,7 @@
 		    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
 		    font-size: var(--bs-nav-link-font-size);
 		    font-weight: var(--bs-nav-link-font-weight);
-		    color: gray;
+		    color: black;
 		    text-decoration: none;
 		    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 		}
@@ -154,20 +154,25 @@
 			height: 50px;
 			border-radius: 100%;
 		}
-		#BtnOrder{
-			margin-top: 3rem;
-			background: #E6E6E6;
-			width: 500px;
+		#btnView{
+			background-color: white;
+			border: none;
 		}
-		a {
-    		color: #141619;
-    	}
-    	#BtnOrder2{
+		.nav-link:hover{
+			color: gray !important;
+		}
+		#BtnOrder2{
     		background-color: white;
     		border: 0px;
     	}
     	#BtnReview{
     		background-color: white;
+    		border: 0px;
+    	}
+    	.fa-star{
+    		color: #f2901f;
+    	}
+    	.card{
     		border: 0px;
     	}
 	</style>
@@ -176,17 +181,17 @@
 <body>
 
 <!-- start -->
-<form  id="form" name="form" method="post" >
-<!-- *Vo.jsp s -->
-<%@include file="memberVo.jsp"%>		<!-- #-> -->
-<!-- *Vo.jsp e -->
 <!-- NAV bar	 -->
+	<!-- loginNY s -->
+	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
 	<%@include file="../../../common/xdmin/includeV1/loginNY.jsp"%>
+	</form>
+	<!-- loginNY e -->
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')" style="width: 100px;"><c:out value="${sessName}"/></a></b></h3></div>
-		<div><a type="button" href="/member/mypageModForm" class="nav-link" style="width: 100px;"><h6><c:out value="${sessEmail}"/></h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')"><c:out value="${sessName}"/></a></b></h3></div>
+		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">
@@ -212,134 +217,76 @@
 
 			<!-- 오른쪽 -->
 			<div class="col-8">
-			  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-			  	<div style="margin-top: 3rem;"><h5><b>내 스토어 상품</b></h5></div>
-				<div class="row">
-					<div class="col-4">
-						<img src="https://cdn.class101.net/images/dfd02760-c3e2-4ea7-8eb1-a93cf10fa746/375xauto.webp" width="260" height="200">
-					</div>
-					<div class="col-4">
-						<img src="https://cdn.class101.net/images/cb2119ec-b977-49e3-a1a4-b674081ed809/750xauto.webp" width="260" height="200">
-					</div>
-					<div class="col-4">
-						<img src="../../resources/images/mypage3.png" width="260" height="200">
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>인스타그램으로 세상에 나의 가치를 알려<br>보자. 인스타그램 퍼스널 브랜딩</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>초보 그림러가 인기 작가가 되는 법, 콕스<br>의 독학비법서</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 1rem;">
-						<span><b>무명 이모티콘 작가가 인기 작가가 된 비<br>결!경쟁에서 살아남는 인기 이모티콘 만들기</b></span>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>50% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>75% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4" style="margin-top: 0.5rem;">
-						<div class="row">
-							<div class="col-4"><span class="progressRate"><small>90% 수강중</small></span></div>
-							<div class="col-8 progress" style="margin-top: 0.7rem; width: 170px; height: 3px; padding-left: 0px; padding-right: 0px;">
-							  <div class="progress-bar bg-danger" role="progressbar" aria-label="Example 1px high" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 20일 남음</span></div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 50일 남음</span></div>
-					<div class="col-4"><span style="color: gray; margin-top: 0.5rem;">수강기간 10일 남음</span></div>
+				<form  id="form" name="form" method="post">
+					<input type="hidden" name="member_seq" value="${sessSeq}"/>
+					<div class="container" style="width: 95%">
+						<div style="margin-top: 3rem;"><h3><b>나의 후기 보기</b></h3></div>
+						<c:forEach items="${listRV}" var="listRV" varStatus="status">
+							<div class="row mt-5">
+		           				<div class="card shadow bg-body rounded cardBorder">
+								  <div class="card-body">
+								    <div class="row justify-content-between">
+								    	<h4><b><c:out value="${listRV.category}"/></b></h4>
+								    	<div class="col text-start"><span><c:out value="${listRV.title}"/></span></div>
+								    	<div class="col text-start" id="starValue">
+									    	<c:forEach begin="1" end="${listRV.preferenceStar}" varStatus="status">
+												<i class="fa-solid fa-star"></i>  
+											</c:forEach>
+									    	&nbsp;<span><b><c:out value="${listRV.preferenceStar}"/>점</b></span>
+								    	</div>
+								    </div>
+								    <p class="card-text mt-4"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
+								  </div>
+								</div>
+	           				</div>
+	           			</c:forEach>
+           			</div>
+				</form>	
 				</div>
-				<div class="row justify-content-center">
-					<div class="col-6 text-center">
-						<butto type="button" id="BtnOrder" class="btn btn-light">
-							<b>주문내역 보러가기</b>
-						</button>
-					</div>
-				</div>
-			  </div>
 			</div>
-		</div>	
-	</div>
-</div>
+		</div>
 	
 	
 	<!-- 끝 -->
-	<div class="container">
-		<div class="row" style="margin-top: 5rem;">
-			<div class="col-4">
-				<div><img src="../../resources/images/classLogo.png" alt="" width="300" height="121"></div>
-				<div><span id="endContent1">클래스 101은 모든 사람이 사랑하는 일을 하며<br>살 수 있도록 세상을 바꾸고자 합니다.</span></div>
-				<br>
-				<br>
-				<div><span id="endContent1"><small>KR</small>&nbsp;한국어</span></div>
-			</div>
-			<div class="col-2">
-				<div class="endTitle">클래스 101</div>
-				<div class="endContent2">홈</div>
-				<div class="endContent2">기업교육</div>
-				<div class="endContent2">채용</div>
-				<div class="endContent2">도움말</div>
-			</div>
-			<div class="col-2">
-				<div class="endTitle">크리에이터</div>
-				<div class="endContent2">크리에이터 센터</div>
-				<div class="endContent2">정규 클래스 지원하기</div>
-				<div class="endContent2">도움말</div>
-			</div>
-			<div class="col-4">
-				<div class="endTitle">고객센터</div>
-				<div class="text-center"><a type="button" role="button" class="btn btn-light" id="endButton">문의하기</a></div>
-				<div class="endContent2 text-center">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div> 
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
-	</form>	
+	<!-- loginNY s -->
+	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
+	<!-- loginNY e -->
+	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		
+		/* alert($("input[name=mSeq]").val());	 */
+		
+		/* alert($("input[name=seq]").val())
+		alert($("input[name=mSeq]").val())
+		alert($("input[name=vSeq]").val()) */
+		
+		alert($("input[name=member_seq]").val());
+	
 		var goUrlForm = "/member/mypageModForm";
-		var goUrlList = "/order/mypageOrderList";
-		var goUrlReview = "/review/myreview";
+		var goUrlListOrder = "/order/mypageOrderList";
+		var goUrlList="/review/myreview";
+		
 	
 		var form = $("form[name=form]");
-		var seq = $("input[name=seq]").val();
-		var mSeq = $("input[name=mSeq]").val();
-		
-	/* 	alert(seq);
-		alert(mSeq); */
+		var seq = $("input:hidden[name=seq]");
 		
 		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
-		
-		$("#BtnOrder").on("click", function() {
+
+		goList = function(keyValue){
+			$("input:hidden[name=member_seq]").val(keyValue);
 			form.attr("action", goUrlList).submit();
-		})
+		}
 		
 		$("#BtnOrder2").on("click", function() {
-			form.attr("action", goUrlList).submit();
-		})
-		
-		$("#BtnReview").on("click", function() {
-			form.attr("action", goUrlReview).submit();
+			form.attr("action", goUrlListOrder).submit();
 		})
 		
 	</script>

@@ -2,6 +2,8 @@ package com.class101project.modules.review;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,6 +80,17 @@ public class ReviewController {
 			redirectAttributes.addFlashAttribute("vo", vo);
 			
 			return "redirect:/review/reviewForm";
+		}
+		
+		@RequestMapping(value = "myreview")
+		public String myreview(@ModelAttribute("vo") ReviewVo vo, Model model, HttpSession httpSession) throws Exception {
+			
+			httpSession.setAttribute("sessSeq", vo.getMember_seq());
+			
+			List<Review> listRV = service.selectListMyReview(vo);
+			model.addAttribute("listRV", listRV);
+			
+			return "/infra/review/user/mypageReviewList";
 		}
 //	
 //		@RequestMapping(value = "reviewUpdt")

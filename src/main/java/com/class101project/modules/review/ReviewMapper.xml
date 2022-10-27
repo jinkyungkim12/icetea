@@ -131,4 +131,18 @@
 			AND classProduct_seq = #{classProduct_seq}
 	</select>
 	
+	<!-- My review List -->
+	<select id="selectListMyReview" resultMap="resultMapObj">
+		SELECT	
+			c.category
+            ,c.title
+			,a.preferenceStar
+			,a.content
+			,a.reviewRegDate
+		FROM review a
+        left join member b on b.seq = a.member_seq
+        left join classProduct c on c.seq = a.classProduct_seq
+        where 1=1
+        AND a.member_seq = #{member_seq}
+	</select>
 </mapper>
