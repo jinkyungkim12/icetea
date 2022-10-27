@@ -353,7 +353,7 @@
 	</div> -->
 	
 	<!-- 카테고리 -->
-	<div class="container" style="margin-top: 5rem;">
+	<!-- <div class="container" style="margin-top: 5rem;">
 		<div><h2 id="subtitle">인기 카테고리</h2></div>
 		<div class="row text-center" style="margin-top: 3rem;">
 			<div class="col-3">
@@ -407,7 +407,7 @@
 				</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<!-- 끝 -->
 	<div class="container">

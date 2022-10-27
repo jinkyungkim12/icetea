@@ -143,6 +143,6 @@
         left join member b on b.seq = a.member_seq
         left join classProduct c on c.seq = a.classProduct_seq
         where 1=1
-        AND a.member_seq = #{member_seq}
+        AND a.member_seq = #{mSeq}
 	</select>
 </mapper>

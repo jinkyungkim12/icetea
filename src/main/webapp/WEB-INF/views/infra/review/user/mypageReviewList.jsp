@@ -218,24 +218,24 @@
 			<!-- 오른쪽 -->
 			<div class="col-8">
 				<form  id="form" name="form" method="post">
-					<input type="hidden" name="member_seq" value="${sessSeq}"/>
+					<input type="hidden" name="mSeq" value="${sessSeq}"/>
 					<div class="container" style="width: 95%">
-						<div style="margin-top: 3rem;"><h3><b>나의 후기 보기</b></h3></div>
+						<div style="margin-top: 3rem;"><h3><b>내가 작성한 후기</b></h3></div>
 						<c:forEach items="${listRV}" var="listRV" varStatus="status">
 							<div class="row mt-5">
 		           				<div class="card shadow bg-body rounded cardBorder">
 								  <div class="card-body">
 								    <div class="row justify-content-between">
-								    	<h4><b><c:out value="${listRV.category}"/></b></h4>
-								    	<div class="col text-start"><span><c:out value="${listRV.title}"/></span></div>
-								    	<div class="col text-start" id="starValue">
+								    	<h5><b><c:out value="${listRV.category}"/></b></h5>
+								    	<div class="col-9 text-start"><span>[<c:out value="${listRV.title}"/>]</span></div>
+								    	<div class="col-3 text-end" id="starValue">
 									    	<c:forEach begin="1" end="${listRV.preferenceStar}" varStatus="status">
 												<i class="fa-solid fa-star"></i>  
 											</c:forEach>
 									    	&nbsp;<span><b><c:out value="${listRV.preferenceStar}"/>점</b></span>
 								    	</div>
 								    </div>
-								    <p class="card-text mt-4"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
+								    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
 								  </div>
 								</div>
 	           				</div>
@@ -264,7 +264,7 @@
 		alert($("input[name=mSeq]").val())
 		alert($("input[name=vSeq]").val()) */
 		
-		alert($("input[name=member_seq]").val());
+		/* alert($("input[name=mSeq]").val()); */
 	
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlListOrder = "/order/mypageOrderList";
@@ -281,7 +281,7 @@
 		}
 
 		goList = function(keyValue){
-			$("input:hidden[name=member_seq]").val(keyValue);
+			$("input:hidden[name=mSeq]").val(keyValue);
 			form.attr("action", goUrlList).submit();
 		}
 		

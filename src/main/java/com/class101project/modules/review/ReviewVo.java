@@ -18,6 +18,7 @@ public class ReviewVo {
 	 private String member_seq;
 	 private String classProduct_seq;
 	 private String avgStar;
+	 private String mSeq;
 	 
 
 	public String getMember_seq() {
@@ -114,6 +115,15 @@ public class ReviewVo {
 	public void setAvgStar(String avgStar) {
 		this.avgStar = avgStar;
 	}
+
+	public String getmSeq() {
+		return mSeq;
+	}
+
+	public void setmSeq(String mSeq) {
+		this.mSeq = mSeq;
+	}
+
 
 
 

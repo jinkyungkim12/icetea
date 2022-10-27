@@ -19,6 +19,7 @@ public class Review extends Base{
 	private String order;
 	private String category;
 	private String avgStar;
+	private String title;
 	
 	
 	public String getCategory() {
@@ -111,7 +112,11 @@ public class Review extends Base{
 	public void setAvgStar(String avgStar) {
 		this.avgStar = avgStar;
 	}
-	
-	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 }

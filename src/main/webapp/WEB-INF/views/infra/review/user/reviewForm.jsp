@@ -463,6 +463,30 @@
 				}
 			});
 		});
-	</script> 
+	</script>
+	<!-- <script type="text/javascript">
+		function BtnReviewReg() {
+			
+			$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "/review/reviewInst"
+					/* ,data : $("#formLogin").serialize() */
+					,data : { "comment" : $("#comment").val(), "member_seq" : $("input[name=member_seq]").val(), "gSeq" : $("input[name=gSeq]").val()}
+					,success: function(response) {
+						if (response.rt == "success") {
+							location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+						} else {
+							alert("댓글을 입력하시오!!");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+		}
+	</script> -->
 </body>
 </html>

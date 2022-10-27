@@ -85,7 +85,8 @@ public class ReviewController {
 		@RequestMapping(value = "myreview")
 		public String myreview(@ModelAttribute("vo") ReviewVo vo, Model model, HttpSession httpSession) throws Exception {
 			
-			httpSession.setAttribute("sessSeq", vo.getMember_seq());
+			httpSession.setAttribute("sessSeq", vo.getmSeq());
+			System.out.println("여기보세요: " + vo.getmSeq());
 			
 			List<Review> listRV = service.selectListMyReview(vo);
 			model.addAttribute("listRV", listRV);
