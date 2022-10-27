@@ -195,19 +195,9 @@
 				</div>
 				<div style="margin-top: 3rem;"></div>
 				<div><h5><b>내정보</b></h5></div>
-				<div style="margin-top: 2rem;">내 캐시</div>
-				<div style="margin-top: 1rem;">내 포인트</div>
-				<div style="margin-top: 1rem;">내 쿠폰</div>
-				<div style="margin-top: 1rem;">주문 내역</div>
-				<div style="margin-top: 1rem;">후기</div>
+				<div style="margin-top: 2rem;"><button class="btn btn-light" type="button" id="BtnOrder2">주문 내역</button></div>
+				<div style="margin-top: 1rem;"><button class="btn btn-light" type="button" id="BtnReview">후기</button></div>
 				<div style="margin-top: 3rem;"></div>
-				<div><h5><b>맴버쉽</b></h5></div>
-				<div style="margin-top: 2rem;">101 Prime</div>
-				<div style="margin-top: 1rem;">Money+</div>
-				<div style="margin-top: 3rem;"></div>
-				<div><h5><b>메뉴</b></h5></div>
-				<div style="margin-top: 2rem;">클래스 101앱 설치하기</div>
-				<div style="margin-top: 1rem;">크리에이터 지원하기</div>
 			</div>
 
 

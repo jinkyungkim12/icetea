@@ -165,11 +165,11 @@
 
 	<form method="post" name="formList" id="formList" enctype="multipart/form-data">
 	<input type="hidden" name="seq">
-	<%@include file="../../../common/xdmin/includeV1/loginNY.jsp"%>
+	<%@include file="../../../common/xdmin/includeV1/loginNyMain.jsp"%>
 	</form>
 	<!-- 상단메뉴 -->
 	
-	<nav class="navbar navbar-expand-lg bg-white">
+	<!-- <nav class="navbar navbar-expand-lg bg-white">
 	  <div class="container" id="aaa">
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -189,7 +189,7 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/product/productBestList">BEST</a>
 	        </li>
-	        <!-- <li class="nav-item">
+	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">98% 할인</a>
 	        </li>
 	        <li class="nav-item">
@@ -212,11 +212,11 @@
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">원포인트 클래스</a>
-	        </li> -->
+	        </li>
 	      </ul>
 	    </div>
 	  </div>
-	</nav>	
+	</nav>	 -->
 
 	<!-- 배너 -->
 	<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -328,7 +328,7 @@
 	
 	
 	<!-- 이벤트 -->
-	<div class="container" style="margin-top: 5rem;">
+	<!-- <div class="container" style="margin-top: 5rem;">
 		<div><h2 id="subtitle">진행중인 인기 이벤트</h2></div>
 		<div class="row" style="margin-top: 2rem;">
 			<div class="col-4">
@@ -350,7 +350,7 @@
 				<span class="eventDate">7.12 (화) ~ 07.19 (화)</span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<!-- 카테고리 -->
 	<div class="container" style="margin-top: 5rem;">

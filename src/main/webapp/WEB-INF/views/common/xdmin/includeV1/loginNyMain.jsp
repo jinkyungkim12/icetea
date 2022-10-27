@@ -11,7 +11,7 @@
 				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				      <span class="navbar-toggler-icon"></span>
 				    </button>
-				    <%-- <div class="row">
+				    <div class="row">
 						<select id="shOption" name="shOption" class="form-select" aria-label="Default select example" style="width: 150px;">
 						  <option value="" <c:if test="${empty vo.shOption}">selected </c:if>>검색구분</option>
 						  <option value="1" <c:if test="${vo.shOption eq 1}">selected </c:if>>카테고리</option>
@@ -19,7 +19,7 @@
 						</select>
 				        <input class="form-control me-2" type="search" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력하세요." aria-label="Search" style="width: 300px;">
 				        <button class="btn btn-outline-dark" id="btnSearch" style="width: 100px;">Search</button>
-			        </div> --%>
+			        </div>
 				    </div>
 				 </nav>  
 			</div>
