@@ -264,6 +264,7 @@
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlList = "/order/mypageOrderList";
 		var goUrlView = "/order/mypageOrderView"
+		var goUrlReview = "/review/myreview";
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -287,6 +288,10 @@
 		
 		$("#BtnOrder2").on("click", function() {
 			form.attr("action", goUrlList).submit();
+		})
+		
+		$("#BtnReview").on("click", function() {
+			form.attr("action", goUrlReview).submit();
 		})
 		
 	</script>

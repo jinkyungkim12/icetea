@@ -498,6 +498,7 @@
 		var goUrlList = "/member/mypage"; 			/* #-> */
 		var goUrlUpdt = "/member/mypageUpdt";
 		var goUrlList = "/order/mypageOrderList";
+		var goUrlReview = "/review/myreview";
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
@@ -516,6 +517,9 @@
 			form.attr("action", goUrlList).submit();
 		})
 		
+		$("#BtnReview").on("click", function() {
+			form.attr("action", goUrlReview).submit();
+		})
 	</script>
 	<script>
 		$("#clear").on("click", function() {

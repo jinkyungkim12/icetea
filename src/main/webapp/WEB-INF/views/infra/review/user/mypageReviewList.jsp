@@ -273,6 +273,7 @@
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
+		var mSeq = $("input[name=mSeq]").val();
 		
 		goForm = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
@@ -287,6 +288,10 @@
 		
 		$("#BtnOrder2").on("click", function() {
 			form.attr("action", goUrlListOrder).submit();
+		})
+		
+		$("#BtnReview").on("click", function() {
+			form.attr("action", goUrlReview).submit();
 		})
 		
 	</script>
