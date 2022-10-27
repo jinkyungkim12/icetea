@@ -161,6 +161,14 @@
 		.nav-link:hover{
 			color: gray !important;
 		}
+		#BtnOrder2{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
 	</style>
 
 </head>
@@ -276,6 +284,10 @@
 			$("input:hidden[name=seq]").val(keyValue2);
 			form.attr("action", goUrlView).submit();
 		}
+		
+		$("#BtnOrder2").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		})
 		
 	</script>
 	<script type="text/javascript">

@@ -142,6 +142,14 @@
 		a {
     		color: #141619;
     	}
+    	#BtnOrder2{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
 	</style>
 
 </head>
@@ -325,15 +333,21 @@
 	<script type="text/javascript">
 		
 		var goUrlForm = "/member/mypageModForm";
-	
+		var goUrlList = "/order/mypageOrderList";
+		
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
+		var mSeq = $("input[name=mSeq]").val();
 		
 		goForm = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+		
+		$("#BtnOrder2").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		})
 		
 	</script>
 	<script type="text/javascript">

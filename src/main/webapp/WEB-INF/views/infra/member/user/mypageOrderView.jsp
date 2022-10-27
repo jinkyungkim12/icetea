@@ -174,6 +174,14 @@
 		.linkk{
 			width: 70px;
 		}
+		#BtnOrder2{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
 	</style>
 
 </head>
@@ -385,6 +393,7 @@
 		var goUrlMypage = "/member/mypage"
 		var goUrlView = "/order/mypageOrderView"
 		var goUrlProduct="/product/productView"
+		var goUrlList = "/order/mypageOrderList";
 	
 		var form = $("form[name=form]");
 		var seq = $("input:hidden[name=seq]");
@@ -406,6 +415,10 @@
 			$("input:hidden[name=classProduct_seq]").val(keyValue2);
 			form.attr("action", goUrlProduct).submit();
 		}
+		
+		$("#BtnOrder2").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		})
 		
 	</script>
 	<script type="text/javascript">

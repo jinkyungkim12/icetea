@@ -184,6 +184,14 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		#BtnOrder2{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
 	</style>
 
 </head>
@@ -488,7 +496,8 @@
 <script type="text/javascript">
 	
 		var goUrlList = "/member/mypage"; 			/* #-> */
-		var goUrlUpdt = "/member/mypageUpdt";			/* #-> */
+		var goUrlUpdt = "/member/mypageUpdt";
+		var goUrlList = "/order/mypageOrderList";
 		
 		var seq = $("input:hidden[name=seq]");			/* #-> */
 		
@@ -502,6 +511,10 @@
 		$("#Cancel").on("click", function(){
 			formVo.attr("action", goUrlList).submit();
 		});
+		
+		$("#BtnOrder2").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		})
 		
 	</script>
 	<script>
