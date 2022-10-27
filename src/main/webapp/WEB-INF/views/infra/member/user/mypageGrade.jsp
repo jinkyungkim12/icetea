@@ -139,14 +139,22 @@
 			height: 50px;
 			border-radius: 100%;
 		}
+		
 		a {
     		color: #141619;
     	}
+    	
     	#BtnOrder2{
     		background-color: white;
     		border: 0px;
     	}
+    	
     	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	
+    	#BtnMod{
     		background-color: white;
     		border: 0px;
     	}
@@ -162,8 +170,8 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypageModForm" class="nav-link">김진경</a></b></h3></div>
-		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6>example@naver.com</h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" href="/member/mypage" class="nav-link" style="width: 100px;"><c:out value="${sessName}"/></a></b></h3></div>
+		<div><a type="button" href="/member/mypage" class="nav-link" style="width: 100px;"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">
@@ -183,13 +191,14 @@
 				<div><h5><b>내정보</b></h5></div>
 				<div style="margin-top: 2rem;"><button class="btn btn-light" type="button" id="BtnOrder2">주문 내역</button></div>
 				<div style="margin-top: 1rem;"><button class="btn btn-light" type="button" id="BtnReview">후기</button></div>
+				<div style="margin-top: 1rem;"><a type="button" href="/member/mypageModForm" id="BtnMod" class="btn btn-light">내 정보 수정</a></div>
 				<div style="margin-top: 3rem;"></div>
 			</div>
 
 
 			<!-- 오른쪽 -->
 			<div class="col-8">
-				<div class="container" style="background-color: #00B031; width: 100%; height: 730px;">
+				<div class="container" style="background-color: #00B031; width: 100%; height: 690px;">
 					<div class="row justify-content-center">
 						<div style="margin-top: 3rem; width: 90%;"><img src="https://class101.net/images/membership/grade_symbol_0.svg" width="70" height="70" style="margin-top: 2rem;"></div>
 						<div class="row text-white" style="margin-top: 1rem; width: 90%;"><h1><b>Amatuer</b></h1></div>
@@ -212,12 +221,12 @@
 								<div class="col-12 text-end" style="color: #BDFAAA "><h6>크리에이티브, 커리어, 머니 각 2만원 쿠폰</h6></div>
 							</div>
 						</div>
-						<div class="row justify-content-center" style="margin-top: 3rem;">
-							<!-- Modal button -->
+						<!-- <div class="row justify-content-center" style="margin-top: 3rem;">
+							Modal button
 							<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 90%;">
 							  6만원 쿠폰팩 받기
 							</button>
-							<!-- Modal -->
+							Modal
 							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							  <div class="modal-dialog">
 							    <div class="modal-content">
@@ -234,7 +243,7 @@
 							    </div>
 							  </div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="container" style="background-color: white; width: 100%; height: 1050px;">

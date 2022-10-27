@@ -128,6 +128,7 @@
 			width: 20rem;
 			background-color: #F5F5F5;
 		} 
+		
 		.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 		    color: gray;
 		    background-color: var(--bs-nav-tabs-link-active-bg);
@@ -143,29 +144,41 @@
 		    text-decoration: none;
 		    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 		}
+		
 		:root{
 			 --bs-link-hover-color: #fd7e14;
 		}
+		
 		.dropdown-menu{
 			--bs-dropdown-link-active-bg: #FCC4A3;
 		}
+		
 		.avatar-rounded-circle{
 			width: 50px;
 			height: 50px;
 			border-radius: 100%;
 		}
+		
 		#btnView{
 			background-color: white;
 			border: none;
 		}
+		
 		.nav-link:hover{
 			color: gray !important;
 		}
+		
 		#BtnOrder2{
     		background-color: white;
     		border: 0px;
     	}
+    	
     	#BtnReview{
+    		background-color: white;
+    		border: 0px;
+    	}
+    	
+    	#BtnMod{
     		background-color: white;
     		border: 0px;
     	}
@@ -184,8 +197,8 @@
 	
 	<!-- 상단 -->
 	<div class="container" id="containerFont">
-		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')"><c:out value="${sessName}"/></a></b></h3></div>
-		<div><a type="button" href="/member/mypageModForm" class="nav-link"><h6><c:out value="${sessEmail}"/></h6></a></div>
+		<div style="margin-top: 3rem;"><h3><b><a type="button" class="nav-link" href="javascript:goForm('${list.seq }')" style="width: 100px;"><c:out value="${sessName}"/></a></b></h3></div>
+		<div><a type="button" href="/member/mypageModForm" class="nav-link" style="width: 100px;"><h6><c:out value="${sessEmail}"/></h6></a></div>
 	</div>
 	<!-- 중간 -->
 	<div class="container" id="containerFont2">
@@ -205,6 +218,7 @@
 				<div><h5><b>내정보</b></h5></div>
 				<div style="margin-top: 2rem;"><button class="btn btn-light" type="button" id="BtnOrder2">주문 내역</button></div>
 				<div style="margin-top: 1rem;"><button class="btn btn-light" type="button" id="BtnReview">후기</button></div>
+				<div style="margin-top: 1rem;"><a type="button" href="/member/mypageModForm" id="BtnMod" class="btn btn-light">내 정보 수정</a></div>
 				<div style="margin-top: 3rem;"></div>
 			</div>
 

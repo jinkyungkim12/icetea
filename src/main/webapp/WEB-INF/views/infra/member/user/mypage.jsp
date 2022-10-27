@@ -170,6 +170,10 @@
     		background-color: white;
     		border: 0px;
     	}
+    	#BtnMod{
+    		background-color: white;
+    		border: 0px;
+    	}
 	</style>
 
 </head>
@@ -206,6 +210,7 @@
 				<div><h5><b>내정보</b></h5></div>
 				<div style="margin-top: 2rem;"><button class="btn btn-light" type="button" id="BtnOrder2">주문 내역</button></div>
 				<div style="margin-top: 1rem;"><button class="btn btn-light" type="button" id="BtnReview">후기</button></div>
+				<div style="margin-top: 1rem;"><a type="button" href="/member/mypageModForm" id="BtnMod" class="btn btn-light">내 정보 수정</a></div>
 				<div style="margin-top: 3rem;"></div>
 			</div>
 
