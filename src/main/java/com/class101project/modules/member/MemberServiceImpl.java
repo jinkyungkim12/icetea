@@ -84,7 +84,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int update(Member dto) throws Exception{
-		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.update(dto);
 	}
 	
