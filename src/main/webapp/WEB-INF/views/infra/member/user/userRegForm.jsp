@@ -299,8 +299,20 @@
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
+						<button type="button" class="btn btn-outline-dark" onclick="phone()" style="height: 2.4rem;">휴대폰 인증</button>
 					</div>
 					<div class="msg" id="phone_msg" name="phone_msg" style="display: none; color: #dc3545;"></div>
+				</div>
+				<div class="col-6 input-control">
+					<label class="form-label">휴대폰 인증번호 입력</label>
+					<div class="row input-group">
+						<div class="col-8">	
+			   				<input type="text" class="form-control" id="" name="zipcode" value="<c:out value="${item.zipcode}"/>" onfocusout="validationUpdt()">
+			   			</div>
+			   			<div class="col-4">
+			   				<button type="button" class="btn btn-outline-dark" onclick="agree()" style="height: 2.4rem; width:100px;">확인</button>
+		   				</div>
+		   			</div>
 				</div>
 				<div class="col-6">
 					<label class="form-label">연락처(선택)</label>
@@ -349,6 +361,7 @@
 				<div class="col-6 input-control"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" onfocusout="validationUpdt()" placeholder="상세주소"></div>
 				<div class="col-6"></div>
 				<div class="col-6 input-control"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
+				<div class="col-6"></div>
 				<div class="col-3">
 					<label class="form-label">모바일 수신동의<span style="color: red;">*</span></label>
 					<div class="row input-control" style="margin-left: 10px;">
@@ -430,19 +443,6 @@
 				  </label>
 				</div>
 				<!-- <a class="nav-link" href="#">이용약관, 개인정보 수집 및 이용, 개인정보 제공 내용을 확인하였고 동의합니다.</a> -->
-			</div>
-			<hr>
-			<div class="row">
-				<a type="button" class="btn btn-light" href="#" id="kakao" style="margin-top: 3rem;"> <i class="fa-solid fa-comment-dots"></i> 카카오로 3초만에 시작하기</a>
-			</div>
-			<div class="row">
-				<a type="button" class="btn btn-light" href="#" id="other" style="background-color: #2DB400;"> <i class="fa-solid fa-n"></i> 네이버로 시작하기</a>
-			</div>
-			<div class="row">
-				<a type="button" class="btn btn-light" href="#" id="other" style="background-color: #1877F2;"> <i class="fa-brands fa-facebook-square"></i> 페이스북으로 시작하기</a>
-			</div>
-			<div class="row">
-				<a type="button" class="btn btn-light" href="#" id="other"	style="background-color: #EA4335;"> <i class="fa-solid fa-g"></i> 구글로 시작하기</a>
 			</div>
 		</div>
 		<br> <br> <br>
