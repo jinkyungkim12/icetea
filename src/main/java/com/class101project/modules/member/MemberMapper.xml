@@ -167,7 +167,6 @@
 			,seq = #{seq}
 			,name = #{name}
 			,id = #{id}
-			,password = #{password}
 			,company = #{company}
 			,creatorNickname = #{creatorNickname} 
 			,dob = #{dob}

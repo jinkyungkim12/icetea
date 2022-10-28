@@ -165,15 +165,6 @@
 	   			<div class="invalid-feedback" id="idFeedback"></div>
 			</div>
 			<div class="col-6">
-				<label class="form-label">비밀번호</label>
-	   			<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호" name ="password" id="password">
-	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합, 8자~32자</small>
-			</div>
-			<div class="col-6">
-				<label class="form-label">비밀번호 확인</label>
-	   			<input type="password" class="form-control" value="<c:out value="${item.password}"/>" placeholder="비밀번호 확인">
-			</div>
-			<div class="col-6">
 				<label class="form-label">소속회사</label>
 	   			<input type="text" class="form-control" value="<c:out value="${item.company}"/>" placeholder="소속회사" name="company" id="company">
 	   			<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 크리에이터만 작성해주시길 바랍니다.</small>
