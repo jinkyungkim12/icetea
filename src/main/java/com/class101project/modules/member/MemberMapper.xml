@@ -10,7 +10,7 @@
 	<sql id ="selectCommon">
 		FROM member a
 		left join transport b on b.member_seq = a.seq
-		ORDER BY a.seq DESC	
+		WHERE 1=1
 				
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.delNY = #{shdelNY}</if>
 		<if test="shGender !=null and !shGender.equals('')">AND a.gender = #{shGender}</if>
@@ -46,6 +46,7 @@
 		      ,a.delNY
 		      ,a.regDatetime
 		<include refid="selectCommon" />
+		ORDER BY a.seq DESC	
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	

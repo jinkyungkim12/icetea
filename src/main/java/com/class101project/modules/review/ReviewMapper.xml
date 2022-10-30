@@ -11,7 +11,7 @@
 	<sql id ="selectCommon">
 		FROM review a
 		left join classProduct b on b.seq = a.classProduct_seq
-		ORDER BY a.seq DESC
+		WHRER 1=1
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.reviewDelNY = #{shdelNY}</if>
 		<if test="shValue != null"></if>
@@ -119,6 +119,7 @@
 			,a.reviewModDate 
 			,a.reviewDelNY
 		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	

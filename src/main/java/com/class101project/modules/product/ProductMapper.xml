@@ -12,7 +12,7 @@
 	
 	<sql id ="selectCommon">
 		FROM classProduct a
-		ORDER BY a.seq DESC
+		WHERE 1=1
 		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.classDelNY = #{shDelNY}</if>
 		<!-- <if test="shValue != null"></if> -->
@@ -52,6 +52,7 @@
 			,a.classReg
 			,a.classMod
 		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
