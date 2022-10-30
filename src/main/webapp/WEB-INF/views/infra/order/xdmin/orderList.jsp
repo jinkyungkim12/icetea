@@ -210,6 +210,7 @@
 			</div>
 		</div>
 	</div>
+	<div id="cb"></div>
 	</form>		
 		
 	<!-- order List -->
@@ -302,12 +303,11 @@
 	<div class="container-fluid" style="width: 99%;">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
-	     		<button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button>
-	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
+	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
 	     		<a type="button" class="btn btn-dark" href="#" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
+				<button type="button" class="btn btn-success" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 	    	</div>
 	    </div>	
    </div>
@@ -329,7 +329,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-dark">삭제 </button>
+	        <button type="button" class="btn btn-dark" onclick='uelItem()'>삭제 </button>
 	      </div>
 	    </div>
 	  </div>
@@ -349,14 +349,40 @@
 		  })
 		}
 	</script>
+	<!-- 체크박스 삭제 -->
 	<script type="text/javascript">
-		function deleteRow(rownum) {
-		  // table element 찾기
-		  const table = document.getElementById('minus');
-		  
-		  // 행(Row) 삭제
-		  const newRow = table.deleteRow(rownum);
-		}
+	
+			uelItem = function(){
+			
+			var txt = "";
+			var checkbox = $("input[name=check]:checked");
+			
+			var form = $("form[name=formList]");
+			
+			/* alert(checkbox.length);
+			return false; */
+			
+			checkbox.each(function(i) {
+				
+				var addtag = "";
+				
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();
+				
+				txt += td.eq(1).text() + "  ";
+				
+				addtag = '<input type="hidden" name="seqVoList['+i+'].seq" value="'+ td.eq(1).text() +'">'
+				  
+				$("#cb").append(addtag);
+				
+			});
+			
+			/* alert(txt);
+			return false; */
+			
+			form.attr("action", "/order/orderUele" ).submit();
+			}
+		
 	</script>
 	<script type="text/javascript">
 	

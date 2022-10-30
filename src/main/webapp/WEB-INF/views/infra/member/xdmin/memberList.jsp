@@ -321,13 +321,11 @@
 	<div class="container-fluid" style="width:90%">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
-	     		<!-- <button type="button" class="btn btn-dark" onclick='deleteRow(-1)' style="height: 2.4rem;"><i class="fa-solid fa-circle-minus"></i></button> -->
-	     		<button type="button" class="btn btn-dark" id="checkDel" style="height: 2.4rem;" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-circle-minus"></i></button>
-	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기<i class="fa-solid fa-trash-can"></i></button>
+	     		<button type="button" class="btn btn-dark" id="checkDel" style="height: 2.4rem;" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
 	     		<a type="button" class="btn btn-dark" href="/member/memberForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-				<button type="button" class="btn btn-dark" style="height: 2.4rem;"><i class="fa-solid fa-circle-plus"></i></button>
+				<button type="button" class="btn btn-success" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 	    	</div>
 	    </div>	
    </div>
@@ -336,25 +334,6 @@
 	<!-- pagination s -->
 	<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
 	<!-- pagination e -->
-		
-	<!-- Delete Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Class101</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        정말로 삭제하시겠습니까?
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-dark">삭제 </button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 	
 	<!-- Ulete Modal -->
 	<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
