@@ -23,6 +23,7 @@ public class ReviewController {
 		public void setSearchAndPaging(ReviewVo vo) throws Exception{
 			
 			vo.setParamsPaging(service.selectOneCount(vo));
+			vo.setShdelNY(vo.getShdelNY() == null ? 0 : vo.getShdelNY());
 			
 		}
 	

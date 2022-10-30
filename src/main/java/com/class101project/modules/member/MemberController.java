@@ -49,7 +49,7 @@ public class MemberController {
 	public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
-		
+		vo.setShdelNY(vo.getShdelNY() == null ? 0 : vo.getShdelNY());
 	}
 	
 	// 로그인 세션

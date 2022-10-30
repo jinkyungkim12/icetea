@@ -11,7 +11,7 @@
 	<sql id ="selectCommon">
 		FROM review a
 		left join classProduct b on b.seq = a.classProduct_seq
-		WHRER 1=1
+		WHERE 1=1 
 			
 		<if test="shdelNY !=null and !shdelNY.equals('')">AND a.reviewDelNY = #{shdelNY}</if>
 		<if test="shValue != null"></if>
