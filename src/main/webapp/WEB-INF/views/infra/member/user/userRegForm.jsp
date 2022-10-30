@@ -299,18 +299,20 @@
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
-						<button type="button" class="btn btn-outline-dark" onclick="phone()" style="height: 2.4rem;">휴대폰 인증</button>
 					</div>
 					<div class="msg" id="phone_msg" name="phone_msg" style="display: none; color: #dc3545;"></div>
 				</div>
 				<div class="col-6 input-control">
-					<label class="form-label">휴대폰 인증번호 입력</label>
+					<label class="form-label">휴대폰 인증</label>
 					<div class="row input-group">
 						<div class="col-8">	
 			   				<input type="text" class="form-control" id="" name="zipcode" value="<c:out value="${item.zipcode}"/>" onfocusout="validationUpdt()">
 			   			</div>
-			   			<div class="col-4">
-			   				<button type="button" class="btn btn-outline-dark" onclick="agree()" style="height: 2.4rem; width:100px;">확인</button>
+			   			<div class="col-2">
+			   				<button type="button" class="btn btn-outline-dark" onclick="sendSms()" style="height: 2.4rem; width:100px;">인증요청</button>
+			   			</div>
+			   			<div class="col-2">
+			   				<button type="button" class="btn btn-outline-dark" onclick="checkSms()" style="height: 2.4rem; width:100px;">인증확인</button>
 		   				</div>
 		   			</div>
 				</div>
