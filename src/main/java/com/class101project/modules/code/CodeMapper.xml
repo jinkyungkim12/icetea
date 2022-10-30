@@ -14,8 +14,8 @@
 	<sql id ="selectCommon">
 		from code a 
 		left join codeGroup b on b.seq = a.codeGroup_seq
-		ORDER BY a.seq DESC
-		
+		WHERE 1=1
+				
 		<if test="shCodeDelNY !=null and !shCodeDelNY.equals('')">AND a.codeDelNY = #{shCodeDelNY}</if>
 		<if test="shValue != null"></if>
 		
@@ -50,7 +50,8 @@
 			,a.codeRegDate
 			,a.codeModDate
 			<include refid="selectCommon" />
-			ORDER BY a.codeGroup_seq
+			ORDER BY a.seq DESC, a.codeGroup_seq 
+			
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	

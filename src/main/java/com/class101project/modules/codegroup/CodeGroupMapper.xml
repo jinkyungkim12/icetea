@@ -12,8 +12,7 @@
 	 
 	<sql id ="selectCommon">
 	 	FROM codeGroup a
-		ORDER BY a.seq DESC
-				
+		wHERE 1=1		
 		<if test="shDelNY !=null and !shDelNY.equals('')">AND a.cgDelNY = #{shDelNY}</if>
 		<if test="shCgValue != null"></if>
 		
@@ -43,6 +42,7 @@
            ,a.regDate
            ,a.modDate
 		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
