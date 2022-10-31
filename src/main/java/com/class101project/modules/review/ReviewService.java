@@ -17,10 +17,13 @@ public interface ReviewService {
 	// 리뷰 폼 insert
 	public int insert(Review dto) throws Exception;
 	
+	// uelete
+	public int uelete(Review dto) throws Exception;
+	
 //	public int update(Review dto) throws Exception;
 //	public int memberUpdate(Review dto) throws Exception;
 //	
-//	public int uelete(Review dto) throws Exception;
+	
 //	public int delete(ReviewVo vo) throws Exception;
 	
 	// Count

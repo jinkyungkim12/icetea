@@ -464,6 +464,53 @@
 			});
 		});
 	</script>
+	<script type="text/javascript">
+		function commentSave() {
+			
+			$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "gameInsert"
+					/* ,data : $("#formLogin").serialize() */
+					,data : { "comment" : $("#comment").val(), "mSeq" : $("input[name=mSeq]").val(), "gSeq" : $("input[name=gSeq]").val()}
+					,success: function(response) {
+						if (response.rt == "success") {
+							location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+						} else {
+							alert("댓글을 입력하시오!!");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+		}
+		
+		function commentUelete(seq) {
+			
+			$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "gameCommentUelete"
+					/* ,data : $("#formLogin").serialize() */
+					,data : {"seq" : seq, "mSeq" : $("input[name=mSeq]").val(), "gSeq" : $("input[name=gSeq]").val()}
+					,success: function(response) {
+						if (response.rt == "success") {
+							location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+						} else {
+							alert("댓글을 입력하시오!!");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+		}
+	</script>
 	<!-- <script type="text/javascript">
 		function BtnReviewReg() {
 			

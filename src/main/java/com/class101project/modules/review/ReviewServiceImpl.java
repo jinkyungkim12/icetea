@@ -53,6 +53,13 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.selectAvgReview(vo);
 	}
 
+	// uelete
+	
+	@Override
+	public int uelete(Review dto) throws Exception {
+		return dao.uelete(dto);
+	}
+
 	// update
 
 //	@Override
@@ -70,13 +77,8 @@ public class ReviewServiceImpl implements ReviewService{
 //		memberUpdate(dto);
 //	}
 
-	//uele, dele
-	
-//	@Override
-//	public int uelete(Review dto) throws Exception {
-//		return dao.uelete(dto);
-//	}
-//
+	// dele
+
 //	@Override
 //	public int delete(ReviewVo vo) throws Exception {
 //		return dao.delete(vo);

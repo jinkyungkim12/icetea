@@ -53,6 +53,14 @@
 		)
 	</insert>
 	
+	<!-- uelete -->
+	<update id="uelete">
+		UPDATE review a
+		SET
+			a.reviewDelNY = 1
+		WHERE
+			a.seq = #{seq} 
+	</update>
 
 	<!-- <update id="update">
 		UPDATE review
@@ -74,14 +82,6 @@
 			,name = #{name}
 			,id = #{id}
 			WHERE
-			seq = #{seq}
-	</update>
-	
-	<update id="uelete">
-		UPDATE review
-		SET
-			reviewDelNY = 1
-		WHERE
 			seq = #{seq}
 	</update>
 	
@@ -135,7 +135,8 @@
 	<!-- My review List -->
 	<select id="selectListMyReview" resultMap="resultMapObj">
 		SELECT	
-			c.category
+			a.seq
+			,c.category
             ,c.title
 			,a.preferenceStar
 			,a.content
@@ -145,5 +146,6 @@
         left join classProduct c on c.seq = a.classProduct_seq
         where 1=1
         AND a.member_seq = #{mSeq}
+        AND a.reviewDelNY = 0 
 	</select>
 </mapper>

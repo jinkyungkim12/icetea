@@ -33,6 +33,12 @@ public class ReviewDao {
 			return result;
 		}
 		
+	// uelete
+		public int uelete(Review dto) {
+			return sqlSession.update(namespace + ".uelete", dto);
+		}
+		
+		
 	//update
 //		public int update(Review dto) {
 //			return sqlSession.update(namespace + ".update", dto);
@@ -42,11 +48,7 @@ public class ReviewDao {
 //			return sqlSession.update(namespace + ".memberUpdate", dto);
 //		}
 		
-		// delete, uelete
-//		public int uelete(Review dto) {
-//			return sqlSession.update(namespace + ".uelete", dto);
-//		}
-//		
+		// delete, 
 //		public int delete(ReviewVo vo) {
 //			return sqlSession.delete(namespace + ".delete", vo);
 //		}

@@ -157,7 +157,7 @@
 	<input type="hidden" name="seq" value="${vo.seq}">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-	<div class="container-fluid" style="width: 80%; margin-top: 2rem;">
+	<div class="container-fluid" style="width: 90%; margin-top: 2rem;">
 		<div class="text-center"><h1><b>리뷰관리</b></h1></div>
 		<div class="row justify-content-end" style="margin-top: 2rem;">
 			<div class="col-2">
@@ -182,7 +182,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid p-4" style="width: 80%">
+	<div class="container-fluid p-4" style="width: 90%">
 		<div class="row justify-content-end">
 			<div class="col-2">
 				<select id="shOption" name="shOption" class="form-select" aria-label="Default select example">
@@ -205,7 +205,7 @@
 		
 	<!-- review List -->
 	
-	<div class="container-fluid" style="width: 80%">
+	<div class="container-fluid" style="width: 90%">
 		<div class="row justify-content-between">
 			<div class="col-1 text-start"><h5><b>Total: <c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/></b></h5></div>
 			<div class="col-1 text-end">
@@ -219,7 +219,7 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid text-center" style="width: 80%; margin-top: 1rem;">
+	<div class="container-fluid text-center" style="width: 90%; margin-top: 1rem;">
 		<table class="table table-hover" id="minus" style="width: 100%">
 			<thead>
 				<tr class="table-dark text-white">
@@ -275,7 +275,7 @@
 		</table>
 	</div>
 	
-	<div class="container-fluid" style="width:80%">
+	<div class="container-fluid" style="width:90%">
 		<div class="row justify-content-between">	
 	   		<div class="col-10">
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>

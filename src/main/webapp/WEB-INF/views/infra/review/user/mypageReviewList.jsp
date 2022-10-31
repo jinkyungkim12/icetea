@@ -234,6 +234,7 @@
 			<div class="col-8">
 				<form  id="form" name="form" method="post">
 					<input type="hidden" name="mSeq" value="${sessSeq}"/>
+					<%-- <input type="hidden" name="seq" value="${vo.seq}"/> --%>
 					<div class="container" style="width: 95%">
 						<div style="margin-top: 3rem;"><h3><b>내가 작성한 후기</b></h3></div>
 						<c:forEach items="${listRV}" var="listRV" varStatus="status">
@@ -251,6 +252,7 @@
 								    	</div>
 								    </div>
 								    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
+								    <div class="col text-end"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i> 삭제하기</button></div>
 								  </div>
 								</div>
 	           				</div>
@@ -267,6 +269,26 @@
 	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
 	<!-- loginNY e -->
 	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        정말로 삭제하시겠습니까?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	        <button type="button" class="btn btn-dark" id="BtnUele">삭제 </button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
 <!-- end	 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/1d7c148109.js" crossorigin="anonymous"></script>
@@ -280,10 +302,11 @@
 		alert($("input[name=vSeq]").val()) */
 		
 		/* alert($("input[name=mSeq]").val()); */
-	
+		
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlListOrder = "/order/mypageOrderList";
 		var goUrlList="/review/myreview";
+		var goUrlUele="/review/reviewUele";
 		
 	
 		var form = $("form[name=form]");
@@ -307,6 +330,10 @@
 		
 		$("#BtnReview").on("click", function() {
 			form.attr("action", goUrlReview).submit();
+		})
+		
+		$("#BtnUele").on("click", function() {
+			form.attr("action", goUrlUele).submit();
 		})
 		
 	</script>

@@ -94,7 +94,22 @@ public class ReviewController {
 			
 			return "/infra/review/user/mypageReviewList";
 		}
-//	
+
+		
+		// uelete	
+		@RequestMapping(value = "reviewUele")
+		public String reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
+			dto.setSeq(vo.getSeq());
+			System.out.println("fkjkdfjsldkjfs: " + dto.getSeq());
+			service.uelete(dto);
+			
+			redirectAttributes.addFlashAttribute("vo", vo);
+			return "redirect:/review/myreview";
+		}
+		
+		
+		
+		
 //		@RequestMapping(value = "reviewUpdt")
 //		public String reviewUpdt(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
 //			
@@ -105,14 +120,7 @@ public class ReviewController {
 //	
 	// 삭제
 		
-//		@RequestMapping(value = "reviewUele")
-//		public String reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
-//			
-//			service.uelete(dto);
-//			redirectAttributes.addFlashAttribute("vo", vo);
-//			return "redirect:/review/reviewList";
-//		}
-//		
+		
 //		@RequestMapping(value = "reviewDele")
 //		public String reviewDele(ReviewVo vo, RedirectAttributes redirectAttributes) throws Exception {
 //			
