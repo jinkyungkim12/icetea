@@ -24,6 +24,7 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 
 
 
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -44,7 +45,7 @@ public class MemberController {
 		//4자리 난수 생성
 		String rndNo = "1234";
 		
-		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSFMVRNRAYTZCGQ", "C9RQ2RJERHZRDWBJHETJ7ZEHXIYEV0TI", "https://api.solapi.com");
+		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSCZEGT6HK0GPVH", "XRZSRU0MPYQ3VUCPZBLDJGMMII5ZB1AN", "https://api.solapi.com"); 
 		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
 		Message message = new Message();
 		message.setFrom("01052506950");
@@ -57,7 +58,7 @@ public class MemberController {
 		} catch (NurigoMessageNotReceivedException exception) {
 		  // 발송에 실패한 메시지 목록을 확인할 수 있습니다!
 		  System.out.println(exception.getFailedMessageList());
-		  System.out.println(exception.getMessage());
+		  System.out.println(exception.getMessage()); 
 		} catch (Exception exception) {
 		  System.out.println(exception.getMessage());
 		}
