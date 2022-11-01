@@ -1,6 +1,8 @@
 package com.class101project.modules.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -87,7 +90,8 @@ public class ReviewController {
 		public String myreview(@ModelAttribute("vo") ReviewVo vo, Model model, HttpSession httpSession) throws Exception {
 			
 			httpSession.setAttribute("sessSeq", vo.getmSeq());
-			System.out.println("여기보세요: " + vo.getmSeq());
+			System.out.println("여기보세요1: " + vo.getmSeq());
+			System.out.println("여기보세요2: " + vo.getSeq());
 			
 			List<Review> listRV = service.selectListMyReview(vo);
 			model.addAttribute("listRV", listRV);
@@ -97,14 +101,25 @@ public class ReviewController {
 
 		
 		// uelete	
+		/*
+		 * @RequestMapping(value = "reviewUele") public String reviewUele(ReviewVo vo,
+		 * Review dto, RedirectAttributes redirectAttributes) throws Exception {
+		 * dto.setSeq(vo.getSeq()); System.out.println("fkjkdfjsldkjfs: " +
+		 * dto.getSeq()); service.uelete(dto);
+		 * 
+		 * redirectAttributes.addFlashAttribute("vo", vo); return
+		 * "redirect:/review/myreview"; }
+		 */
+
+		@ResponseBody
 		@RequestMapping(value = "reviewUele")
-		public String reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
-			dto.setSeq(vo.getSeq());
-			System.out.println("fkjkdfjsldkjfs: " + dto.getSeq());
-			service.uelete(dto);
+		public Map<String, Object> reviewUele(ReviewVo vo, Review dto, RedirectAttributes redirectAttributes) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
 			
-			redirectAttributes.addFlashAttribute("vo", vo);
-			return "redirect:/review/myreview";
+			service.uelete(dto);
+			returnMap.put("rt", "success");
+			
+			return returnMap;
 		}
 		
 		

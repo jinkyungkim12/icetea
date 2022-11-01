@@ -234,10 +234,10 @@
 			<div class="col-8">
 				<form  id="form" name="form" method="post">
 					<input type="hidden" name="mSeq" value="${sessSeq}"/>
-					<%-- <input type="hidden" name="seq" value="${vo.seq}"/> --%>
 					<div class="container" style="width: 95%">
 						<div style="margin-top: 3rem;"><h3><b>내가 작성한 후기</b></h3></div>
 						<c:forEach items="${listRV}" var="listRV" varStatus="status">
+							<input type="hidden" name="seq" value="${listRV.seq}"/>
 							<div class="row mt-5">
 		           				<div class="card shadow bg-body rounded cardBorder">
 								  <div class="card-body">
@@ -252,7 +252,30 @@
 								    	</div>
 								    </div>
 								    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
-								    <div class="col text-end"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i> 삭제하기</button></div>
+								    <div class="col text-end">
+								    	<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="goUele(${listRV.seq})">
+								    		<i class="fa-solid fa-trash-can"></i> 
+								    		삭제하기
+								    	</button>
+								    	<!-- Modal -->
+										<%-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
+										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										      </div>
+										      <div class="modal-body">
+										        정말로 삭제하시겠습니까? ${listRV.seq }
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+										        <button type="button" class="btn btn-dark" id="BtnUele" onclick="goUele(${listRV.seq})">삭제 </button>
+										      </div>
+										    </div>
+										  </div>
+										</div> --%>
+								    </div>
 								  </div>
 								</div>
 	           				</div>
@@ -270,7 +293,7 @@
 	<!-- loginNY e -->
 	
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -286,7 +309,7 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
+	</div> -->
 	
 	
 <!-- end	 -->
@@ -332,9 +355,33 @@
 			form.attr("action", goUrlReview).submit();
 		})
 		
-		$("#BtnUele").on("click", function() {
+		/* $("#BtnUele").on("click", function() {
 			form.attr("action", goUrlUele).submit();
-		})
+		}) */
+		
+		goUele = function(keyValue) {
+			seq.val(keyValue);
+			
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/review/reviewUele"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : {"seq" : $("input[name=seq]").val(s), "mSeq" : $("input[name=mSeq]").val()}
+   				,success: function(response) {
+   					if (response.rt == "success") {
+   						location.href = "/review/myreview?mSeq="+ $("input[name=mSeq]").val();
+   					} else {
+   						alert("댓글을 입력하시오!!");
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
 		
 	</script>
 	<script type="text/javascript">
