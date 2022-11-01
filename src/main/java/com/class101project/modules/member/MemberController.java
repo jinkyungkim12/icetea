@@ -43,14 +43,19 @@ public class MemberController {
 		Map<String,Object> result = new HashMap<String,Object>();
 		
 		//4자리 난수 생성
-		String rndNo = "1234";
+		String rndNo = "";
+		
+		for(int i = 0; i < 4; i++) {
+			rndNo += (int)(Math.random()*10-1) + 1;
+			System.out.println("난수: " + rndNo);
+		}
 		
 		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSCZEGT6HK0GPVH", "XRZSRU0MPYQ3VUCPZBLDJGMMII5ZB1AN", "https://api.solapi.com"); 
 		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
 		Message message = new Message();
 		message.setFrom("01052506950");
 		message.setTo(dto.getPhone());
-		message.setText("안녕하세요 진경이의 CLASS 101 인증번호 ["+ rndNo +"] 입니다. ");
+		message.setText("안녕하세요. CLASS 101 인증번호는 ["+ rndNo +"] 입니다. ");
 
 		try {
 		  // send 메소드로 ArrayList<Message> 객체를 넣어도 동작합니다!

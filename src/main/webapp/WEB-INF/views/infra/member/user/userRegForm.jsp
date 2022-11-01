@@ -299,24 +299,24 @@
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
 						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" id="phone" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
-						<input type="hidden" id="phoneCode">
+						<input type="hidden" id="phoneCode" value="">
 					</div>
 					<div class="msg" id="phone_msg" name="phone_msg" style="display: none; color: #dc3545;"></div>
 				</div>
-				<div class="col-6 input-control">
+				<!-- <div class="col-6 input-control">
 					<label class="form-label">휴대폰 인증</label>
 					<div class="row input-group">
 						<div class="col-8">	
-			   				<input type="text" class="form-control" id="" name="zipcode" value="<c:out value="${item.zipcode}"/>" onfocusout="validationUpdt()">
+			   				<input type="text" class="form-control" id="phoneCodeSms" value="" placeholder="인증번호 4자리를 입력해주세요.">
 			   			</div>
 			   			<div class="col-2">
 			   				<button type="button" class="btn btn-outline-dark" onclick="sendSms()" style="height: 2.4rem; width:100px;">인증요청</button>
 			   			</div>
 			   			<div class="col-2">
-			   				<button type="button" class="btn btn-outline-dark" onclick="checkSms()" style="height: 2.4rem; width:100px;">인증확인</button>
+			   				<button type="button" class="btn btn-outline-danger" onclick="checkSms()" style="height: 2.4rem; width:100px;">인증확인</button>
 		   				</div>
 		   			</div>
-				</div>
+				</div> -->
 				<div class="col-6">
 					<label class="form-label">연락처(선택)</label>
 					<div class="input-group">
@@ -364,7 +364,7 @@
 				<div class="col-6 input-control"><input type="text" class="form-control" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail}"/>" aria-label="addressDetail" onfocusout="validationUpdt()" placeholder="상세주소"></div>
 				<div class="col-6"></div>
 				<div class="col-6 input-control"><input type="text" class="form-control" id="addr3" name="addr3" value="<c:out value="${item.addr3}"/>" placeholder="참고사항"></div>
-				<div class="col-6"></div>
+				<!-- <div class="col-6"></div> -->
 				<div class="col-3">
 					<label class="form-label">모바일 수신동의<span style="color: red;">*</span></label>
 					<div class="row input-control" style="margin-left: 10px;">
@@ -463,6 +463,7 @@
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		
 	
@@ -510,6 +511,17 @@
 		});
 		
 	};
+	
+	checkSms = function() {
+		
+		  if($("#phoneCodeSms").val() == $("#phoneCode").val()){
+			  swal("CLASS 101", "인증되었습니다.", "success");
+		  }else{
+			  swal("CLASS 101", "인증번호가 틀립니다.", "error");
+		  }
+		  
+	  };
+	 
 	
 	</script>
 	<script>
