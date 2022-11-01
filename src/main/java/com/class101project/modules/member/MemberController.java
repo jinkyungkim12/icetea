@@ -17,6 +17,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.class101project.common.util.UtilSecurity;
 import com.class101project.modules.code.CodeServiceImpl;
 
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.exception.NurigoMessageNotReceivedException;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.service.DefaultMessageService;
+
+
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -25,6 +31,41 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	
+	//SMS 인증
+	@ResponseBody
+	@RequestMapping(value ="checkSms")
+	public Map<String,Object> checkSms (Member dto) throws Exception {
+		
+		System.out.println("폰 번호:" + dto.getPhone());
+		
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		//4자리 난수 생성
+		String rndNo = "1234";
+		
+		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSFMVRNRAYTZCGQ", "C9RQ2RJERHZRDWBJHETJ7ZEHXIYEV0TI", "https://api.solapi.com");
+		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
+		Message message = new Message();
+		message.setFrom("01052506950");
+		message.setTo(dto.getPhone());
+		message.setText("안녕하세요 진경이의 CLASS 101 인증번호 ["+ rndNo +"] 입니다. ");
+
+		try {
+		  // send 메소드로 ArrayList<Message> 객체를 넣어도 동작합니다!
+		  messageService.send(message);
+		} catch (NurigoMessageNotReceivedException exception) {
+		  // 발송에 실패한 메시지 목록을 확인할 수 있습니다!
+		  System.out.println(exception.getFailedMessageList());
+		  System.out.println(exception.getMessage());
+		} catch (Exception exception) {
+		  System.out.println(exception.getMessage());
+		}
+		
+		result.put("code", rndNo);
+		
+		return result;
+	}
 	
 	// 아이디 중복체크 
 	@ResponseBody

@@ -298,7 +298,8 @@
 							<option value="2" <c:if test="${item.telCompany eq 2 }"> selected</c:if>>LGT</option>
 							<option value="3" <c:if test="${item.telCompany eq 3 }"> selected</c:if>>KT</option>
 						</select>
-						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
+						<input type="mobile" class="form-control" style="width: 50%" placeholder="01000000000" id="phone" name="phone"	value="<c:out value="${item.phone}"/>" id="phone" onkeypress="validationUpdt()">
+						<input type="hidden" id="phoneCode">
 					</div>
 					<div class="msg" id="phone_msg" name="phone_msg" style="display: none; color: #dc3545;"></div>
 				</div>
@@ -464,6 +465,8 @@
 	<script type="text/javascript"src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=59b27a41bdecd470671d4f9be366d1b3&libraries=services"></script>
 	<script type="text/javascript">
 		
+	
+	
 		var goUrlInst = "/member/userInst"; /* #-> */
 
 		var seq = $("input:hidden[name=seq]"); /* #-> */
@@ -486,6 +489,28 @@
 			$("#lat").val('');
 			$("#lng").val('');
 		});
+	</script>
+	<script type="text/javascript">
+	
+	sendSms = function() {
+		
+		$.ajax({
+			url: '/member/checkSms'
+			,type: 'POST'
+			,dataType: 'json'
+			,data: {
+				phone : $("#phone").val()
+			},
+			success:function(result){
+				$("#phoneCode").val(result.code);
+			},
+			error:function(){
+				alert("ajax  error..!");
+			}
+		});
+		
+	};
+	
 	</script>
 	<script>
 		function sample6_execDaumPostcode() {
