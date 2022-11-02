@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class TestController {
 
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/test/testGyeonggi")
 	public String testGyeonggi(Model model) throws Exception {
 		
