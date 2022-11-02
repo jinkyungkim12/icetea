@@ -22,20 +22,20 @@
 <body>	
 	List
 
-	<br>aaa : <c:out value="${SIGUN_NM }"/>
-	<br>aaa : <c:out value="${SIGUN_CD }"/>
-	<br>aaa : <c:out value="${RESTRT_NM }"/>
-	<br>aaa : <c:out value="${REPRSNT_FOOD_NM }"/>
-	<br>aaa : <c:out value="${TASTFDPLC_TELNO }"/>
+	<br>aaa : <c:out value="${sIGUN_NM }"/>
+	<br>aaa : <c:out value="${sIGUN_CD }"/>
+	<br>aaa : <c:out value="${rESTRT_NM }"/>
+	<br>aaa : <c:out value="${rEPRSNT_FOOD_NM }"/>
+	<br>aaa : <c:out value="${tASTFDPLC_TELNO }"/>
 	<br>aaa : <c:out value="${items }"/>
 	<br>aaa : <c:out value="${fn:length(items) }"/>
 	
 	<c:forEach items="${items}" var="item" varStatus="status">
-		<c:out value="${item.REFINE_LOTNO_ADDR }"/>
-		<br><c:out value="${item.REFINE_ROADNM_ADDR }"/>	
-		<br><c:out value="${item.REFINE_ZIP_CD }"/>	
-		<br><c:out value="${item.REFINE_WGS84_LOGT }"/>	
-		<br><c:out value="${item.REFINE_WGS84_LAT }"/>	
+		<c:out value="${item.rEFINE_LOTNO_ADDR }"/>
+		<br><c:out value="${item.rEFINE_ROADNM_ADDR }"/>	
+		<br><c:out value="${item.rEFINE_ZIP_CD }"/>	
+		<br><c:out value="${item.rEFINE_WGS84_LOGT }"/>	
+		<br><c:out value="${item.rEFINE_WGS84_LAT }"/>	
 	</c:forEach>
 	
 	
