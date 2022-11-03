@@ -50,6 +50,28 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	<!-- select Excel -->
+	<select id="excelList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT 
+			   a.seq
+			  ,a.name
+		      ,a.id
+		      ,a.position
+		      ,a.gender
+		      ,a.dob
+		      ,a.phone
+		      ,a.email
+		      ,a.mobileNY
+		      ,a.emailNY
+		      ,a.personalInfo
+		      ,a.delNY
+		      ,a.regDatetime
+		<include refid="selectCommon" />
+		ORDER BY a.seq DESC	
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />

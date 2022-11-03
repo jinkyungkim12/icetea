@@ -18,6 +18,7 @@ public class MemberDao {
 	private static String namespace = "com.class101project.modules.member.MemberMapper";
 	
 	public List<Member> selectList(MemberVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	public List<Member> excelList(MemberVo vo){ return sqlSession.selectList(namespace + ".excelList", vo); }
 	
 	// insert
 	public int insert(Member dto) {

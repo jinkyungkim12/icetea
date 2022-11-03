@@ -5,6 +5,7 @@ import java.util.List;
 public interface MemberService {
 
 	public List<Member> selectList(MemberVo vo) throws Exception;
+	public List<Member> excelList(MemberVo vo) throws Exception;
 	public int insert(Member dto) throws Exception;
 	public int addInsert(Member dto) throws Exception;
 	
