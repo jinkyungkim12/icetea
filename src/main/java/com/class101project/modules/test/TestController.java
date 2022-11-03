@@ -9,21 +9,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Controller
 public class TestController {
 
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/test/testGyeonggi")
 	public String testGyeonggi(Model model) throws Exception {
 		
 		System.out.println("asdfasdfasdf");
 		
-		String apiUrl = "https://openapi.gg.go.kr/PlaceThatDoATasteyFoodSt";
+		String apiUrl = "http://apis.data.go.kr/1471000/CovidDagnsRgntProdExprtStusService/getMmCovidDagnsRgntExprtStusInq?serviceKey=CmqPDkQsbGq3hBCNRqAOsFhC9Vyoz%2BOQBdspPlbedH%2FrD%2F%2B%2Fgla8eIwCSmcvwOMubKK2p3rlumyYes5Y2to5AQ%3D%3D&numOfRows=3&pageNo=1&type=json";
 		
 		URL url = new URL(apiUrl);		
 		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -89,6 +90,6 @@ public class TestController {
 		model.addAllAttributes(header);
 		model.addAllAttributes(body);
 		
-		return "test/testGyeonggi";
+		return "infra/test/testGyeonggi";
 	}
 }

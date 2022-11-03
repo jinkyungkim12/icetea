@@ -50,6 +50,7 @@
 			<exclude-mapping path="/member/checkSms" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/rest/**" />
+			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/product/productBestList" />
 			<exclude-mapping path="/product/productView" />
 			<exclude-mapping path="/product/productSearch" />

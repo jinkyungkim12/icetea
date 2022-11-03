@@ -22,20 +22,20 @@
 <body>	
 	List
 
-	<br>aaa : <c:out value="${sIGUN_NM }"/>
-	<br>aaa : <c:out value="${sIGUN_CD }"/>
-	<br>aaa : <c:out value="${rESTRT_NM }"/>
-	<br>aaa : <c:out value="${rEPRSNT_FOOD_NM }"/>
-	<br>aaa : <c:out value="${tASTFDPLC_TELNO }"/>
-	<br>aaa : <c:out value="${items }"/>
-	<br>aaa : <c:out value="${fn:length(items) }"/>
+	<br>resultCode : <c:out value="${resultCode }"/>
+	<br>resultMsg : <c:out value="${resultMsg }"/>
+	<br>numOfRows : <c:out value="${numOfRows }"/>
+	<br>pageNo : <c:out value="${pageNo }"/>
+	<br>totalCount : <c:out value="${totalCount }"/>
+	<br>Total : <c:out value="${fn:length(items) }"/>
+	<br>
+	<br>
 	
 	<c:forEach items="${items}" var="item" varStatus="status">
-		<c:out value="${item.rEFINE_LOTNO_ADDR }"/>
-		<br><c:out value="${item.rEFINE_ROADNM_ADDR }"/>	
-		<br><c:out value="${item.rEFINE_ZIP_CD }"/>	
-		<br><c:out value="${item.rEFINE_WGS84_LOGT }"/>	
-		<br><c:out value="${item.rEFINE_WGS84_LAT }"/>	
+		<br>YYYY: <c:out value="${item.YYYY }"/>
+		<br>MM: <c:out value="${item.MM }"/>	
+		<br>KIT_EXPRT_QTY: <c:out value="${item.KIT_EXPRT_QTY }"/>
+		<br>	
 	</c:forEach>
 	
 	
