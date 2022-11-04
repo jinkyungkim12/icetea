@@ -354,7 +354,7 @@
 						   		<input type="text" class="form-control" placeholder="example" value="<c:out value="${item.emailInsert}"/>" name="emailInsert" id="emailInsert">
 						      	<span class="input-group-text">@</span>
 						      	<select class="form-select" aria-label=".form-select example" name="emailDomain">
-									<option selected>선택</option>
+									<option value=""  <c:if test="${empty item.emailDomain }"> selected</c:if>>선택</option>
 									<option value="28" <c:if test="${item.emailDomain eq 28 }"> selected</c:if>>naver.com</option>
 									<option value="29" <c:if test="${item.emailDomain eq 29 }"> selected</c:if>>gmail.com</option>
 									<option value="30" <c:if test="${item.emailDomain eq 30 }"> selected</c:if>>daum.net</option>

@@ -29,6 +29,8 @@
 		</choose>
 	</sql>
 	
+	<!-- ============ selectList =============== -->
+	
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
@@ -76,6 +78,25 @@
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
+	
+	<!-- kakao login check -->
+	
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		select 
+			a.seq
+			,a.id
+			,a.name
+			,a.email
+			,a.password
+			,a.snsImg
+		from member a
+		where 1=1 
+			and id = #{snsId} 
+			and name = #{name}
+	</select>
+	
+	
+	<!-- ============ insert =============== -->
 	
 	<insert id="insert">
 		INSERT INTO member(
@@ -163,8 +184,8 @@
 	
 	<insert id="addressInsert">
 		INSERT INTO transport (
-			zipcode
-			,address
+			id
+			,name
 			,addressDetail
 			,addr3
 			,member_seq
@@ -178,11 +199,46 @@
 			,#{seq}
 			,1
 		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<!-- kakao Login insert -->
+	
+	<insert id="kakaoInst">
+		INSERT INTO member(
+			name
+			,id
+			,position
+			,gender
+			,dob
+			,phone
+			,email
+			,delNY
+			,regDatetime
+			,coupon
+			,snsImg
+		)
+		VALUES (
+			#{name}
+			,#{snsId}
+			,#{position}
+			,#{gender}
+			,#{dob}
+			,#{phone}
+			,#{email}
+			,0
+			,now()
+			,10000
+			,#{snsImg}
+		)
 		<selectKey resultType="String" keyProperty="member_seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
 	
+	<!-- ============ update =============== -->
 	<update id="update">
 		UPDATE member
 		SET

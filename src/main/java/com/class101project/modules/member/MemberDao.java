@@ -31,6 +31,13 @@ public class MemberDao {
 		return sqlSession.insert(namespace + ".addressInsert", dto);
 	}
 	
+	// 카카오 로그인 insert
+	
+	  public int kakaoInst(Member dto) {
+	  	return sqlSession.insert(namespace + ".kakaoInst", dto);
+	  }
+	
+	
 	//selectOne
 	public Member selectOne(MemberVo vo) {
 		Member result = sqlSession.selectOne(namespace + ".selectOne", vo);
@@ -41,6 +48,13 @@ public class MemberDao {
 	public Member selectOneAdd(MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneAdd", vo);
 	}
+	
+	// kakao login check
+	public Member snsLoginCheck(Member dto) {
+	    return sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
+	}
+	
+	
 	
 	//update
 	public int update(Member dto) {

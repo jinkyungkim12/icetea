@@ -75,8 +75,15 @@ public class MemberServiceImpl implements MemberService{
 			return 0;
     }
 
-	
-	
+	// kakao insert
+    @Override
+    public int kakaoInst(Member dto) throws Exception {
+		dao.kakaoInst(dto);
+		return 1;
+    }
+    
+    
+    // update
 	public void totalUpdate(Member dto) throws Exception {
 		update(dto);
 		addUpdate(dto);
@@ -138,6 +145,13 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.selectOneCount(vo);
 	}
+	
+	// kakao login check
+	@Override
+	public Member snsLoginCheck(Member dto) throws Exception {
+	    return dao.snsLoginCheck(dto);
+	}
+	
 
 	// id 중복체크 
 	@Override

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.class101project.common.constants.Constants;
 import com.class101project.common.util.UtilSecurity;
 import com.class101project.modules.code.CodeServiceImpl;
 
@@ -140,6 +141,43 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	//카카오 로그인 연동
+	
+	@ResponseBody
+	@RequestMapping(value = "kakaoLoginProc")
+	public Map<String, Object> kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+	    System.out.println("etetete");
+		Member kakaoLogin = service.snsLoginCheck(dto);
+		
+		 System.out.println("test : " + dto.getToken());
+		
+		if (kakaoLogin == null) {
+			service.kakaoInst(dto);
+			
+			httpSession.setMaxInactiveInterval(60 * 200);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+			httpSession.setMaxInactiveInterval(60 * 200);
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(kakaoLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+
+	 public void session(Member dto, HttpSession httpSession) {
+	     httpSession.setAttribute("sessSeq", dto.getSeq());    
+	     httpSession.setAttribute("sessId", dto.getId());
+	     httpSession.setAttribute("sessName", dto.getName());
+	     httpSession.setAttribute("sessEmail", dto.getEmail());
+	     httpSession.setAttribute("sessImg", dto.getSnsImg());
+	     
+	 }
 	
 	// 로그아웃
 	
@@ -435,7 +473,7 @@ public class MemberController {
 	        workbook.close();
 		}
     }
-	
+
 	
 //	@RequestMapping(value = "memberView")
 //	public String memberView(MemberVo vo, Model model) throws Exception {

@@ -35,7 +35,39 @@ public class Member extends Base{
 		private String member_seq;
 		private Integer tOrder;
 		
+		// 카카오
+		private String snsImg;
+		private String snsId;
+		private String token;
+		private Integer sns_type;
 		
+		
+		
+		
+		public String getSnsImg() {
+			return snsImg;
+		}
+		public void setSnsImg(String snsImg) {
+			this.snsImg = snsImg;
+		}
+		public String getSnsId() {
+			return snsId;
+		}
+		public void setSnsId(String snsId) {
+			this.snsId = snsId;
+		}
+		public String getToken() {
+			return token;
+		}
+		public void setToken(String token) {
+			this.token = token;
+		}
+		public Integer getSns_type() {
+			return sns_type;
+		}
+		public void setSns_type(Integer sns_type) {
+			this.sns_type = sns_type;
+		}
 		public Integer getCoupon() {
 			return coupon;
 		}
