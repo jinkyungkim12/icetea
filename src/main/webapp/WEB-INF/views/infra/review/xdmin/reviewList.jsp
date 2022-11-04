@@ -281,7 +281,7 @@
 	     		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can"></i></button>
 	    	</div>
 	    	<div class="col-2 text-end">
-				<button type="button" class="btn btn-success" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
+				<button type="button" class="btn btn-success" id="btnExcel" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 	    	</div>
 	    </div>	
    </div>
@@ -381,7 +381,7 @@
 		var goUrlList = "/review/reviewList";
 		var goUrlUele = "/review/reviewUele";
 		var goUrlDele = "/review/reviewDele";
-		
+		var goUrlExcel = "/review/excelDownload";
 		
 		/* var goUrlForm = "/review/reviewForm";
 		var goUrlInst = "/review/reviewInst";
@@ -414,6 +414,10 @@
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		}
+  		
+  		$("#btnExcel").on("click", function(){
+			$(location).attr("href", goUrlExcel);
+		});
   		
 	</script>
 	<script type="text/javascript">

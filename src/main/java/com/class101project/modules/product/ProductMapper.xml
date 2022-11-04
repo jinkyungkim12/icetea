@@ -47,8 +47,6 @@
 			,a.dateNY
 			,a.subtitleNY
 			,a.kitNY
-			,a.classInfo
-			,a.curriculum
 			,a.classReg
 			,a.classMod
 		<include refid="selectCommon" />

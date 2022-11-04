@@ -224,8 +224,8 @@
 						<th scope="col">코드그룹 이름(한글)</th>
 						<th scope="col">코드</th>
 						<th scope="col">대체 코드</th>
-						<th scope="col">코드그룹 이름(한글)</th>
-						<th scope="col">코드그룹 이름(영문)</th>
+						<th scope="col">코드 이름(한글)</th>
+						<th scope="col">코드 이름(영문)</th>
 						<th scope="col">사용여부</th>
 						<th scope="col">삭제여부</th>
 						<th scope="col">등록일</th>
@@ -284,7 +284,7 @@
 			    	</div>
 			    	<div class="col-2 text-end">
 			     		<a type="button" class="btn btn-dark" href="/code/codeForm" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-						<button type="button" class="btn btn-success" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
+						<button type="button" class="btn btn-success" style="height: 2.4rem;" id="btnExcel"><i class="fa-solid fa-file-excel"></i></button>
 			    	</div>
 			    </div>
 		   </div>
@@ -379,6 +379,7 @@
 		var goUrlUele = "/code/codeUele";				
 		var goUrlDele = "/code/codeDele";				
 		var goUrlForm = "/code/codeForm";
+		var goUrlExcel = "/code/excelDownload";
 	
 		var form = $("form[name=formList]");
 		
@@ -407,6 +408,10 @@
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		}
+		
+		$("#btnExcel").on("click", function(){
+			$(location).attr("href", goUrlExcel);
+		});
 		
 	</script>
 	

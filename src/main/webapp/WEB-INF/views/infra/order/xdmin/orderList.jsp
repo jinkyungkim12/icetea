@@ -307,7 +307,7 @@
 	    	</div>
 	    	<div class="col-2 text-end">
 	     		<a type="button" class="btn btn-dark" href="#" style="color: white;">등록하기<i class="fa-solid fa-file-arrow-up"></i></a>
-				<button type="button" class="btn btn-success" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
+				<button type="button" class="btn btn-success" id="btnExcel" style="height: 2.4rem;"><i class="fa-solid fa-file-excel"></i></button>
 	    	</div>
 	    </div>	
    </div>
@@ -392,6 +392,7 @@
 		var goUrlUele = "/order/orderUele";				/* #-> */
 		var goUrlDele = "/order/orderDele";				/* #-> */
 		var goUrlForm = "/order/orderForm";
+		var goUrlExcel = "/order/excelDownload";
 		
 		var form = $("form[name=formList]");
 		
@@ -420,6 +421,10 @@
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		}
+  		
+  		$("#btnExcel").on("click", function(){
+			$(location).attr("href", goUrlExcel);
+		});
   		
 	</script>
 	<script type="text/javascript">
