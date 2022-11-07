@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //1. DTO 
-public class Code {
+public class Code { 
 
 	private String seq;
 	private String codeGroup_seq;
