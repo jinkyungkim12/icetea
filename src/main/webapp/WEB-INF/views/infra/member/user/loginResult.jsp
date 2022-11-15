@@ -321,7 +321,6 @@
     	loginNaver = function() {
     		
 			naverLogin.getLoginStatus(function (status) {
-				alert(status);
 				if(!status){
 					naverLogin.authorize();
 				}
