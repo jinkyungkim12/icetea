@@ -49,6 +49,7 @@
 			<exclude-mapping path="/member/main_home" />
 			<exclude-mapping path="/member/checkSms" />
 			<exclude-mapping path="/member/kakaoLoginProc" />
+			<exclude-mapping path="/member/naverLoginProc" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/test/**" />

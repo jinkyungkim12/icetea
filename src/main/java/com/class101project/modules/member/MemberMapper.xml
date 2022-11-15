@@ -241,7 +241,7 @@
 	
 	<!-- naver Login insert -->
 	<insert id="naverInst">
-		INSERT INTO user (
+		INSERT INTO member (
 			name
 			,id
 			,position

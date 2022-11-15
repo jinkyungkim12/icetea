@@ -203,7 +203,7 @@ public class MemberController {
 		        //session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
 		        session(naverLogin, httpSession);
 		    }
-		    return "redirect:/sportMain";
+		    return "redirect:/home";
 		}
 	 
 	// 로그아웃
@@ -213,8 +213,18 @@ public class MemberController {
 	@RequestMapping(value = "logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		httpSession.invalidate();
-		returnMap.put("rt", "success");
+		
+		String sns = httpSession.getAttribute("sessId").toString();
+		System.out.println("test : " + sns);
+		
+		if (sns.equals("네이버로그인")) {
+		    System.out.println("네이버 로그아웃 왜 안됨?");
+		    httpSession.invalidate();
+		    returnMap.put("rt", "naver");
+		} else {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "success");
+		}
 		return returnMap;
 	}
 	

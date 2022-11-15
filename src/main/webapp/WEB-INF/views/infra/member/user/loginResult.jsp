@@ -147,7 +147,7 @@
 					</button>
 				</div>
 				<div class="row">
-					<button type="button" class="btn btn-light other" id="naverIdLogin" style="background-color: #2DB400;">
+					<button type="button" class="btn btn-light other" id="naverIdLogin" onclick="loginNaver()" style="background-color: #2DB400;">
 						<i class="fa-solid fa-n"></i> 네이버로 시작하기
 					</button>
 				</div>
@@ -291,27 +291,44 @@
 	
 	</script>
 	<script type="text/javascript">
+	
+		
+		
+/* naver login test s */
+   		
+   		/* var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "b8EhDTV3tvvAE_gRRBoJ",
+				callbackUrl: "http://localhost:8080/userLogin",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 70} 
+			}
+		); */
+   		
 		
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "QUU27EXamJPjHAU4eMLI",
-				callbackUrl: "http://localhost:8080/loginResult",
-				isPopup: false,
-				callbackHandle: true,
-				loginButton: {color: "green", type: 3, height: 70} 
+				callbackUrl: "http://localhost:8080/member/memberLoginResult",
+				isPopup: true
+				/* callbackHandle: true,
+				loginButton: {color: "green", type: 3, height: 40}  */
 			}
 		);
+
     	naverLogin.init();
     	
-   		window.addEventListener('load', function () {
-   			naverLogin.getLoginStatus(function (status) {
-   				if (status) {
-   					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-   					setLoginStatus();
-   				}
-   			});
-   		});
-   		
+    	loginNaver = function() {
+    		
+			naverLogin.getLoginStatus(function (status) {
+				alert(status);
+				if(!status){
+					naverLogin.authorize();
+				}
+                setLoginStatus();  //하늘님 메소드 실행 -> Ajax
+			});
+    	};
+    	
    		function setLoginStatus() {
    			
 			if (naverLogin.user.gender == 'M'){
@@ -331,7 +348,7 @@
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
-						window.location.href = "/home";
+						location.href = "/home";
 					}
 				},
 				error : function(jqXHR, status, error) {
@@ -339,6 +356,8 @@
 				}
 			});
 		}
+    	/* naver login test e */
+		
 	</script>
 </body>
 </html>

@@ -461,10 +461,11 @@
 				,url: "/member/logoutProc"
 				,data: {}
 				,success: function(response) {
-					if(response.rt == "success") {
-						location.href = "/home";
+					if (response.rt == "success") {
+						window.location.href = "home";
 					} else {
-						// by pass
+						localStorage.clear();
+						window.location.href = "home";
 					}
 				}
 				,error : function(jqXHR, textStatus, errorThrown){
@@ -472,6 +473,8 @@
 				}
 			});
 		});
+		
+		
 	</script>
 	<script type="text/javascript">
 	 $(document).ready(function () {
