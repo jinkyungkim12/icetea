@@ -36,6 +36,12 @@ public class MemberDao {
 	  public int kakaoInst(Member dto) {
 	  	return sqlSession.insert(namespace + ".kakaoInst", dto);
 	  }
+	  
+	// 네이버 로그인 insert
+	  
+	  public int naverInst(Member dto) {
+	      return sqlSession.insert(namespace + ".naverInst", dto);
+	  }
 	
 	
 	//selectOne

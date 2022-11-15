@@ -22,6 +22,8 @@ public interface MemberService {
 	public int addInsert(Member dto) throws Exception;
 	// kakao insert
 	public int kakaoInst(Member dto) throws Exception;
+	// naver insert
+	public int naverInst(Member dto) throws Exception;
 
 	
 	// update

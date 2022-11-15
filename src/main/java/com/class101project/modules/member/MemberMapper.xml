@@ -238,6 +238,40 @@
 		</selectKey>
 	</insert>
 	
+	
+	<!-- naver Login insert -->
+	<insert id="naverInst">
+		INSERT INTO user (
+			name
+			,id
+			,position
+			,gender
+			,dob
+			,phone
+			,email
+			,delNY
+			,regDatetime
+			,coupon
+			,snsImg
+		)
+		VALUES (
+			#{name}
+			,#{snsId}
+			,#{position}
+			,#{gender}
+			,#{dob}
+			,#{phone}
+			,#{email}
+			,0
+			,now()
+			,10000
+			,#{snsImg}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<!-- ============ update =============== -->
 	<update id="update">
 		UPDATE member

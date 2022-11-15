@@ -82,6 +82,12 @@ public class MemberServiceImpl implements MemberService{
 		return 1;
     }
     
+    // naver insert
+    @Override
+    public int naverInst(Member dto) throws Exception {
+		return dao.naverInst(dto);
+    }
+    
     
     // update
 	public void totalUpdate(Member dto) throws Exception {
