@@ -57,14 +57,7 @@
 											<img alt="..." src="
 											<c:choose>
 												<c:when test = "${sessUserImage ne null}">${sessUserImage}</c:when>
-												<c:otherwise>../resources/images/profileimg.png
-													<c:choose>
-														<c:when test="${empty sessImg }">
-															../resources/images/profileimg.png
-														</c:when>
-														<c:otherwise>${sessUserImg }</c:otherwise>
-													</c:choose>
-												</c:otherwise>
+												<c:otherwise>../resources/images/profileimg.png</c:otherwise>
 											</c:choose>
 											" class="avatar avatar-rounded-circle"> 
 										</div>
