@@ -118,11 +118,11 @@
 				</div>
 				<div class="row" style="margin-top: 2rem" id="input1">
 					<label for="exampleFormControlInput1" class="form-label">아이디</label>
- 					<input type="text" class="form-control" name="id" id="id" placeholder="example" style="width: 500px;">
+ 					<input type="text" class="form-control" name="id" id="id" placeholder="example" style="width: 500px;" value="manager">
 				</div>
 				<div class="row" style="margin-top: 2rem" id="input1">
 					<label for="exampleFormControlInput1" class="form-label">비밀번호</label>
- 					<input type="password" class="form-control" name="password" id="password" style="width: 500px;">
+ 					<input type="password" class="form-control" name="password" id="password" style="width: 500px;" value="1234">
 				</div>
 				<div class="row" style="margin-top: 1rem;">
 				<div class="form-check form-switch">
@@ -292,20 +292,6 @@
 	</script>
 	<script type="text/javascript">
 	
-		
-		
-/* naver login test s */
-   		
-   		/* var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: "b8EhDTV3tvvAE_gRRBoJ",
-				callbackUrl: "http://localhost:8080/userLogin",
-				isPopup: false,
-				loginButton: {color: "green", type: 3, height: 70} 
-			}
-		); */
-   		
-		
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "QUU27EXamJPjHAU4eMLI",
