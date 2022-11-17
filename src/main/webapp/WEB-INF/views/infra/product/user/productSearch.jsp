@@ -320,74 +320,74 @@
 	
 	<div class="container" style="margin-top: 3rem;">
 		<div class="row">
-		<c:forEach items="${listToday}" var="listToday" varStatus="status">	
-			<div class="col-3">
-				<a class="nav-link"  href="javascript:goForm('${listToday.seq }')"> 
-					<div class="card" style="width: 18rem;">
-					  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
-					  <div class="card-body" style="height: 12rem;">
-					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
-					    <hr>
-					    <span class="discount"><c:out value="${listToday.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
-					    <span class="month">(<c:choose>
-												<c:when test="${listToday.payMonth eq 16}">5개월</c:when>
-												<c:otherwise>12개월</c:otherwise>
-											</c:choose>)</span>
-					  </div>
-					</div>
-				</a>
-			</div>	
-		</c:forEach>	
+			<c:forEach items="${listToday}" var="listToday" varStatus="status">	
+				<div class="col-3">
+					<a class="nav-link"  href="javascript:goForm('${listToday.seq }')"> 
+						<div class="card" style="width: 18rem;">
+						  <img src="${listToday.path}${listToday.uuidName}" class="card-img-top" alt="...">
+						  <div class="card-body" style="height: 12rem;">
+						    <p class="card-text" style="height: 6rem;"><b><c:out value="${listToday.category}"/></b><br>[💣24시간] <c:out value="${listToday.title}"/></p>
+						    <hr>
+						    <span class="discount"><c:out value="${listToday.discountRate}"/>%</span>
+						    <span class="price">월 <fmt:formatNumber type="number" value="${(listToday.price*((listToday.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+						    <span class="month">(<c:choose>
+													<c:when test="${listToday.payMonth eq 16}">5개월</c:when>
+													<c:otherwise>12개월</c:otherwise>
+												</c:choose>)</span>
+						  </div>
+						</div>
+					</a>
+				</div>	
+			</c:forEach>
 		</div>
 	
 	<!-- MD 추천 클래스 -->
 		<br>
 		<div class="row">
-		<c:forEach items="${listMD}" var="listMD" varStatus="status" >	
-			<div class="col-3">
-				<a class="nav-link"  href="javascript:goForm('${listMD.seq }')"> 
-					<div class="card" style="width: 18rem;">
-					  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
-					  <div class="card-body" style="height: 12rem;">
-					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
-					    <hr>
-					    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
-					    <span class="month">(<c:choose>
-												<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
-												<c:otherwise>12개월</c:otherwise>
-											</c:choose>)</span>
-					  </div>
-					</div>
-				</a>
-			</div>	
-		</c:forEach>
+			<c:forEach items="${listMD}" var="listMD" varStatus="status" >	
+				<div class="col-3">
+					<a class="nav-link"  href="javascript:goForm('${listMD.seq }')"> 
+						<div class="card" style="width: 18rem;">
+						  <img src="${listMD.path}${listMD.uuidName}" class="card-img-top" alt="...">
+						  <div class="card-body" style="height: 12rem;">
+						    <p class="card-text" style="height: 6rem;"><b><c:out value="${listMD.category}"/></b><br>[✨MD 강추 클래스] <c:out value="${listMD.title}"/></p>
+						    <hr>
+						    <span class="discount"><c:out value="${listMD.discountRate}"/>%</span>
+						    <span class="price">월 <fmt:formatNumber type="number" value="${(listMD.price*((listMD.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+						    <span class="month">(<c:choose>
+													<c:when test="${listMD.payMonth eq 16}">5개월</c:when>
+													<c:otherwise>12개월</c:otherwise>
+												</c:choose>)</span>
+						  </div>
+						</div>
+					</a>
+				</div>	
+			</c:forEach>
 		</div>
 	
 	
 	<!-- 실시간 TOP10 클래스 -->
 		<br>
 		<div class="row">
-		<c:forEach items="${listDC}" var="listDC" varStatus="status">
-			<div class="col-3">
-				<a class="nav-link"  href="javascript:goForm('${listDC.seq }')"> 
-					<div class="card" style="width: 18rem;">
-					  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
-					  <div class="card-body" style="height: 12rem;">
-					    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
-					    <hr>
-					    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
-					    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
-					    <span class="month">(<c:choose>
-												<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
-												<c:otherwise>12개월</c:otherwise>
-											</c:choose>)</span>
-					  </div>
-					</div>
-				</a>
-			</div>	
-		</c:forEach>	
+			<c:forEach items="${listDC}" var="listDC" varStatus="status">
+				<div class="col-3">
+					<a class="nav-link"  href="javascript:goForm('${listDC.seq }')"> 
+						<div class="card" style="width: 18rem;">
+						  <img src="${listDC.path}${listDC.uuidName}" class="card-img-top" alt="...">
+						  <div class="card-body" style="height: 12rem;">
+						    <p class="card-text" style="height: 6rem;"><b><c:out value="${listDC.category}"/></b><br>[👍할인종료D-7] <c:out value="${listDC.title}"/></p>
+						    <hr>
+						    <span class="discount"><c:out value="${listDC.discountRate}"/>%</span>
+						    <span class="price">월 <fmt:formatNumber type="number" value="${(listDC.price*((listDC.discountRate)*0.01))/5}" pattern="#,###"/>원</span>
+						    <span class="month">(<c:choose>
+													<c:when test="${listDC.payMonth eq 16}">5개월</c:when>
+													<c:otherwise>12개월</c:otherwise>
+												</c:choose>)</span>
+						  </div>
+						</div>
+					</a>
+				</div>	
+			</c:forEach>
 		</div>
 	</div>
 	 

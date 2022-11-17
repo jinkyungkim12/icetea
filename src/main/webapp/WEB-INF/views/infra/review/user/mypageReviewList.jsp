@@ -236,50 +236,57 @@
 					<input type="hidden" name="mSeq" value="${sessSeq}"/>
 					<div class="container" style="width: 95%">
 						<div style="margin-top: 3rem;"><h3><b>내가 작성한 후기</b></h3></div>
-						<c:forEach items="${listRV}" var="listRV" varStatus="status">
-							<input type="hidden" name="seq" value="${listRV.seq}"/>
-							<div class="row mt-5">
-		           				<div class="card shadow bg-body rounded cardBorder">
-								  <div class="card-body">
-								    <div class="row justify-content-between">
-								    	<h5><b><c:out value="${listRV.category}"/></b></h5>
-								    	<div class="col-9 text-start"><span>[<c:out value="${listRV.title}"/>]</span></div>
-								    	<div class="col-3 text-end" id="starValue">
-									    	<c:forEach begin="1" end="${listRV.preferenceStar}" varStatus="status">
-												<i class="fa-solid fa-star"></i>  
-											</c:forEach>
-									    	&nbsp;<span><b><c:out value="${listRV.preferenceStar}"/>점</b></span>
-								    	</div>
-								    </div>
-								    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
-								    <div class="col text-end">
-								    	<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="goUele(${listRV.seq})">
-								    		<i class="fa-solid fa-trash-can"></i> 
-								    		삭제하기
-								    	</button>
-								    	<!-- Modal -->
-										<%-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										  <div class="modal-dialog">
-										    <div class="modal-content">
-										      <div class="modal-header">
-										        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
-										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-										      </div>
-										      <div class="modal-body">
-										        정말로 삭제하시겠습니까? ${listRV.seq }
-										      </div>
-										      <div class="modal-footer">
-										        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-										        <button type="button" class="btn btn-dark" id="BtnUele" onclick="goUele(${listRV.seq})">삭제 </button>
-										      </div>
+						<c:choose>
+							<c:when test="${fn:length(listRV) eq 0 }">
+				               <div class="text-center"><h5><b>작성한 리뷰가 존재하지 않습니다.😢</b></h5></div>
+				           </c:when>
+				           <c:otherwise>
+								<c:forEach items="${listRV}" var="listRV" varStatus="status">
+									<input type="hidden" name="seq" value="${listRV.seq}"/>
+									<div class="row mt-5">
+				           				<div class="card shadow bg-body rounded cardBorder">
+										  <div class="card-body">
+										    <div class="row justify-content-between">
+										    	<h5><b><c:out value="${listRV.category}"/></b></h5>
+										    	<div class="col-9 text-start"><span>[<c:out value="${listRV.title}"/>]</span></div>
+										    	<div class="col-3 text-end" id="starValue">
+											    	<c:forEach begin="1" end="${listRV.preferenceStar}" varStatus="status">
+														<i class="fa-solid fa-star"></i>  
+													</c:forEach>
+											    	&nbsp;<span><b><c:out value="${listRV.preferenceStar}"/>점</b></span>
+										    	</div>
+										    </div>
+										    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
+										    <div class="col text-end">
+										    	<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="goUele(${listRV.seq})">
+										    		<i class="fa-solid fa-trash-can"></i> 
+										    		삭제하기
+										    	</button>
+										    	<!-- Modal -->
+												<%-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
+												        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												      </div>
+												      <div class="modal-body">
+												        정말로 삭제하시겠습니까? ${listRV.seq }
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+												        <button type="button" class="btn btn-dark" id="BtnUele" onclick="goUele(${listRV.seq})">삭제 </button>
+												      </div>
+												    </div>
+												  </div>
+												</div> --%>
 										    </div>
 										  </div>
-										</div> --%>
-								    </div>
-								  </div>
-								</div>
-	           				</div>
-	           			</c:forEach>
+										</div>
+			           				</div>
+			           			</c:forEach>
+		           			</c:otherwise>
+	           			</c:choose>
            			</div>
 				</form>	
 				</div>

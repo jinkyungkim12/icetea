@@ -230,26 +230,33 @@
 					<input type="hidden" name="mSeq" value="${sessSeq}"/>
 					<input type="hidden" name="vSeq" value="${vo.seq}"/>
 					<div style="margin-top: 3rem;"><h3><b>주문 내역보기</b></h3></div>
-					<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
-						<input type="hidden" name="seq" value="${listOrder.seq }">
-						<a class="nav-link" href="javascript:goView('${sessSeq }', '${listOrder.seq }')"> 
-							<div class="row justify-content-between" style="margin-top: 2rem;">
-							<div class="col-4"><span>${listOrder.orderDate}</span></div>
-							<div class="col-3 text-end"><span><button id="btnView" type="button" style="color: #FF5600">주문 상세 보기</button></span></div>
-							</div>
-							<hr>
-							<div class="row" style="margin-top: 2rem;"><h5><b>주문 내역</b></h5></div>
-							<div class="row">
-								<div class="col-3">
-									<img src="${listOrder.path}${listOrder.uuidName}" style="width: 200px; height: 140px;">
-								</div>
-								<div class="col-9">
-									<div><h5><b>[<c:out value="${listOrder.category}"/>]</b> <c:out value="${listOrder.title}"/></h5></div>
-									<div><span>20주 수강권</span></div>
-								</div>
-							</div>
-						</a>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${fn:length(listOrder) eq 0 }">
+			               <div class="text-center"><h5><b>구매한 클래스가 존재하지 않습니다.😢</b></h5></div>
+			            </c:when>
+			            <c:otherwise>
+							<c:forEach items="${listOrder}" var="listOrder" varStatus="status">
+								<input type="hidden" name="seq" value="${listOrder.seq }">
+								<a class="nav-link" href="javascript:goView('${sessSeq }', '${listOrder.seq }')"> 
+									<div class="row justify-content-between" style="margin-top: 2rem;">
+									<div class="col-4"><span>${listOrder.orderDate}</span></div>
+									<div class="col-3 text-end"><span><button id="btnView" type="button" style="color: #FF5600">주문 상세 보기</button></span></div>
+									</div>
+									<hr>
+									<div class="row" style="margin-top: 2rem;"><h5><b>주문 내역</b></h5></div>
+									<div class="row">
+										<div class="col-3">
+											<img src="${listOrder.path}${listOrder.uuidName}" style="width: 200px; height: 140px;">
+										</div>
+										<div class="col-9">
+											<div><h5><b>[<c:out value="${listOrder.category}"/>]</b> <c:out value="${listOrder.title}"/></h5></div>
+											<div><span>20주 수강권</span></div>
+										</div>
+									</div>
+								</a>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</form>	
 			</div>
 		</div>
