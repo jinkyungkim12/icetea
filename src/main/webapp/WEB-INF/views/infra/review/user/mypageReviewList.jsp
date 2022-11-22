@@ -258,28 +258,7 @@
 										    </div>
 										    <p class="card-text mt-1"><b>Content:</b>&nbsp;<c:out value="${listRV.content}"/></p>
 										    <div class="col text-end">
-										    	<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="goUele(${listRV.seq})">
-										    		<i class="fa-solid fa-trash-can"></i> 
-										    		삭제하기
-										    	</button>
-										    	<!-- Modal -->
-												<%-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												  <div class="modal-dialog">
-												    <div class="modal-content">
-												      <div class="modal-header">
-												        <h5 class="modal-title" id="exampleModalLabel"><b>Class101</b></h5>
-												        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												      </div>
-												      <div class="modal-body">
-												        정말로 삭제하시겠습니까? ${listRV.seq }
-												      </div>
-												      <div class="modal-footer">
-												        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-												        <button type="button" class="btn btn-dark" id="BtnUele" onclick="goUele(${listRV.seq})">삭제 </button>
-												      </div>
-												    </div>
-												  </div>
-												</div> --%>
+										    	<button type="button" class="btn btn-outline-dark" onclick="goUele(${listRV.seq})"><i class="fa-solid fa-trash-can"></i> 삭제하기</button>
 										    </div>
 										  </div>
 										</div>
@@ -325,14 +304,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		
-		/* alert($("input[name=mSeq]").val());	 */
-		
-		/* alert($("input[name=seq]").val())
-		alert($("input[name=mSeq]").val())
-		alert($("input[name=vSeq]").val()) */
-		
-		/* alert($("input[name=mSeq]").val()); */
-		
 		var goUrlForm = "/member/mypageModForm";
 		var goUrlListOrder = "/order/mypageOrderList";
 		var goUrlList="/review/myreview";
@@ -376,7 +347,7 @@
    				/* ,dataType:"json" */
    				,url: "/review/reviewUele"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : {"seq" : $("input[name=seq]").val(s), "mSeq" : $("input[name=mSeq]").val()}
+   				,data : {"seq" : $("input[name=seq]").val(), "mSeq" : $("input[name=mSeq]").val()}
    				,success: function(response) {
    					if (response.rt == "success") {
    						location.href = "/review/myreview?mSeq="+ $("input[name=mSeq]").val();
