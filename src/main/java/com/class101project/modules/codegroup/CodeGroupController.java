@@ -219,6 +219,17 @@ public class CodeGroupController {
 		}
     }
 	
+	// oracle
+	
+	@RequestMapping(value = "oracleList")
+	public String oracleList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+		
+		List<CodeGroup> oracle = service.selectListOracle(vo);
+		model.addAttribute("oracle", oracle);
+		
+		return "infra/codegroup/xdmin/oracleList";
+		
+	}
 	
 //	only for member
 //	@RequestMapping(value = "codeGroupView")

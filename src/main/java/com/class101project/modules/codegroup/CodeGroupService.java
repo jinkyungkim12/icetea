@@ -15,4 +15,7 @@ public interface CodeGroupService {
 	
 	public int delete(CodeGroupVo vo) throws Exception;
 	public int selectOneCount(CodeGroupVo vo) throws Exception;
+
+	// oracle
+	public List<CodeGroup> selectListOracle(CodeGroupVo vo) throws Exception; 
 }

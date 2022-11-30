@@ -64,4 +64,12 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		
 		return dao.selectOneCount(vo);
 	}
+	
+	
+	// oracle
+	
+	@Override
+	public List<CodeGroup> selectListOracle(CodeGroupVo vo) throws Exception {
+		return dao.selectListOracle(vo);
+	}
 }

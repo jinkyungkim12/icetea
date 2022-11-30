@@ -46,6 +46,21 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	<select id="selectListOracle" resultMap="resultMapObj">
+		SELECT
+		 	a.seq
+           ,a.codeGroupCode
+           ,a.nameKr
+           ,a.name
+           ,a.codeNum
+           ,a.cgDelNY
+           ,a.cgUseNY
+           ,a.regDate
+           ,a.modDate
+		FROM codeGroup a
+		ORDER BY a.seq DESC
+	</select>
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
