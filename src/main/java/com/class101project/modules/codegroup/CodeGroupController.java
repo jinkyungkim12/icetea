@@ -224,8 +224,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "oracleList")
 	public String oracleList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
-		List<CodeGroup> oracle = service.selectListOracle(vo);
-		model.addAttribute("oracle", oracle);
+		List<CodeGroup> list = service.selectListOracle(vo);
+		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/oracleList";
 		

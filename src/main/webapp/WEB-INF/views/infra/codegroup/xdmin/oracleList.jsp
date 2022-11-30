@@ -235,37 +235,37 @@
 				</thead>
 				<tbody>
 				<c:choose>
-					<c:when test="${fn:length(oracle) eq 0}">
+					<c:when test="${fn:length(list) eq 0}">
 						<tr>
 							<td class="text-center" colspan="10">There is no data!</td>
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${oracle}" var="oracle" varStatus="status">
+						<c:forEach items="${list}" var="list" varStatus="status">
 							<tr>
 								<td>
 									<input class="check" type="checkbox" name="check">
 								</td>
-								<th scope="row"><c:out value="${oracle.seq }"/></th>
-								<td><c:out value="${oracle.codeGroupCode }"/></td>
+								<th scope="row"><c:out value="${list.seq }"/></th>
+								<td><c:out value="${list.codeGroupCode }"/></td>
 								<td>
-									<a href="javascript:goForm(<c:out value="${oracle.seq }"/>)"><c:out value="${oracle.nameKr}"/></a></td>
-								<td><c:out value="${oracle.name }"/></td>
-								<td><c:out value="${oracle.codeNum }"/></td>
+									<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.nameKr}"/></a></td>
+								<td><c:out value="${list.name }"/></td>
+								<td><c:out value="${list.codeNum }"/></td>
 								<td>
 									<c:choose>
-										<c:when test="${oracle.cgDelNY eq 0}">N</c:when>
+										<c:when test="${list.cgDelNY eq 0}">N</c:when>
 										<c:otherwise>Y</c:otherwise>
 									</c:choose>
 								</td>	
 								<td>
 									<c:choose>
-										<c:when test="${oracle.cgUseNY eq 0}">N</c:when>
+										<c:when test="${list.cgUseNY eq 0}">N</c:when>
 										<c:otherwise>Y</c:otherwise>
 									</c:choose>
 								</td>
-								<td><c:out value="${oracle.regDate }"/></td>
-								<td><c:out value="${oracle.modDate }"/></td>
+								<td><c:out value="${list.regDate }"/></td>
+								<td><c:out value="${list.modDate }"/></td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
